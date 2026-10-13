@@ -1,6 +1,3 @@
-# vibe_coding_harness
-
-這個 repo 用繁體中文完整介紹現代 **Vibe Coding** 的三大核心：
 1. **Harness（駕馭核心）**：讓 AI 模型具備動手能力的控制與執行骨幹（以 OpenCode 為代表）。
 2. **ADE（代理開發環境）**：當前最新流行的 TUI 工具，專為多 Agent 調度與終端開發打造的現代化工作台（以 Herdr 為代表）。
 3. **工具（終端輔助）**：終端高效率檔案管理與預覽工具（以 Yazi 為代表）。
@@ -20,7 +17,13 @@
 
 換句話說：**模型（馬）提供強大的前電動能，而 Harness（馬鞍與韁繩）則賦予你全權控制的能力，讓這股力量能精準且受控地奔向專案目標。**
 
-### 為什麼說 OpenCode 是 Harness？
+### OpenCode
+
+**OpenCode** 是一款在終端環境中運行的開源 AI Coding Agent，也是本專案介紹的核心 Harness 代表。它負責將 AI 模型的智慧轉化為實際動手能力，串接專案檔案、終端命令與各式工具，讓 AI 能夠自主讀檔、修改程式碼、執行指令並修復錯誤。
+
+關於 OpenCode 的完整安裝步驟、常用 CLI 指令、專案指示與進階設定，請參閱專案內的 [opencode/ 資料夾](opencode/)（或閱讀 [OpenCode 操作指南](opencode/README.md)）。
+
+#### 為什麼說 OpenCode 是 Harness？
 
 OpenCode 的推理與回答主要來自它連接的 AI 模型；OpenCode 則負責把模型接到你的專案與工具。從這個角度看，我們可以把它理解成一種 coding agent harness。[OpenCode 官方介紹](https://opencode.ai/v2/docs/)
 
@@ -36,7 +39,7 @@ OpenCode 的推理與回答主要來自它連接的 AI 模型；OpenCode 則負�
 
 這五點是方便理解的整理方式；測試要依專案與任務安排，分工也要依需求使用，不代表每次都會自動發生。工具與脈絡功能見官方 [Tools](https://opencode.ai/v2/docs/tools/)、[Instructions](https://opencode.ai/v2/docs/instructions/) 與 [Compaction](https://opencode.ai/v2/docs/compaction/)；權限與分工見 [Permissions](https://opencode.ai/v2/docs/permissions/) 與 [Agents](https://opencode.ai/v2/docs/agents/)。
 
-### 一個小例子：請 AI 改按鈕文字
+#### 一個小例子：請 AI 改按鈕文字
 
 假設你正在做一個網站，想把「登入」按鈕改成「會員登入」。你可以在 OpenCode 裡說：
 
