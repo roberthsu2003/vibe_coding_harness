@@ -56,6 +56,7 @@ Herdr 可以想成工作桌上的終端管理員：左邊開 OpenCode，右邊�
 | --- | --- | --- |
 | OpenCode CLI | 在專案中與 AI 對話、分析與修改程式、執行非互動任務 | [OpenCode 操作指南](opencode/README.md) |
 | Herdr | 管理終端工作區、分頁與窗格，觀察 coding agent 狀態 | [Herdr 操作指南](herdr/README.md) |
+| Yazi | 在終端機用鍵盤瀏覽檔案、預覽文件與複製路徑 | [Yazi 安裝與簡單操作](yazi/README.md) |
 | OpenCode + Herdr | 在 Herdr 窗格中執行 OpenCode，加入狀態與 session 整合 | [整合實作](herdr/opencode-integration.md) |
 
 建議先完成 OpenCode 的第一次對話，再學習 Herdr 的分割窗格與 detach，最後設定整合。
@@ -69,11 +70,13 @@ vibe_coding_harness/
 │   ├── README.md                # 安裝、對話、常用 CLI 與排錯
 │   ├── configuration.md         # 專案指示、權限、自訂命令
 │   └── updates.md               # 來源與更新紀錄
-└── herdr/
-    ├── README.md                # 安裝、介面、快捷鍵、持續執行
-    ├── cli.md                   # 工作區、窗格、agent CLI
-    ├── opencode-integration.md  # OpenCode 整合與實作
-    └── updates.md               # 發行版本、來源與更新紀錄
+├── herdr/
+│   ├── README.md                # 安裝、介面、快捷鍵、持續執行
+│   ├── cli.md                   # 工作區、窗格、agent CLI
+│   ├── opencode-integration.md  # OpenCode 整合與實作
+│   └── updates.md               # 發行版本、來源與更新紀錄
+└── yazi/
+    └── README.md                # 一段 prompt 安裝、簡單操作與 Herdr 分頁
 ```
 
 ## 版本與指令
