@@ -3,7 +3,7 @@
 ## 導覽目錄
 
 1. [安裝與確認版本](#1-安裝與確認版本)
-2. [核心概念：Workspace、Tab 與 Pane](#2-核心概念workspace-tab-與-pane)
+2. [核心架構與概念（Client-Server、Workspace、Tab 與 Pane）](#2-核心架構與概念client-serverworkspace-tab-與-pane)
 3. [啟動與日常鍵盤操作速查](#3-啟動與日常鍵盤操作速查)
 4. [整合 AI Coding Agent（狀態辨識與連動）](#4-整合-ai-coding-agent狀態辨識與連動)
 5. [Supervisor 與 SubAgent 終端協同架構](#5-supervisor-與-subagent-終端協同架構)
@@ -41,9 +41,46 @@ herdr --help
 
 ---
 
-## 2. 核心概念：Workspace、Tab 與 Pane
+## 2. 核心架構與概念（Client-Server、Workspace、Tab 與 Pane）
 
-Herdr 是專為 AI coding agent 設計的終端多工工作台（Agent Multiplexer）。它採用三層結構管理你的開發環境：
+### 為什麼被稱為「herdr server」？（Client / Server 解耦架構）
+
+Herdr 與傳統終端工具最大的不同，在於它採用了類似 Docker 或 tmux 的 **Client / Server（客戶端 / 伺服端）解耦架構**：
+
+```
+┌──────────────────────────────────────────────┐
+│        Herdr Client（前端展示層 TUI）         │  <- 負責繪製終端畫面、接收鍵盤輸入
+└──────────────────────────────────────────────┘
+                       ↕ (Unix Domain Socket 本地通訊)
+┌──────────────────────────────────────────────┐
+│     Herdr Server（背景常駐守護程序 Daemon）    │  <- 核心引擎！負責掌管虛擬終端 (PTY)
+└──────────────────────────────────────────────┘
+         ├── Pane 1: Agent (OpenCode/Claude 在背景持續推導)
+         ├── Pane 2: Dev Server / Pytest (在背景持續監控運作)
+         └── Session State: 即時記錄視窗排版與執行路徑
+```
+
+* **Herdr Client（前端）**：就是你終端機看到的藍色標籤、分頁、文字視窗。它只負責「接收鍵盤按鍵」並「將文字畫在螢幕上」。
+* **Herdr Server（背景守護者）**：真正管理各個虛擬終端（PTY）、維持通訊、監聽 Agent 狀態的背景 Daemon。
+* **解耦的核心優勢**：就算你的終端機視窗不小心按叉叉關掉、SSH 連線中斷、或是你主動按 `prefix+q` 暫離，**被關閉的只有「Client 畫面」，底層的 `herdr server` 依然在背景持續守護**，所有的 Agent 運算與背景任務絕不會被迫腰斬中斷。
+
+### 為什麼進入 Herdr，狀態都會被完整保留？
+
+Herdr 具備**雙層狀態保留機制**：
+1. **記憶體進程常駐（Process Keepalive）**：只要 `herdr server` 仍在運行，各窗格的底層行程就一直活在記憶體中。當你再次輸入 `herdr` 時，實際上是發起一次 **Attach（螢幕重連）**，直接把畫面重新投影到這些依然在運行的程序上。
+2. **磁碟工作區快照（Workspace Layout Restore）**：Herdr 會自動將各專案的窗格切割比例、工作目錄、分頁名稱與開啟過的 Agent Session 保存於狀態資料庫（`~/.local/state/herdr/`）。即使伺服器重啟或重開機，進入專案執行 `herdr` 也能自動讀取快照重建原有的視窗排版。
+
+### 每次開機都會自動執行嗎？會影響效能嗎？
+
+* **開機不會自動啟動**：Herdr 預設**沒有**註冊任何開機常駐服務。它是 **「隨需喚醒（On-demand Daemon）」**，開機後若你不曾使用它，它處於完全靜止狀態，背景零程序。只有當你在終端機第一次輸入 `herdr` 時，它才會在毫秒間自動喚起 `herdr server`。
+* **本體極其輕量，幾乎不耗資源**：Herdr 採用 Rust 高效能系統語言編寫，在待命狀態下 CPU 使用率為 **0%**，記憶體佔用極低（通常僅 **10 ~ 30 MB**，遠小於瀏覽器的一個分頁）。
+* **真正影響效能的是「窗格裡面跑的任務」**：真正吃系統資源的是你在窗格內啟動的程式（如大型 Node.js dev server、Python 訓練任務或大量運算的 Agent）。若已完成工作，建議在窗格輸入 `exit` 或執行 `herdr server stop` 釋放資源。
+
+---
+
+### Workspace、Tab 與 Pane 三層結構
+
+Herdr 採用清晰的三層結構管理你的開發環境：
 
 | 層級名稱 | 概念定義 | AI 開發中的實際用途 |
 | :--- | :--- | :--- |
@@ -119,22 +156,72 @@ Herdr 預設採用 **`Ctrl+B`** 作為 **Prefix** 鍵（先按下 `Ctrl+B` 放�
 
 ## 4. 整合 AI Coding Agent（狀態辨識與連動）
 
-Herdr 最強大的功能之一是能主動感知窗格內的 Agent 執行狀態。分頁與窗格標籤會即時顯示狀態標記：
+Herdr 最強大的功能之一是能主動感知窗格內的 Agent 執行狀態。分頁與窗格標籤會即時顯示**彩色狀態小圖示**，並在背景任務需要注意或完成時自動播放**聲音提示**：
 
-| Agent 狀態標籤 | 意義 | 開發者應對方式 |
-| :--- | :--- | :--- |
-| `working` | Agent 正在讀取檔案、推導思考或執行終端指令 | 正常等待，或做其他事情 |
-| `blocked` | Agent 遇到需要人類授權或回答問題的互動界面 | **重要**！請切換回該窗格確認並給予批准 |
-| `idle` | Agent 或 Shell 處於空閒狀態 | 可以交付下一個新任務 |
-| `done` | 任務剛完成回到待命狀態，但你尚未檢視該窗格 | 切換回該窗格驗收成果 |
-| `unknown` | 尚未安裝整合或無法識別狀態 | 檢查是否已安裝對應 Agent 的官方整合外掛 |
+| 狀態小圖示與標籤 | 視覺外觀與顏色 | 聲音提示 | 開發者應對方式 |
+| :--- | :--- | :--- | :--- |
+| 🟡 `working` | 黃色實心 / 旋轉中 | *無聲音* | Agent 正在讀取檔案、推導思考或執行終端指令，正常等待或切換其他分頁 |
+| 🔴 `blocked` | 紅色實心圓 / 驚嘆號 | 🔔 **警示音** (`request`) | **重要**！Agent 遇到權限確認或需回答問題，請切換回該窗格確認並批准 |
+| 🟢 `done` | **綠色實心圓**（剛完成） | 🎵 **叮咚完成音** (`done`) | 任務剛完成回到待命狀態，但你**尚未檢視**該窗格，切回該窗格驗收成果 |
+| 🟢 ○ `idle` | **綠色空心圓**（空閒就緒） | *無聲音* | 任務已驗收或已看過，Agent 處於常駐待命狀態，可以交付下一個新任務 |
+| 🟣 `unknown` | 紫色實心 / 問號 | *無聲音* | 尚未安裝整合或無法識別狀態，檢查是否已安裝對應外掛 |
 
-### 安裝 OpenCode 官方整合
-在終端機執行：
+> [!NOTE]
+> **綠色實心 vs 綠色空心圓的差別**：
+> - 🟢 **實心綠圓 (`done`)**：代表任務剛跑完，Herdr 在視覺上提醒你「這裡有剛出爐的成果等你看」。
+> - 🟢 **空心綠圓 (`idle`)**：當你切換回該窗格看過之後，實心綠圓就會轉為**空心綠圓**，代表「一切就緒（Ready），安靜待命交付下一個 Prompt」。
+
+### 聲音提示機制與焦點抑制（Focus Suppression）
+
+當你在其他窗格專心編程時，無需頻繁切換窗格查看進度：
+1. **背景提醒**：只有當 Agent 處於**非當前活躍（背景）窗格**時，狀態轉為 🔴 `blocked` 或 🟢 `done` 才會觸發系統音效。
+2. **智慧焦點抑制**：如果你當前正停留在該 Agent 窗格，Herdr 會自動將聲音靜音，避免重複打擾你的思考。
+3. **音效設定檔**：可於 `~/.config/herdr/config.toml` 中調整或開關聲音：
+   ```toml
+   [ui.sound]
+   enabled = true             # 是否啟用音效通知
+   focus_suppression = true   # 處於當前活躍窗格時自動靜音
+   # request_path = "/path/to/custom_bell.wav"  # 自訂 blocked 警示音
+   # done_path = "/path/to/custom_chime.wav"    # 自訂 done 完成音
+   ```
+4. **測試音效與重新載入**：
+   ```bash
+   # 測試播放完成音效
+   herdr notification show "測試通知" --sound done
+
+   # 修改設定檔後熱重載
+   herdr server reload-config
+   ```
+
+### 安裝主流 Agent 官方整合（OpenCode、Claude、Codex、AGY）
+
+Herdr 支援多款主流 AI Coding Agent 的原生狀態感知外掛。安裝整合後，Agent 的生命週期（推導運算、等待授權、任務完成）會自動透過 Hook/Plugin 機制回報給 Herdr，分頁與窗格標籤便能即時呈現 🟡 `working`、🔴 `blocked`、🟢 `done` 等狀態。
+
+#### 1. 整合管理基本指令
 ```bash
-herdr integration install opencode
+# 查看所有支援與已安裝的整合清單
+herdr integration list
+
+# 安裝指定 Agent 整合
+herdr integration install <agent-name>
+
+# 移除整合
+herdr integration uninstall <agent-name>
 ```
-安裝後，Herdr 會自動獲得 OpenCode 的原生狀態回報。詳細流程請參閱 [搭配 OpenCode 整合教學](opencode-integration.md)。
+
+#### 2. 主流 Agent 整合安裝速查
+
+| Agent 工具 | 安裝指令 | 原生回報與特點說明 | 相關指引 |
+| :--- | :--- | :--- | :--- |
+| **OpenCode** | `herdr integration install opencode` | 自動寫入 OpenCode 全域外掛，完整支援 TUI 狀態即時感知與 Session 復原 | [OpenCode 整合教學](opencode-integration.md) |
+| **Claude Code** | `herdr integration install claude` | 攔截 Claude CLI 的 Tool Use 批准與等候輸入提示，精準觸發 🔴 `blocked` 警示音 | [Claude Code 官網](https://claude.ai/code) |
+| **Codex CLI** | `herdr integration install codex` | 辨識 OpenAI Codex CLI 執行階段，支援命令執行授權通知與自動完成提醒 | [OpenAI Codex](https://openai.com) |
+| **AGY (Antigravity)** | `herdr integration install agy` | 深度整合 Google Antigravity CLI，支援子代理（SubAgent）分身調度與任務生命週期回報 | [Antigravity Guide](../README.md) |
+
+> [!TIP]
+> **安裝後生效步驟**：
+> 1. 安裝整合外掛後，請關閉並重新啟動該 Agent 終端介面（TUI 或 CLI）。
+> 2. 若窗格狀態仍顯示 🟣 `unknown`，可執行 `herdr server reload-config` 或重新啟動該窗格，Herdr 便會自動開始監聽並顯示顏色圖示。
 
 ---
 
@@ -154,10 +241,17 @@ Herdr 的底層以 Unix Domain Socket 與 PTY 終端虛擬層為基礎，讓 Sup
 日常使用查閱表格即可，但在多工開發時，以下幾種「典型情境」是掌握 Herdr 的關鍵技巧：
 
 #### 情境一：下班或切換環境，如何讓 Agent 繼續跑而不中斷？
-* **痛點**：平時關閉終端機或 SSH 斷線，正在執行的長任務就會被迫中斷；不知道如何安全退出。
+* **痛點**：平時關閉終端機或 SSH 斷線，正在執行的長任務就會被迫中斷；不知道如何安全退出回到外層 Shell。
 * **解決方案**：
-  使用 **`prefix+q`（Detach）**！
-  按完後介面會立即退出回到一般 Shell，但 Herdr 的背景伺服器、正在寫 code 的 Agent 與跑中的 Server **完全不會中斷**。隨時在終端輸入 `herdr`，就能原封不動重連回先前的畫面。
+  使用 **`prefix+q`（Detach 暫離）**！
+  按完後介面會立即退出回到一般 Shell 終端機，但 Herdr 的背景伺服器、正在寫 code 的 Agent 與跑中的 Server **完全不會中斷**。隨時在終端輸入 `herdr`，就能原封不動重連回先前的畫面。
+
+  > [!WARNING]
+  > **請勿使用 `killall herdr` 離開！**  
+  > `killall herdr` 會強制中斷背景的 `herdr server`，導致所有窗格內正在運行的 Agent 與任務被迫腰斬。
+  > - **只想回到外層終端機（任務繼續跑）**：按 `prefix+q`。
+  > - **單純關閉該窗格**：在窗格內輸入 `exit` 或按 `prefix+x`。
+  > - **徹底結束並釋放資源**：輸入 `herdr server stop`。
 
 #### 情境二：一邊讓 Agent 寫 code，一邊即時查看改動（標準雙窗格流）
 * **痛點**：Agent 在背景默默改了好多檔案，不知道它有沒有改歪，一直切換視窗很繁瑣。
@@ -213,6 +307,7 @@ herdr kill vibe_coding_harness
 | `herdr --version` | 檢查目前安裝的 Herdr 版本 |
 | `herdr server status` | 檢查 Herdr 背景管理服務的運作狀態 |
 | `herdr server restart` | 重啟 Herdr 背景服務（升級後套用新版本時使用） |
+| `herdr server stop` | 正常停止 Herdr 背景服務並關閉所有工作區，釋放系統資源 |
 | `herdr upgrade` | 自動檢查並升級 Herdr CLI 至最新版 |
 
 ### 常見問題排解 (Troubleshooting)
@@ -222,6 +317,8 @@ herdr kill vibe_coding_harness
 2. **快捷鍵按了沒反應**：
    - 請注意 **Prefix 鍵不是連按**：按下 `Ctrl+B` 後必須先放開，然後再按後續的英文字母鍵（例如 `c` 或 `v`）。亦可隨時按 `prefix+?` 檢查當前生效的鍵位。
 3. **Agent 狀態一直顯示 `unknown`**：
-   - 請確認已在該環境中執行 `herdr integration install opencode`。若版本曾更新，請依說明執行 `herdr server restart`。
-4. **離開 Herdr 時誤關閉了程式**：
-   - 請記得平時離開請使用 **`prefix+q`（Detach）**，不要直接關閉終端機視窗或輸入 `exit`。
+   - 請確認已在該環境中執行對應外掛安裝（例如 `herdr integration install opencode`）。若版本曾更新，請依說明執行 `herdr server restart`。
+4. **如何回到外層終端機？千萬不要用 `killall herdr`！**：
+   - **想暫時回到終端機，任務繼續跑（推薦）**：按 **`prefix+q`（Detach 暫離）**，即可回到外層 Shell，所有背景 Agent 依然穩健執行；隨時打 `herdr` 即可原樣接回。
+   - **完成工作，關閉單一窗格**：在窗格輸入 `exit` 或按 `prefix+x`。
+   - **誤用 `killall herdr` 的下場**：會無預警強制腰斬背景的 `herdr server`，使所有窗格內正在推導的 Agent 或跑中的測試強制中斷，甚至損壞未存檔的狀態。若要完全關閉請使用正規指令 `herdr server stop`。
