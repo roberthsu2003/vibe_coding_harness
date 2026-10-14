@@ -1,124 +1,96 @@
-1. **Harness（駕馭核心）**：讓 AI 模型具備動手能力的控制與執行骨幹（以 OpenCode 為代表）。
-2. **ADE（代理開發環境）**：當前最新流行的 TUI 工具，專為多 Agent 調度與終端開發打造的現代化工作台（以 Herdr 為代表）。
-3. **工具（終端輔助）**：終端高效率檔案管理與預覽工具（以 Yazi 為代表）。
+# 終端機 AI 開發入門
 
-## Harness
+這個 repo 是給剛開始用終端機開發的人看的操作手冊：從安裝工具、理解 AI coding agent，到用 Git 管理平行工作的程式版本。內容以實際操作為主，逐步帶你建立一套可以重複使用的終端機工作流程。
 
-### Harness 是什麼？
+## 這個 repo 怎麼分類？
 
-你可以把 **AI 模型想像成一匹精力充沛的「駿馬」**，而 **Harness（原意即為馬具、輓具）就是套在它身上的「馬鞍與韁繩」**。
+| 分類 | 負責什麼 | 目前範例 |
+| --- | --- | --- |
+| Harness（AI coding agent） | 讓 AI 讀取專案、修改檔案、執行指令，並在規則與權限內完成任務 | OpenCode；之後可加入 Claude Code、Codex CLI、Antigravity CLI |
+| ADE（Agentic Development Environment） | 管理終端中的多個 agent 工作階段、工作區與執行狀態 | Herdr；可評估 AGTx、Termio |
+| 終端機工具 | 提升檔案瀏覽、版本管理等日常操作效率 | Yazi、Git |
 
-過去你可能遇過這種情況：請 AI 幫忙改程式，它只在對話框給出一段建議，你得手動把程式碼貼進專案、自己執行測試，遇到報錯後再把錯誤訊息貼回去——這就像對著一匹未套鞍具的野馬喊話，空有強大力量卻難以直接為你所用。
+這些名稱是為了讓新手理解工具在工作流程中的角色，不代表每個專案都採用完全相同的分類。Harness 負責「agent 如何工作」；ADE 負責「如何安排和觀察多個工作階段」；終端工具則補足檔案瀏覽與版本管理。
 
-**Harness 的核心價值，就是讓你能夠「全權掌控並駕馭這匹馬」：**
-- **握緊韁繩（規範與權限）**：設定專案規則與操作邊界，確保模型朝著正確方向前進，不隨意脫韁亂跑。
-- **配戴裝備（工具與環境）**：把模型、專案檔案與終端指令串接在一起，讓它不只會「想」，還能直接動手讀檔、改檔與執行指令。
-- **掌控步伐（回饋與修正）**：在同一個工作流程中查看執行結果，遇到錯誤時能即時拉回韁繩並嘗試修正。
+## 建議學習順序
 
-換句話說：**模型（馬）提供強大的前電動能，而 Harness（馬鞍與韁繩）則賦予你全權控制的能力，讓這股力量能精準且受控地奔向專案目標。**
+1. 熟悉終端機基本操作與資料夾路徑。
+2. 安裝並使用一個 AI coding agent，先從 OpenCode 開始。
+3. 學會 Git 的基本概念：狀態、差異、提交與分支。
+4. 用 Git worktree 為不同任務建立獨立工作目錄。
+5. 再使用 Herdr 等 ADE 管理多個 agent 工作階段。
+6. 依需求安裝 Yazi，並讓 AI agent 協助設定外掛與預覽工具。
+
+## Harness：AI coding agent
+
+Harness 在這個 repo 指能直接操作專案的 AI coding agent 及其工作規則、工具與權限設定。它不只是回答問題，也能讀寫專案檔案、執行終端指令，並根據結果繼續修正。
 
 ### OpenCode
 
-**OpenCode** 是一款在終端環境中運行的開源 AI Coding Agent，也是本專案介紹的核心 Harness 代表。它負責將 AI 模型的智慧轉化為實際動手能力，串接專案檔案、終端命令與各式工具，讓 AI 能夠自主讀檔、修改程式碼、執行指令並修復錯誤。
+OpenCode 是本 repo 目前的主要範例。安裝、CLI 操作、專案指示與設定都集中在 [opencode/](opencode/)；請從 [OpenCode 操作指南](opencode/README.md) 開始。
 
-關於 OpenCode 的完整安裝步驟、常用 CLI 指令、專案指示與進階設定，請參閱專案內的 [opencode/ 資料夾](opencode/)（或閱讀 [OpenCode 操作指南](opencode/README.md)）。
+之後新增 Claude Code、Codex CLI 或 Antigravity CLI 時，建議各自建立專屬資料夾，放置該工具的安裝、操作、專案規則與設定方式。跨工具共通的 Git 或終端機內容則留在共用章節，避免重複維護。
 
-#### 為什麼說 OpenCode 是 Harness？
+## ADE：管理多個 agent 工作階段
 
-OpenCode 的推理與回答主要來自它連接的 AI 模型；OpenCode 則負責把模型接到你的專案與工具。從這個角度看，我們可以把它理解成一種 coding agent harness。[OpenCode 官方介紹](https://opencode.ai/v2/docs/)
+ADE 是 **Agentic Development Environment** 的縮寫，可理解為以 agent 工作流程為中心的開發環境。這是正在發展中的工具類別；不同專案可能是 TUI、桌面程式或其他介面，因此本 repo 會介紹實際功能，不把它限定成單一介面或已定型的標準。
 
-可以用五件事來理解它的工作：
+### Herdr
 
-| 它幫忙處理什麼？ | 用口語說 | 小例子 |
-| --- | --- | --- |
-| 連接工具 | 讓 AI 有工具可以動手 | 讀取程式、修改檔案、執行終端指令；也能透過 MCP 接上額外工具 |
-| 整理工作脈絡 | 告訴 AI 現在做什麼、要遵守什麼 | 讀取 `AGENTS.md` 裡的專案規則，管理對話紀錄，對話太長時整理重點 |
-| 管理權限 | 決定哪些事能做、哪些要先問 | 允許讀檔，但修改檔案或執行某些指令前，需要你確認 |
-| 檢查與修正 | 讓 AI 看得到自己做完的結果 | 依任務執行測試，把失敗訊息交回模型，再嘗試修正 |
-| 分工 | 需要時讓不同 agent 負責不同任務 | 主 agent 處理修改，子 agent 協助檢查問題 |
+Herdr 是終端機內的 agent multiplexer，可用 workspace、tab 和 pane 管理 agent 與 shell，查看工作狀態，並在離開後重新連回工作階段。它負責管理工作空間與工作階段；實際撰寫程式的仍是你在其中啟動的 OpenCode、Claude Code 等 agent。
 
-這五點是方便理解的整理方式；測試要依專案與任務安排，分工也要依需求使用，不代表每次都會自動發生。工具與脈絡功能見官方 [Tools](https://opencode.ai/v2/docs/tools/)、[Instructions](https://opencode.ai/v2/docs/instructions/) 與 [Compaction](https://opencode.ai/v2/docs/compaction/)；權限與分工見 [Permissions](https://opencode.ai/v2/docs/permissions/) 與 [Agents](https://opencode.ai/v2/docs/agents/)。
+Herdr 的安裝與操作請看 [herdr/README.md](herdr/README.md)，進階內容包含 [CLI](herdr/cli.md)、[OpenCode 整合](herdr/opencode-integration.md)與[更新紀錄](herdr/updates.md)。
 
-#### 一個小例子：請 AI 改按鈕文字
+### 其他 ADE 候選
 
-假設你正在做一個網站，想把「登入」按鈕改成「會員登入」。你可以在 OpenCode 裡說：
+- [AGTx](https://github.com/fynnfluegge/agtx)：以「coding agents 的黑板」為定位，支援多種 coding agent。搜尋時 GitHub 顯示約 1.7k stars，是目前值得優先評估的熱門候選。
+- [Termio](https://github.com/termio-sh/termio)：定位為 terminal-first ADE，支援多種 CLI agent；可以觀察它是否適合作為 Herdr 的補充或比較對象。
 
-```text
-請把首頁的「登入」按鈕改成「會員登入」。
-保留原本的樣式與功能，修改後執行相關測試，並告訴我結果。
-```
+GitHub stars 和功能都會變動。新增正式教學前，先確認專案仍有維護、安裝方式可用，並實際走過一次新手流程。
 
-這時可以這樣理解整個過程：
+## 終端機工具
 
-1. **模型判斷怎麼改**：找出相關頁面與按鈕，決定需要修改哪裡。
-2. **OpenCode 提供動手的工具**：讓模型能讀檔、提出修改，並依權限設定執行。
-3. **工具把結果傳回來**：如果專案有相關測試，就執行測試；失敗時，模型可以根據錯誤再調整。
-4. **你檢查成果**：看修改差異與測試結果，確認文字和功能都符合需求。
+### Yazi：終端機檔案管理器
 
-這是示意流程。實際步驟會依專案、提示與權限設定改變；專案沒有測試時，也要清楚回報哪些部分尚未驗證。
+Yazi 是終端機內的檔案管理器，可用鍵盤瀏覽目錄及預覽檔案。安裝和基本操作請看 [yazi/README.md](yazi/README.md)。
 
-## ADE
+Yazi 的外掛、預覽器和相依工具可能需要逐一設定。本 repo 的教學會示範如何請 AI coding agent 檢查環境、依官方說明安裝及設定，再由使用者確認結果；開始前先讓 agent 列出它預計執行的命令，遇到系統套件或權限變更時逐項檢視。
 
-**ADE（Agentic Development Environment，代理開發環境）** 是目前軟體開發領域最新流行的工作模式與 TUI（Terminal User Interface）工具。
+### Git 與 worktree：同一個 repo 的多個工作目錄
 
-如果說傳統 IDE（如 VS Code）是以「人手動寫程式碼、AI 偶爾在側邊欄輔助補齊」為中心，那麼 **ADE 則是以「AI Agent 自主執行任務、人負責宏觀調度與邊界審批」為核心所打造的終端開發環境**。
+Git 是 AI 開發工作流程的重要基礎：它讓你檢查 agent 改了什麼、保存一個可回復的版本，也能把不同任務分開處理。`git worktree` 可讓同一個 Git repo 同時有多個工作目錄，各自切換分支，不需要為每個任務重新 clone 一份 repo。
 
-### 為什麼 ADE 是最新流行的 TUI 工具？
-- **輕量極速**：以終端機（TUI）為基礎，沒有肥大 GUI 的負擔，在本地終端或遠端伺服器都能毫秒級啟動與切換。
-- **多工 Agent 視圖調度**：專門為同時間跑多個 Agent 或工作階段設計，輕鬆分工不同任務。
-- **沉浸式狀態掌握**：提供直觀的即時指示器，清楚看到每個 Agent 正在「思考」、「執行動作」還是「等待你的權限確認」。
-
-### Herdr：專為 Coding Agent 打造的 ADE 終端環境
-在這個架構中，**Herdr** 就是代表性的 ADE 工具：
-- 它就像工作桌上的終端主管：左側窗格跑 OpenCode 讓 Agent 撰寫或修改程式，右側窗格即時看測試日誌或 Git 差異。
-- 具備狀態指示器（Status indicator），讓你一眼掌握各個 Agent 的工作狀態，誰在忙、誰需要你確認一目了然。
-- 支援背景執行與 Detach，即使斷線或切換其他任務，Agent 依然在背景持續工作。[Herdr Agents 文件](https://herdr.dev/docs/agents/)
-
-## 工具
-
-在純終端（TUI / ADE）的工作流程中，除了 Agent 之外，高效率的終端輔助工具必不可少，而核心工具就是 **Yazi**。
-
-### Yazi：終端極速檔案管理器
-**Yazi** 是一款以 Rust 開發的現代化終端檔案管理器（TUI File Manager）：
-- **非同步與極致流暢**：採用全非同步事件驅動設計，在大型專案或萬級目錄間導航、搜尋完全不卡頓。
-- **免切視窗的預覽體驗**：直接在終端內預覽程式碼語法高亮、Markdown 乃至圖片，支援鍵盤快捷操作。
-- **完美協同 ADE 工作流**：在 Herdr 的獨立窗格或分頁常駐 Yazi，讓你隨時穿梭專案檔案、一鍵複製絕對路徑並餵給 OpenCode 處理，全程不需離開終端機。
-
-## 開始操作
-
-**最近上網查核：2026-10-13（Asia/Taipei）**。本次依官方文件整理；未在本機安裝工具或實際呼叫模型。文件是一份查核當日的快照，後續更新方式見各工具的更新紀錄。
-
-| 領域 | 工具 | 用途 | 閱讀入口 |
-| --- | --- | --- | --- |
-| **Harness** | OpenCode CLI | 在專案中與 AI 對話、分析與修改程式、執行非互動任務 | [OpenCode 操作指南](opencode/README.md) |
-| **ADE** | Herdr | 管理終端工作區、分頁與窗格，觀察 coding agent 狀態 | [Herdr 操作指南](herdr/README.md) |
-| **工具** | Yazi | 在終端機用鍵盤瀏覽檔案、預覽文件與複製路徑 | [Yazi 安裝與簡單操作](yazi/README.md) |
-| **整合實作** | OpenCode + Herdr | 在 Herdr 窗格中執行 OpenCode，加入狀態與 session 整合 | [整合實作](herdr/opencode-integration.md) |
-
-建議先完成 OpenCode 的第一次對話，再學習 Herdr 的分割窗格與 detach，最後設定整合。
-
-## 文件結構
+本 repo 建議新手把 worktree 放在目前 repo 根目錄下的 `.worktrees/`，並把這個目錄加入 `.gitignore`。這樣工作目錄集中在專案旁邊，又不會被當成專案內容提交。若團隊有統一的工作目錄規範，也可以改放到 repo 外的專用資料夾。
 
 ```text
-vibe_coding_harness/
-├── README.md
-├── opencode/
-│   ├── README.md                # 安裝、對話、常用 CLI 與排錯
-│   ├── configuration.md         # 專案指示、權限、自訂命令
-│   └── updates.md               # 來源與更新紀錄
-├── herdr/
-│   ├── README.md                # 安裝、介面、快捷鍵、持續執行
-│   ├── cli.md                   # 工作區、窗格、agent CLI
-│   ├── opencode-integration.md  # OpenCode 整合與實作
-│   └── updates.md               # 發行版本、來源與更新紀錄
-└── yazi/
-    └── README.md                # 一段 prompt 安裝、簡單操作與 Herdr 分頁
+my-project/                 # 主要工作目錄（clone）
+├── .git/
+├── .gitignore              # 忽略 .worktrees/
+├── src/
+└── .worktrees/
+    ├── feature-login/      # feature/login 分支的獨立工作目錄
+    └── fix-header/         # fix/header 分支的獨立工作目錄
 ```
 
-## 版本與指令
+建立範例：
 
-本 repo 的 OpenCode 教學統一採 [V2 官方文件](https://opencode.ai/v2/docs/)，包含安裝、操作、設定與整合。
+```bash
+mkdir -p .worktrees
+git worktree add .worktrees/feature-login -b feature/login
+git worktree list
+```
 
-Herdr 的指南採 [官方文件](https://herdr.dev/docs/)，另記錄 stable 與 preview 的差異。實際可用旗標以讀者安裝版本的 `--help` 為準；上游文件可能先於 stable binary 更新。
+`.worktrees/` 是每個 repo 的本機工作資料夾，不要把它加入 Git 版本控制。worktree 使用完後，先確認改動已提交或已妥善保存，再用 `git worktree remove .worktrees/feature-login` 移除工作目錄。詳細教學之後可整理在 `git/` 資料夾，涵蓋 branch、worktree、agent 平行工作、衝突處理與清理流程。
 
-範例中的 `/path/to/project`、模型 ID 與 session ID 必須換成自己的值。文件只記錄人工查核，不會自動每日更新。
+## 目錄規劃
+
+```text
+.
+├── README.md                 # 導覽、分類與新手學習路徑
+├── opencode/                 # OpenCode 安裝、操作與設定
+├── herdr/                    # Herdr 安裝、操作與 agent 整合
+├── yazi/                     # Yazi 安裝、操作與外掛
+└── git/                      # 建議新增：Git、branch、worktree 與協作流程
+```
+
+每個工具的專屬操作放在自己的資料夾；README 保留總覽、工具間的關係和學習順序。遇到共通概念（例如 Git、終端機路徑、shell）則集中在共用資料夾，讓新人能先理解再照著工具指南操作。
