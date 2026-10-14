@@ -6,10 +6,11 @@
 2. [設定 Provider 與選擇 Model（必備前置）](#2-設定-provider-與選擇-model必備前置)
 3. [在你的專案中建立 AGENTS.md（規範虛擬環境與工具）](#3-在你的專案中建立-agentsmd規範虛擬環境與工具)
 4. [啟動與 TUI 日常互動](#4-啟動與-tui-日常互動)
-5. [專案權限與設定檔 (opencode.jsonc)](#5-專案權限與設定檔-opencodejsonc)
-6. [非互動 CLI 模式 (opencode run)](#6-非互動-cli-模式-opencode-run)
-7. [搭配 Herdr 終端多工工作台](#7-搭配-herdr-終端多工工作台)
-8. [常用維護指令與疑難排解](#8-常用維護指令與疑難排解)
+5. [Subagent（子代理）機制與自訂角色](#5-subagent子代理機制與自訂角色)
+6. [專案權限與設定檔 (opencode.jsonc)](#6-專案權限與設定檔-opencodejsonc)
+7. [非互動 CLI 模式 (opencode run)](#7-非互動-cli-模式-opencode-run)
+8. [搭配 Herdr 終端多工工作台](#8-搭配-herdr-終端多工工作台)
+9. [常用維護指令與疑難排解](#9-常用維護指令與疑難排解)
 
 ---
 
@@ -236,7 +237,95 @@ OpenCode 使用 `Ctrl+X` 作為 **Leader Key**（先按 `Ctrl+X` 放開，再按
 
 ---
 
-## 5. 專案權限與設定檔 (opencode.jsonc)
+## 5. Subagent（子代理）機制與自訂角色
+
+OpenCode 具備原生健全的 **Agent 與 Subagent（子代理）體系**。它能幫助你將複雜龐大的開發任務拆解給不同專業角色的子代理處理，徹底解決單一模型負擔過重與 Token 浪費的問題。
+
+### 什麼是 Primary Agent vs. Subagent？
+
+| 角色層級 | 定義與切換方式 | 執行環境與優勢 | 代表內建角色 |
+| :--- | :--- | :--- | :--- |
+| **Primary Agent（主代理）** | 你在對話框中直接互動的主助手。在 TUI 中按下 **`Tab`** 鍵可直接在主代理間切換。 | 共享主對話的上下文。擁有全域視角，負責推進主體開發任務。 | **Build**（預設全能開發，具讀寫與 Shell 權限）<br>**Plan**（唯讀分析規劃，預設需詢問授權） |
+| **Subagent（子代理）** | 由主代理自動委派或由人類手動呼叫的專職助手。 | **在獨立的子工作階段（Child Session）中執行**！大範圍搜尋、龐大 Log 分析都不會灌爆主對話的 Context Window。 | **Explore**（快速唯讀專案探索）<br>**Scout**（外部文件與依賴查詢）<br>**General**（通用多步驟任務） |
+
+### 為什麼一定要用 Subagent？（三大核心優勢）
+
+1. **上下文隔離（Context Window 永不肥大）**：
+   子代理在獨立的 Child Session 運作，它在背後翻閱了數十個檔案、看了數千行日誌，**完成後只把精簡結論帶回主對話**，主對話永遠保持輕盈與高精準度。
+2. **極致省錢與高速（模型分工最佳化）**：
+   你可以讓主代理使用昂貴頂級的模型（如 Claude 3.7 Sonnet / GPT-4o），而將單純的代碼檢索、格式審查子代理綁定超便宜且極速的模型（如 `glm-4-flash` 或 `claude-3-5-haiku`），省下大筆 API 費用！
+3. **安全圍欄（獨立權限控制）**：
+   子代理可以單獨設定權限（例如設定 `edit: deny`，保證此子代理永遠只讀，絕不意外篡改任何代碼）。
+
+### 如何呼叫 Subagent？
+
+1. **手動以 `@` 標記直接召喚**：
+   在提示輸入框中輸入 `@子代理名稱` 即可直接指派工作：
+   ```text
+   @explore 專案中負責處理使用者登入與 JWT 驗證的邏輯寫在哪個檔案？
+   @reviewer 幫我檢視目前暫存區的 git diff，指出潛在的邊界錯誤與安全性問題。
+   ```
+2. **主代理自動派遣（Automatic Delegation）**：
+   在一般的開發對話中，若你交代需要全面檢索專案或探索架構，主代理會根據各子代理的 `description` 專長，**自動派發子代理在背景執行**，完成後自動吸收報告接續編程。
+
+### 如何自訂專屬 Subagent？（實戰範例）
+
+OpenCode 採用直覺的 **Markdown + YAML Frontmatter** 來定義 Agent。你可以將它放在專案的 `.opencode/agents/` 目錄（專案專屬），或放在 `~/.config/opencode/agents/`（全域通用）。
+
+#### 範例一：只讀代碼品質審查員 (`.opencode/agents/reviewer.md`)
+建立檔案 `.opencode/agents/reviewer.md`：
+
+```markdown
+---
+description: 負責審查近期變更或 Git Diff 的代碼品質、資安漏洞與邊界條件，只讀不修改檔案
+mode: subagent
+model: opencode-go/glm-5.3-flash
+temperature: 0.1
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
+---
+
+你是一位嚴格的資深 Code Reviewer 子代理。
+請檢視提供的代碼改動或 Git Diff，重點關注：
+1. 是否有未處理的 Null/None 例外、資源洩漏或邊界條件錯誤。
+2. 是否有 SQL 注入、XSS 或未過濾輸入等安全風險。
+3. 程式碼風格與架構是否符合專案 AGENTS.md 規範。
+
+請條列式依嚴重程度（Critical / Warning / Info）輸出改進建議。嚴禁修改任何檔案。
+```
+
+#### 範例二：自動化測試助手 (`.opencode/agents/tester.md`)
+建立檔案 `.opencode/agents/tester.md`：
+
+```markdown
+---
+description: 專門執行單元測試、分析錯誤日誌並修復測試案例
+mode: subagent
+temperature: 0.2
+---
+
+你是一位自動化測試工程師子代理。
+你的職責是：
+1. 嚴格遵循專案根目錄的 AGENTS.md 規範，使用 `uv run pytest` 執行測試。
+2. 分析失敗案例的 Stack Trace，定位出錯誤原因。
+3. 補充覆蓋邊界情況的測試案例，確保測試全部通過。
+```
+
+#### Subagent Frontmatter 參數速查
+
+| 參數 | 型態與可選值 | 說明 |
+| :--- | :--- | :--- |
+| `description` | 字串（**必填**） | 簡短描述此代理的專長。主代理會依此描述判斷何時自動委派任務給它！ |
+| `mode` | `subagent` / `primary` / `all` | `subagent` 代表僅作為子代理；`primary` 代表可按 `Tab` 鍵切換的主代理。 |
+| `model` | 模型 ID（選填） | 指定此子代理專用的 LLM 模型。若未指定，則自動繼承呼叫它的主代理模型。 |
+| `temperature` | 浮點數（0.0 ~ 1.0） | 調整推導嚴謹度。代碼分析、測試建議設定為 `0.1` ~ `0.2`。 |
+| `permissions` | 權限清單（選填） | 為此子代理設立安全邊界（如 `edit`、`shell` 的 `allow` / `ask` / `deny`）。 |
+
+---
+
+## 6. 專案權限與設定檔 (opencode.jsonc)
 
 為了防止 Agent 誤執行危險指令（例如刪除重要檔案或未經授權的外部連線），可使用設定檔進行權限控管。
 
@@ -270,12 +359,13 @@ OpenCode 使用 `Ctrl+X` 作為 **Leader Key**（先按 `Ctrl+X` 放開，再按
 | :--- | :--- | :--- |
 | `AGENTS.md` | 專案根目錄 | 自然語言撰寫的專案開發規範、虛擬環境與協作憲法 |
 | `opencode.jsonc` | 專案根目錄 | 專案級工具權限圍欄、MCP Server 連接與模型覆寫 |
+| `.opencode/agents/*.md` | 專案目錄 | 專案專屬的自訂 Agent / Subagent 定義檔（Markdown + YAML） |
 | `.opencode/commands/*.md` | 專案目錄 | 專案專屬的自訂 Slash Command（例如 `/code-review`） |
 | `~/.config/opencode/cli.json` | 家目錄 | 全域 TUI 介面主題、快捷鍵自訂 |
 
 ---
 
-## 6. 非互動 CLI 模式 (opencode run)
+## 7. 非互動 CLI 模式 (opencode run)
 
 除了進入 TUI 互動介面，OpenCode 也支援直接在 Shell 執行單次任務，非常適合寫入自動化腳本或 CI/CD：
 
@@ -295,23 +385,23 @@ opencode run --format json "檢查專案是否有未符合 PEP8 的代碼"
 
 ---
 
-## 7. 搭配 Herdr 終端多工工作台
+## 8. 搭配 Herdr 終端多工工作台
 
 當你需要同時處理多個任務、在背景持續執行 Agent，或是將終端機畫面分割（例如一邊讓 OpenCode 寫代碼、另一邊跑伺服器或測試）時，建議搭配 **Herdr** 使用。
 
-### 7.1 安裝 OpenCode 官方整合
+### 8.1 安裝 OpenCode 官方整合
 在終端機 shell 執行：
 ```bash
 herdr integration install opencode
 ```
 這會自動為 OpenCode 加入狀態通知外掛，讓 Herdr 的分頁與狀態欄能即時顯示 Agent 是否處於「工作中」或「等待使用者回應」。
 
-### 7.2 進階操作與工作流
+### 8.2 進階操作與工作流
 關於 Herdr 的分頁管理、窗格切割以及多 Agent 平行任務協同，請參考專門的 [Herdr 整合教學](../herdr/opencode-integration.md)。
 
 ---
 
-## 8. 常用維護指令與疑難排解
+## 9. 常用維護指令與疑難排解
 
 ### 常用管理指令速查
 
