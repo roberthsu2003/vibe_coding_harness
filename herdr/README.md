@@ -6,11 +6,13 @@
 2. [核心概念：Workspace、Tab 與 Pane](#2-核心概念workspace-tab-與-pane)
 3. [啟動與日常鍵盤操作速查](#3-啟動與日常鍵盤操作速查)
 4. [整合 AI Coding Agent（狀態辨識與連動）](#4-整合-ai-coding-agent狀態辨識與連動)
-5. [實戰情境與解決方案（新手常見盲點）](#5-實戰情境與解決方案新手常見盲點)
-6. [非互動 CLI 與背景工作階段管理](#6-非互動-cli-與背景工作階段管理)
-7. [常用維護指令與疑難排解](#7-常用維護指令與疑難排解)
+5. [Supervisor 與 SubAgent 終端協同架構](#5-supervisor-與-subagent-終端協同架構)
+6. [實戰情境與解決方案（新手常見盲點）](#6-實戰情境與解決方案新手常見盲點)
+7. [非互動 CLI 與背景工作階段管理](#7-非互動-cli-與背景工作階段管理)
+8. [常用維護指令與疑難排解](#8-常用維護指令與疑難排解)
 
 ---
+
 
 ## 1. 安裝與確認版本
 
@@ -52,6 +54,20 @@ Herdr 是專為 AI coding agent 設計的終端多工工作台（Agent Multiplex
 
 > [!TIP]
 > **滑鼠完全可用**：初學者可以直接用滑鼠點選窗格切換焦點、點擊上方分頁切換、拖曳分隔線調整大小，或按滑鼠右鍵開啟分割選單。
+
+### 為什麼專案內有 .git 很重要？（Herdr 的原生感知優勢）
+
+Herdr 與傳統終端工具（如 tmux）不同，它具備**原生深度感知 Git** 的能力。當你的專案資料夾內含有 `.git` 時，會啟動以下強大優勢：
+
+1. **自動識別並命名工作區 (Auto Workspace)**：
+   Herdr 啟動時會自動向上追溯 `.git` 定位專案根目錄，並自動以 Git Repo 名稱命名工作區，完全不需手動配置。
+2. **自動群組聚合 Git Worktree（血緣關聯）**：
+   當你搭配 `git worktree` 平行開設多個獨立工作目錄時（例如 `.worktrees/feature-login`），Herdr 能透過 `.git` 指標辨識血緣，自動把這些 worktree 歸類在母專案的同一個樹狀分組下。
+3. **即時顯示分支與異動狀態**：
+   標籤頁與工作區導覽（`prefix+w`）會主動顯示各窗格的**專案名稱（$repo）**、**當前分支（Branch）** 以及**未提交狀態（Git Status）**，不用手動打指令就能掌握進度。
+4. **為 AI Agent 提供安全復原網**：
+   有 `.git` 的專案才能搭配 `git diff` 監控 Agent 修改、透過 `git commit --amend` 補救漏改，並在 Agent 改錯方向時隨時安全復原。
+
 
 ---
 
@@ -122,7 +138,18 @@ herdr integration install opencode
 
 ---
 
-## 5. 實戰情境與解決方案（新手常見盲點）
+## 5. Supervisor 與 SubAgent 終端協同架構
+
+在多 Agent 開發中，由一個 **Supervisor（主管代理）** 負責拆解任務與把關，並在子窗格調度多個 **SubAgent（子代理）** 進行平行編程與測試，是避免單一模型注意力失控的最佳架構。
+
+Herdr 的底層以 Unix Domain Socket 與 PTY 終端虛擬層為基礎，讓 Supervisor 能以非侵入式方式直接向 SubAgent 窗格注入任務（`herdr pane input`）並監控完成狀態（`herdr agent inspect`），無縫串起雙向溝通迴圈。
+
+> 完整底層架構原理、SVG 數據流向圖與端到端實戰演練，請參閱專題指南：  
+> 👉 **[Supervisor 與 SubAgent 終端協同指南](supervisor-subagent.md)**
+
+---
+
+## 6. 實戰情境與解決方案（新手常見盲點）
 
 日常使用查閱表格即可，但在多工開發時，以下幾種「典型情境」是掌握 Herdr 的關鍵技巧：
 
@@ -155,7 +182,7 @@ herdr integration install opencode
 
 ---
 
-## 6. 非互動 CLI 與背景工作階段管理
+## 7. 非互動 CLI 與背景工作階段管理
 
 除了透過 TUI 介面操作，Herdr 也提供了強大的 Shell 指令供自動化或快速管理：
 
@@ -177,7 +204,7 @@ herdr kill vibe_coding_harness
 
 ---
 
-## 7. 常用維護指令與疑難排解
+## 8. 常用維護指令與疑難排解
 
 ### 常用維護指令速查
 

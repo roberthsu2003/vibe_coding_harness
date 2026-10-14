@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 520" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="conceptBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="leadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="coderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="qaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.07"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowRight" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+    <marker id="arrowReturn" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="520" rx="16" fill="url(#conceptBg)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Title & Subtitle -->
+  <text x="480" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Herdr 協同概念：就像一個高效率的「虛擬敏捷開發小組」</text>
+  <text x="480" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="middle">別讓單一 AI 模型包辦全部而失控！讓主代理扮演主管，子代理各司其職，Herdr 則是現代化辦公室與對講機</text>
+
+  <!-- 3 Role Columns -->
+
+  <!-- Role 1: Tech Lead / Supervisor (Left) -->
+  <g transform="translate(45, 85)">
+    <rect width="265" height="305" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="265" height="42" rx="14" fill="url(#leadGrad)"/>
+    <text x="132" y="27" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">👑 主管 / 架構師 (Supervisor)</text>
+
+    <!-- Icon Badge -->
+    <circle cx="132" cy="78" r="26" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2"/>
+    <text x="132" y="86" font-size="24" text-anchor="middle">🧠</text>
+
+    <text x="132" y="122" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="bold" fill="#1e293b" text-anchor="middle">負責全域規劃與把關</text>
+    
+    <g transform="translate(20, 140)">
+      <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">📋 <tspan font-weight="bold">拆解需求</tspan>：將複雜大任務切為小卡片</text>
+      <text x="0" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">📢 <tspan font-weight="bold">精準派工</tspan>：指派特定任務給子代理</text>
+      <text x="0" y="66" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">🔍 <tspan font-weight="bold">審查驗收</tspan>：嚴格核對 Git Diff 與成果</text>
+      <text x="0" y="90" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">💬 <tspan font-weight="bold">雙向溝通</tspan>：發現問題立即要求重修</text>
+    </g>
+
+    <rect x="20" y="254" width="225" height="36" rx="6" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="132" y="276" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">保持乾淨腦袋，不碰具體代碼塗改</text>
+  </g>
+
+  <!-- Flow Arrows: Lead -> Workers -->
+  <path d="M 315 210 L 360 170" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowRight)"/>
+  <text x="340" y="180" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="bold" fill="#0284c7" text-anchor="middle">派工 A</text>
+
+  <path d="M 315 240 L 360 280" fill="none" stroke="#0284c7" stroke-width="2" marker-end="url(#arrowRight)"/>
+  <text x="340" y="270" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="bold" fill="#0284c7" text-anchor="middle">派工 B</text>
+
+  <!-- Role 2: Coder / SubAgent A (Center/Right Top) -->
+  <g transform="translate(370, 85)">
+    <rect width="250" height="142" rx="12" fill="#ffffff" stroke="#6ee7b7" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="250" height="34" rx="12" fill="url(#coderGrad)"/>
+    <text x="125" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="bold" fill="#ffffff" text-anchor="middle">🛠️ 專業碼農 (SubAgent A - Coder)</text>
+
+    <text x="20" y="58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#047857">📍 獨立工位：.worktrees/auth</text>
+    <text x="20" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 不需知道全專案，專注寫好驗證邏輯</text>
+    <text x="20" y="96" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 避免注意力分散，程式碼品質最高</text>
+    <text x="20" y="122" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#059669">➔ 寫完立即回報主管：「功能已完成」</text>
+  </g>
+
+  <!-- Role 3: QA Tester / SubAgent B (Center/Right Bottom) -->
+  <g transform="translate(370, 248)">
+    <rect width="250" height="142" rx="12" fill="#ffffff" stroke="#c4b5fd" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="250" height="34" rx="12" fill="url(#qaGrad)"/>
+    <text x="125" y="22" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="bold" fill="#ffffff" text-anchor="middle">🧪 品保測試員 (SubAgent B - QA)</text>
+
+    <text x="20" y="58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#6d28d9">📍 獨立窗格：跑測試與 Linter</text>
+    <text x="20" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 執行 pytest / ruff 專挑毛病找 Bug</text>
+    <text x="20" y="96" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 不帶偏見客觀驗證，杜絕 AI 幻覺</text>
+    <text x="20" y="122" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#7c3aed">➔ 測試完回報日誌：「測試 3 通過 1 失敗」</text>
+  </g>
+
+  <!-- Flow Return: Workers -> Lead -->
+  <path d="M 625 155 Q 645 155 645 200 T 625 240" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4"/>
+  <text x="655" y="200" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10" font-weight="bold" fill="#059669" text-anchor="start">協同交接</text>
+
+  <!-- Role 4: What is Herdr? (Right Column) -->
+  <g transform="translate(670, 85)">
+    <rect width="245" height="305" rx="14" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="245" height="42" rx="14" fill="#0f172a"/>
+    <text x="122" y="27" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14.5" font-weight="bold" fill="#ffffff" text-anchor="middle">🏢 Herdr 扮演的角色</text>
+
+    <!-- Icon Badge -->
+    <circle cx="122" cy="78" r="26" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
+    <text x="122" y="87" font-size="24" text-anchor="middle">🖥️</text>
+
+    <text x="122" y="122" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="bold" fill="#0f172a" text-anchor="middle">現代化辦公室與通訊器</text>
+
+    <g transform="translate(18, 140)">
+      <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">🪟 <tspan font-weight="bold">獨立工位 (Pane)</tspan>：每個人有自己視窗</text>
+      <text x="0" y="42" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">🚨 <tspan font-weight="bold">狀態信號燈</tspan>：工作/等待/完成一目了然</text>
+      <text x="0" y="66" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">📻 <tspan font-weight="bold">跨窗對講機</tspan>：主管一鍵派工到指定窗格</text>
+      <text x="0" y="90" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">🚪 <tspan font-weight="bold">隨時離場 (Detach)</tspan>：下班關機背景照常跑</text>
+    </g>
+
+    <rect x="18" y="254" width="210" height="36" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+    <text x="122" y="276" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#475569" text-anchor="middle">不限制 Agent 模型，通通能溝通</text>
+  </g>
+
+  <!-- Bottom Comparison / Takeaway Banner -->
+  <g transform="translate(45, 410)">
+    <rect width="870" height="85" rx="10" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" filter="url(#softShadow)"/>
+    <text x="35" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="bold" fill="#dc2626">❌ 傳統單一 Agent 模式：</text>
+    <text x="195" y="30" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#475569">一個人包辦開架構、寫 code、跑測試，Context 爆炸容易遺忘規則，自己寫自己測容易自圓其說出 Bug。</text>
+
+    <line x1="30" y1="45" x2="840" y2="45" stroke="#f1f5f9" stroke-width="1.5"/>
+
+    <text x="35" y="68" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="bold" fill="#16a34a">✅ Herdr 多 Agent 分工模式：</text>
+    <text x="210" y="68" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#1e293b">主管只動腦不動 code，小弟各司其職，窗格完全隔離，品質嚴格審查，開發效能與準確率大幅躍升！</text>
+  </g>
+</svg>
