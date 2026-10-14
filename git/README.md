@@ -53,7 +53,11 @@ vibe_coding_harness/              # 主專案目錄（母體）
     └── fix-header/               # 專供 Agent B 修復 Header 的獨立工作目錄
 ```
 
-### 2.3 底層原理揭秘：為什麼不會重複佔用空間？
+### 2.3 架構視覺化：共用資料庫與指標關係
+
+![Git Worktree 平行架構概念圖](assets/git-worktree-concept.svg)
+
+### 2.4 底層原理揭秘：為什麼不會重複佔用空間？
 
 當你在專案內執行 `git worktree add .worktrees/feature-login` 時，Git **並沒有**重新複製整份倉庫！
 

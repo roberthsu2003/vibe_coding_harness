@@ -68,17 +68,7 @@ yazi --version
 
 啟動 Yazi 後，介面採用了直覺高效的**三欄式（Column Layout）**設計：
 
-```text
-┌─────────────────┬─────────────────────────┬───────────────────────────────┐
-│  父層目錄 (Parent)│   當前目錄清單 (Current)  │     即時內容預覽 (Preview)     │
-├─────────────────┼─────────────────────────┼───────────────────────────────┤
-│ 📁 my-project   │ 📁 src/                 │ # User Auth Module            │
-│                 │ 📄 AGENTS.md            │                               │
-│                 │ 📄 main.py  <-- 選取中   │ def authenticate_user():      │
-│                 │ 📁 .worktrees/          │     """JWT Token 驗證流程"""   │
-│                 │ 📄 README.md            │     ...                       │
-└─────────────────┴─────────────────────────┴───────────────────────────────┘
-```
+![Yazi 經典三欄式現代佈局](assets/yazi-three-column-layout.svg)
 
 1. **左欄（父目錄）**：顯示當前目錄的上一層，讓你清楚自己身在專案的哪一層階層。
 2. **中欄（當前清單）**：目前游標所在的目錄內容，按上下方向鍵（或 `j`/`k`）移動選取。
@@ -161,18 +151,9 @@ Yazi 全程支援 Vim 經典鍵位與標準方向鍵，依使用頻率整理如�
 
 ## 6. 搭配 Herdr 終端多工工作流
 
-在 [Herdr](README.md) 中，將 **「AI Agent 編程」** 與 **「Yazi 檔案總管」** 並排，是最高效率的 Vibe Coding 終端佈局：
+在 [Herdr](../herdr/README.md) 中，將 **「AI Agent 編程」** 與 **「Yazi 檔案總管」** 並排，是最高效率的 Vibe Coding 終端佈局：
 
-```text
-┌──────────────────────────────────────┬──────────────────────────────────────┐
-│  Pane 1: OpenCode / Claude CLI        │  Pane 2: Yazi 檔案管理器              │
-│                                      │                                      │
-│  > 請在 auth.py 實作 Google OAuth 登入  │  📁 src/                             │
-│  [working] 正在寫入檔案...            │  📄 auth.py (即時看到代碼更新)       │
-│                                      │  📄 test_auth.py                     │
-│                                      │  📁 .worktrees/                      │
-└──────────────────────────────────────┴──────────────────────────────────────┘
-```
+![Herdr 終端多工工作流：OpenCode AI Agent 與 Yazi 並排協同](assets/herdr-yazi-workflow.svg)
 
 ### 快速建立並排工作流
 1. 啟動 Herdr：`herdr`。

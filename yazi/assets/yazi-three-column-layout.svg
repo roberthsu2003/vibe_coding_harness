@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 550" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="titleBarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+
+    <!-- Selection Gradient -->
+    <linearGradient id="selectGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+
+    <!-- Column Headers -->
+    <linearGradient id="colHead1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#f1f5f9"/>
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="960" height="550" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Main Title & Subtitle -->
+  <text x="480" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Yazi 經典三欄式現代佈局（Column Layout）</text>
+  <text x="480" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="middle">左欄知位置、中欄速導覽、右欄零延遲語法高亮預覽，全程純鍵盤高效掌控</text>
+
+  <!-- TERMINAL WINDOW WRAPPER -->
+  <g transform="translate(45, 78)">
+    <rect width="870" height="405" rx="12" fill="#ffffff" stroke="#94a3b8" stroke-width="1.5" filter="url(#softShadow)"/>
+
+    <!-- Window Title Bar -->
+    <path d="M 0 12 Q 0 0 12 0 L 858 0 Q 870 0 870 12 L 870 38 L 0 38 Z" fill="url(#titleBarGrad)"/>
+    <line x1="0" y1="38" x2="870" y2="38" stroke="#cbd5e1" stroke-width="1"/>
+
+    <!-- Mac Traffic Lights -->
+    <circle cx="22" cy="19" r="6" fill="#ef4444"/>
+    <circle cx="42" cy="19" r="6" fill="#f59e0b"/>
+    <circle cx="62" cy="19" r="6" fill="#10b981"/>
+
+    <!-- Window Title Text -->
+    <text x="435" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Fira Code', monospace" font-size="12" font-weight="600" fill="#475569" text-anchor="middle">yazi — ~/Documents/GitHub/vibe_coding_harness</text>
+
+    <!-- THREE COLUMNS -->
+
+    <!-- COLUMN 1: Parent Directory (Width: 200) -->
+    <g transform="translate(0, 38)">
+      <rect width="200" height="337" fill="#f8fafc"/>
+      <line x1="200" y1="0" x2="200" y2="337" stroke="#e2e8f0" stroke-width="1.5"/>
+
+      <!-- Col 1 Header -->
+      <rect width="200" height="28" fill="url(#colHead1)"/>
+      <line x1="0" y1="28" x2="200" y2="28" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="16" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#64748b">📁 父層目錄 (Parent)</text>
+
+      <!-- Col 1 Items -->
+      <g transform="translate(16, 48)">
+        <text x="0" y="12" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748b">📁 Documents/</text>
+        <text x="0" y="38" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748b">📁 GitHub/</text>
+
+        <!-- Current folder badge -->
+        <rect x="-8" y="52" width="184" height="28" rx="5" fill="#e0f2fe" stroke="#bae6fd" stroke-width="1"/>
+        <text x="0" y="71" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" font-weight="bold" fill="#0369a1">📂 vibe_coding_harness</text>
+
+        <text x="0" y="104" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#64748b">📁 sandbox/</text>
+      </g>
+    </g>
+
+    <!-- COLUMN 2: Current Directory (Width: 270) -->
+    <g transform="translate(200, 38)">
+      <rect width="270" height="337" fill="#ffffff"/>
+      <line x1="270" y1="0" x2="270" y2="337" stroke="#e2e8f0" stroke-width="1.5"/>
+
+      <!-- Col 2 Header -->
+      <rect width="270" height="28" fill="url(#colHead1)"/>
+      <line x1="0" y1="28" x2="270" y2="28" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="16" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#1e293b">📂 當前清單 (Current)</text>
+      <text x="254" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">8 項</text>
+
+      <!-- Col 2 Items -->
+      <g transform="translate(14, 42)">
+        <!-- Item 1: .worktrees -->
+        <g transform="translate(0, 0)">
+          <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#7c3aed" font-weight="600">📁 .worktrees/</text>
+          <text x="235" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">2 項</text>
+        </g>
+
+        <!-- Item 2: src -->
+        <g transform="translate(0, 28)">
+          <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#2563eb" font-weight="600">📁 src/</text>
+          <text x="235" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">5 項</text>
+        </g>
+
+        <!-- Item 3: AGENTS.md -->
+        <g transform="translate(0, 56)">
+          <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#334155">📄 AGENTS.md</text>
+          <text x="235" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">2.8 KB</text>
+        </g>
+
+        <!-- Item 4: main.py (ACTIVE SELECTION) -->
+        <g transform="translate(0, 84)">
+          <rect x="-6" y="0" width="254" height="28" rx="6" fill="url(#selectGrad)"/>
+          <text x="6" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="bold" fill="#ffffff">▶ 📄 main.py</text>
+          <text x="235" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#dbeafe" text-anchor="end">1.2 KB</text>
+        </g>
+
+        <!-- Item 5: opencode.jsonc -->
+        <g transform="translate(0, 116)">
+          <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#334155">📄 opencode.jsonc</text>
+          <text x="235" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">580 B</text>
+        </g>
+
+        <!-- Item 6: README.md -->
+        <g transform="translate(0, 144)">
+          <text x="0" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12.5" fill="#334155">📄 README.md</text>
+          <text x="235" y="18" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#94a3b8" text-anchor="end">4.5 KB</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- COLUMN 3: Preview Column (Width: 400) -->
+    <g transform="translate(470, 38)">
+      <rect width="400" height="337" fill="#f8fafc"/>
+
+      <!-- Col 3 Header -->
+      <rect width="400" height="28" fill="url(#colHead1)"/>
+      <line x1="0" y1="28" x2="400" y2="28" stroke="#e2e8f0" stroke-width="1"/>
+      <text x="18" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#0f172a">👁️ 即時內容預覽（Preview / Bat 彩色高亮）</text>
+      <text x="382" y="19" font-family="-apple-system, BlinkMacSystemFont, 'Fira Code', monospace" font-size="11" fill="#059669" text-anchor="end">python · utf-8</text>
+
+      <!-- Simulated Code Content with Line Numbers -->
+      <g transform="translate(18, 44)" font-family="'Fira Code', Menlo, monospace" font-size="11.5">
+        <!-- Line 1 -->
+        <text x="0" y="16" fill="#94a3b8"> 1 │</text>
+        <text x="36" y="16" fill="#64748b" font-style="italic">"""JWT Authentication Module"""</text>
+
+        <!-- Line 2 -->
+        <text x="0" y="36" fill="#94a3b8"> 2 │</text>
+        <text x="36" y="36" fill="#8b5cf6" font-weight="bold">import</text>
+        <text x="82" y="36" fill="#0f172a"> jwt</text>
+
+        <!-- Line 3 -->
+        <text x="0" y="56" fill="#94a3b8"> 3 │</text>
+        <text x="36" y="56" fill="#8b5cf6" font-weight="bold">from</text>
+        <text x="68" y="56" fill="#0f172a"> datetime </text>
+        <text x="135" y="56" fill="#8b5cf6" font-weight="bold">import</text>
+        <text x="182" y="56" fill="#0f172a"> datetime, timedelta</text>
+
+        <!-- Line 4 -->
+        <text x="0" y="76" fill="#94a3b8"> 4 │</text>
+
+        <!-- Line 5 -->
+        <text x="0" y="96" fill="#94a3b8"> 5 │</text>
+        <text x="36" y="96" fill="#8b5cf6" font-weight="bold">def</text>
+        <text x="64" y="96" fill="#0284c7" font-weight="bold"> authenticate_user</text>
+        <text x="195" y="96" fill="#0f172a">(token: </text>
+        <text x="245" y="96" fill="#059669">str</text>
+        <text x="268" y="96" fill="#0f172a">):</text>
+
+        <!-- Line 6 -->
+        <text x="0" y="116" fill="#94a3b8"> 6 │</text>
+        <text x="56" y="116" fill="#64748b" font-style="italic"># 驗證傳入之 Token 是否合法且未過期</text>
+
+        <!-- Line 7 -->
+        <text x="0" y="136" fill="#94a3b8"> 7 │</text>
+        <text x="56" y="136" fill="#0f172a">payload = jwt.decode(token, SECRET_KEY)</text>
+
+        <!-- Line 8 -->
+        <text x="0" y="156" fill="#94a3b8"> 8 │</text>
+        <text x="56" y="156" fill="#8b5cf6" font-weight="bold">return</text>
+        <text x="104" y="156" fill="#0f172a"> payload[</text>
+        <text x="172" y="156" fill="#10b981">"user_id"</text>
+        <text x="238" y="156" fill="#0f172a">]</text>
+
+        <!-- Line 9 -->
+        <text x="0" y="176" fill="#94a3b8"> 9 │</text>
+        <text x="56" y="176" fill="#64748b" font-style="italic"># Shift+J / Shift+K 可上下翻閱長篇預覽</text>
+      </g>
+    </g>
+
+    <!-- STATUS BAR (Bottom 30px) -->
+    <g transform="translate(0, 375)">
+      <path d="M 0 0 L 870 0 L 870 18 Q 870 30 858 30 L 12 30 Q 0 30 0 18 Z" fill="#f1f5f9"/>
+      <line x1="0" y1="0" x2="870" y2="0" stroke="#cbd5e1" stroke-width="1"/>
+
+      <!-- Mode badge -->
+      <rect x="12" y="6" width="68" height="18" rx="3" fill="#0284c7"/>
+      <text x="46" y="19" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="10.5" font-weight="bold" fill="#ffffff" text-anchor="middle">NORMAL</text>
+
+      <text x="92" y="20" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">
+        選取: <tspan font-weight="bold">4 / 8</tspan>  │  main.py  (1.2 KB)
+      </text>
+
+      <text x="856" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Fira Code', monospace" font-size="11" fill="#64748b" text-anchor="end">
+        2026-10-14 14:02  │  rw-r--r--
+      </text>
+    </g>
+  </g>
+
+  <!-- BOTTOM FEATURE HINTS -->
+  <g transform="translate(45, 495)">
+    <!-- Hint 1 -->
+    <rect x="0" y="0" width="270" height="36" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#softShadow)"/>
+    <text x="135" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#1e40af" text-anchor="middle">
+      📁 左欄：清晰父目錄，隨時定位層級
+    </text>
+
+    <!-- Hint 2 -->
+    <rect x="290" y="0" width="280" height="36" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#softShadow)"/>
+    <text x="430" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#0369a1" text-anchor="middle">
+      📂 中欄：按 j/k 導航 · c c 複製絕對路徑
+    </text>
+
+    <!-- Hint 3 -->
+    <rect x="590" y="0" width="280" height="36" rx="6" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#softShadow)"/>
+    <text x="730" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#047857" text-anchor="middle">
+      👁️ 右欄：免開檔案，零延遲彩色代碼預覽
+    </text>
+  </g>
+</svg>

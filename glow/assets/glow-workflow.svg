@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%" style="background:#F8FAFC; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang TC', 'Noto Sans TC', sans-serif;">
+  <defs>
+    <!-- 視窗與卡片陰影 -->
+    <filter id="winShadow" x="-3%" y="-2%" width="106%" height="108%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.08" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.04" />
+    </filter>
+    <filter id="badgeShadow" x="-4%" y="-4%" width="108%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0F172A" flood-opacity="0.06" />
+    </filter>
+
+    <!-- 漸層定義 -->
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+    <linearGradient id="glowBrandGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F43F5E" />
+      <stop offset="100%" stop-color="#E11D48" />
+    </linearGradient>
+    <linearGradient id="rawBadgeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#64748B" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+    <linearGradient id="glowTagGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FB7185" />
+      <stop offset="100%" stop-color="#FDA4AF" />
+    </linearGradient>
+  </defs>
+
+  <!-- 主外框容器 (Terminal Window) -->
+  <g transform="translate(30, 24)">
+    <rect width="900" height="492" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#winShadow)" />
+
+    <!-- 頂部視窗控制標頭 -->
+    <path d="M 0 14 C 0 6.268 6.268 0 14 0 L 886 0 C 893.732 0 900 6.268 900 14 L 900 42 L 0 42 Z" fill="url(#headerGrad)" />
+    <line x1="0" y1="42" x2="900" y2="42" stroke="#CBD5E1" stroke-width="1" />
+
+    <!-- macOS 視窗三色燈按鈕 -->
+    <circle cx="20" cy="21" r="5.5" fill="#EF4444" />
+    <circle cx="38" cy="21" r="5.5" fill="#F59E0B" />
+    <circle cx="56" cy="21" r="5.5" fill="#10B981" />
+
+    <!-- 終端標題列 -->
+    <text x="450" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#475569">
+      Glow: 終端 Markdown 閱讀革命 — 傳統 cat vs 現代 Glow 渲染
+    </text>
+
+    <!-- 中間分割線 -->
+    <line x1="450" y1="42" x2="450" y2="454" stroke="#CBD5E1" stroke-width="1.5" stroke-dasharray="6,4" />
+
+    <!-- ==================== 左側：傳統終端 (cat / less) ==================== -->
+    <g transform="translate(0, 42)">
+      <!-- 標題欄 -->
+      <rect x="0" y="0" width="450" height="34" fill="#F8FAFC" />
+      <line x1="0" y1="34" x2="450" y2="34" stroke="#E2E8F0" stroke-width="1" />
+      <rect x="16" y="8" width="70" height="18" rx="4" fill="url(#rawBadgeGrad)" />
+      <text x="51" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">RAW TEXT</text>
+      <text x="96" y="22" font-size="12" font-weight="700" fill="#64748B">傳統方式：cat 或原始文字輸出</text>
+
+      <!-- 內容區 -->
+      <g transform="translate(20, 48)">
+        <!-- 指令 -->
+        <text x="0" y="16" font-family="monospace" font-size="11.5" fill="#64748B">
+          $ <tspan fill="#334155" font-weight="600">cat spec.md</tspan>
+        </text>
+
+        <!-- 原始混亂文本模擬 -->
+        <g transform="translate(0, 32)" font-family="monospace" font-size="10.5" fill="#64748B">
+          <text x="0" y="14"># Authentication Spec</text>
+          <text x="0" y="32">> Implemented by AI Agent on 2026-10-14</text>
+          <text x="0" y="54">Here is the requirements matrix:</text>
+          <text x="0" y="74">| Role | Permission | Rate Limit |</text>
+          <text x="0" y="92">| :--- | :--- | :--- |</text>
+          <text x="0" y="110">| Admin | Full Access | 1000 req/min |</text>
+          <text x="0" y="128">| User | Read &amp; Write | 60 req/min |</text>
+          <text x="0" y="152">```python</text>
+          <text x="0" y="170">def verify_jwt(token: str) -> bool:</text>
+          <text x="0" y="188">    payload = decode(token)</text>
+          <text x="0" y="206">    return payload['valid']</text>
+          <text x="0" y="224">```</text>
+        </g>
+
+        <!-- 缺點警示卡 -->
+        <g transform="translate(0, 290)">
+          <rect x="0" y="0" width="410" height="70" rx="8" fill="#FEF2F2" stroke="#FECACA" stroke-width="1" />
+          <text x="14" y="24" font-size="11.5" font-weight="700" fill="#B91C1C">❌ 痛點：純文字難以閱讀</text>
+          <text x="14" y="46" font-size="11" fill="#991B1B">
+            標題符號未轉化、表格欄位參差對不齊、代碼無色塊高亮、長行溢出截斷。
+          </text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ==================== 右側：Glow 現代渲染 ==================== -->
+    <g transform="translate(450, 42)">
+      <!-- 標題欄 -->
+      <rect x="0" y="0" width="450" height="34" fill="#F8FAFC" />
+      <line x1="0" y1="34" x2="450" y2="34" stroke="#E2E8F0" stroke-width="1" />
+      <rect x="16" y="8" width="80" height="18" rx="4" fill="url(#glowBrandGrad)" />
+      <text x="56" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">GLOW TUI</text>
+      <text x="106" y="22" font-size="12" font-weight="700" fill="#0F172A">現代美化：glow -p spec.md</text>
+      <text x="434" y="21" text-anchor="end" font-size="10.5" font-weight="600" fill="#E11D48">Pager 分頁模式</text>
+
+      <!-- 內容區 -->
+      <g transform="translate(20, 48)">
+        <!-- 指令 -->
+        <text x="0" y="16" font-family="monospace" font-size="11.5" fill="#64748B">
+          $ <tspan fill="#E11D48" font-weight="700">glow -p spec.md</tspan>
+        </text>
+
+        <!-- Glow 精緻排版模擬 -->
+        <g transform="translate(0, 28)">
+          <!-- 大標題 (H1 醒目渲染) -->
+          <rect x="0" y="4" width="4" height="22" rx="2" fill="#E11D48" />
+          <text x="14" y="21" font-size="16" font-weight="800" fill="#0F172A">Authentication Spec</text>
+
+          <!-- 引用區塊 (Blockquote) -->
+          <g transform="translate(0, 36)">
+            <rect x="0" y="0" width="410" height="26" rx="4" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="1" />
+            <line x1="0" y1="0" x2="0" y2="26" stroke="#FB7185" stroke-width="3" />
+            <text x="12" y="17" font-size="10.5" fill="#9F1239">💡 Implemented by AI Agent on 2026-10-14</text>
+          </g>
+
+          <text x="0" y="82" font-size="11.5" fill="#475569">Here is the requirements matrix:</text>
+
+          <!-- 格式化表格 (Table) -->
+          <g transform="translate(0, 94)">
+            <!-- 表頭 -->
+            <rect x="0" y="0" width="410" height="24" rx="4 4 0 0" fill="#F1F5F9" />
+            <text x="14" y="16" font-size="10.5" font-weight="700" fill="#334155">ROLE</text>
+            <text x="140" y="16" font-size="10.5" font-weight="700" fill="#334155">PERMISSION</text>
+            <text x="290" y="16" font-size="10.5" font-weight="700" fill="#334155">RATE LIMIT</text>
+            <line x1="0" y1="24" x2="410" y2="24" stroke="#CBD5E1" stroke-width="1" />
+
+            <!-- 列 1 -->
+            <rect x="0" y="24" width="410" height="22" fill="#FFFFFF" />
+            <text x="14" y="39" font-size="10" font-weight="600" fill="#E11D48">Admin</text>
+            <text x="140" y="39" font-size="10" fill="#334155">Full Access</text>
+            <text x="290" y="39" font-size="10" font-family="monospace" fill="#0284C7">1000 req/min</text>
+            <line x1="0" y1="46" x2="410" y2="46" stroke="#F1F5F9" stroke-width="1" />
+
+            <!-- 列 2 -->
+            <rect x="0" y="46" width="410" height="22" fill="#F8FAFC" />
+            <text x="14" y="61" font-size="10" font-weight="600" fill="#475569">User</text>
+            <text x="140" y="61" font-size="10" fill="#334155">Read &amp; Write</text>
+            <text x="290" y="61" font-size="10" font-family="monospace" fill="#0284C7">60 req/min</text>
+            <line x1="0" y1="68" x2="410" y2="68" stroke="#E2E8F0" stroke-width="1" />
+          </g>
+
+          <!-- 語法高亮程式碼塊 -->
+          <g transform="translate(0, 172)">
+            <rect x="0" y="0" width="410" height="74" rx="6" fill="#1E293B" />
+            <rect x="350" y="6" width="50" height="16" rx="3" fill="#334155" />
+            <text x="375" y="18" text-anchor="middle" font-size="9" font-family="monospace" fill="#94A3B8">python</text>
+
+            <g transform="translate(14, 16)" font-family="monospace" font-size="10">
+              <text x="0" y="12" fill="#F43F5E">def </text>
+              <text x="28" y="12" fill="#38BDF8">verify_jwt</text>
+              <text x="96" y="12" fill="#F8FAFC">(token: str) -&gt; bool:</text>
+
+              <text x="16" y="28" fill="#F8FAFC">payload = decode(token)</text>
+
+              <text x="16" y="44" fill="#F43F5E">return </text>
+              <text x="62" y="44" fill="#F8FAFC">payload[</text>
+              <text x="115" y="44" fill="#34D399">'valid'</text>
+              <text x="165" y="44" fill="#F8FAFC">]</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- 優勢卡片 -->
+        <g transform="translate(0, 290)">
+          <rect x="0" y="0" width="410" height="70" rx="8" fill="#FFF1F2" stroke="#FECDD3" stroke-width="1" />
+          <text x="14" y="24" font-size="11.5" font-weight="700" fill="#BE123C">✨ 優勢：雜誌級終端排版</text>
+          <text x="14" y="46" font-size="11" fill="#9F1239">
+            支援完整語法著色、表格自對齊、分頁滾動，閱讀 AI 產生的文件極致舒適。
+          </text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ==================== 底部狀態列 ==================== -->
+    <g transform="translate(0, 454)">
+      <path d="M 0 0 L 900 0 L 900 24 C 900 31.732 893.732 38 886 38 L 14 38 C 6.268 38 0 31.732 0 24 Z" fill="#0F172A" />
+      
+      <g transform="translate(16, 24)" font-size="11" font-weight="600" fill="#94A3B8">
+        <text x="0" y="0" fill="#FB7185">✦ GLOW CLI / TUI</text>
+        <text x="130" y="0" fill="#CBD5E1">快速檢視：<tspan fill="#F59E0B">glow -p doc.md</tspan></text>
+        <text x="310" y="0" fill="#CBD5E1">互動探索：<tspan fill="#F59E0B">glow</tspan></text>
+        <text x="440" y="0" fill="#CBD5E1">滾動分頁：<tspan fill="#F59E0B">j / k / Space</tspan></text>
+        <text x="610" y="0" fill="#CBD5E1">退出：<tspan fill="#F59E0B">q</tspan></text>
+        <text x="880" y="0" text-anchor="end" fill="#38BDF8">Made by Charmbracelet</text>
+      </g>
+    </g>
+  </g>
+</svg>

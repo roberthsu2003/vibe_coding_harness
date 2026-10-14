@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="100%" height="100%" style="background:#F8FAFC; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang TC', 'Noto Sans TC', sans-serif;">
+  <defs>
+    <!-- 陰影效果 -->
+    <filter id="windowShadow" x="-3%" y="-2%" width="106%" height="108%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#0F172A" flood-opacity="0.08" />
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0F172A" flood-opacity="0.04" />
+    </filter>
+    <filter id="cardShadow" x="-4%" y="-4%" width="108%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.05" />
+    </filter>
+
+    <!-- 漸層定義 -->
+    <linearGradient id="headerGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#F1F5F9" />
+      <stop offset="100%" stop-color="#E2E8F0" />
+    </linearGradient>
+    <linearGradient id="agentBadgeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#4F46E5" />
+    </linearGradient>
+    <linearGradient id="yaziBadgeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0EA5E9" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="syncFlowGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366F1" />
+      <stop offset="50%" stop-color="#0EA5E9" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+  </defs>
+
+  <!-- 主外框容器 (Herdr 終端多工視窗) -->
+  <g transform="translate(30, 24)">
+    <rect width="900" height="492" rx="14" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5" filter="url(#windowShadow)" />
+
+    <!-- 頂部視窗控制標頭 -->
+    <path d="M 0 14 C 0 6.268 6.268 0 14 0 L 886 0 C 893.732 0 900 6.268 900 14 L 900 42 L 0 42 Z" fill="url(#headerGrad)" />
+    <line x1="0" y1="42" x2="900" y2="42" stroke="#CBD5E1" stroke-width="1" />
+
+    <!-- macOS 視窗三色燈按鈕 -->
+    <circle cx="20" cy="21" r="5.5" fill="#EF4444" />
+    <circle cx="38" cy="21" r="5.5" fill="#F59E0B" />
+    <circle cx="56" cy="21" r="5.5" fill="#10B981" />
+
+    <!-- 終端標題列 -->
+    <text x="450" y="26" text-anchor="middle" font-size="13" font-weight="600" fill="#475569">
+      Herdr Session: [vibe-workspace] — 雙窗格極速協同模式 (Split Workflow)
+    </text>
+
+    <!-- 中間垂直分割線 (Herdr Split Border) -->
+    <line x1="450" y1="42" x2="450" y2="454" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6,4" />
+
+    <!-- ==================== 左側窗格 (PANE 1: AI Agent) ==================== -->
+    <g transform="translate(0, 42)">
+      <!-- Pane 1 標題欄 -->
+      <rect x="0" y="0" width="450" height="34" fill="#F8FAFC" />
+      <line x1="0" y1="34" x2="450" y2="34" stroke="#E2E8F0" stroke-width="1" />
+      <rect x="16" y="8" width="70" height="18" rx="4" fill="url(#agentBadgeGrad)" />
+      <text x="51" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">PANE 1</text>
+      <text x="96" y="22" font-size="12" font-weight="700" fill="#1E293B">OpenCode / Claude Code CLI</text>
+      <text x="390" y="21" text-anchor="end" font-size="10.5" font-weight="600" fill="#6366F1">AI 自動撰寫</text>
+
+      <!-- Pane 1 終端互動區 -->
+      <g transform="translate(16, 48)">
+        <!-- 使用者提示詞區塊 -->
+        <rect x="0" y="0" width="418" height="64" rx="8" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="1" />
+        <text x="14" y="24" font-size="12" font-weight="700" fill="#4F46E5">❯ User Prompt</text>
+        <text x="14" y="46" font-size="12.5" font-weight="500" fill="#0F172A">
+          請在 <tspan font-family="monospace" font-weight="600" fill="#0284C7">src/auth.py</tspan> 實作 Google OAuth 登入驗證函式
+        </text>
+
+        <!-- AI 執行狀態與工作日誌 -->
+        <g transform="translate(0, 76)">
+          <rect x="0" y="0" width="418" height="152" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+          
+          <!-- 狀態標籤 -->
+          <circle cx="20" cy="22" r="4" fill="#10B981" />
+          <text x="32" y="26" font-size="11.5" font-weight="700" fill="#10B981">Agent 執行中 (Thinking &amp; Tool Calling)</text>
+          <text x="402" y="25" text-anchor="end" font-size="10" font-family="monospace" fill="#94A3B8">Step 2/3</text>
+          <line x1="12" y1="36" x2="406" y2="36" stroke="#E2E8F0" stroke-width="1" />
+
+          <!-- CLI 輸出內容 -->
+          <text x="16" y="56" font-size="11" font-family="monospace" fill="#475569">● Analyzing auth flow requirements...</text>
+          <text x="16" y="76" font-size="11" font-family="monospace" fill="#475569">● Using tool: <tspan fill="#6366F1" font-weight="600">write_to_file</tspan></text>
+          <rect x="28" y="86" width="374" height="24" rx="4" fill="#EEF2FF" stroke="#C7D2FE" stroke-width="1" />
+          <text x="38" y="102" font-size="10.5" font-family="monospace" fill="#4338CA">↳ Target: /workspace/my-app/src/auth.py</text>
+          <text x="16" y="132" font-size="11" font-family="monospace" fill="#059669">✔ Wrote 24 lines (+24, -0) into auth.py</text>
+        </g>
+
+        <!-- 協同說明小卡 -->
+        <g transform="translate(0, 240)">
+          <rect x="0" y="0" width="418" height="66" rx="8" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1" />
+          <text x="14" y="24" font-size="11.5" font-weight="700" fill="#5B21B6">💡 終端優勢：AI 全神貫注編程</text>
+          <text x="14" y="48" font-size="11" fill="#6B21A8">
+            只需以自然語言下指令，不需要離開終端去開肥重 IDE。
+          </text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ==================== 中間跨窗格聯動指示標籤 ==================== -->
+    <g transform="translate(422, 230)">
+      <circle cx="28" cy="28" r="24" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2" filter="url(#cardShadow)" />
+      <path d="M 20 28 L 36 28 M 30 22 L 36 28 L 30 34" fill="none" stroke="#6366F1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    </g>
+
+    <!-- ==================== 右側窗格 (PANE 2: Yazi 檔案管理器) ==================== -->
+    <g transform="translate(450, 42)">
+      <!-- Pane 2 標題欄 -->
+      <rect x="0" y="0" width="450" height="34" fill="#F8FAFC" />
+      <line x1="0" y1="34" x2="450" y2="34" stroke="#E2E8F0" stroke-width="1" />
+      <rect x="16" y="8" width="70" height="18" rx="4" fill="url(#yaziBadgeGrad)" />
+      <text x="51" y="21" text-anchor="middle" font-size="10.5" font-weight="700" fill="#FFFFFF">PANE 2</text>
+      <text x="96" y="22" font-size="12" font-weight="700" fill="#1E293B">Yazi 現代檔案管理器 (Rust 驅動)</text>
+      <text x="434" y="21" text-anchor="end" font-size="10.5" font-weight="600" fill="#0EA5E9">零延遲即時預覽</text>
+
+      <!-- Pane 2 內容：模擬 Yazi 雙/三欄檢視 -->
+      <g transform="translate(16, 48)">
+        
+        <!-- Yazi 檔案清單與即時預覽容器 -->
+        <rect x="0" y="0" width="418" height="228" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1" />
+
+        <!-- 內部左半部：檔案目錄清單 (170px) -->
+        <g transform="translate(0, 0)">
+          <rect x="0" y="0" width="168" height="28" rx="8 0 0 0" fill="#F1F5F9" />
+          <text x="12" y="18" font-size="11" font-weight="700" fill="#475569">📁 my-app/src</text>
+          <line x1="0" y1="28" x2="168" y2="28" stroke="#E2E8F0" stroke-width="1" />
+          <line x1="168" y1="0" x2="168" y2="228" stroke="#E2E8F0" stroke-width="1" />
+
+          <!-- 清單項目 1: index.ts -->
+          <g transform="translate(10, 36)">
+            <text x="0" y="14" font-size="11" fill="#64748B">📄 index.ts</text>
+          </g>
+          <!-- 清單項目 2: auth.py (高亮選取中) -->
+          <g transform="translate(6, 62)">
+            <rect x="0" y="0" width="156" height="26" rx="5" fill="#E0F2FE" stroke="#BAE6FD" stroke-width="1" />
+            <text x="6" y="17" font-size="11.5" font-weight="700" fill="#0369A1">▶ 📄 auth.py</text>
+            <rect x="108" y="5" width="42" height="16" rx="3" fill="#10B981" />
+            <text x="129" y="16" text-anchor="middle" font-size="9" font-weight="700" fill="#FFFFFF">NEW</text>
+          </g>
+          <!-- 清單項目 3: test_auth.py -->
+          <g transform="translate(10, 96)">
+            <text x="0" y="14" font-size="11" fill="#64748B">📄 test_auth.py</text>
+          </g>
+          <!-- 清單項目 4: utils.py -->
+          <g transform="translate(10, 122)">
+            <text x="0" y="14" font-size="11" fill="#64748B">📄 utils.py</text>
+          </g>
+          <!-- 清單項目 5: .worktrees/ -->
+          <g transform="translate(10, 148)">
+            <text x="0" y="14" font-size="11" fill="#64748B">📁 .worktrees/</text>
+          </g>
+          <!-- 清單項目 6: README.md -->
+          <g transform="translate(10, 174)">
+            <text x="0" y="14" font-size="11" fill="#64748B">📄 README.md</text>
+          </g>
+        </g>
+
+        <!-- 內部右半部：auth.py 即時語法高亮預覽 (250px) -->
+        <g transform="translate(168, 0)">
+          <rect x="0" y="0" width="250" height="28" rx="0 8 0 0" fill="#F1F5F9" />
+          <text x="12" y="18" font-size="11" font-weight="700" fill="#0284C7">Preview: auth.py (Python)</text>
+          <line x1="0" y1="28" x2="250" y2="28" stroke="#E2E8F0" stroke-width="1" />
+
+          <!-- 程式碼即時渲染 -->
+          <g transform="translate(10, 38)" font-family="monospace" font-size="10.5">
+            <text x="0" y="12" fill="#94A3B8">1</text>
+            <text x="18" y="12" fill="#6366F1">import</text>
+            <text x="62" y="12" fill="#0F172A">google_auth</text>
+
+            <text x="0" y="30" fill="#94A3B8">2</text>
+            <text x="18" y="30" fill="#6366F1">from</text>
+            <text x="48" y="30" fill="#0F172A">oauth2 </text>
+            <text x="96" y="30" fill="#6366F1">import</text>
+            <text x="140" y="30" fill="#0F172A">Client</text>
+
+            <text x="0" y="48" fill="#94A3B8">3</text>
+
+            <text x="0" y="66" fill="#94A3B8">4</text>
+            <text x="18" y="66" fill="#0EA5E9">def</text>
+            <text x="42" y="66" fill="#0F172A">verify_oauth_token(tk):</text>
+
+            <text x="0" y="84" fill="#94A3B8">5</text>
+            <text x="28" y="84" fill="#64748B">"""驗證 Google Token"""</text>
+
+            <text x="0" y="102" fill="#94A3B8">6</text>
+            <text x="28" y="102" fill="#0F172A">user = Client.verify(tk)</text>
+
+            <text x="0" y="120" fill="#94A3B8">7</text>
+            <text x="28" y="120" fill="#6366F1">return</text>
+            <text x="74" y="120" fill="#0F172A">user.email</text>
+
+            <!-- 即時更新光標指示 -->
+            <rect x="28" y="132" width="200" height="22" rx="4" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1" />
+            <text x="36" y="147" font-size="9.5" font-family="sans-serif" font-weight="600" fill="#059669">⚡ Agent 剛完成修改，已零延遲同步！</text>
+          </g>
+        </g>
+
+        <!-- 協同說明小卡 -->
+        <g transform="translate(0, 240)">
+          <rect x="0" y="0" width="418" height="66" rx="8" fill="#F0F9FF" stroke="#BAE6FD" stroke-width="1" />
+          <text x="14" y="24" font-size="11.5" font-weight="700" fill="#0369A1">👀 終端優勢：即時眼睛與檢查站</text>
+          <text x="14" y="48" font-size="11" fill="#0284C7">
+            無需儲存後切換視窗，右側自動跟隨檢視程式碼變更與目錄架構。
+          </text>
+        </g>
+      </g>
+    </g>
+
+    <!-- ==================== 底部狀態列 (Herdr Status Bar) ==================== -->
+    <g transform="translate(0, 454)">
+      <path d="M 0 0 L 900 0 L 900 24 C 900 31.732 893.732 38 886 38 L 14 38 C 6.268 38 0 31.732 0 24 Z" fill="#0F172A" />
+      
+      <!-- Herdr 狀態指示 -->
+      <g transform="translate(16, 24)" font-size="11" font-weight="600" fill="#94A3B8">
+        <text x="0" y="0" fill="#38BDF8">⬢ HERDR</text>
+        <text x="70" y="0" fill="#FFFFFF">[0] 1:opencode*</text>
+        <text x="165" y="0" fill="#94A3B8">2:yazi</text>
+        
+        <!-- 操作快捷鍵指示 -->
+        <text x="450" y="0" text-anchor="middle" fill="#CBD5E1">
+          快捷操作：<tspan fill="#F59E0B">prefix + v</tspan> 水平向右分割 | <tspan fill="#F59E0B">prefix + ← / →</tspan> 快速切換窗格
+        </text>
+        
+        <text x="880" y="0" text-anchor="end" fill="#10B981">● Connected (Client/Server)</text>
+      </g>
+    </g>
+  </g>
+</svg>

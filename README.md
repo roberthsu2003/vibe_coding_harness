@@ -39,7 +39,16 @@ Herdr 是終端機內的 agent multiplexer，可用 workspace、tab 和 pane 管
 
 ### Yazi
 
-Yazi 是終端機內的檔案管理器，可用鍵盤瀏覽目錄、預覽檔案並快速管理路徑。完整的安裝與操作請參考 [Yazi 操作指南](yazi/README.md)。
+Yazi 是終端機內的檔案管理器，可用鍵盤瀏覽目錄、預覽檔案並快速管理路徑。完整的安裝與操作請參考 
+
+[Yazi 操作指南](yazi/README.md)。
+
+
+### Glow
+
+Glow 是終端機內的 Markdown 渲染與閱讀工具，能將 AI 產出的規格文件、README 與日誌直接在終端內呈現出精美的排版與語法高亮，無需切換瀏覽器或圖形編輯器。完整的安裝與操作請參考 
+
+[Glow 操作指南](glow/README.md)。
 
 
 ### Git 與 worktree：同一個 repo 的多個工作目錄
