@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+
+    <!-- Card Header Gradients -->
+    <linearGradient id="mainRepoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="wt1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="wt2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="branchArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="960" height="580" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Main Title & Subtitle -->
+  <text x="480" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Git Worktree 平行架構：共用資料庫，多 Agent 獨立分支隔離</text>
+  <text x="480" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="middle">母專案掌控真正的 .git 資料庫；各 Worktree 僅透過十幾 Bytes 的指標關聯，毫秒建立、零空間浪費、無衝突平行開發</text>
+
+  <!-- TOP CARD: Mother Repository (vibe_coding_harness) -->
+  <g transform="translate(180, 80)">
+    <rect width="600" height="150" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="600" height="36" rx="12" fill="url(#mainRepoGrad)"/>
+    <text x="24" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">🌳 母專案主工作目錄（vibe_coding_harness / main 分支）</text>
+    <text x="576" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#dbeafe" text-anchor="end">👨‍💻 開發者主控台</text>
+
+    <!-- Content of Mother Repo -->
+    <g transform="translate(24, 48)">
+      <!-- Left side: The real .git folder -->
+      <rect x="0" y="5" width="260" height="85" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+      <text x="14" y="26" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="13" font-weight="bold" fill="#1e40af">📁 .git/ （唯一的實體資料庫）</text>
+      <text x="14" y="48" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#3b82f6">• 存放全部 Commits、歷史物件與設定</text>
+      <text x="14" y="68" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#3b82f6">• 管理分支指標與 Worktrees 中繼紀錄</text>
+
+      <!-- Right side: Work tree files & .gitignore -->
+      <g transform="translate(280, 10)">
+        <text x="0" y="16" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">📄 <tspan font-family="monospace" font-weight="bold">.gitignore</tspan> ➔ 已加入 <tspan fill="#dc2626" font-weight="bold">.worktrees/</tspan>（防誤提交）</text>
+        <text x="0" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" fill="#334155">📁 <tspan font-family="monospace">src/</tspan>、📄 <tspan font-family="monospace">README.md</tspan>（穩定主幹檔案）</text>
+        <rect x="0" y="52" width="265" height="26" rx="4" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+        <text x="132" y="69" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">🔒 主目錄維持乾淨穩定，隨時可驗收合併</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- MIDDLE: Dynamic Branching Paths -->
+  <!-- Left Path -->
+  <path d="M 330 230 L 330 260 L 250 260 L 250 280" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#branchArrow)"/>
+  <!-- Right Path -->
+  <path d="M 630 230 L 630 260 L 710 260 L 710 280" fill="none" stroke="#0284c7" stroke-width="2.5" marker-end="url(#branchArrow)"/>
+
+  <!-- Middle Floating Badge -->
+  <rect x="345" y="244" width="270" height="32" rx="16" fill="#ffffff" stroke="#38bdf8" stroke-width="2" filter="url(#softShadow)"/>
+  <text x="480" y="265" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">⚡ 毫秒級建立 · 共享同一個 .git 物件庫</text>
+
+  <!-- BOTTOM CARDS -->
+
+  <!-- BOTTOM LEFT: Worktree 1 (feature-login) -->
+  <g transform="translate(60, 290)">
+    <rect width="400" height="210" rx="12" fill="#ffffff" stroke="#6ee7b7" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="400" height="36" rx="12" fill="url(#wt1Grad)"/>
+    <text x="18" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="bold" fill="#ffffff">🌿 .worktrees/feature-login</text>
+    <text x="382" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#d1fae5" text-anchor="end">分支: feature/login</text>
+
+    <!-- Inside WT 1 -->
+    <g transform="translate(18, 48)">
+      <!-- Pointer File Highlight -->
+      <rect x="0" y="6" width="364" height="42" rx="6" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1.2"/>
+      <text x="12" y="23" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="11.5" font-weight="bold" fill="#065f46">📄 .git 指標檔（僅十幾 Bytes！）</text>
+      <text x="12" y="39" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="10.5" fill="#047857">gitdir: /path/to/.git/worktrees/feature-login</text>
+
+      <!-- Agent Info -->
+      <g transform="translate(0, 58)">
+        <text x="0" y="20" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">🤖 負責代理：Agent A（OpenCode）</text>
+        <text x="0" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#475569">• 任務：實作 JWT 登入與 Auth Middleware</text>
+        <text x="0" y="58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#475569">• 獨立修改檔案、獨立執行單元測試</text>
+        <text x="0" y="76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#15803d" font-weight="bold">🛡️ 讀寫完全隔離，絕不污染母專案代碼！</text>
+
+        <rect x="0" y="86" width="364" height="24" rx="4" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+        <text x="182" y="103" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#047857" text-anchor="middle">🟡 狀態：Agent 正在進行平行編程與驗收</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- BOTTOM RIGHT: Worktree 2 (fix-header) -->
+  <g transform="translate(500, 290)">
+    <rect width="400" height="210" rx="12" fill="#ffffff" stroke="#c4b5fd" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="400" height="36" rx="12" fill="url(#wt2Grad)"/>
+    <text x="18" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13.5" font-weight="bold" fill="#ffffff">🌿 .worktrees/fix-header</text>
+    <text x="382" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" font-weight="bold" fill="#ede9fe" text-anchor="end">分支: fix/header</text>
+
+    <!-- Inside WT 2 -->
+    <g transform="translate(18, 48)">
+      <!-- Pointer File Highlight -->
+      <rect x="0" y="6" width="364" height="42" rx="6" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.2"/>
+      <text x="12" y="23" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="11.5" font-weight="bold" fill="#5b21b6">📄 .git 指標檔（僅十幾 Bytes！）</text>
+      <text x="12" y="39" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="10.5" fill="#6d28d9">gitdir: /path/to/.git/worktrees/fix-header</text>
+
+      <!-- Agent Info -->
+      <g transform="translate(0, 58)">
+        <text x="0" y="20" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#0f172a">🤖 負責代理：Agent B（Claude Code）</text>
+        <text x="0" y="40" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#475569">• 任務：修復行動版 Header 導覽列溢位 Bug</text>
+        <text x="0" y="58" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#475569">• 同步修改 CSS 與元件測試</text>
+        <text x="0" y="76" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#6d28d9" font-weight="bold">🛡️ 與 Agent A 分工合作，互不覆蓋！</text>
+
+        <rect x="0" y="86" width="364" height="24" rx="4" fill="#faf5ff" stroke="#ddd6fe" stroke-width="1"/>
+        <text x="182" y="103" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="bold" fill="#6d28d9" text-anchor="middle">🟢 狀態：修復完成，隨時可發起 PR / Merge</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- BOTTOM TAKEAWAYS / FOOTER -->
+  <g transform="translate(60, 515)">
+    <rect width="840" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#softShadow)"/>
+    <text x="420" y="27" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">
+      💡 <tspan fill="#1e40af">三大好處總結</tspan>：各目錄物理隔離不撞車 · 0.1秒瞬間開新環境 · 集中收納於 <tspan fill="#047857" font-family="monospace">.worktrees/</tspan> 管理超方便！
+    </text>
+  </g>
+</svg>
