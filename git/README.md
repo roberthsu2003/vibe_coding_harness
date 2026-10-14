@@ -90,3 +90,5 @@ git worktree prune
 1. **先 commit 再清理**：在執行 `git worktree remove` 前，請務必確認分支上的進度已提交或推送。
 2. **不要手動用 `rm -rf` 刪除**：手動刪除目錄會留下 Git 的中繼狀態紀錄，建議優先使用 `git worktree remove`。若已不小心手動刪除，請執行 `git worktree prune` 修理中繼狀態。
 3. **搭配 Herdr 分頁**：在 Herdr 的不同 tab/pane 開啟不同 worktree，就能在一個終端機介面中同時監督多個 agent 的工作進度。
+4. **Commit 漏改時善用 Amend**：若 Agent 剛建立 commit 卻發現漏加了檔案或內容，可直接請 Agent「修改後使用 `git commit --amend` 合併進前一個 commit」，避免產生零碎的修復紀錄，保持版本歷史整潔。
+
