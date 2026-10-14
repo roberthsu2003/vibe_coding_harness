@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 580" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="50%" stop-color="#f1f5f9"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+
+    <!-- Header Gradients -->
+    <linearGradient id="clientGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="serverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="paneGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="paneGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="paneGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- Markers -->
+    <marker id="arrowDown" viewBox="0 0 10 10" refX="5" refY="6" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 0 L 5 10 L 9 0 z" fill="#6366f1"/>
+    </marker>
+    <marker id="arrowUp" viewBox="0 0 10 10" refX="5" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 1 10 L 5 0 L 9 10 z" fill="#6366f1"/>
+    </marker>
+    <marker id="subArrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="960" height="580" rx="16" fill="url(#bgGrad)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <!-- Main Title & Subtitle -->
+  <text x="480" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Herdr Client / Server 解耦架構圖</text>
+  <text x="480" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="middle">前端 TUI 與背景守護 Daemon 獨立解耦：即使視窗關閉或 Detach，背景 Agent 與服務永不斷線</text>
+
+  <!-- SECTION 1: Herdr Client Box -->
+  <g transform="translate(60, 80)">
+    <rect width="840" height="95" rx="12" fill="#ffffff" stroke="#38bdf8" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="840" height="34" rx="12" fill="url(#clientGrad)"/>
+    <text x="24" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">🖥️ Herdr Client（前端展示層 TUI）</text>
+    <text x="816" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="500" fill="#e0f2fe" text-anchor="end">使用者看得見的終端介面</text>
+
+    <!-- Client Content items -->
+    <g transform="translate(24, 45)">
+      <!-- Item 1 -->
+      <rect x="0" y="5" width="250" height="34" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="125" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="600" fill="#0369a1" text-anchor="middle">🎨 繪製多窗格與狀態小圖示</text>
+
+      <!-- Item 2 -->
+      <rect x="270" y="5" width="250" height="34" rx="6" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1"/>
+      <text x="395" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="600" fill="#0369a1" text-anchor="middle">⌨️ 捕獲鍵盤按鍵與滑鼠點選</text>
+
+      <!-- Item 3 -->
+      <rect x="540" y="5" width="250" height="34" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+      <text x="665" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#047857" text-anchor="middle">🚪 隨時按 prefix+q 暫離回到 Shell</text>
+    </g>
+  </g>
+
+  <!-- MIDDLE: IPC Communication (Unix Domain Socket) -->
+  <g transform="translate(480, 175)">
+    <!-- Up/Down Connection Lines -->
+    <line x1="-80" y1="5" x2="-80" y2="45" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrowDown)"/>
+    <line x1="80" y1="45" x2="80" y2="5" stroke="#6366f1" stroke-width="2.5" marker-end="url(#arrowUp)"/>
+
+    <!-- Central Badge -->
+    <rect x="-170" y="8" width="340" height="34" rx="17" fill="#ffffff" stroke="#c7d2fe" stroke-width="2" filter="url(#softShadow)"/>
+    <text x="0" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Fira Code', monospace" font-size="12" font-weight="bold" fill="#4338ca" text-anchor="middle">⚡ Unix Domain Socket 本地高速通訊</text>
+  </g>
+
+  <!-- SECTION 2: Herdr Server Box (Main Engine) -->
+  <g transform="translate(60, 230)">
+    <rect width="840" height="315" rx="12" fill="#ffffff" stroke="#34d399" stroke-width="2" filter="url(#softShadow)"/>
+    <rect width="840" height="36" rx="12" fill="url(#serverGrad)"/>
+    <text x="24" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">⚙️ Herdr Server（背景常駐守護引擎 Daemon）</text>
+    <text x="816" y="24" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="500" fill="#d1fae5" text-anchor="end">隨需喚醒 · 記憶體僅 10~30MB · 守護全部進程</text>
+
+    <!-- Sub-row 1: 3 PTY Panes -->
+    <g transform="translate(24, 48)">
+      <!-- Pane 1: Coding Agent -->
+      <g transform="translate(0, 0)">
+        <rect width="250" height="175" rx="8" fill="#f8fafc" stroke="#bfdbfe" stroke-width="1.5"/>
+        <rect width="250" height="28" rx="8" fill="url(#paneGrad1)"/>
+        <text x="125" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">🤖 Pane 1：AI Coding Agent</text>
+        
+        <circle cx="28" cy="50" r="7" fill="#eab308"/>
+        <text x="44" y="54" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">OpenCode / Claude</text>
+        
+        <text x="18" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 獨立 PTY 虛擬終端執行</text>
+        <text x="18" y="98" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 在背景持續分析、讀寫程式碼</text>
+        <text x="18" y="118" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 原生 Hook 即時回報狀態</text>
+
+        <rect x="18" y="132" width="214" height="26" rx="4" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+        <text x="125" y="149" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#1d4ed8" text-anchor="middle">🟡 思考中 / 🔴 待批准 / 🟢 完成</text>
+      </g>
+
+      <!-- Pane 2: Dev Server & Testing -->
+      <g transform="translate(270, 0)">
+        <rect width="250" height="175" rx="8" fill="#f8fafc" stroke="#fde68a" stroke-width="1.5"/>
+        <rect width="250" height="28" rx="8" fill="url(#paneGrad2)"/>
+        <text x="125" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">🚀 Pane 2：開發伺服器 / 測試</text>
+        
+        <circle cx="28" cy="50" r="7" fill="#10b981"/>
+        <text x="44" y="54" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">Node / Pytest / Vite</text>
+        
+        <text x="18" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 監聽本地 Web API 服務埠</text>
+        <text x="18" y="98" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 熱重載測試（pytest -f / vitest）</text>
+        <text x="18" y="118" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 輸出 Log 隨時供查閱回滾</text>
+
+        <rect x="18" y="132" width="214" height="26" rx="4" fill="#fffbeb" stroke="#fde68a" stroke-width="1"/>
+        <text x="125" y="149" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#b45309" text-anchor="middle">🟢 正常運作待命中 (Idle)</text>
+      </g>
+
+      <!-- Pane 3: Shell & Supervisor -->
+      <g transform="translate(540, 0)">
+        <rect width="250" height="175" rx="8" fill="#f8fafc" stroke="#ddd6fe" stroke-width="1.5"/>
+        <rect width="250" height="28" rx="8" fill="url(#paneGrad3)"/>
+        <text x="125" y="19" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">💻 Pane 3：Shell / Supervisor</text>
+        
+        <circle cx="28" cy="50" r="7" fill="#8b5cf6"/>
+        <text x="44" y="54" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">Zsh / Git / Supervisor</text>
+        
+        <text x="18" y="78" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 執行 Git 檢查與部署腳本</text>
+        <text x="18" y="98" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 派發子任務 (herdr pane input)</text>
+        <text x="18" y="118" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" fill="#475569">• 監控各窗格狀態 (herdr agent list)</text>
+
+        <rect x="18" y="132" width="214" height="26" rx="4" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1"/>
+        <text x="125" y="149" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11" font-weight="600" fill="#6d28d9" text-anchor="middle">👑 主管調度 / 終端控制中心</text>
+      </g>
+    </g>
+
+    <!-- Sub-row 2: Session State & Persistence Storage -->
+    <g transform="translate(24, 235)">
+      <rect width="790" height="64" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+      <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="13" font-weight="bold" fill="#0f172a">💾 Session State（狀態持久化快照引擎）</text>
+      
+      <text x="20" y="48" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#475569">
+        即時記錄 Workspace 佈局結構、各 Pane 切割比例與 Agent Session ID（儲存於 <tspan font-family="'Fira Code', monospace" font-weight="bold" fill="#0284c7">~/.local/state/herdr/</tspan>），即使電腦重開機也能一秒還原！
+      </text>
+    </g>
+  </g>
+</svg>
