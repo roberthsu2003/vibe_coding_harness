@@ -124,6 +124,32 @@ opencode
 ```
 > 此時 Agent 的所有檔案讀寫、安裝依賴（`uv add`）、終端測試，完全隔離在該目錄與 `feature/login` 分支上，主專案的代碼絲毫不受影響！
 
+### 💡 小技巧：我現在在哪一個 Worktree？
+開了好幾個 worktree 之後，很容易搞混自己目前在哪裡。執行指令前，可以用下面三個指令確認：
+
+```bash
+# 1. 目前所在 worktree 的根目錄（最直接）
+git rev-parse --show-toplevel
+
+# 2. 目前所在的分支
+git branch --show-current
+
+# 3. 判斷是母目錄還是 worktree
+git rev-parse --git-dir
+```
+
+以第 3 個指令為例，輸出可以這樣判斷：
+
+| 輸出結果 | 代表位置 |
+| :--- | :--- |
+| 以 `.git` 結尾（例如 `.git` 或 `/path/to/專案/.git`） | ✅ **母目錄**（可以在這裡 merge） |
+| 包含 `.git/worktrees/`（例如 `/path/to/專案/.git/worktrees/feature-login`） | 🌿 **Worktree**：`feature-login` |
+
+> [!NOTE]
+> `git worktree list` 會列出**所有** worktree，但**不會標示你目前在哪一個**，所以要知道自己的位置，請用上面的指令。
+>
+> 許多終端機提示字元（例如 Oh My Zsh、Starship）會直接顯示目前的分支名稱，看一眼就知道自己在哪一個 worktree。
+
 ### 步驟 4：在 Worktree 內驗收並提交（Commit）
 Agent 完成任務後，先在 **worktree 目錄內** 確認改動並提交：
 
@@ -276,6 +302,8 @@ git worktree list
 | **建立並開新分支** | `git worktree add <路徑> -b <分支名稱>` | 最常用！同時建立獨立目錄與新分支 |
 | **掛載既有分支** | `git worktree add <路徑> <現有分支>` | 將遠端已有的分支拉到本地獨立目錄處理 |
 | **列出所有工作區** | `git worktree list` | 查看當前所有的 worktree 路徑與分支狀態 |
+| **我在哪個工作區？** | `git rev-parse --show-toplevel` | 顯示目前所在 worktree 的根目錄 |
+| **我在哪個分支？** | `git branch --show-current` | 顯示目前所在的分支名稱 |
 | **安全移除工作區** | `git worktree remove <路徑>` | 刪除工作目錄並註銷 Git 內部指標（需先 commit） |
 | **清理無效參照** | `git worktree prune` | 清除被手動刪除或過期的 worktree 中繼狀態 |
 | **預覽待合併 commit** | `git log main..<分支名稱> --oneline` | 合併前先看分支比 main 多了哪些 commit |
