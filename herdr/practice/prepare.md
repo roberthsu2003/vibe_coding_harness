@@ -40,13 +40,22 @@
 ### 3. 確認 OpenCode 的免費模型能用
 
 ```bash
-opencode run -m opencode/deepseek-v4.1-flash-free "只回覆 OK 兩個字"
+opencode run -m opencode/muse-spark-1.3-contributor-free "只回覆 OK 兩個字"
 ```
 
 看到 `OK` 就可以了。
 
 > [!NOTE]
-> 免費模型偶爾會因為伺服器忙碌出現 `Endpoint is unavailable`。這不是你的問題，主管 AI 會自動換成備用模型。用 `opencode models | grep free` 可以看到所有免費模型。
+> 免費模型偶爾會因為伺服器忙碌出現 `Endpoint is unavailable`。這不是你的問題，主管 AI 會自動換成備用模型。
+>
+> 本練習使用的模型：
+>
+> | 用途 | 模型 | 說明 |
+> | :--- | :--- | :--- |
+> | 預設 | `opencode/muse-spark-1.3-contributor-free` | Muse Spark 免費版，速度快 |
+> | 備用 | `opencode/nemotron-3.5-lightning-free` | NVIDIA Nemotron 免費版，速度較慢 |
+>
+> 備用模型也可以先測試一次：`opencode run -m opencode/nemotron-3.5-lightning-free "只回覆 OK 兩個字"`
 
 ### 4. 準備練習資料夾與主管規則檔
 

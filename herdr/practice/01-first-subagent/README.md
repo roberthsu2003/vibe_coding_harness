@@ -24,7 +24,7 @@
 
 ```text
 ## 分工
-  • SubAgent：coder（OpenCode，模型 opencode/deepseek-v4.1-flash-free）
+  • SubAgent：coder（OpenCode，模型 opencode/muse-spark-1.3-contributor-free）
   • 工作目錄：work/temperature/
 ## 驗收標準
   • 函式正確：0°C → 32°F、100°C → 212°F、-40°C → -40°F
@@ -85,7 +85,7 @@ mkdir -p ~/herdr-lab/manual && cd ~/herdr-lab/manual
 WORKER=$(herdr pane split --current --direction right --cwd "$PWD" --no-focus | jq -r '.result.pane.pane_id')
 
 # 2. 啟動小模型，取名 coder；-- 後面的參數交給 OpenCode，-m 指定模型
-herdr agent start coder --kind opencode --pane $WORKER -- -m opencode/deepseek-v4.1-flash-free
+herdr agent start coder --kind opencode --pane $WORKER -- -m opencode/muse-spark-1.3-contributor-free
 
 # 3. 派工並等它做完（--timeout 單位是毫秒，300000 = 5 分鐘）
 herdr agent prompt coder "你是 SubAgent，只負責完成下面的任務，不要執行任何 herdr 指令。請在 temperature.py 寫一個函式 celsius_to_fahrenheit(c)，回傳華氏溫度。完成後回覆「完成」。" --wait --timeout 300000

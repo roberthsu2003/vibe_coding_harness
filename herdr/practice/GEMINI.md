@@ -27,7 +27,7 @@
    <用條列寫出具體要產出的檔案與內容>
 
    ## 分工
-   - SubAgent：<名字>（OpenCode，模型 opencode/deepseek-v4.1-flash-free）
+   - SubAgent：<名字>（OpenCode，模型 opencode/muse-spark-1.3-contributor-free）
    - 工作目錄：<路徑>
 
    ## 驗收標準
@@ -77,7 +77,7 @@ herdr pane close <pane_id>                                              # 關閉
 SubAgent（小模型）：
 
 ```bash
-herdr agent start <名字> --kind opencode --pane <pane_id> -- -m opencode/deepseek-v4.1-flash-free
+herdr agent start <名字> --kind opencode --pane <pane_id> -- -m opencode/muse-spark-1.3-contributor-free
 herdr agent prompt <名字> "派工指示" --wait --timeout 300000             # 派工並等它做完
 herdr agent get <名字>                                                   # 狀態：idle / working / blocked / done
 herdr agent read <名字> --source recent-unwrapped --lines 60             # 讀它的回覆
@@ -122,6 +122,6 @@ git -C work/<任務名> branch -d <分支名>                           # 刪除
 - 開窗格一律加 `--no-focus`，不要搶走使用者的畫面；新窗格若太窄（寬度小於 60），改用 `--direction down`。
 - 等 SubAgent 時用 `--wait` 或 `herdr agent wait`，**在前景等待，不要放到背景執行**。
 - 只關閉你自己開的窗格。
-- 免費模型若出現 `Endpoint is unavailable`，關掉該窗格，改用 `opencode/glm-5.3-flash-free` 或 `opencode/mimo-v2.6-flash-free` 重新啟動。
+- SubAgent 一律使用 `opencode/muse-spark-1.3-contributor-free`。若出現 `Endpoint is unavailable` 或超過 3 分鐘沒有進展，關掉該窗格，改用備用模型 `opencode/nemotron-3.5-lightning-free`（NVIDIA）重新啟動。**不要使用其他模型。**
 - SubAgent 狀態是 `blocked` 時，先用 `herdr agent read` 看它在問什麼，再決定怎麼回應。
 - 你自己**不寫**成果檔案（程式或文件），只寫任務卡與檢查檔。

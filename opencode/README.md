@@ -253,7 +253,7 @@ OpenCode 具備原生健全的 **Agent 與 Subagent（子代理）體系**。它
 1. **上下文隔離（Context Window 永不肥大）**：
    子代理在獨立的 Child Session 運作，它在背後翻閱了數十個檔案、看了數千行日誌，**完成後只把精簡結論帶回主對話**，主對話永遠保持輕盈與高精準度。
 2. **極致省錢與高速（模型分工最佳化）**：
-   你可以讓主代理使用昂貴頂級的模型（如 Claude 3.7 Sonnet / GPT-4o），而將單純的代碼檢索、格式審查子代理綁定超便宜且極速的模型（如 `glm-4-flash` 或 `claude-3-5-haiku`），省下大筆 API 費用！
+   你可以讓主代理使用昂貴頂級的模型，而將單純的代碼檢索、格式審查子代理綁定便宜又快速的模型（如 Muse Spark 或 NVIDIA Nemotron 的免費版），省下大筆 API 費用！
 3. **安全圍欄（獨立權限控制）**：
    子代理可以單獨設定權限（例如設定 `edit: deny`，保證此子代理永遠只讀，絕不意外篡改任何代碼）。
 
@@ -279,7 +279,7 @@ OpenCode 採用直覺的 **Markdown + YAML Frontmatter** 來定義 Agent。你�
 ---
 description: 負責審查近期變更或 Git Diff 的代碼品質、資安漏洞與邊界條件，只讀不修改檔案
 mode: subagent
-model: opencode-go/glm-5.3-flash
+model: opencode-go/muse-spark-1.3-contributor
 temperature: 0.1
 permissions:
   - action: edit
