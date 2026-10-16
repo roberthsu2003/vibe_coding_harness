@@ -196,7 +196,7 @@ herdr integration uninstall <agent-name>
 
 在多 Agent 開發中，由一個 **Supervisor（主管代理）** 負責拆解任務與把關，並在子窗格調度多個 **SubAgent（子代理）** 進行平行編程與測試，是避免單一模型注意力失控的最佳架構。
 
-Herdr 的底層以 Unix Domain Socket 與 PTY 終端虛擬層為基礎，讓 Supervisor 能以非侵入式方式直接向 SubAgent 窗格注入任務（`herdr pane input`）並監控完成狀態（`herdr agent inspect`），無縫串起雙向溝通迴圈。
+Herdr 的底層以 Unix Domain Socket 與 PTY 終端虛擬層為基礎，讓 Supervisor 能以非侵入式方式直接向 SubAgent 窗格注入任務（`herdr agent prompt`）並監控完成狀態（`herdr agent wait` / `herdr agent get`），無縫串起雙向溝通迴圈。
 
 > 完整底層架構原理、SVG 數據流向圖與端到端實戰演練，請參閱專題指南：  
 > 👉 **[Supervisor 與 SubAgent 終端協同指南](supervisor-subagent.md)**

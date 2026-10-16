@@ -58,7 +58,7 @@
     <rect width="255" height="36" rx="12" fill="url(#supGradLight)"/>
     <text x="127" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14.5" font-weight="bold" fill="#ffffff" text-anchor="middle">👑 主代理 (Supervisor Pane)</text>
     
-    <text x="20" y="62" font-family="monospace" font-size="12" font-weight="bold" fill="#0369a1">Pane ID: #pane-0 (主控台)</text>
+    <text x="20" y="62" font-family="monospace" font-size="12" font-weight="bold" fill="#0369a1">Pane ID: w1:p1 (主控台)</text>
     <text x="20" y="86" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 負責全域架構拆解與任務派發</text>
     <text x="20" y="106" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 透過 Herdr CLI 操控終端環境</text>
     <text x="20" y="126" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 監督子任務進度與品質評審</text>
@@ -66,8 +66,8 @@
     <!-- Code Box snippet -->
     <rect x="15" y="145" width="225" height="66" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
     <text x="25" y="165" font-family="monospace" font-size="11" font-weight="600" fill="#0f766e">$ herdr pane split ...</text>
-    <text x="25" y="183" font-family="monospace" font-size="11" font-weight="600" fill="#0369a1">$ herdr pane input &lt;id&gt; "..."</text>
-    <text x="25" y="201" font-family="monospace" font-size="11" font-weight="600" fill="#4338ca">$ herdr agent inspect &lt;id&gt;</text>
+    <text x="25" y="183" font-family="monospace" font-size="11" font-weight="600" fill="#0369a1">$ herdr agent prompt coder "..."</text>
+    <text x="25" y="201" font-family="monospace" font-size="11" font-weight="600" fill="#4338ca">$ herdr agent wait coder</text>
   </g>
 
   <!-- Herdr Daemon / IPC Bus (Center Box) -->
@@ -114,7 +114,7 @@
     <rect width="255" height="36" rx="12" fill="url(#subGrad1Light)"/>
     <text x="127" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">🛠️ 子代理 A (Coder Pane)</text>
 
-    <text x="20" y="62" font-family="monospace" font-size="12" font-weight="bold" fill="#047857">Pane ID: #pane-1 (代碼編寫)</text>
+    <text x="20" y="62" font-family="monospace" font-size="12" font-weight="bold" fill="#047857">Pane ID: w1:p2 (Agent: coder)</text>
     <text x="20" y="85" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 執行: OpenCode / Claude Code</text>
     <text x="20" y="105" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 目錄: .worktrees/feature-auth</text>
     <text x="20" y="125" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 專注執行 Supervisor 派發的實作</text>
@@ -129,7 +129,7 @@
     <rect width="255" height="36" rx="12" fill="url(#subGrad2Light)"/>
     <text x="127" y="23" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">🧪 子代理 B (Tester / Reviewer)</text>
 
-    <text x="20" y="62" font-family="monospace" font-size="12" font-weight="bold" fill="#6d28d9">Pane ID: #pane-2 (驗證與測試)</text>
+    <text x="20" y="62" font-family="monospace" font-size="12" font-weight="bold" fill="#6d28d9">Pane ID: w1:p3 (驗證與測試)</text>
     <text x="20" y="85" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 執行: uv run pytest / Linter</text>
     <text x="20" y="105" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 監聽 SubAgent A 的改動並回報</text>
     <text x="20" y="125" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="11.5" fill="#334155">• 將測試結果輸出回饋至 Supervisor</text>

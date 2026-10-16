@@ -71,7 +71,7 @@
 * **對 Agent / Shell 而言（以假亂真）**：
   Agent 戴上了這副「VR 眼鏡」，誤以為自己真正獨佔了一整個真實螢幕與鍵盤，因此它能正常渲染彩色字元、進度條、即時接收 `Ctrl+C` 或 `Esc` 單鍵訊號，開出精美的 TUI 對話框。
 * **對 Herdr 而言（幕後操偶師）**：
-  Herdr 握著 PTY 控制端的把手。這意味著 Herdr 可以**像真人打字一樣**把指令精準注入給 Agent（`herdr pane input`），也可以隨時無聲無息地讀取畫面上的所有文字輸出。
+  Herdr 握著 PTY 控制端的把手。這意味著 Herdr 可以**像真人打字一樣**把指令精準注入給 Agent（`herdr agent prompt`、`herdr pane run`），也可以隨時無聲無息地讀取畫面上的所有文字輸出。
 * **每個窗格都是獨立的 PTY**：
   Herdr 裡的每個 Pane（窗格）都是一間隔音良好的「獨立 PTY 虛擬小房間」，左邊跑 OpenCode、右邊跑 Git，兩者互不干擾、互不打架。
 
