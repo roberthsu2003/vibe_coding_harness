@@ -1,5 +1,7 @@
 # Herdr 多 Agent 協同練習：由淺至深 6 關
 
+> 🎯 07 動手練習　｜　[← 06 多 Agent 協同](../06-supervisor-subagent.md)　｜　[章節首頁](../README.md)
+
 這組練習帶你學會一個工作循環：
 
 > **聰明的主管 AI 派工 → 小模型完成後回報 → 主管檢查 → 不合格就退回修改 → 直到通過**
@@ -13,7 +15,9 @@
 
 每一關只多學一個新概念，最後都有**變化題**：換一句話再做 2～3 次，練到熟為止。對背後的指令有興趣的同學，每關最下方另有「🔧 進階：自己下指令」。
 
-觀念說明請看 👉 [Supervisor 與 SubAgent 終端協同指南](../supervisor-subagent.md)。
+觀念說明請看 👉 [06 多 Agent 協同](../06-supervisor-subagent.md)。
+
+![練習的工作循環](../assets/practice-loop.svg)
 
 ---
 

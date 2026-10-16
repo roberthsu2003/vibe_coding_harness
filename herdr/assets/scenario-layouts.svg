@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .tag { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .h { font-size: 16px; font-weight: 800; fill: #0f172a; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11px; fill: #cbd5e1; }
+    .monoB { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11px; font-weight: 700; }
+    .txt { font-size: 12.5px; fill: #334155; }
+    .key { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; fill: #0f172a; }
+  </style>
+
+  <rect width="960" height="400" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">三種最常用的工作方式</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">從左到右：一邊看 AI 改什麼 → 依用途分分頁 → 下班暫離、明天接著做</text>
+
+  <!-- ===== A: side-by-side monitor ===== -->
+  <g filter="url(#shadow)"><rect x="30" y="82" width="290" height="295" rx="14" fill="#ffffff"/></g>
+  <rect x="46" y="96" width="58" height="22" rx="11" fill="#8b5cf6"/><text x="75" y="112" class="tag" text-anchor="middle">情境 A</text>
+  <text x="114" y="113" class="h">邊做邊監督</text>
+  <rect x="46" y="130" width="258" height="140" rx="8" fill="#0f172a"/>
+  <rect x="52" y="136" width="146" height="128" rx="5" fill="#1e293b"/>
+  <text x="60" y="154" class="monoB" fill="#c4b5fd">AI（OpenCode）</text>
+  <text x="60" y="174" class="mono">正在修改 app.py</text>
+  <rect x="202" y="136" width="96" height="128" rx="5" fill="#1e293b"/>
+  <text x="210" y="154" class="monoB" fill="#93c5fd">$ git diff</text>
+  <text x="210" y="174" class="mono" fill="#4ade80">+ 新增</text>
+  <text x="210" y="192" class="mono" fill="#f87171">- 刪除</text>
+  <rect x="46" y="284" width="44" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/><text x="68" y="301" class="key" text-anchor="middle">v</text>
+  <text x="98" y="301" class="txt">prefix+v 向右切一個窗格</text>
+  <text x="46" y="330" class="txt">左邊讓 AI 寫程式，右邊隨時</text>
+  <text x="46" y="350" class="txt">看它改了什麼，不用一直切換</text>
+
+  <!-- ===== B: tabs by purpose ===== -->
+  <g filter="url(#shadow)"><rect x="335" y="82" width="290" height="295" rx="14" fill="#ffffff"/></g>
+  <rect x="351" y="96" width="58" height="22" rx="11" fill="#3b82f6"/><text x="380" y="112" class="tag" text-anchor="middle">情境 B</text>
+  <text x="419" y="113" class="h">依用途分分頁</text>
+  <rect x="351" y="130" width="258" height="140" rx="8" fill="#0f172a"/>
+  <rect x="357" y="136" width="78" height="22" rx="5" fill="#3b82f6"/><text x="396" y="151" class="monoB" fill="#ffffff" text-anchor="middle">1 agent</text>
+  <rect x="440" y="136" width="70" height="22" rx="5" fill="#334155"/><text x="475" y="151" class="monoB" fill="#cbd5e1" text-anchor="middle">2 test</text>
+  <rect x="515" y="136" width="86" height="22" rx="5" fill="#334155"/><text x="558" y="151" class="monoB" fill="#cbd5e1" text-anchor="middle">3 server</text>
+  <rect x="357" y="164" width="246" height="100" rx="5" fill="#1e293b"/>
+  <text x="367" y="186" class="mono">（目前在 1 agent 分頁）</text>
+  <text x="367" y="206" class="mono">AI 專心寫程式…</text>
+  <rect x="351" y="284" width="44" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/><text x="373" y="301" class="key" text-anchor="middle">c</text>
+  <text x="403" y="301" class="txt">新增分頁　</text>
+  <rect x="470" y="284" width="56" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/><text x="498" y="301" class="key" text-anchor="middle">1-9</text>
+  <text x="534" y="301" class="txt">切換分頁</text>
+  <text x="351" y="330" class="txt">AI、測試、伺服器各一個分頁，</text>
+  <text x="351" y="350" class="txt">畫面不會混在一起</text>
+
+  <!-- ===== C: detach & return ===== -->
+  <g filter="url(#shadow)"><rect x="640" y="82" width="290" height="295" rx="14" fill="#ffffff"/></g>
+  <rect x="656" y="96" width="58" height="22" rx="11" fill="#10b981"/><text x="685" y="112" class="tag" text-anchor="middle">情境 C</text>
+  <text x="724" y="113" class="h">暫離與回來</text>
+  <!-- screen off -->
+  <rect x="656" y="134" width="96" height="66" rx="6" fill="#cbd5e1"/>
+  <text x="704" y="172" class="txt" text-anchor="middle" fill="#64748b">畫面關閉</text>
+  <!-- server running -->
+  <rect x="808" y="134" width="106" height="66" rx="6" fill="#0f172a"/>
+  <circle cx="824" cy="152" r="5" fill="#eab308"/>
+  <text x="834" y="156" class="mono">AI 還在跑</text>
+  <circle cx="824" cy="176" r="5" fill="#eab308"/>
+  <text x="834" y="180" class="mono">測試還在跑</text>
+  <line x1="756" y1="167" x2="802" y2="167" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4"/>
+  <!-- steps -->
+  <rect x="656" y="216" width="44" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/><text x="678" y="233" class="key" text-anchor="middle">q</text>
+  <text x="708" y="233" class="txt">prefix+q 暫離，回到一般終端機</text>
+  <rect x="656" y="250" width="66" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/><text x="689" y="267" class="key" text-anchor="middle">herdr</text>
+  <text x="730" y="267" class="txt">輸入 herdr 原樣接回</text>
+  <rect x="656" y="296" width="258" height="64" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="670" y="320" class="txt" fill="#b91c1c" font-weight="700">✗ 不要用 killall herdr 離開</text>
+  <text x="670" y="342" class="txt" fill="#b91c1c">會把背景的 AI 和測試全部中斷</text>
+</svg>

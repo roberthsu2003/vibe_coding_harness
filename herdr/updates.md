@@ -1,59 +1,73 @@
-# Herdr 版本、來源與更新紀錄
+# 📚 參考：版本與更新紀錄
 
-最近上網查核：**2026-10-13**。操作方式依當日官方文件，未查核本機 binary；各功能是否已收錄在你的 stable 版本，仍需透過 `--help` 確認。
+> 📚 參考　｜　[章節首頁](README.md)　｜　相關：[01 安裝與啟動](01-install.md)
 
-## 查核時的發行狀態
+---
 
-官方 GitHub Releases 當日將 **v0.9.3** 標為 Latest，發布時間為 **2026-09-29**；列表另有 **preview-2026-10-12-6d697e1e75ff**。Preview 是另一個更新管道，不應直接當成 stable 最新版。[官方 Releases](https://github.com/herdrdev/herdr/releases)
+## 1. 本教材使用的版本
 
-官方文件目前列出 macOS、Linux、Windows stable 安裝與 OpenCode V2 integration 支援；部分搜尋結果仍會找到較早的 README，因此本文採官方當日安裝與整合文件。[Install](https://herdr.dev/docs/install/)｜[Integrations](https://herdr.dev/docs/integrations/)
+| 項目 | 內容 |
+| :--- | :--- |
+| 教材驗證版本 | **herdr 0.9.3**（stable） |
+| 官方發布日期 | 2026-09-29 |
+| 最後實機驗證 | 2026-10-16 |
 
-## 更新方式
-
-| 原本安裝方式 | 更新方式 |
-| --- | --- |
-| Herdr 官方 installer | `herdr update` |
-| Homebrew | `brew update` 後執行 `brew upgrade herdr` |
-| mise / Nix | 使用原套件管理器的更新流程 |
-
-`herdr update` 適用 Herdr 自己的 installer 安裝；套件管理器安裝請走原管理器。[官方安裝與更新說明](https://herdr.dev/docs/install/)
-
-官方 installer 的管道可用以下指令查閱：
+查看自己的版本與更新管道：
 
 ```bash
-herdr channel show
+herdr --version
+herdr channel show        # 顯示 stable 或 preview
 ```
 
-一般教學先使用 stable；確實需要 preview 功能時，再查閱 `herdr channel` 與相關文件。本文不預設切換管道。[官方 CLI reference](https://herdr.dev/docs/cli-reference/)
+> [!NOTE]
+> 官方 [Releases](https://github.com/herdrdev/herdr/releases) 也會列出 **preview** 版。Preview 是另一個測試用的更新管道，不是 stable 最新版。教學一律使用 **stable**。
 
-更新不保證所有既有程序永遠不中斷：相容 server 可持續執行，需重啟的 server 可能必須停止；`--handoff` 是額外的實驗機制。更新前先讀該版本說明，分清楚 detach、restart restore 與 live handoff。[官方 Session state](https://herdr.dev/docs/session-state/)
+---
 
-## 如何維護這份教學
+## 2. 如何更新
 
-1. 記錄 `herdr --version` 與更新管道。
-2. 對照官方 Releases，核對 stable / preview 與發行日期。
-3. 查閱 Install、Keyboard、CLI、Integrations 的變更。
-4. 用本機命令群組說明核對旗標，再在練習 session 測試分割、讀取與 detach。
-5. 搭配 OpenCode 時，重新核對整合相容性、安裝位置與需重啟的程序。
-6. 修改文件並更新本頁紀錄；沒有做實機驗證時，明確標記「文件查核」。
+| 當初的安裝方式 | 更新方式 |
+| :--- | :--- |
+| 官方安裝腳本 | `herdr update` |
+| Homebrew | `brew update && brew upgrade herdr` |
+| mise / Nix | 用原本的套件管理器更新 |
 
-## 官方來源索引
+> [!WARNING]
+> 更新時，背景執行中的 Herdr server 可能需要重啟，窗格裡的程式可能因此中斷。**更新前先讓 AI 完成手上的工作**，並閱讀該版本的更新說明。[官方說明](https://herdr.dev/docs/session-state/)
 
-| 主題 | 來源 |
-| --- | --- |
-| 文件入口 | [Docs](https://herdr.dev/docs/) |
+---
+
+## 3. 官方文件索引
+
+| 主題 | 連結 |
+| :--- | :--- |
+| 文件首頁 | [Docs](https://herdr.dev/docs/) |
 | 安裝與更新 | [Install](https://herdr.dev/docs/install/) |
-| 初次操作 | [Quick start](https://herdr.dev/docs/quick-start/) |
+| 第一次使用 | [Quick start](https://herdr.dev/docs/quick-start/) |
 | 快捷鍵 | [Keyboard](https://herdr.dev/docs/keyboard/) |
-| 支援的 agents | [Agents](https://herdr.dev/docs/agents/) |
+| 支援的 AI | [Agents](https://herdr.dev/docs/agents/) |
 | CLI 指令 | [CLI reference](https://herdr.dev/docs/cli-reference/) |
-| Agent 協調 | [Agent automation](https://herdr.dev/docs/agent-automation/) |
-| OpenCode plugin | [Integrations](https://herdr.dev/docs/integrations/#opencode) |
+| AI 協調 | [Agent automation](https://herdr.dev/docs/agent-automation/) |
+| OpenCode 整合 | [Integrations](https://herdr.dev/docs/integrations/#opencode) |
 | 持續執行與恢復 | [Session state](https://herdr.dev/docs/session-state/) |
 | 發行版本 | [GitHub Releases](https://github.com/herdrdev/herdr/releases) |
 
-## 查核紀錄
+---
 
-| 日期 | 本次確認 | 驗證層級 |
-| --- | --- | --- |
-| 2026-10-13 | Latest 標記為 v0.9.3；核對安裝、快捷鍵、窗格／agent CLI、OpenCode V2 整合與 Mini/headless 限制 | 官方網站與 Releases 文件查核；未啟動或控制 session |
+## 4. 給教材維護者：如何更新這份教材
+
+1. 記錄 `herdr --version` 與 `herdr channel show`。
+2. 對照官方 Releases，確認 stable 版本與發行日期。
+3. 用 `herdr --help`、`herdr pane`、`herdr agent` 等指令群組核對指令與參數。
+4. 用 `herdr --default-config` 核對快捷鍵與設定項目（教材裡的 SVG 速查卡也要一起更新）。
+5. 在練習用的資料夾實際跑過 [07 動手練習](practice/README.md) 的關卡。
+6. 修改文件後，在下方查核紀錄新增一筆；只看文件、沒有實機測試時，標記為「文件查核」。
+
+---
+
+## 5. 查核紀錄
+
+| 日期 | 確認內容 | 驗證方式 |
+| :--- | :--- | :--- |
+| 2026-10-16 | 章節重整；以本機 0.9.3 核對所有 CLI 指令與預設快捷鍵；實際跑過 6 關練習（agy + OpenCode） | **實機驗證** |
+| 2026-10-13 | Latest 為 v0.9.3；核對安裝、快捷鍵、窗格／agent CLI、OpenCode V2 整合與 Mini/headless 限制 | 文件查核 |

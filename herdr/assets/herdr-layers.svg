@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11px; fill: #cbd5e1; }
+    .monoDim { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11px; fill: #64748b; }
+    .side { font-size: 11.5px; fill: #e2e8f0; }
+    .tab { font-size: 11.5px; font-weight: 600; }
+    .badge { font-size: 14px; font-weight: 800; fill: #ffffff; }
+    .cardTitle { font-size: 16px; font-weight: 800; }
+    .cardText { font-size: 12.5px; fill: #334155; }
+  </style>
+
+  <rect width="960" height="500" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">Herdr 的三層結構：工作區 › 分頁 › 窗格</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">一個大框包著一個小框，就像「辦公大樓 › 房間 › 辦公桌」（示意圖）</text>
+
+  <!-- ========== Mock Herdr window ========== -->
+  <g filter="url(#shadow)">
+    <rect x="30" y="85" width="590" height="385" rx="12" fill="#0f172a"/>
+  </g>
+  <!-- window chrome -->
+  <circle cx="50" cy="102" r="5" fill="#ef4444"/>
+  <circle cx="66" cy="102" r="5" fill="#f59e0b"/>
+  <circle cx="82" cy="102" r="5" fill="#22c55e"/>
+  <text x="325" y="106" class="monoDim" text-anchor="middle">終端機 — herdr</text>
+
+  <!-- Sidebar = workspaces (badge 1) -->
+  <rect x="40" y="118" width="140" height="342" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2.5"/>
+  <text x="52" y="140" class="side" font-weight="700" fill="#6ee7b7">工作區</text>
+  <rect x="48" y="150" width="124" height="44" rx="6" fill="#334155"/>
+  <circle cx="60" cy="164" r="4.5" fill="#22c55e"/>
+  <text x="72" y="168" class="side" font-weight="700">my-project</text>
+  <text x="72" y="185" class="monoDim">main ✓</text>
+  <rect x="48" y="200" width="124" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <circle cx="60" cy="214" r="4.5" fill="#eab308"/>
+  <text x="72" y="218" class="side">blog</text>
+  <text x="72" y="235" class="monoDim">draft ✎</text>
+  <text x="52" y="272" class="side" font-weight="700" fill="#6ee7b7">Agents</text>
+  <circle cx="60" cy="292" r="4.5" fill="#eab308"/>
+  <text x="72" y="296" class="side">opencode</text>
+  <circle cx="60" cy="314" r="4.5" fill="#ef4444"/>
+  <text x="72" y="318" class="side">claude</text>
+
+  <!-- Tab bar (badge 2) -->
+  <rect x="190" y="118" width="420" height="30" rx="7" fill="#1e293b" stroke="#3b82f6" stroke-width="2.5"/>
+  <rect x="198" y="123" width="88" height="20" rx="5" fill="#3b82f6"/>
+  <text x="242" y="137" class="tab" fill="#ffffff" text-anchor="middle">1 寫程式</text>
+  <rect x="292" y="123" width="76" height="20" rx="5" fill="#334155"/>
+  <text x="330" y="137" class="tab" fill="#cbd5e1" text-anchor="middle">2 測試</text>
+  <rect x="374" y="123" width="88" height="20" rx="5" fill="#334155"/>
+  <text x="418" y="137" class="tab" fill="#cbd5e1" text-anchor="middle">3 伺服器</text>
+
+  <!-- Panes (badge 3) -->
+  <rect x="190" y="156" width="250" height="304" rx="7" fill="#0b1220" stroke="#8b5cf6" stroke-width="2.5"/>
+  <text x="202" y="178" class="mono" fill="#c4b5fd">● OpenCode（AI 寫程式）</text>
+  <text x="202" y="204" class="monoDim">&gt; 幫我加上登入功能</text>
+  <text x="202" y="224" class="mono">正在修改 auth.py ...</text>
+  <text x="202" y="244" class="mono">正在新增 test_auth.py ...</text>
+  <rect x="202" y="430" width="226" height="20" rx="4" fill="#1e293b"/>
+  <text x="210" y="444" class="monoDim">輸入訊息…</text>
+
+  <rect x="448" y="156" width="162" height="148" rx="7" fill="#0b1220" stroke="#8b5cf6" stroke-width="2.5"/>
+  <text x="458" y="178" class="mono" fill="#c4b5fd">$ git diff</text>
+  <text x="458" y="200" class="mono" fill="#4ade80">+ def login():</text>
+  <text x="458" y="218" class="mono" fill="#f87171">- pass</text>
+
+  <rect x="448" y="312" width="162" height="148" rx="7" fill="#0b1220" stroke="#8b5cf6" stroke-width="2.5"/>
+  <text x="458" y="334" class="mono" fill="#c4b5fd">$ pytest</text>
+  <text x="458" y="356" class="mono" fill="#4ade80">5 passed</text>
+
+  <!-- Badges on the mock -->
+  <circle cx="40" cy="118" r="13" fill="#10b981" stroke="#ffffff" stroke-width="2"/>
+  <text x="40" y="123" class="badge" text-anchor="middle">1</text>
+  <circle cx="610" cy="118" r="13" fill="#3b82f6" stroke="#ffffff" stroke-width="2"/>
+  <text x="610" y="123" class="badge" text-anchor="middle">2</text>
+  <circle cx="610" cy="312" r="13" fill="#8b5cf6" stroke="#ffffff" stroke-width="2"/>
+  <text x="610" y="317" class="badge" text-anchor="middle">3</text>
+
+  <!-- ========== Legend cards ========== -->
+  <g filter="url(#shadow)">
+    <rect x="650" y="85" width="280" height="118" rx="12" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.5"/>
+    <rect x="650" y="219" width="280" height="118" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <rect x="650" y="353" width="280" height="117" rx="12" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  </g>
+
+  <circle cx="676" cy="113" r="13" fill="#10b981"/>
+  <text x="676" y="118" class="badge" text-anchor="middle">1</text>
+  <text x="698" y="119" class="cardTitle" fill="#047857">Workspace 工作區</text>
+  <text x="668" y="146" class="cardText">＝ 一個專案資料夾</text>
+  <text x="668" y="167" class="cardText">左側欄列出所有工作區，</text>
+  <text x="668" y="187" class="cardText">並顯示 Git 分支與狀態</text>
+
+  <circle cx="676" cy="247" r="13" fill="#3b82f6"/>
+  <text x="676" y="252" class="badge" text-anchor="middle">2</text>
+  <text x="698" y="253" class="cardTitle" fill="#1d4ed8">Tab 分頁</text>
+  <text x="668" y="280" class="cardText">＝ 工作區裡的一組版面</text>
+  <text x="668" y="301" class="cardText">依用途分開：寫程式、測試、</text>
+  <text x="668" y="321" class="cardText">伺服器各一個分頁</text>
+
+  <circle cx="676" cy="381" r="13" fill="#8b5cf6"/>
+  <text x="676" y="386" class="badge" text-anchor="middle">3</text>
+  <text x="698" y="387" class="cardTitle" fill="#6d28d9">Pane 窗格</text>
+  <text x="668" y="414" class="cardText">＝ 真正執行程式的小視窗</text>
+  <text x="668" y="435" class="cardText">一個跑 AI、一個看 git diff、</text>
+  <text x="668" y="455" class="cardText">一個跑測試，互不干擾</text>
+</svg>

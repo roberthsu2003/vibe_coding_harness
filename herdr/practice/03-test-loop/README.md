@@ -1,12 +1,14 @@
 # 第 3 關：測試當裁判
 
-← [回到關卡地圖](../README.md)　｜　上一關：[第 2 關](../02-retry/README.md)
+> 🎯 第 3 關／共 6 關　｜　[← 第 2 關](../02-retry/README.md)　｜　[關卡地圖](../README.md)　｜　[第 4 關 →](../04-worktree-review/README.md)　｜　⏱ 約 10 分鐘
 
 ## 學習目標
 
 - 理解**「先寫測試，再寫程式」**：聰明的主管負責訂規格（測試），小模型負責實作。
 - 看小模型**依照測試失敗的訊息**一步步修正，直到全部通過。
 - 學會看懂 pytest 的結果：`passed`、`failed`。
+
+![測試一輪一輪通過](../../assets/lesson-retry-rounds.svg)
 
 ---
 

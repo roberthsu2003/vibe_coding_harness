@@ -1,6 +1,6 @@
 # 第 5 關：平行開發
 
-← [回到關卡地圖](../README.md)　｜　上一關：[第 4 關](../04-worktree-review/README.md)
+> 🎯 第 5 關／共 6 關　｜　[← 第 4 關](../04-worktree-review/README.md)　｜　[關卡地圖](../README.md)　｜　🎉 最後一關　｜　⏱ 約 8 分鐘
 
 ## 學習目標
 
@@ -9,6 +9,8 @@
 - 看到完整的收尾：兩個 worktree、兩個分支都清理乾淨，只剩 main。
 
 這一關把前面學過的全部組合起來：任務卡（第 1 關）、退回修改（第 2 關）、測試（第 3 關）、worktree（第 4 關），再加上**平行派工**。
+
+![兩條分支平行開發再合併](../../assets/lesson-parallel-merge.svg)
 
 ---
 

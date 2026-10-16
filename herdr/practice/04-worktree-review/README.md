@@ -1,6 +1,6 @@
 # 第 4 關：隔離與審查
 
-← [回到關卡地圖](../README.md)　｜　上一關：[第 3 關](../03-test-loop/README.md)
+> 🎯 第 4 關／共 6 關　｜　[← 第 3 關](../03-test-loop/README.md)　｜　[關卡地圖](../README.md)　｜　[第 5 關 →](../05-parallel-worktrees/README.md)　｜　⏱ 約 5 分鐘
 
 ## 學習目標
 
@@ -8,7 +8,9 @@
 - 看主管**審查**小模型的改動（`git diff`），確認沒問題才**合併**回 main。
 - 看到完整的收尾：**合併 → 移除 worktree → 刪除分支**。
 
-> 想先了解 worktree 是什麼？見 [Git 操作指南](../../../git/)。
+![Git Worktree 平行架構](../../../git/assets/git-worktree-concept.svg)
+
+> 想深入了解 worktree？見 [Git 操作指南](../../../git/README.md)。
 
 ---
 

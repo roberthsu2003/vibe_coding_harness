@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11.5px; fill: #cbd5e1; }
+    .cmd { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11.5px; font-weight: 700; fill: #1d4ed8; }
+    .paneTitle { font-size: 13px; font-weight: 800; fill: #ffffff; }
+    .num { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .step { font-size: 13px; font-weight: 700; fill: #0f172a; }
+  </style>
+
+  <rect width="960" height="340" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">第 0 關在做什麼：主管 AI 操作另一個窗格</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">你只說一句話，agy 就用四個 herdr 指令完成：開窗格 → 執行 → 讀回 → 關閉</text>
+
+  <!-- Left pane: agy -->
+  <g filter="url(#shadow)"><rect x="40" y="86" width="300" height="220" rx="12" fill="#0f172a"/></g>
+  <rect x="40" y="86" width="300" height="34" rx="12" fill="#3b82f6"/>
+  <rect x="40" y="106" width="300" height="14" fill="#3b82f6"/>
+  <text x="58" y="108" class="paneTitle">主管 agy（你說話的窗格）</text>
+  <text x="58" y="148" class="mono" fill="#fcd34d">&gt; 幫我在旁邊開一個窗格，</text>
+  <text x="58" y="166" class="mono" fill="#fcd34d">  看看有什麼檔案</text>
+  <text x="58" y="200" class="mono">看到的檔案：</text>
+  <text x="58" y="218" class="mono">  GEMINI.md, tasks/</text>
+  <text x="58" y="236" class="mono">Python 版本：3.14</text>
+
+  <!-- Right pane: worker -->
+  <g filter="url(#shadow)"><rect x="620" y="86" width="300" height="220" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="2" stroke-dasharray="7 5"/></g>
+  <rect x="620" y="86" width="300" height="34" rx="12" fill="#10b981"/>
+  <rect x="620" y="106" width="300" height="14" fill="#10b981"/>
+  <text x="638" y="108" class="paneTitle">新開的窗格（做完會關掉）</text>
+  <text x="638" y="148" class="mono">$ ls -a</text>
+  <text x="638" y="166" class="mono">.  ..  GEMINI.md  tasks</text>
+  <text x="638" y="190" class="mono">$ python3 --version</text>
+  <text x="638" y="208" class="mono">Python 3.14.6</text>
+
+  <!-- Steps in the middle -->
+  <line x1="346" y1="112" x2="612" y2="112" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="368" cy="98" r="10" fill="#3b82f6"/><text x="368" y="102" class="num" text-anchor="middle">1</text>
+  <text x="384" y="102" class="step">開窗格</text>
+  <text x="456" y="102" class="cmd">pane split</text>
+
+  <line x1="346" y1="164" x2="612" y2="164" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="368" cy="150" r="10" fill="#3b82f6"/><text x="368" y="154" class="num" text-anchor="middle">2</text>
+  <text x="384" y="154" class="step">執行指令</text>
+  <text x="470" y="154" class="cmd">pane run</text>
+
+  <line x1="612" y1="216" x2="346" y2="216" stroke="#10b981" stroke-width="2" marker-end="url(#arrowG)"/>
+  <circle cx="368" cy="202" r="10" fill="#10b981"/><text x="368" y="206" class="num" text-anchor="middle">3</text>
+  <text x="384" y="206" class="step">讀回結果</text>
+  <text x="470" y="206" class="cmd" fill="#047857">pane read</text>
+
+  <line x1="346" y1="268" x2="612" y2="268" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="368" cy="254" r="10" fill="#3b82f6"/><text x="368" y="258" class="num" text-anchor="middle">4</text>
+  <text x="384" y="258" class="step">關閉窗格</text>
+  <text x="470" y="258" class="cmd">pane close</text>
+</svg>

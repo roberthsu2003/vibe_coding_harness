@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 500" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .colTitle { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .key { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; font-weight: 700; fill: #0f172a; }
+    .act { font-size: 13.5px; fill: #1e293b; }
+    .star { font-size: 11px; font-weight: 700; fill: #b45309; }
+  </style>
+
+  <rect width="960" height="500" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">常用快捷鍵速查卡</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">每個鍵前面都要先按 prefix（Ctrl+B 放開）　★ = 每天必用</text>
+
+  <!-- ===== Column 1: Panes ===== -->
+  <g filter="url(#shadow)"><rect x="30" y="82" width="290" height="390" rx="14" fill="#ffffff"/></g>
+  <rect x="30" y="82" width="290" height="40" rx="14" fill="#8b5cf6"/>
+  <rect x="30" y="108" width="290" height="14" fill="#8b5cf6"/>
+  <text x="175" y="108" class="colTitle" text-anchor="middle">窗格 Pane</text>
+
+  <rect x="46" y="138" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="158" class="key" text-anchor="middle">v</text>
+  <text x="130" y="158" class="act">向右分割窗格</text><text x="290" y="158" class="star">★</text>
+
+  <rect x="46" y="180" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="200" class="key" text-anchor="middle">-</text>
+  <text x="130" y="200" class="act">向下分割窗格</text><text x="290" y="200" class="star">★</text>
+
+  <rect x="46" y="222" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="242" class="key" text-anchor="middle">h j k l</text>
+  <text x="130" y="242" class="act">移到 左/下/上/右 窗格</text>
+
+  <rect x="46" y="264" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="284" class="key" text-anchor="middle">Tab</text>
+  <text x="130" y="284" class="act">輪流切換到下一個窗格</text>
+
+  <rect x="46" y="306" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="326" class="key" text-anchor="middle">z</text>
+  <text x="130" y="326" class="act">放大／還原目前窗格</text><text x="290" y="326" class="star">★</text>
+
+  <rect x="46" y="348" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="368" class="key" text-anchor="middle">r</text>
+  <text x="130" y="368" class="act">調整窗格大小</text>
+
+  <rect x="46" y="390" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="410" class="key" text-anchor="middle">x</text>
+  <text x="130" y="410" class="act">關閉目前窗格</text><text x="290" y="410" class="star">★</text>
+
+  <text x="48" y="452" class="sub">最簡單：直接用滑鼠點窗格</text>
+
+  <!-- ===== Column 2: Tabs ===== -->
+  <g filter="url(#shadow)"><rect x="335" y="82" width="290" height="390" rx="14" fill="#ffffff"/></g>
+  <rect x="335" y="82" width="290" height="40" rx="14" fill="#3b82f6"/>
+  <rect x="335" y="108" width="290" height="14" fill="#3b82f6"/>
+  <text x="480" y="108" class="colTitle" text-anchor="middle">分頁 Tab</text>
+
+  <rect x="353" y="138" width="70" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="388" y="158" class="key" text-anchor="middle">c</text>
+  <text x="437" y="158" class="act">新增分頁</text><text x="595" y="158" class="star">★</text>
+
+  <rect x="353" y="180" width="70" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="388" y="200" class="key" text-anchor="middle">n / p</text>
+  <text x="437" y="200" class="act">下一個／上一個分頁</text>
+
+  <rect x="353" y="222" width="70" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="388" y="242" class="key" text-anchor="middle">1 … 9</text>
+  <text x="437" y="242" class="act">直接跳到第 N 個分頁</text><text x="595" y="242" class="star">★</text>
+
+  <rect x="353" y="264" width="70" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="388" y="284" class="key" text-anchor="middle">⇧ T</text>
+  <text x="437" y="284" class="act">重新命名分頁</text>
+
+  <rect x="353" y="306" width="70" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="388" y="326" class="key" text-anchor="middle">⇧ X</text>
+  <text x="437" y="326" class="act">關閉整個分頁</text>
+
+  <text x="353" y="452" class="sub">⇧ = 按住 Shift</text>
+
+  <!-- ===== Column 3: Session / others ===== -->
+  <g filter="url(#shadow)"><rect x="640" y="82" width="290" height="390" rx="14" fill="#ffffff"/></g>
+  <rect x="640" y="82" width="290" height="40" rx="14" fill="#10b981"/>
+  <rect x="640" y="108" width="290" height="14" fill="#10b981"/>
+  <text x="785" y="108" class="colTitle" text-anchor="middle">工作區與其他</text>
+
+  <rect x="658" y="138" width="58" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="687" y="158" class="key" text-anchor="middle">q</text>
+  <text x="730" y="158" class="act">暫離（AI 繼續跑）</text><text x="900" y="158" class="star">★</text>
+
+  <rect x="658" y="180" width="58" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="687" y="200" class="key" text-anchor="middle">w</text>
+  <text x="730" y="200" class="act">切換工作區</text>
+
+  <rect x="658" y="222" width="58" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="687" y="242" class="key" text-anchor="middle">⇧ N</text>
+  <text x="730" y="242" class="act">新增工作區</text>
+
+  <rect x="658" y="264" width="58" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="687" y="284" class="key" text-anchor="middle">b</text>
+  <text x="730" y="284" class="act">顯示／收合左側欄</text>
+
+  <rect x="658" y="306" width="58" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="687" y="326" class="key" text-anchor="middle">e</text>
+  <text x="730" y="326" class="act">用編輯器看完整輸出</text>
+
+  <rect x="658" y="348" width="58" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="687" y="368" class="key" text-anchor="middle">?</text>
+  <text x="730" y="368" class="act">查看所有快捷鍵</text><text x="900" y="368" class="star">★</text>
+
+  <text x="658" y="452" class="sub">回來：在終端機輸入 herdr</text>
+</svg>

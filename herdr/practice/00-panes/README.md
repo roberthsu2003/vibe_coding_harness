@@ -1,6 +1,6 @@
 # 第 0 關：認識窗格
 
-← [回到關卡地圖](../README.md)　｜　開始前請先完成 [準備篇](../prepare.md)
+> 🎯 第 0 關／共 6 關　｜　[← 準備篇](../prepare.md)　｜　[關卡地圖](../README.md)　｜　[第 1 關 →](../01-first-subagent/README.md)　｜　⏱ 約 2 分鐘
 
 ## 學習目標
 
@@ -11,6 +11,8 @@
 ## 開始前
 
 在 `~/herdr-lab` 進入 Herdr，啟動 `agy --mode accept-edits`（見 [準備篇第三部分](../prepare.md#第三部分和主管-aiagy相處的方式)）。
+
+![第 0 關在做什麼](../../assets/lesson-pane-control.svg)
 
 ---
 

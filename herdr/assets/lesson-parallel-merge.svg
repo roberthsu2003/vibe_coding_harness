@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .branch { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; }
+    .lbl { font-size: 12.5px; font-weight: 700; fill: #0f172a; }
+    .txt { font-size: 12px; fill: #475569; }
+    .num { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .stepT { font-size: 12.5px; font-weight: 700; fill: #0f172a; }
+  </style>
+
+  <rect width="960" height="400" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">第 5 關在做什麼：兩條分支平行開發，再合併回 main</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">每個小模型在自己的 worktree（獨立資料夾＋分支）工作，互不干擾</text>
+
+  <!-- main line -->
+  <line x1="60" y1="200" x2="900" y2="200" stroke="#64748b" stroke-width="5" stroke-linecap="round"/>
+  <text x="60" y="230" class="branch" fill="#334155">main</text>
+
+  <!-- branch A (up) -->
+  <path d="M 180 200 C 230 200, 230 130, 290 130 L 600 130 C 660 130, 660 200, 720 200" fill="none" stroke="#10b981" stroke-width="5" stroke-linecap="round"/>
+  <!-- branch B (down) -->
+  <path d="M 180 200 C 230 200, 230 270, 290 270 L 600 270 C 660 270, 660 200, 720 200" fill="none" stroke="#8b5cf6" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- commits -->
+  <g filter="url(#shadow)">
+    <circle cx="120" cy="200" r="11" fill="#ffffff" stroke="#64748b" stroke-width="4"/>
+    <circle cx="450" cy="130" r="11" fill="#ffffff" stroke="#10b981" stroke-width="4"/>
+    <circle cx="450" cy="270" r="11" fill="#ffffff" stroke="#8b5cf6" stroke-width="4"/>
+    <circle cx="720" cy="200" r="13" fill="#64748b"/>
+  </g>
+  <text x="120" y="180" class="txt" text-anchor="middle">初始化</text>
+  <text x="720" y="178" class="lbl" text-anchor="middle">合併</text>
+
+  <!-- branch labels / worktree cards -->
+  <rect x="290" y="88" width="320" height="26" rx="13" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="304" y="106" class="branch" fill="#047857">.worktrees/code</text>
+  <text x="440" y="106" class="txt">小模型 coder：寫統計程式</text>
+  <text x="450" y="160" class="txt" text-anchor="middle">pytest 全部通過 ✓</text>
+
+  <rect x="290" y="286" width="320" height="26" rx="13" fill="#f5f3ff" stroke="#ddd6fe"/>
+  <text x="304" y="304" class="branch" fill="#6d28d9">.worktrees/docs</text>
+  <text x="440" y="304" class="txt">小模型 writer：寫說明文件</text>
+  <text x="450" y="252" class="txt" text-anchor="middle">段落與範例都正確 ✓</text>
+
+  <!-- cleanup -->
+  <rect x="760" y="226" width="160" height="62" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="776" y="250" class="lbl">清理乾淨</text>
+  <text x="776" y="272" class="txt">只剩 main 一條線</text>
+
+  <!-- steps -->
+  <rect x="30" y="334" width="900" height="46" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <circle cx="58" cy="357" r="10" fill="#3b82f6"/><text x="58" y="361" class="num" text-anchor="middle">1</text>
+  <text x="74" y="362" class="stepT">建立 2 個 worktree</text>
+  <circle cx="232" cy="357" r="10" fill="#3b82f6"/><text x="232" y="361" class="num" text-anchor="middle">2</text>
+  <text x="248" y="362" class="stepT">同時派工（不等待）</text>
+  <circle cx="414" cy="357" r="10" fill="#3b82f6"/><text x="414" y="361" class="num" text-anchor="middle">3</text>
+  <text x="430" y="362" class="stepT">分別驗收、commit</text>
+  <circle cx="586" cy="357" r="10" fill="#3b82f6"/><text x="586" y="361" class="num" text-anchor="middle">4</text>
+  <text x="602" y="362" class="stepT">依序合併回 main</text>
+  <circle cx="752" cy="357" r="10" fill="#3b82f6"/><text x="752" y="361" class="num" text-anchor="middle">5</text>
+  <text x="768" y="362" class="stepT">移除 worktree 與分支</text>
+</svg>
