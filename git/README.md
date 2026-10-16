@@ -80,14 +80,28 @@ vibe_coding_harness/              # 主專案目錄（母體）
 
 ## 3. 完整操作指令與生命週期（端到端實踐）
 
-Worktree 的標準生命週期包含：**建立 → 檢視 → 賦予 Agent → 驗收合併 → 清理**。
+Worktree 的標準生命週期包含：**建立 → 檢視 → 賦予 Agent → 提交 → 回母目錄合併 → 清理**。
+
+```text
+① 建立 ➜ ② 檢視 ➜ ③ Agent 開發 ➜ ④ 提交 ➜ ⑤ 回母目錄合併 ➜ ⑥ 清理
+```
+
+```mermaid
+flowchart LR
+    A["① 建立<br/>worktree add"] --> B["② 檢視<br/>worktree list"]
+    B --> C["③ Agent 開發<br/>（在 worktree 內）"]
+    C --> D["④ 提交<br/>git commit"]
+    D --> E["⑤ 回母目錄合併<br/>git merge"]
+    E --> F["⑥ 清理<br/>remove + branch -d"]
+```
+
+> [!TIP]
+> **一句話記住**：「**在 worktree 裡開發與 commit，回到母目錄才 merge**」。
 
 ### 步驟 1：建立存放目錄與分支工作區
 ```bash
-# 1. 確保存放目錄存在
-mkdir -p .worktrees
-
-# 2. 建立新分支 feature/login，並將其掛載到 .worktrees/feature-login
+# 建立新分支 feature/login，並將其掛載到 .worktrees/feature-login
+# （.worktrees/ 目錄不存在時，Git 會自動建立）
 git worktree add .worktrees/feature-login -b feature/login
 ```
 
@@ -110,19 +124,108 @@ opencode
 ```
 > 此時 Agent 的所有檔案讀寫、安裝依賴（`uv add`）、終端測試，完全隔離在該目錄與 `feature/login` 分支上，主專案的代碼絲毫不受影響！
 
-### 步驟 4：驗收、合併與安全移除 Worktree
-當 Agent 完成任務，且你已驗收代碼並在母目錄 merge 完畢後，即可清理該工作區：
+### 步驟 4：在 Worktree 內驗收並提交（Commit）
+Agent 完成任務後，先在 **worktree 目錄內** 確認改動並提交：
 
 ```bash
-# 1. 先回到母目錄
+# 目前位置：.worktrees/feature-login
+
+# 1. 查看改了哪些檔案
+git status
+git diff
+
+# 2. 執行測試，確認功能正常（依專案調整）
+uv run pytest
+
+# 3. 提交到 feature/login 分支
+git add .
+git commit -m "feat: 新增登入功能"
+```
+
+> [!NOTE]
+> 因為所有 worktree **共用同一個 `.git` 資料庫**，這裡的 commit 在母目錄會**立即看得到**，不需要 `push` / `pull`。
+
+### 步驟 5：回到母目錄，合併（Merge）回 main ⭐
+合併一定要在 **母目錄** 執行，因為 `main` 分支已經被母目錄簽出（checkout），在 worktree 裡無法切換到 `main`。
+
+```bash
+# 1. 回到母目錄（從 .worktrees/feature-login 往上兩層）
 cd ../..
 
-# 2. 安全移除該 worktree
+# 2. 確認目前在 main 分支，且工作目錄是乾淨的
+git branch --show-current     # 應顯示 main
+git status                    # 應顯示 nothing to commit
+
+# 3. （有遠端時）先把 main 更新到最新
+git pull
+
+# 4. 先預覽 feature/login 比 main 多了哪些 commit
+git log main..feature/login --oneline
+
+# 5. 合併分支
+git merge feature/login
+
+# 6. （有遠端時）推送到 GitHub
+git push
+```
+
+**合併結果有兩種情況：**
+
+| 結果 | 終端機訊息 | 該怎麼做 |
+| :--- | :--- | :--- |
+| ✅ **順利合併** | `Fast-forward` 或 `Merge made by the 'ort' strategy.` | 完成！直接進入步驟 6 |
+| ⚠️ **發生衝突** | `CONFLICT (content): Merge conflict in <檔案>` | 依照下方「衝突處理」解決 |
+
+<details>
+<summary><b>⚠️ 遇到合併衝突（Conflict）怎麼辦？點我展開</b></summary>
+
+衝突代表 `main` 與 `feature/login` **改到了同一個檔案的同一段**，Git 不知道要保留哪個版本。
+
+1. 查看哪些檔案衝突：
+   ```bash
+   git status    # 標示為 both modified 的就是衝突檔案
+   ```
+2. 打開衝突檔案，會看到這樣的標記：
+   ```text
+   <<<<<<< HEAD
+   main 分支的內容
+   =======
+   feature/login 分支的內容
+   >>>>>>> feature/login
+   ```
+3. 手動保留正確內容，並**刪除 `<<<<<<<`、`=======`、`>>>>>>>` 三行標記**。
+   （也可以直接請 AI Agent：「請幫我解決目前的 merge 衝突，保留兩邊的功能」）
+4. 標記為已解決並完成合併：
+   ```bash
+   git add <衝突檔案>
+   git commit -m "merge: 合併 feature/login"
+   ```
+5. 想放棄這次合併、回到合併前的狀態：
+   ```bash
+   git merge --abort
+   ```
+
+</details>
+
+### 步驟 6：清理 Worktree 與分支
+合併完成後，這個工作區與分支就功成身退了：
+
+```bash
+# 1. 安全移除該 worktree（若裡面還有未 commit 的改動，Git 會拒絕並提醒你）
 git worktree remove .worktrees/feature-login
+
+# 2. 刪除已合併的本地分支（-d 只會刪除「已合併」的分支，很安全）
+git branch -d feature/login
 
 # 3. （選用）整理已過期的中繼紀錄
 git worktree prune
+
+# 4. 確認清理完成，應只剩母目錄
+git worktree list
 ```
+
+> [!WARNING]
+> 若 `git branch -d` 出現 `not fully merged` 錯誤，代表這個分支**還有 commit 沒合併進 main**。請先回到步驟 5 確認，**不要直接改用 `-D` 強制刪除**，否則那些 commit 會遺失。
 
 ---
 
@@ -175,12 +278,21 @@ git worktree prune
 | **列出所有工作區** | `git worktree list` | 查看當前所有的 worktree 路徑與分支狀態 |
 | **安全移除工作區** | `git worktree remove <路徑>` | 刪除工作目錄並註銷 Git 內部指標（需先 commit） |
 | **清理無效參照** | `git worktree prune` | 清除被手動刪除或過期的 worktree 中繼狀態 |
+| **預覽待合併 commit** | `git log main..<分支名稱> --oneline` | 合併前先看分支比 main 多了哪些 commit |
+| **合併回主幹** | `git merge <分支名稱>` | ⚠️ 必須在**母目錄**（main 分支）執行 |
+| **放棄合併** | `git merge --abort` | 衝突解不開時，回到合併前的狀態 |
+| **刪除已合併分支** | `git branch -d <分支名稱>` | 只刪除已合併的分支，安全不遺失 commit |
 
 ### 常見問題排解 (Troubleshooting)
 
 1. **fatal: '...' is already checked out at '...'**：
    - Git 規定**同一條分支不能同時被兩個 Worktree 簽出（checkout）**。請為新 Worktree 建立新分支（使用 `-b <新分支名>`），或在原目錄切換至其他分支。
-2. **Worktree 建立後出現大量的未追蹤檔案**：
-   - 請檢查根目錄是否有 `.gitignore`。若有忽略規則，確認在母倉庫中已正常配置。
-3. **誤把 `.worktrees/` 提交進 Git 了**：
-   - 執行 `git rm -r --cached .worktrees/`，並確認根目錄 `.gitignore` 包含 `.worktrees/`，然後重新 commit。
+   - 最常見的情況是：在 worktree 裡執行 `git checkout main` 想合併。正確做法是 `cd` 回**母目錄**再執行 `git merge`（見步驟 5）。
+2. **主目錄 `git status` 出現 `.worktrees/`，或不小心把它提交進 Git 了**：
+   - **原因**：根目錄的 `.gitignore` 沒有忽略 `.worktrees/`，Git 把它當成一般資料夾追蹤。
+   - **尚未提交**：在 `.gitignore` 加入 `.worktrees/` 即可，`git status` 就不會再顯示。
+   - **已經提交**：除了加入 `.gitignore`，還要執行下列指令把它從 Git 追蹤中移除（不會刪除磁碟上的檔案）：
+     ```bash
+     git rm -r --cached .worktrees/
+     git commit -m "chore: 停止追蹤 .worktrees/"
+     ```
