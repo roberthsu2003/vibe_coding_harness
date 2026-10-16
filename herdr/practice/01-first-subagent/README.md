@@ -4,114 +4,79 @@
 
 ## 學習目標
 
-1. 學會寫一份**任務檔 `task.md`**：說清楚「要做什麼、誰來做、怎麼驗收」。
-2. 請 Supervisor（agy）依照任務檔，**派工給小模型（SubAgent）**。
-3. 觀察 Supervisor **親自驗收**，而不是只相信小模型說「完成」。
-
-> 💡 為什麼要寫成檔案，而不是直接打一長串 prompt？
-> 任務檔可以存下來、修改、重複使用。要換題目時，只要改檔案內容，prompt 都不用變。
-
-## 前置條件
-
-完成 [第 0 關](../00-panes/README.md)。
+- 第一次請主管 AI **把工作交給小模型**，而不是自己做。
+- 看懂任務卡的四個部分：**要做什麼、分工、驗收標準、派工指示**。
+- 看到主管**親自驗收**，而不是只相信小模型說「完成」。
 
 ---
 
-## 動手做
-
-### 步驟 1：準備任務檔
-
-在 `~/herdr-lab` 建立 `task.md`，內容如下（也可以直接下載 [範例檔](task.md)）：
-
-```markdown
-# 任務：溫度轉換
-
-## 要做什麼
-建立 `temperature.py`，裡面寫一個函式 `celsius_to_fahrenheit(c)`，把攝氏溫度轉成華氏溫度。
-
-## 誰來做
-請開一個 SubAgent（名字叫 coder）來寫，你不要自己寫。
-
-## 怎麼驗收
-執行：
-python3 -c "from temperature import celsius_to_fahrenheit as f; print(f(0), f(100), f(-40))"
-結果必須是 32.0 212.0 -40.0
-```
-
-下載範例檔的方式：
-
-```bash
-cd ~/herdr-lab
-curl -fsSLO https://raw.githubusercontent.com/roberthsu2003/vibe_coding_harness/main/herdr/practice/01-first-subagent/task.md
-```
-
-> 💡 也可以直接請 agy 幫你建立：「請幫我建立 task.md，內容是……」。
-
-### 步驟 2：輸入 prompt
-
-在 agy 裡輸入（如果是剛開的 agy，記得先加上「請先閱讀 SUPERVISOR.md。」）：
+## 對 agy 說
 
 ```text
-請依照 task.md 完成任務，做完告訴我驗收結果。
+找一個小模型幫我寫溫度轉換的程式，攝氏轉華氏，寫完你檢查。
 ```
 
-遇到確認畫面時，`herdr` 指令選 **2**；其他指令（例如 `python3`）看清楚後再允許。
+## 你會看到什麼
 
-### 步驟 3：觀察三個角色
+### 1. 任務卡（大約 1 分鐘）
+
+這次任務卡多了兩個重點：
+
+```text
+## 分工
+  • SubAgent：coder（OpenCode，模型 opencode/deepseek-v4.1-flash-free）
+  • 工作目錄：work/temperature/
+## 驗收標準
+  • 函式正確：0°C → 32°F、100°C → 212°F、-40°C → -40°F
+  • 檢查指令：uvx pytest -q checks/temperature/test_converter.py
+## 派工指示（我會傳給 SubAgent 的原文）
+  你是 SubAgent，只負責完成下面的任務，不要執行任何 herdr 指令……
+  請在當前目錄下建立 converter.py，實作 celsius_to_fahrenheit……
+```
+
+- agy **還沒派工就先寫好了測試**，放在 `checks/temperature/`。
+- 「派工指示」是 agy 替你寫的 prompt。你只說了一句話，它展開成一份清楚的工作說明。
+
+確認沒問題後回覆「好，開始」。
+
+### 2. 畫面變化（大約 1～2 分鐘）
 
 | 看哪裡 | 你會看到 |
 | :--- | :--- |
-| 🧑‍🎓 你的 agy 窗格 | agy 說明它開了窗格、啟動了 coder、派了什麼任務 |
-| 🛠️ 右邊新窗格 | OpenCode 啟動，小模型開始寫 `temperature.py` |
-| 👑 agy 驗收 | 小模型做完後，agy 自己執行驗收指令，比對 `32.0 212.0 -40.0` |
+| 右邊新窗格 | OpenCode 啟動，小模型開始寫程式（窗格太窄就點一下再按 `prefix+z` 放大） |
+| 窗格燈號 | 小模型工作時亮 🟡，做完變 🟢 |
+| agy 窗格 | 小模型做完後，agy 執行 `uvx pytest`（確認畫面選 2），然後關閉小模型的窗格 |
 
-整個過程大約 1～2 分鐘。
-
-## 預期結果
-
-agy 最後會回報類似：
+### 3. 回報
 
 ```text
-3. 親自驗收：
-   • 檢查 temperature.py 內容：
-     def celsius_to_fahrenheit(c):
-         return c * 9 / 5 + 32
-   • 輸出結果為：32.0 212.0 -40.0
-4. 清理窗格：關閉剛剛為 SubAgent 開啟的右側窗格。
-
-驗收結論：驗收通過
+• 驗收結果：7 passed
+• 成果檔案：work/temperature/converter.py
+• 驗收測試：checks/temperature/test_converter.py
+• 任務卡：tasks/temperature.md
 ```
-
-`~/herdr-lab` 裡會多出 `temperature.py`。
-
-## 想一想
-
-- 如果 `task.md` 沒有寫「怎麼驗收」，agy 要怎麼判斷小模型做得對不對？
-- 為什麼要叫 agy「不要自己寫」？讓聰明的模型自己寫不是更快嗎？（提示：想想費用，以及「由另一個人檢查」的好處）
 
 ---
 
-## 變化題（只改 task.md，prompt 不變）
+## 想一想
 
-每次都改寫 `task.md` 的內容，再輸入同一句 prompt：「請依照 task.md 完成任務，做完告訴我驗收結果。」
+1. 打開 `checks/temperature/` 裡的測試檔，agy 訂了哪些檢查？你同意這些標準嗎？
+2. 為什麼不讓聰明的 agy 自己寫，而要交給小模型？（提示：費用，以及「由另一個人檢查」的好處）
+3. 派工指示的第一句寫著「不要執行任何 herdr 指令」。你猜為什麼要特別交代這句？
 
-1. **BMI 計算**
-   - 要做什麼：建立 `bmi.py`，函式 `bmi(weight_kg, height_m)` 回傳 BMI，四捨五入到小數第 1 位。
-   - 怎麼驗收：`python3 -c "from bmi import bmi; print(bmi(70, 1.75))"` 結果必須是 `22.9`。
-2. **成績等第**
-   - 要做什麼：建立 `grade.py`，函式 `grade(score)`：90 以上回傳 `"A"`、80～89 回傳 `"B"`、其餘回傳 `"C"`。
-   - 怎麼驗收：`python3 -c "from grade import grade; print(grade(95), grade(85), grade(60))"` 結果必須是 `A B C`。
-3. **自己出題**：想一個簡單的小函式，自己寫出「要做什麼」和「怎麼驗收」。
+## 變化題（換句話再做 2～3 次）
 
-> 🎯 **挑戰**：在變化題 1 的 task.md 加一行「請使用 opencode/glm-5.3-flash-free 模型」，看看 agy 會不會照做。
+- 「找小模型幫我寫一個計算 BMI 的程式，輸入體重和身高，寫完你檢查。」
+- 「找小模型寫一個把分數轉成等第的程式：90 分以上 A、80 分以上 B、其他 C。」
+- 看到任務卡後**先不要說好**，試著修改它：「驗收標準再加一條：輸入小數也要算對」，看看 agy 怎麼更新任務卡。
 
-完成後 → 第 2 關：不合格就退回（製作中）
+完成後 → [第 2 關：不合格就退回](../02-retry/README.md)
 
 ---
 
 ## 🔧 進階：自己下指令（選修）
 
-想知道 agy 背後做了什麼？在 Herdr 的另一個 shell 窗格，親手當一次 Supervisor：
+在 Herdr 另開一個 shell 窗格，親手當一次主管：
 
 ```bash
 mkdir -p ~/herdr-lab/manual && cd ~/herdr-lab/manual
@@ -119,7 +84,7 @@ mkdir -p ~/herdr-lab/manual && cd ~/herdr-lab/manual
 # 1. 開工作窗格（--cwd 讓新窗格和你在同一個資料夾）
 WORKER=$(herdr pane split --current --direction right --cwd "$PWD" --no-focus | jq -r '.result.pane.pane_id')
 
-# 2. 啟動 SubAgent，取名 coder；-- 後面的參數交給 OpenCode，-m 指定模型
+# 2. 啟動小模型，取名 coder；-- 後面的參數交給 OpenCode，-m 指定模型
 herdr agent start coder --kind opencode --pane $WORKER -- -m opencode/deepseek-v4.1-flash-free
 
 # 3. 派工並等它做完（--timeout 單位是毫秒，300000 = 5 分鐘）
@@ -136,17 +101,8 @@ python3 -c "from temperature import celsius_to_fahrenheit as f; print(f(0), f(10
 herdr pane close $WORKER
 ```
 
-| 狀態 | 意思 | 該做什麼 |
-| :--- | :--- | :--- |
-| `idle` / `done` | 做完了，等待下一個指令 | 驗收 |
-| `working` | 還在做 | `herdr agent wait coder --timeout 300000` |
-| `blocked` | 跳出確認或提問畫面 | `herdr agent read coder --source visible` 看它在問什麼 |
-
 | 錯誤訊息 | 原因與解法 |
 | :--- | :--- |
-| `agent_name_taken` | 已經有叫 `coder` 的 Agent，換個名字或先關掉舊窗格 |
-| `agent_blocked` | Agent 正在等人回應，先讀畫面看它在問什麼 |
-| `Endpoint is unavailable` | 免費模型忙碌，關掉窗格換模型重新開始 |
-
-> [!WARNING]
-> 不要在練習資料夾放 `AGENTS.md`。OpenCode 會自動讀它；如果裡面寫著「你是 Supervisor」，小模型會誤以為自己是主管，跑去用 herdr 查詢自己的狀態而卡住。這也是為什麼主管規則檔要取名為 `SUPERVISOR.md`。
+| `agent_name_taken` | 已經有叫 `coder` 的 Agent，換名字或先關掉舊窗格 |
+| `agent_blocked` | Agent 在等人回應，用 `herdr agent read coder --source visible` 看它在問什麼 |
+| `Endpoint is unavailable` | 免費模型忙碌，關掉窗格換模型重來 |
