@@ -34,10 +34,10 @@
   <!-- ===== idle ===== -->
   <g filter="url(#shadow)"><rect x="40" y="130" width="180" height="150" rx="14" fill="#ffffff" stroke="#86efac" stroke-width="1.5"/></g>
   <circle cx="72" cy="162" r="11" fill="none" stroke="#22c55e" stroke-width="3.5"/>
-  <text x="92" y="168" class="state" fill="#15803d">idle</text>
+  <text x="92" y="168" class="state" style="fill:#15803d">idle</text>
   <text x="58" y="198" class="zh">待命中</text>
   <text x="58" y="220" class="txt">空心綠圓，閒著沒事</text>
-  <text x="58" y="258" class="todo" fill="#15803d">→ 可以交代新任務</text>
+  <text x="58" y="258" class="todo" style="fill:#15803d">→ 可以交代新任務</text>
 
   <!-- arrow idle -> working -->
   <line x1="224" y1="205" x2="368" y2="205" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
@@ -46,10 +46,10 @@
   <!-- ===== working ===== -->
   <g filter="url(#shadow)"><rect x="375" y="130" width="210" height="150" rx="14" fill="#ffffff" stroke="#fde047" stroke-width="1.5"/></g>
   <circle cx="407" cy="162" r="11" fill="#eab308"/>
-  <text x="427" y="168" class="state" fill="#a16207">working</text>
+  <text x="427" y="168" class="state" style="fill:#a16207">working</text>
   <text x="393" y="198" class="zh">工作中</text>
   <text x="393" y="220" class="txt">正在思考、讀檔、寫程式</text>
-  <text x="393" y="258" class="todo" fill="#a16207">→ 等它就好，去做別的事</text>
+  <text x="393" y="258" class="todo" style="fill:#a16207">→ 等它就好，去做別的事</text>
 
   <!-- arrow working -> done -->
   <line x1="589" y1="205" x2="733" y2="205" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
@@ -58,31 +58,31 @@
   <!-- ===== done ===== -->
   <g filter="url(#shadow)"><rect x="740" y="130" width="180" height="150" rx="14" fill="#ffffff" stroke="#86efac" stroke-width="1.5"/></g>
   <circle cx="772" cy="162" r="11" fill="#22c55e"/>
-  <text x="792" y="168" class="state" fill="#15803d">done</text>
+  <text x="792" y="168" class="state" style="fill:#15803d">done</text>
   <text x="758" y="198" class="zh">剛做完</text>
   <text x="758" y="220" class="txt">實心綠圓，你還沒看</text>
-  <text x="758" y="258" class="todo" fill="#15803d">→ 切過去看成果</text>
+  <text x="758" y="258" class="todo" style="fill:#15803d">→ 切過去看成果</text>
 
   <!-- arrows working <-> blocked -->
   <line x1="455" y1="284" x2="455" y2="326" stroke="#ef4444" stroke-width="2.5" marker-end="url(#arrow)"/>
-  <text x="445" y="310" class="edge" text-anchor="end" fill="#b91c1c">需要你批准或回答</text>
+  <text x="445" y="310" class="edge" text-anchor="end" style="fill:#b91c1c">需要你批准或回答</text>
   <line x1="505" y1="326" x2="505" y2="284" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
   <text x="515" y="310" class="edge">你回應後繼續</text>
 
   <!-- ===== blocked ===== -->
   <g filter="url(#shadow)"><rect x="330" y="330" width="300" height="110" rx="14" fill="#fef2f2" stroke="#ef4444" stroke-width="2.5"/></g>
   <circle cx="362" cy="362" r="11" fill="#ef4444"/>
-  <text x="382" y="368" class="state" fill="#b91c1c">blocked</text>
+  <text x="382" y="368" class="state" style="fill:#b91c1c">blocked</text>
   <text x="470" y="368" class="zh">等你回應！</text>
   <text x="348" y="396" class="txt">跳出「要不要執行？」或提問畫面</text>
-  <text x="348" y="424" class="todo" fill="#b91c1c">→ 最重要！不回應它就不會繼續</text>
+  <text x="348" y="424" class="todo" style="fill:#b91c1c">→ 最重要！不回應它就不會繼續</text>
 
   <!-- unknown note -->
   <rect x="680" y="330" width="240" height="110" rx="14" fill="#faf5ff" stroke="#d8b4fe" stroke-dasharray="5 4"/>
   <circle cx="710" cy="362" r="11" fill="#a855f7"/>
-  <text x="730" y="368" class="state" fill="#7e22ce">unknown</text>
+  <text x="730" y="368" class="state" style="fill:#7e22ce">unknown</text>
   <text x="698" y="396" class="txt">Herdr 認不出狀態</text>
-  <text x="698" y="424" class="todo" fill="#7e22ce">→ 安裝該 AI 的整合</text>
+  <text x="698" y="424" class="todo" style="fill:#7e22ce">→ 安裝該 AI 的整合</text>
 
   <!-- sound note -->
   <rect x="40" y="330" width="240" height="110" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-dasharray="5 4"/>

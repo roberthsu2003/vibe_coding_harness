@@ -33,12 +33,12 @@
   <text x="114" y="113" class="h">邊做邊監督</text>
   <rect x="46" y="130" width="258" height="140" rx="8" fill="#0f172a"/>
   <rect x="52" y="136" width="146" height="128" rx="5" fill="#1e293b"/>
-  <text x="60" y="154" class="monoB" fill="#c4b5fd">AI（OpenCode）</text>
+  <text x="60" y="154" class="monoB" style="fill:#c4b5fd">AI（OpenCode）</text>
   <text x="60" y="174" class="mono">正在修改 app.py</text>
   <rect x="202" y="136" width="96" height="128" rx="5" fill="#1e293b"/>
-  <text x="210" y="154" class="monoB" fill="#93c5fd">$ git diff</text>
-  <text x="210" y="174" class="mono" fill="#4ade80">+ 新增</text>
-  <text x="210" y="192" class="mono" fill="#f87171">- 刪除</text>
+  <text x="210" y="154" class="monoB" style="fill:#93c5fd">$ git diff</text>
+  <text x="210" y="174" class="mono" style="fill:#4ade80">+ 新增</text>
+  <text x="210" y="192" class="mono" style="fill:#f87171">- 刪除</text>
   <rect x="46" y="284" width="44" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/><text x="68" y="301" class="key" text-anchor="middle">v</text>
   <text x="98" y="301" class="txt">prefix+v 向右切一個窗格</text>
   <text x="46" y="330" class="txt">左邊讓 AI 寫程式，右邊隨時</text>
@@ -49,9 +49,9 @@
   <rect x="351" y="96" width="58" height="22" rx="11" fill="#3b82f6"/><text x="380" y="112" class="tag" text-anchor="middle">情境 B</text>
   <text x="419" y="113" class="h">依用途分分頁</text>
   <rect x="351" y="130" width="258" height="140" rx="8" fill="#0f172a"/>
-  <rect x="357" y="136" width="78" height="22" rx="5" fill="#3b82f6"/><text x="396" y="151" class="monoB" fill="#ffffff" text-anchor="middle">1 agent</text>
-  <rect x="440" y="136" width="70" height="22" rx="5" fill="#334155"/><text x="475" y="151" class="monoB" fill="#cbd5e1" text-anchor="middle">2 test</text>
-  <rect x="515" y="136" width="86" height="22" rx="5" fill="#334155"/><text x="558" y="151" class="monoB" fill="#cbd5e1" text-anchor="middle">3 server</text>
+  <rect x="357" y="136" width="78" height="22" rx="5" fill="#3b82f6"/><text x="396" y="151" class="monoB" style="fill:#ffffff" text-anchor="middle">1 agent</text>
+  <rect x="440" y="136" width="70" height="22" rx="5" fill="#334155"/><text x="475" y="151" class="monoB" style="fill:#cbd5e1" text-anchor="middle">2 test</text>
+  <rect x="515" y="136" width="86" height="22" rx="5" fill="#334155"/><text x="558" y="151" class="monoB" style="fill:#cbd5e1" text-anchor="middle">3 server</text>
   <rect x="357" y="164" width="246" height="100" rx="5" fill="#1e293b"/>
   <text x="367" y="186" class="mono">（目前在 1 agent 分頁）</text>
   <text x="367" y="206" class="mono">AI 專心寫程式…</text>
@@ -68,7 +68,7 @@
   <text x="724" y="113" class="h">暫離與回來</text>
   <!-- screen off -->
   <rect x="656" y="134" width="96" height="66" rx="6" fill="#cbd5e1"/>
-  <text x="704" y="172" class="txt" text-anchor="middle" fill="#64748b">畫面關閉</text>
+  <text x="704" y="172" class="txt" text-anchor="middle" style="fill:#64748b">畫面關閉</text>
   <!-- server running -->
   <rect x="808" y="134" width="106" height="66" rx="6" fill="#0f172a"/>
   <circle cx="824" cy="152" r="5" fill="#eab308"/>
@@ -82,6 +82,6 @@
   <rect x="656" y="250" width="66" height="24" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/><text x="689" y="267" class="key" text-anchor="middle">herdr</text>
   <text x="730" y="267" class="txt">輸入 herdr 原樣接回</text>
   <rect x="656" y="296" width="258" height="64" rx="8" fill="#fef2f2" stroke="#fecaca"/>
-  <text x="670" y="320" class="txt" fill="#b91c1c" font-weight="700">✗ 不要用 killall herdr 離開</text>
-  <text x="670" y="342" class="txt" fill="#b91c1c">會把背景的 AI 和測試全部中斷</text>
+  <text x="670" y="320" class="txt" style="fill:#b91c1c" font-weight="700">✗ 不要用 killall herdr 離開</text>
+  <text x="670" y="342" class="txt" style="fill:#b91c1c">會把背景的 AI 和測試全部中斷</text>
 </svg>

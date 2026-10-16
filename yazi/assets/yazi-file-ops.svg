@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .h { font-size: 15px; font-weight: 800; fill: #0f172a; }
+    .txt { font-size: 12.5px; fill: #475569; }
+    .key { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 15px; font-weight: 800; fill: #0f172a; }
+    .num { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .tag { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; fill: #334155; }
+  </style>
+
+  <rect width="960" height="400" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">兩個最常用的操作流程</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">記住「先選、再按動作鍵」：選好檔案後，按一個字母就完成</text>
+
+  <!-- Flow A: copy files to another folder -->
+  <rect x="30" y="82" width="900" height="146" rx="14" fill="#ffffff" stroke="#bfdbfe"/>
+  <rect x="46" y="94" width="160" height="22" rx="11" fill="#3b82f6"/>
+  <text x="126" y="110" class="tag" text-anchor="middle">流程 A：複製檔案到別處</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="130" width="70" height="44" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="290" y="130" width="54" height="44" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="490" y="130" width="78" height="44" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="740" y="130" width="54" height="44" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  </g>
+  <text x="95" y="158" class="key" text-anchor="middle">Space</text>
+  <text x="317" y="158" class="key" text-anchor="middle">y</text>
+  <text x="529" y="158" class="key" text-anchor="middle">h / l</text>
+  <text x="767" y="158" class="key" text-anchor="middle">p</text>
+  <text x="140" y="148" class="h">選取檔案</text>
+  <text x="140" y="168" class="txt">可以選好幾個</text>
+  <text x="354" y="148" class="h">複製</text>
+  <text x="354" y="168" class="txt">剪下就改按 x</text>
+  <text x="578" y="148" class="h">走到目標資料夾</text>
+  <text x="578" y="168" class="txt">用方向鍵也可以</text>
+  <text x="804" y="148" class="h">貼上</text>
+  <text x="804" y="168" class="txt">完成！</text>
+  <line x1="240" y1="152" x2="282" y2="152" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="440" y1="152" x2="482" y2="152" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="690" y1="152" x2="732" y2="152" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="60" y="210" class="txt">⚠ 刪除：d 會移到垃圾桶（還救得回來）；⇧D 是永久刪除，請小心。</text>
+
+  <!-- Flow B: copy path for AI -->
+  <rect x="30" y="242" width="900" height="136" rx="14" fill="#ffffff" stroke="#ddd6fe"/>
+  <rect x="46" y="254" width="180" height="22" rx="11" fill="#8b5cf6"/>
+  <text x="136" y="270" class="tag" text-anchor="middle">流程 B：把檔案路徑交給 AI</text>
+
+  <g filter="url(#shadow)">
+    <rect x="60" y="290" width="70" height="44" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+    <rect x="290" y="290" width="70" height="44" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+  </g>
+  <text x="95" y="318" class="key" text-anchor="middle">j / k</text>
+  <text x="325" y="318" class="key" text-anchor="middle">c c</text>
+  <text x="140" y="308" class="h">移到檔案上</text>
+  <text x="140" y="328" class="txt">游標停在它上面</text>
+  <text x="370" y="308" class="h">複製完整路徑</text>
+  <text x="370" y="328" class="txt">依序按 c 再按 c</text>
+  <line x1="240" y1="312" x2="282" y2="312" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="490" y1="312" x2="532" y2="312" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="540" y="290" width="370" height="44" rx="9" fill="#0f172a"/>
+  <text x="556" y="317" class="mono" style="fill:#fcd34d">&gt; 請優化 /Users/me/app/src/auth.py</text>
+  <text x="540" y="358" class="txt">到 AI 窗格按 Cmd+V 貼上，不用自己打長路徑</text>
+</svg>

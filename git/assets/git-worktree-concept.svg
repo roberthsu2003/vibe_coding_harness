@@ -37,7 +37,7 @@
 
   <!-- Main Title & Subtitle -->
   <text x="480" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" fill="#0f172a" text-anchor="middle" letter-spacing="0.5">Git Worktree 平行架構：共用資料庫，多 Agent 獨立分支隔離</text>
-  <text x="480" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="middle">母專案掌控真正的 .git 資料庫；各 Worktree 僅透過十幾 Bytes 的指標關聯，毫秒建立、零空間浪費、無衝突平行開發</text>
+  <text x="480" y="60" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="500" fill="#475569" text-anchor="middle">母專案掌控真正的 .git 資料庫；各 Worktree 僅透過一行文字的指標關聯：建立快速、幾乎不佔空間、平行開發互不干擾</text>
 
   <!-- TOP CARD: Mother Repository (vibe_coding_harness) -->
   <g transform="translate(180, 80)">
@@ -72,7 +72,7 @@
 
   <!-- Middle Floating Badge -->
   <rect x="345" y="244" width="270" height="32" rx="16" fill="#ffffff" stroke="#38bdf8" stroke-width="2" filter="url(#softShadow)"/>
-  <text x="480" y="265" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">⚡ 毫秒級建立 · 共享同一個 .git 物件庫</text>
+  <text x="480" y="265" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">⚡ 快速建立 · 共享同一個 .git 物件庫</text>
 
   <!-- BOTTOM CARDS -->
 
@@ -87,7 +87,7 @@
     <g transform="translate(18, 48)">
       <!-- Pointer File Highlight -->
       <rect x="0" y="6" width="364" height="42" rx="6" fill="#f0fdf4" stroke="#a7f3d0" stroke-width="1.2"/>
-      <text x="12" y="23" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="11.5" font-weight="bold" fill="#065f46">📄 .git 指標檔（僅十幾 Bytes！）</text>
+      <text x="12" y="23" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="11.5" font-weight="bold" fill="#065f46">📄 .git 指標檔（只有一行文字）</text>
       <text x="12" y="39" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="10.5" fill="#047857">gitdir: /path/to/.git/worktrees/feature-login</text>
 
       <!-- Agent Info -->
@@ -114,7 +114,7 @@
     <g transform="translate(18, 48)">
       <!-- Pointer File Highlight -->
       <rect x="0" y="6" width="364" height="42" rx="6" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.2"/>
-      <text x="12" y="23" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="11.5" font-weight="bold" fill="#5b21b6">📄 .git 指標檔（僅十幾 Bytes！）</text>
+      <text x="12" y="23" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="11.5" font-weight="bold" fill="#5b21b6">📄 .git 指標檔（只有一行文字）</text>
       <text x="12" y="39" font-family="-apple-system, BlinkMacSystemFont, monospace" font-size="10.5" fill="#6d28d9">gitdir: /path/to/.git/worktrees/fix-header</text>
 
       <!-- Agent Info -->
@@ -134,7 +134,7 @@
   <g transform="translate(60, 515)">
     <rect width="840" height="44" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.2" filter="url(#softShadow)"/>
     <text x="420" y="27" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">
-      💡 <tspan fill="#1e40af">三大好處總結</tspan>：各目錄物理隔離不撞車 · 0.1秒瞬間開新環境 · 集中收納於 <tspan fill="#047857" font-family="monospace">.worktrees/</tspan> 管理超方便！
+      💡 <tspan fill="#1e40af">三大好處總結</tspan>：各目錄物理隔離不撞車 · 快速開新環境 · 集中收納於 <tspan fill="#047857" font-family="monospace">.worktrees/</tspan> 管理超方便！
     </text>
   </g>
 </svg>

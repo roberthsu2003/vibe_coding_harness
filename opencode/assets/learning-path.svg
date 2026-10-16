@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .band { font-size: 13px; font-weight: 700; fill: #ffffff; }
+    .num { font-size: 20px; font-weight: 800; fill: #ffffff; }
+    .name { font-size: 15px; font-weight: 700; fill: #0f172a; }
+    .desc { font-size: 12px; fill: #475569; }
+  </style>
+  <rect width="960" height="360" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="40" class="title" text-anchor="middle">OpenCode 學習路線：由淺至深</text>
+  <text x="480" y="64" class="sub" text-anchor="middle">跟著編號往右走，每一站只學一件事</text>
+  <rect x="31" y="92" width="248" height="28" rx="14" fill="#10b981"/>
+  <text x="155" y="111" class="band" text-anchor="middle">★ 入門</text>
+  <rect x="291" y="92" width="248" height="28" rx="14" fill="#3b82f6"/>
+  <text x="415" y="111" class="band" text-anchor="middle">★★ 進階</text>
+  <rect x="551" y="92" width="378" height="28" rx="14" fill="#8b5cf6"/>
+  <text x="740" y="111" class="band" text-anchor="middle">★★★ 深入</text>
+  <line x1="90" y1="190" x2="870" y2="190" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <circle cx="90" cy="190" r="32" fill="#10b981"/>
+    <circle cx="220" cy="190" r="32" fill="#10b981"/>
+    <circle cx="350" cy="190" r="32" fill="#3b82f6"/>
+    <circle cx="480" cy="190" r="32" fill="#3b82f6"/>
+    <circle cx="610" cy="190" r="32" fill="#8b5cf6"/>
+    <circle cx="740" cy="190" r="32" fill="#8b5cf6"/>
+    <circle cx="870" cy="190" r="32" fill="#8b5cf6"/>
+  </g>
+  <text x="90" y="197" class="num" text-anchor="middle">01</text>
+  <text x="90" y="250" class="name" text-anchor="middle">安裝與連線</text>
+  <text x="90" y="270" class="desc" text-anchor="middle">裝好 OpenCode</text>
+  <text x="90" y="287" class="desc" text-anchor="middle">選好模型</text>
+  <text x="220" y="197" class="num" text-anchor="middle">02</text>
+  <text x="220" y="250" class="name" text-anchor="middle">基本操作</text>
+  <text x="220" y="270" class="desc" text-anchor="middle">對話、引用檔案</text>
+  <text x="220" y="287" class="desc" text-anchor="middle">斜線指令</text>
+  <text x="350" y="197" class="num" text-anchor="middle">03</text>
+  <text x="350" y="250" class="name" text-anchor="middle">AGENTS.md</text>
+  <text x="350" y="270" class="desc" text-anchor="middle">專案規則</text>
+  <text x="350" y="287" class="desc" text-anchor="middle">/init 自動產生</text>
+  <text x="480" y="197" class="num" text-anchor="middle">04</text>
+  <text x="480" y="250" class="name" text-anchor="middle">實戰情境</text>
+  <text x="480" y="270" class="desc" text-anchor="middle">中斷、復原</text>
+  <text x="480" y="287" class="desc" text-anchor="middle">寫好 prompt</text>
+  <text x="610" y="197" class="num" text-anchor="middle">05</text>
+  <text x="610" y="250" class="name" text-anchor="middle">Subagent</text>
+  <text x="610" y="270" class="desc" text-anchor="middle">子代理分工</text>
+  <text x="610" y="287" class="desc" text-anchor="middle">自訂角色</text>
+  <text x="740" y="197" class="num" text-anchor="middle">06</text>
+  <text x="740" y="250" class="name" text-anchor="middle">權限設定</text>
+  <text x="740" y="270" class="desc" text-anchor="middle">opencode.json</text>
+  <text x="740" y="287" class="desc" text-anchor="middle">allow/ask/deny</text>
+  <text x="870" y="197" class="num" text-anchor="middle">07</text>
+  <text x="870" y="250" class="name" text-anchor="middle">指令模式</text>
+  <text x="870" y="270" class="desc" text-anchor="middle">opencode run</text>
+  <text x="870" y="287" class="desc" text-anchor="middle">搭配 Herdr</text>
+  <text x="480" y="335" class="desc" text-anchor="middle">遇到問題時查閱：維護指令與疑難排解</text>
+</svg>

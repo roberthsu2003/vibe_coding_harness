@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrowB" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowG" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .head { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .h { font-size: 14px; font-weight: 800; fill: #0f172a; }
+    .txt { font-size: 12px; fill: #475569; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; fill: #1e293b; }
+    .edge { font-size: 12px; font-weight: 700; }
+  </style>
+
+  <rect width="960" height="420" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">主代理與子代理：分工合作，對話不塞爆</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">子代理在自己的工作階段做事，做完只把「結論」帶回主對話</text>
+
+  <!-- Primary -->
+  <g filter="url(#shadow)"><rect x="30" y="84" width="380" height="306" rx="14" fill="#ffffff"/></g>
+  <rect x="30" y="84" width="380" height="40" rx="14" fill="#3b82f6"/><rect x="30" y="110" width="380" height="14" fill="#3b82f6"/>
+  <text x="220" y="110" class="head" text-anchor="middle">主代理（Primary）— 你直接對話的 AI</text>
+
+  <rect x="50" y="140" width="165" height="86" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="64" y="164" class="h">Build（預設）</text>
+  <text x="64" y="186" class="txt">可以讀寫檔案、</text>
+  <text x="64" y="204" class="txt">執行指令，負責開發</text>
+  <rect x="225" y="140" width="165" height="86" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="239" y="164" class="h">Plan</text>
+  <text x="239" y="186" class="txt">只分析、規劃，</text>
+  <text x="239" y="204" class="txt">修改前會先問你</text>
+  <text x="50" y="250" class="txt">按 Tab 在 Build / Plan 之間切換</text>
+
+  <rect x="50" y="266" width="340" height="106" rx="10" fill="#0f172a"/>
+  <text x="64" y="290" class="mono" style="fill:#94a3b8">主對話（保持精簡）</text>
+  <text x="64" y="314" class="mono" style="fill:#fcd34d">&gt; @explore 登入邏輯在哪個檔案？</text>
+  <text x="64" y="338" class="mono" style="fill:#86efac">↳ 結論：在 src/auth.py 第 42 行</text>
+  <text x="64" y="360" class="mono" style="fill:#cbd5e1">（子代理翻了 30 個檔案，但只帶回這句）</text>
+
+  <!-- arrows -->
+  <line x1="414" y1="200" x2="508" y2="200" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#arrowB)"/>
+  <text x="461" y="190" class="edge" text-anchor="middle" style="fill:#1d4ed8">派工</text>
+  <line x1="508" y1="300" x2="414" y2="300" stroke="#10b981" stroke-width="2.5" marker-end="url(#arrowG)"/>
+  <text x="461" y="290" class="edge" text-anchor="middle" style="fill:#047857">帶回結論</text>
+
+  <!-- Subagents -->
+  <g filter="url(#shadow)"><rect x="515" y="84" width="415" height="306" rx="14" fill="#ffffff"/></g>
+  <rect x="515" y="84" width="415" height="40" rx="14" fill="#10b981"/><rect x="515" y="110" width="415" height="14" fill="#10b981"/>
+  <text x="722" y="110" class="head" text-anchor="middle">子代理（Subagent）— 在獨立工作階段執行</text>
+
+  <rect x="535" y="140" width="185" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="549" y="164" class="mono">@explore</text>
+  <text x="549" y="190" class="txt">快速搜尋專案（唯讀）</text>
+  <rect x="730" y="140" width="185" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="744" y="164" class="mono">@scout</text>
+  <text x="744" y="190" class="txt">查外部文件與套件（唯讀）</text>
+  <rect x="535" y="222" width="185" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="549" y="246" class="mono">@general</text>
+  <text x="549" y="272" class="txt">通用的多步驟任務</text>
+  <rect x="730" y="222" width="185" height="70" rx="10" fill="#faf5ff" stroke="#d8b4fe" stroke-dasharray="5 4"/>
+  <text x="744" y="246" class="mono" style="fill:#7e22ce">@reviewer（自訂）</text>
+  <text x="744" y="272" class="txt">自己定義的角色</text>
+
+  <rect x="535" y="306" width="380" height="66" rx="10" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="549" y="330" class="h">三個好處</text>
+  <text x="549" y="354" class="txt">主對話不塞爆 · 可指定便宜的模型 · 可限制權限（例如只能讀）</text>
+</svg>

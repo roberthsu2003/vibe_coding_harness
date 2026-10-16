@@ -219,7 +219,7 @@
         
         <!-- 操作快捷鍵指示 -->
         <text x="450" y="0" text-anchor="middle" fill="#CBD5E1">
-          快捷操作：<tspan fill="#F59E0B">prefix + v</tspan> 水平向右分割 | <tspan fill="#F59E0B">prefix + ← / →</tspan> 快速切換窗格
+          快捷操作：<tspan fill="#F59E0B">prefix + v</tspan> 向右分割 | <tspan fill="#F59E0B">prefix + h / l</tspan> 切換左右窗格
         </text>
         
         <text x="880" y="0" text-anchor="end" fill="#10B981">● Connected (Client/Server)</text>

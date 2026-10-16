@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; fill: #e2e8f0; }
+    .h { font-size: 15px; font-weight: 800; fill: #0f172a; }
+    .note { font-size: 12.5px; font-weight: 700; }
+    .num { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .cmd { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12px; font-weight: 700; fill: #1e293b; }
+    .txt { font-size: 12px; fill: #475569; }
+  </style>
+
+  <rect width="960" height="420" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">合併衝突：Git 不知道要留哪一邊</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">兩條分支改到同一個檔案的同一段時就會發生。不用怕，照著右邊 4 步處理</text>
+
+  <!-- Left: conflicted file -->
+  <g filter="url(#shadow)"><rect x="30" y="84" width="470" height="300" rx="14" fill="#0f172a"/></g>
+  <text x="50" y="112" class="mono" style="fill:#94a3b8">app.py（發生衝突的檔案）</text>
+  <rect x="44" y="128" width="442" height="28" rx="5" fill="#1e3a8a"/>
+  <text x="56" y="147" class="mono" style="fill:#93c5fd">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</text>
+  <text x="56" y="178" class="mono">title = "我的網站"</text>
+  <rect x="44" y="192" width="442" height="28" rx="5" fill="#334155"/>
+  <text x="56" y="211" class="mono" style="fill:#fcd34d">=======</text>
+  <text x="56" y="242" class="mono">title = "AI 網站"</text>
+  <rect x="44" y="256" width="442" height="28" rx="5" fill="#14532d"/>
+  <text x="56" y="275" class="mono" style="fill:#86efac">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/login</text>
+
+  <text x="300" y="147" class="note" style="fill:#93c5fd">← 開始：main 的版本</text>
+  <text x="300" y="211" class="note" style="fill:#fcd34d">← 分隔線</text>
+  <text x="300" y="275" class="note" style="fill:#86efac">← 結束：分支的版本</text>
+
+  <rect x="44" y="300" width="442" height="68" rx="8" fill="#1e293b"/>
+  <text x="56" y="324" class="note" style="fill:#e2e8f0">處理完應該只剩下你要的內容：</text>
+  <text x="56" y="350" class="mono" style="fill:#86efac">title = "我的 AI 網站"</text>
+
+  <!-- Right: steps -->
+  <g filter="url(#shadow)"><rect x="520" y="84" width="410" height="300" rx="14" fill="#ffffff"/></g>
+
+  <circle cx="546" cy="114" r="11" fill="#3b82f6"/><text x="546" y="118" class="num" text-anchor="middle">1</text>
+  <text x="566" y="119" class="h">找出衝突的檔案</text>
+  <text x="566" y="140" class="cmd">git status</text>
+  <text x="680" y="140" class="txt">標示 both modified 的就是</text>
+
+  <circle cx="546" cy="174" r="11" fill="#3b82f6"/><text x="546" y="178" class="num" text-anchor="middle">2</text>
+  <text x="566" y="179" class="h">打開檔案，留下正確的內容</text>
+  <text x="566" y="200" class="txt">可以留一邊、兩邊都留，或合在一起</text>
+
+  <circle cx="546" cy="234" r="11" fill="#3b82f6"/><text x="546" y="238" class="num" text-anchor="middle">3</text>
+  <text x="566" y="239" class="h">刪掉三行標記</text>
+  <text x="566" y="260" class="cmd">&lt;&lt;&lt;&lt;&lt;&lt;&lt;  =======  &gt;&gt;&gt;&gt;&gt;&gt;&gt;</text>
+
+  <circle cx="546" cy="294" r="11" fill="#10b981"/><text x="546" y="298" class="num" text-anchor="middle">4</text>
+  <text x="566" y="299" class="h">標記已解決，完成合併</text>
+  <text x="566" y="320" class="cmd">git add app.py</text>
+  <text x="566" y="338" class="cmd">git commit -m "merge: …"</text>
+
+  <rect x="536" y="350" width="378" height="26" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="548" y="368" class="txt" style="fill:#b91c1c">想放棄這次合併：git merge --abort（回到合併前）</text>
+
+  <text x="480" y="406" class="sub" text-anchor="middle">也可以直接請 AI：「請幫我解決目前的 merge 衝突，保留兩邊的功能」</text>
+</svg>

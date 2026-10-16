@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .lane { font-size: 13px; font-weight: 800; }
+    .num { font-size: 13px; font-weight: 800; fill: #ffffff; }
+    .h { font-size: 14px; font-weight: 800; fill: #0f172a; }
+    .cmd { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11px; font-weight: 700; fill: #1e293b; }
+    .txt { font-size: 11.5px; fill: #475569; }
+  </style>
+
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">Worktree 的完整流程：6 個步驟</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">一句話記住：在 worktree 裡開發與 commit，回到母目錄才 merge</text>
+
+  <!-- Lanes -->
+  <rect x="30" y="82" width="900" height="140" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="48" y="104" class="lane" style="fill:#1d4ed8">母目錄（main 分支）</text>
+  <rect x="30" y="236" width="900" height="140" rx="12" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="48" y="258" class="lane" style="fill:#047857">worktree（feature/login 分支）</text>
+
+  <!-- Step cards: 1,2 top; 3,4 bottom; 5,6 top -->
+  <g filter="url(#shadow)">
+    <rect x="48" y="116" width="135" height="94" rx="10" fill="#ffffff"/>
+    <rect x="198" y="116" width="135" height="94" rx="10" fill="#ffffff"/>
+    <rect x="348" y="270" width="135" height="94" rx="10" fill="#ffffff"/>
+    <rect x="498" y="270" width="135" height="94" rx="10" fill="#ffffff"/>
+    <rect x="648" y="116" width="135" height="94" rx="10" fill="#ffffff"/>
+    <rect x="798" y="116" width="118" height="94" rx="10" fill="#ffffff"/>
+  </g>
+
+  <circle cx="66" cy="134" r="11" fill="#3b82f6"/><text x="66" y="139" class="num" text-anchor="middle">1</text>
+  <text x="84" y="139" class="h">建立</text>
+  <text x="58" y="164" class="cmd">git worktree add</text>
+  <text x="58" y="180" class="cmd">  .worktrees/… -b …</text>
+  <text x="58" y="200" class="txt">開新資料夾＋新分支</text>
+
+  <circle cx="216" cy="134" r="11" fill="#3b82f6"/><text x="216" y="139" class="num" text-anchor="middle">2</text>
+  <text x="234" y="139" class="h">檢視</text>
+  <text x="208" y="164" class="cmd">git worktree list</text>
+  <text x="208" y="200" class="txt">確認建立成功</text>
+
+  <circle cx="366" cy="288" r="11" fill="#10b981"/><text x="366" y="293" class="num" text-anchor="middle">3</text>
+  <text x="384" y="293" class="h">AI 開發</text>
+  <text x="358" y="318" class="cmd">cd .worktrees/…</text>
+  <text x="358" y="334" class="cmd">opencode</text>
+  <text x="358" y="354" class="txt">改壞也不影響 main</text>
+
+  <circle cx="516" cy="288" r="11" fill="#10b981"/><text x="516" y="293" class="num" text-anchor="middle">4</text>
+  <text x="534" y="293" class="h">提交</text>
+  <text x="508" y="318" class="cmd">git add .</text>
+  <text x="508" y="334" class="cmd">git commit -m …</text>
+  <text x="508" y="354" class="txt">驗收沒問題再提交</text>
+
+  <circle cx="666" cy="134" r="11" fill="#3b82f6"/><text x="666" y="139" class="num" text-anchor="middle">5</text>
+  <text x="684" y="139" class="h">合併</text>
+  <text x="658" y="164" class="cmd">cd ../..</text>
+  <text x="658" y="180" class="cmd">git merge 分支名</text>
+  <text x="658" y="200" class="txt">⚠ 一定在母目錄</text>
+
+  <circle cx="816" cy="134" r="11" fill="#3b82f6"/><text x="816" y="139" class="num" text-anchor="middle">6</text>
+  <text x="834" y="139" class="h">清理</text>
+  <text x="806" y="164" class="cmd">worktree remove</text>
+  <text x="806" y="180" class="cmd">branch -d</text>
+  <text x="806" y="200" class="txt">只剩 main</text>
+
+  <!-- arrows -->
+  <line x1="185" y1="163" x2="194" y2="163" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 335 163 C 360 163, 360 250, 380 266" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="485" y1="317" x2="494" y2="317" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 635 317 C 660 317, 660 230, 680 214" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="785" y1="163" x2="794" y2="163" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="480" y="406" class="sub" text-anchor="middle">藍色步驟在母目錄執行，綠色步驟在 worktree 裡執行</text>
+</svg>

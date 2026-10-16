@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 502" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .colTitle { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .key { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; font-weight: 700; fill: #0f172a; }
+    .act { font-size: 13.5px; fill: #1e293b; }
+    .star { font-size: 11px; font-weight: 700; fill: #b45309; }
+  </style>
+  <rect width="960" height="502" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">OpenCode 常用指令速查卡</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">斜線指令在輸入框打；Leader 鍵 = Ctrl+X 放開再按下一個鍵　★ = 每天必用</text>
+  <g filter="url(#shadow)"><rect x="30" y="82" width="290" height="392" rx="14" fill="#ffffff"/></g>
+  <rect x="30" y="82" width="290" height="40" rx="14" fill="#10b981"/>
+  <rect x="30" y="108" width="290" height="14" fill="#10b981"/>
+  <text x="175" y="108" class="colTitle" text-anchor="middle">對話與輸入</text>
+  <rect x="46" y="138" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="94" y="158" class="key" text-anchor="middle">@檔名</text>
+  <text x="156" y="158" class="act">引用檔案內容</text>
+  <text x="300" y="158" class="star">★</text>
+  <rect x="46" y="180" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="94" y="200" class="key" text-anchor="middle">!指令</text>
+  <text x="156" y="200" class="act">執行 shell 指令</text>
+  <text x="300" y="200" class="star">★</text>
+  <rect x="46" y="222" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="94" y="242" class="key" text-anchor="middle">Ctrl+J</text>
+  <text x="156" y="242" class="act">換行不送出</text>
+  <text x="300" y="242" class="star">★</text>
+  <rect x="46" y="264" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="94" y="284" class="key" text-anchor="middle">Esc</text>
+  <text x="156" y="284" class="act">中斷 AI</text>
+  <text x="300" y="284" class="star">★</text>
+  <rect x="46" y="306" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="94" y="326" class="key" text-anchor="middle">Tab</text>
+  <text x="156" y="326" class="act">切換主代理</text>
+  <rect x="46" y="348" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="94" y="368" class="key" text-anchor="middle">Ctrl+P</text>
+  <text x="156" y="368" class="act">指令面板</text>
+  <rect x="46" y="390" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="94" y="410" class="key" text-anchor="middle">Ctrl+T</text>
+  <text x="156" y="410" class="act">切換思考強度</text>
+  <text x="48" y="456" class="sub">Tab 切換 Build / Plan 主代理</text>
+  <g filter="url(#shadow)"><rect x="335" y="82" width="290" height="392" rx="14" fill="#ffffff"/></g>
+  <rect x="335" y="82" width="290" height="40" rx="14" fill="#3b82f6"/>
+  <rect x="335" y="108" width="290" height="14" fill="#3b82f6"/>
+  <text x="480" y="108" class="colTitle" text-anchor="middle">復原與工作階段</text>
+  <rect x="351" y="138" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="399" y="158" class="key" text-anchor="middle">/undo</text>
+  <text x="461" y="158" class="act">復原上一步</text>
+  <text x="605" y="158" class="star">★</text>
+  <rect x="351" y="180" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="399" y="200" class="key" text-anchor="middle">/redo</text>
+  <text x="461" y="200" class="act">重做</text>
+  <rect x="351" y="222" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="399" y="242" class="key" text-anchor="middle">/new</text>
+  <text x="461" y="242" class="act">開新對話</text>
+  <text x="605" y="242" class="star">★</text>
+  <rect x="351" y="264" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="399" y="284" class="key" text-anchor="middle">/sessions</text>
+  <text x="461" y="284" class="act">切換舊對話</text>
+  <rect x="351" y="306" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="399" y="326" class="key" text-anchor="middle">/compact</text>
+  <text x="461" y="326" class="act">壓縮對話</text>
+  <rect x="351" y="348" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="399" y="368" class="key" text-anchor="middle">/models</text>
+  <text x="461" y="368" class="act">切換模型</text>
+  <text x="605" y="368" class="star">★</text>
+  <rect x="351" y="390" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="399" y="410" class="key" text-anchor="middle">/connect</text>
+  <text x="461" y="410" class="act">連接供應商</text>
+  <text x="353" y="456" class="sub">/new 之後舊對話仍可用 /sessions 找回</text>
+  <g filter="url(#shadow)"><rect x="640" y="82" width="290" height="392" rx="14" fill="#ffffff"/></g>
+  <rect x="640" y="82" width="290" height="40" rx="14" fill="#8b5cf6"/>
+  <rect x="640" y="108" width="290" height="14" fill="#8b5cf6"/>
+  <text x="785" y="108" class="colTitle" text-anchor="middle">其他</text>
+  <rect x="656" y="138" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="704" y="158" class="key" text-anchor="middle">/init</text>
+  <text x="766" y="158" class="act">產生 AGENTS.md</text>
+  <text x="910" y="158" class="star">★</text>
+  <rect x="656" y="180" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="704" y="200" class="key" text-anchor="middle">/editor</text>
+  <text x="766" y="200" class="act">用編輯器寫 prompt</text>
+  <rect x="656" y="222" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="704" y="242" class="key" text-anchor="middle">/export</text>
+  <text x="766" y="242" class="act">匯出成 Markdown</text>
+  <rect x="656" y="264" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="704" y="284" class="key" text-anchor="middle">/thinking</text>
+  <text x="766" y="284" class="act">顯示思考過程</text>
+  <rect x="656" y="306" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="704" y="326" class="key" text-anchor="middle">/details</text>
+  <text x="766" y="326" class="act">顯示工具細節</text>
+  <rect x="656" y="348" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="704" y="368" class="key" text-anchor="middle">/themes</text>
+  <text x="766" y="368" class="act">切換主題</text>
+  <rect x="656" y="390" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="704" y="410" class="key" text-anchor="middle">/exit</text>
+  <text x="766" y="410" class="act">離開</text>
+  <text x="910" y="410" class="star">★</text>
+  <text x="658" y="456" class="sub">忘記指令時輸入 /help</text>
+</svg>

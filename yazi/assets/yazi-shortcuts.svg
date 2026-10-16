@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 586" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .colTitle { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .key { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; font-weight: 700; fill: #0f172a; }
+    .act { font-size: 13.5px; fill: #1e293b; }
+    .star { font-size: 11px; font-weight: 700; fill: #b45309; }
+  </style>
+  <rect width="960" height="586" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">Yazi 常用快捷鍵速查卡</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">直接按，不需要 prefix　★ = 每天必用　⇧ = 按住 Shift</text>
+  <g filter="url(#shadow)"><rect x="30" y="82" width="290" height="476" rx="14" fill="#ffffff"/></g>
+  <rect x="30" y="82" width="290" height="40" rx="14" fill="#10b981"/>
+  <rect x="30" y="108" width="290" height="14" fill="#10b981"/>
+  <text x="175" y="108" class="colTitle" text-anchor="middle">移動與預覽</text>
+  <rect x="46" y="138" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="158" class="key" text-anchor="middle">j / k</text>
+  <text x="132" y="158" class="act">下移 / 上移</text>
+  <text x="300" y="158" class="star">★</text>
+  <rect x="46" y="180" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="200" class="key" text-anchor="middle">l</text>
+  <text x="132" y="200" class="act">進入資料夾</text>
+  <text x="300" y="200" class="star">★</text>
+  <rect x="46" y="222" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="242" class="key" text-anchor="middle">h</text>
+  <text x="132" y="242" class="act">回上一層</text>
+  <text x="300" y="242" class="star">★</text>
+  <rect x="46" y="264" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="284" class="key" text-anchor="middle">Enter</text>
+  <text x="132" y="284" class="act">開啟檔案</text>
+  <text x="300" y="284" class="star">★</text>
+  <rect x="46" y="306" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="326" class="key" text-anchor="middle">g g</text>
+  <text x="132" y="326" class="act">跳到最上面</text>
+  <rect x="46" y="348" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="368" class="key" text-anchor="middle">⇧G</text>
+  <text x="132" y="368" class="act">跳到最下面</text>
+  <rect x="46" y="390" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="410" class="key" text-anchor="middle">⇧J / ⇧K</text>
+  <text x="132" y="410" class="act">捲動右側預覽</text>
+  <rect x="46" y="432" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="452" class="key" text-anchor="middle">.</text>
+  <text x="132" y="452" class="act">顯示 / 隱藏檔</text>
+  <text x="300" y="452" class="star">★</text>
+  <rect x="46" y="474" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="82" y="494" class="key" text-anchor="middle">q</text>
+  <text x="132" y="494" class="act">離開 Yazi</text>
+  <text x="300" y="494" class="star">★</text>
+  <text x="48" y="540" class="sub">方向鍵也可以用</text>
+  <g filter="url(#shadow)"><rect x="335" y="82" width="290" height="476" rx="14" fill="#ffffff"/></g>
+  <rect x="335" y="82" width="290" height="40" rx="14" fill="#3b82f6"/>
+  <rect x="335" y="108" width="290" height="14" fill="#3b82f6"/>
+  <text x="480" y="108" class="colTitle" text-anchor="middle">檔案管理</text>
+  <rect x="351" y="138" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="158" class="key" text-anchor="middle">Space</text>
+  <text x="437" y="158" class="act">選取 / 取消選取</text>
+  <text x="605" y="158" class="star">★</text>
+  <rect x="351" y="180" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="200" class="key" text-anchor="middle">v</text>
+  <text x="437" y="200" class="act">連續選取模式</text>
+  <rect x="351" y="222" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="242" class="key" text-anchor="middle">y</text>
+  <text x="437" y="242" class="act">複製</text>
+  <text x="605" y="242" class="star">★</text>
+  <rect x="351" y="264" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="284" class="key" text-anchor="middle">x</text>
+  <text x="437" y="284" class="act">剪下</text>
+  <text x="605" y="284" class="star">★</text>
+  <rect x="351" y="306" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="326" class="key" text-anchor="middle">p</text>
+  <text x="437" y="326" class="act">貼上</text>
+  <text x="605" y="326" class="star">★</text>
+  <rect x="351" y="348" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="368" class="key" text-anchor="middle">a</text>
+  <text x="437" y="368" class="act">新增（結尾 / 為資料夾）</text>
+  <text x="605" y="368" class="star">★</text>
+  <rect x="351" y="390" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="410" class="key" text-anchor="middle">r</text>
+  <text x="437" y="410" class="act">重新命名</text>
+  <text x="605" y="410" class="star">★</text>
+  <rect x="351" y="432" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="452" class="key" text-anchor="middle">d</text>
+  <text x="437" y="452" class="act">刪除（垃圾桶）</text>
+  <rect x="351" y="474" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="387" y="494" class="key" text-anchor="middle">Esc</text>
+  <text x="437" y="494" class="act">取消選取</text>
+  <text x="353" y="540" class="sub">d 會移到垃圾桶，⇧D 永久刪除</text>
+  <g filter="url(#shadow)"><rect x="640" y="82" width="290" height="476" rx="14" fill="#ffffff"/></g>
+  <rect x="640" y="82" width="290" height="40" rx="14" fill="#8b5cf6"/>
+  <rect x="640" y="108" width="290" height="14" fill="#8b5cf6"/>
+  <text x="785" y="108" class="colTitle" text-anchor="middle">搜尋、路徑與其他</text>
+  <rect x="656" y="138" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="158" class="key" text-anchor="middle">f</text>
+  <text x="742" y="158" class="act">過濾（只顯示符合的）</text>
+  <text x="910" y="158" class="star">★</text>
+  <rect x="656" y="180" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="200" class="key" text-anchor="middle">/</text>
+  <text x="742" y="200" class="act">尋找下一個</text>
+  <rect x="656" y="222" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="242" class="key" text-anchor="middle">s</text>
+  <text x="742" y="242" class="act">依檔名搜尋（fd）</text>
+  <rect x="656" y="264" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="284" class="key" text-anchor="middle">⇧S</text>
+  <text x="742" y="284" class="act">依內容搜尋（rg）</text>
+  <rect x="656" y="306" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="326" class="key" text-anchor="middle">⇧Z</text>
+  <text x="742" y="326" class="act">zoxide 跳到常用目錄</text>
+  <rect x="656" y="348" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="368" class="key" text-anchor="middle">c c</text>
+  <text x="742" y="368" class="act">複製完整路徑</text>
+  <text x="910" y="368" class="star">★</text>
+  <rect x="656" y="390" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="410" class="key" text-anchor="middle">c f</text>
+  <text x="742" y="410" class="act">複製檔名</text>
+  <rect x="656" y="432" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="452" class="key" text-anchor="middle">t t</text>
+  <text x="742" y="452" class="act">開新分頁</text>
+  <rect x="656" y="474" width="72" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="692" y="494" class="key" text-anchor="middle">~</text>
+  <text x="742" y="494" class="act">查看所有快捷鍵</text>
+  <text x="910" y="494" class="star">★</text>
+  <text x="658" y="540" class="sub">忘記按鍵時按 ~ 或 F1</text>
+</svg>

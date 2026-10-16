@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .tag { font-size: 12px; font-weight: 800; fill: #ffffff; }
+    .h { font-size: 15px; font-weight: 800; fill: #0f172a; }
+    .cmd { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; font-weight: 700; fill: #fcd34d; }
+    .mono { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 11px; fill: #cbd5e1; }
+    .txt { font-size: 12px; fill: #475569; }
+    .best { font-size: 12px; font-weight: 700; }
+  </style>
+
+  <rect width="960" height="420" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">Glow 的四種閱讀方式</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">最常用的是 A：glow -p 檔名，讀完按 q 回到終端機</text>
+
+  <!-- A pager -->
+  <g filter="url(#shadow)"><rect x="30" y="82" width="215" height="310" rx="14" fill="#ffffff" stroke="#f9a8d4" stroke-width="2"/></g>
+  <rect x="46" y="96" width="70" height="22" rx="11" fill="#ec4899"/><text x="81" y="112" class="tag" text-anchor="middle">A 推薦</text>
+  <text x="46" y="142" class="h">分頁閱讀</text>
+  <rect x="46" y="154" width="183" height="30" rx="6" fill="#0f172a"/><text x="56" y="174" class="cmd">glow -p 檔名.md</text>
+  <rect x="46" y="194" width="183" height="96" rx="6" fill="#1e293b"/>
+  <text x="56" y="214" class="mono" style="fill:#f9a8d4">▌ 標題</text>
+  <text x="56" y="234" class="mono">內文排版整齊…</text>
+  <text x="56" y="254" class="mono">j/k 捲動，q 離開</text>
+  <text x="56" y="278" class="mono" style="fill:#64748b">─── 35% ───</text>
+  <text x="46" y="320" class="txt">一頁一頁慢慢讀，</text>
+  <text x="46" y="340" class="txt">讀完按 q 離開</text>
+  <text x="46" y="372" class="best" style="fill:#be185d">適合：長文件、規格書</text>
+
+  <!-- B direct -->
+  <g filter="url(#shadow)"><rect x="260" y="82" width="215" height="310" rx="14" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/></g>
+  <rect x="276" y="96" width="34" height="22" rx="11" fill="#3b82f6"/><text x="293" y="112" class="tag" text-anchor="middle">B</text>
+  <text x="276" y="142" class="h">直接印出來</text>
+  <rect x="276" y="154" width="183" height="30" rx="6" fill="#0f172a"/><text x="286" y="174" class="cmd">glow 檔名.md</text>
+  <rect x="276" y="194" width="183" height="96" rx="6" fill="#1e293b"/>
+  <text x="286" y="214" class="mono">$ glow notes.md</text>
+  <text x="286" y="234" class="mono" style="fill:#93c5fd">▌ 今日筆記</text>
+  <text x="286" y="254" class="mono">• 完成登入功能</text>
+  <text x="286" y="278" class="mono">$ _</text>
+  <text x="276" y="320" class="txt">排好版直接印在畫面上，</text>
+  <text x="276" y="340" class="txt">不會進入分頁模式</text>
+  <text x="276" y="372" class="best" style="fill:#1d4ed8">適合：短文件、快速確認</text>
+
+  <!-- C TUI -->
+  <g filter="url(#shadow)"><rect x="490" y="82" width="215" height="310" rx="14" fill="#ffffff" stroke="#6ee7b7" stroke-width="1.5"/></g>
+  <rect x="506" y="96" width="34" height="22" rx="11" fill="#10b981"/><text x="523" y="112" class="tag" text-anchor="middle">C</text>
+  <text x="506" y="142" class="h">瀏覽整個專案</text>
+  <rect x="506" y="154" width="183" height="30" rx="6" fill="#0f172a"/><text x="516" y="174" class="cmd">glow</text>
+  <rect x="506" y="194" width="183" height="96" rx="6" fill="#1e293b"/>
+  <text x="516" y="214" class="mono" style="fill:#6ee7b7">▸ README.md</text>
+  <text x="516" y="234" class="mono">  docs/spec.md</text>
+  <text x="516" y="254" class="mono">  CHANGELOG.md</text>
+  <text x="516" y="278" class="mono" style="fill:#64748b">/ 搜尋  Enter 開啟</text>
+  <text x="506" y="320" class="txt">自動找出資料夾裡</text>
+  <text x="506" y="340" class="txt">所有 Markdown 檔</text>
+  <text x="506" y="372" class="best" style="fill:#047857">適合：不知道檔案在哪</text>
+
+  <!-- D remote -->
+  <g filter="url(#shadow)"><rect x="720" y="82" width="210" height="310" rx="14" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/></g>
+  <rect x="736" y="96" width="34" height="22" rx="11" fill="#8b5cf6"/><text x="753" y="112" class="tag" text-anchor="middle">D</text>
+  <text x="736" y="142" class="h">讀網路上的文件</text>
+  <rect x="736" y="154" width="178" height="30" rx="6" fill="#0f172a"/><text x="744" y="174" class="cmd">glow 網址</text>
+  <rect x="736" y="194" width="178" height="96" rx="6" fill="#1e293b"/>
+  <text x="744" y="214" class="mono">github.com/</text>
+  <text x="744" y="234" class="mono">  charmbracelet/glow</text>
+  <text x="744" y="258" class="mono" style="fill:#c4b5fd">▌ Glow</text>
+  <text x="744" y="278" class="mono">Render markdown…</text>
+  <text x="736" y="320" class="txt">直接讀 GitHub 專案的</text>
+  <text x="736" y="340" class="txt">README，不用下載</text>
+  <text x="736" y="372" class="best" style="fill:#6d28d9">適合：看別人的專案</text>
+</svg>

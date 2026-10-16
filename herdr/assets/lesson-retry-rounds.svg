@@ -34,7 +34,7 @@
   <rect x="60" y="162" width="40" height="20" rx="10" fill="#3b82f6"/><text x="80" y="176" class="who" text-anchor="middle">主管</text>
   <text x="108" y="177" class="txt">執行測試／檢查程式</text>
   <rect x="60" y="196" width="210" height="34" rx="8" fill="#fef2f2" stroke="#fecaca"/>
-  <text x="165" y="218" class="res" fill="#b91c1c" text-anchor="middle">✗ 5 failed, 1 passed</text>
+  <text x="165" y="218" class="res" style="fill:#b91c1c" text-anchor="middle">✗ 5 failed, 1 passed</text>
   <text x="60" y="256" class="txt">很多細節猜錯了</text>
 
   <!-- arrow 1 -> 2 -->
@@ -49,7 +49,7 @@
   <rect x="375" y="162" width="40" height="20" rx="10" fill="#3b82f6"/><text x="395" y="176" class="who" text-anchor="middle">主管</text>
   <text x="423" y="177" class="txt">再檢查一次</text>
   <rect x="375" y="196" width="210" height="34" rx="8" fill="#fffbeb" stroke="#fde68a"/>
-  <text x="480" y="218" class="res" fill="#b45309" text-anchor="middle">✗ 1 failed, 5 passed</text>
+  <text x="480" y="218" class="res" style="fill:#b45309" text-anchor="middle">✗ 1 failed, 5 passed</text>
   <text x="375" y="256" class="txt">越來越接近了</text>
 
   <!-- arrow 2 -> 3 -->
@@ -64,7 +64,7 @@
   <rect x="690" y="162" width="40" height="20" rx="10" fill="#3b82f6"/><text x="710" y="176" class="who" text-anchor="middle">主管</text>
   <text x="738" y="177" class="txt">最後檢查</text>
   <rect x="690" y="196" width="210" height="34" rx="8" fill="#ecfdf5" stroke="#86efac"/>
-  <text x="795" y="218" class="res" fill="#047857" text-anchor="middle">✓ 6 passed 全部通過</text>
+  <text x="795" y="218" class="res" style="fill:#047857" text-anchor="middle">✓ 6 passed 全部通過</text>
   <text x="690" y="256" class="txt">驗收合格，回報給你</text>
 
   <text x="480" y="308" class="sub" text-anchor="middle">最多 3 次。3 次還不通過，主管會停下來說明卡在哪裡，問你要不要繼續（數字僅為示意）</text>

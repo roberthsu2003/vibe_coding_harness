@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .tree { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; fill: #e2e8f0; }
+    .h { font-size: 14px; font-weight: 800; fill: #0f172a; }
+    .file { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 13px; font-weight: 800; }
+    .txt { font-size: 12px; fill: #475569; }
+    .tag { font-size: 11px; font-weight: 800; fill: #ffffff; }
+  </style>
+
+  <rect width="960" height="400" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">OpenCode 的設定檔：放在哪、管什麼</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">初學者只需要 AGENTS.md；想限制 AI 能做什麼時，再加 opencode.json</text>
+
+  <!-- tree -->
+  <g filter="url(#shadow)"><rect x="30" y="84" width="330" height="290" rx="14" fill="#0f172a"/></g>
+  <text x="50" y="114" class="tree" style="fill:#94a3b8">你的專案/</text>
+  <text x="50" y="146" class="tree" style="fill:#86efac">├── AGENTS.md</text>
+  <text x="50" y="178" class="tree" style="fill:#93c5fd">├── opencode.json</text>
+  <text x="50" y="210" class="tree">├── .opencode/</text>
+  <text x="50" y="242" class="tree" style="fill:#c4b5fd">│   ├── agents/</text>
+  <text x="50" y="274" class="tree" style="fill:#fcd34d">│   └── commands/</text>
+  <text x="50" y="306" class="tree">└── src/ …</text>
+  <text x="50" y="346" class="tree" style="fill:#94a3b8">全域：~/.config/opencode/</text>
+
+  <!-- cards -->
+  <g filter="url(#shadow)">
+    <rect x="380" y="84" width="270" height="134" rx="12" fill="#ffffff" stroke="#86efac" stroke-width="1.5"/>
+    <rect x="660" y="84" width="270" height="134" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <rect x="380" y="232" width="270" height="142" rx="12" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+    <rect x="660" y="232" width="270" height="142" rx="12" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+  </g>
+
+  <rect x="396" y="96" width="58" height="20" rx="10" fill="#10b981"/><text x="425" y="110" class="tag" text-anchor="middle">最重要</text>
+  <text x="396" y="140" class="file" style="fill:#047857">AGENTS.md</text>
+  <text x="396" y="164" class="txt">用中文寫的專案規則</text>
+  <text x="396" y="184" class="txt">例如：用 uv、不要用 pip</text>
+  <text x="396" y="204" class="txt">/init 可以自動產生</text>
+
+  <text x="676" y="140" class="file" style="fill:#1d4ed8">opencode.json</text>
+  <text x="676" y="164" class="txt">權限（allow / ask / deny）</text>
+  <text x="676" y="184" class="txt">預設模型、MCP 伺服器</text>
+  <text x="676" y="204" class="txt">也可以寫成 .jsonc（可加註解）</text>
+
+  <text x="396" y="262" class="file" style="fill:#6d28d9">.opencode/agents/*.md</text>
+  <text x="396" y="286" class="txt">自訂子代理</text>
+  <text x="396" y="306" class="txt">檔名就是代理名稱</text>
+  <text x="396" y="326" class="txt">例：reviewer.md → @reviewer</text>
+
+  <text x="676" y="262" class="file" style="fill:#b45309">.opencode/commands/*.md</text>
+  <text x="676" y="286" class="txt">自訂斜線指令</text>
+  <text x="676" y="306" class="txt">例：review.md → /review</text>
+  <text x="676" y="346" class="txt">介面與快捷鍵設定：tui.json</text>
+</svg>

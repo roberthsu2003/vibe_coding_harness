@@ -34,8 +34,8 @@
   <rect x="40" y="86" width="300" height="34" rx="12" fill="#3b82f6"/>
   <rect x="40" y="106" width="300" height="14" fill="#3b82f6"/>
   <text x="58" y="108" class="paneTitle">主管 agy（你說話的窗格）</text>
-  <text x="58" y="148" class="mono" fill="#fcd34d">&gt; 幫我在旁邊開一個窗格，</text>
-  <text x="58" y="166" class="mono" fill="#fcd34d">  看看有什麼檔案</text>
+  <text x="58" y="148" class="mono" style="fill:#fcd34d">&gt; 幫我在旁邊開一個窗格，</text>
+  <text x="58" y="166" class="mono" style="fill:#fcd34d">  看看有什麼檔案</text>
   <text x="58" y="200" class="mono">看到的檔案：</text>
   <text x="58" y="218" class="mono">  GEMINI.md, tasks/</text>
   <text x="58" y="236" class="mono">Python 版本：3.14</text>
@@ -64,7 +64,7 @@
   <line x1="612" y1="216" x2="346" y2="216" stroke="#10b981" stroke-width="2" marker-end="url(#arrowG)"/>
   <circle cx="368" cy="202" r="10" fill="#10b981"/><text x="368" y="206" class="num" text-anchor="middle">3</text>
   <text x="384" y="206" class="step">讀回結果</text>
-  <text x="470" y="206" class="cmd" fill="#047857">pane read</text>
+  <text x="470" y="206" class="cmd" style="fill:#047857">pane read</text>
 
   <line x1="346" y1="268" x2="612" y2="268" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
   <circle cx="368" cy="254" r="10" fill="#3b82f6"/><text x="368" y="258" class="num" text-anchor="middle">4</text>
