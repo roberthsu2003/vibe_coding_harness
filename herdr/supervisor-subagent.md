@@ -302,3 +302,9 @@ herdr pane read "$TEST_PANE_ID" --source recent-unwrapped --lines 120     # 讀�
    Supervisor 最大的價值在於「不帶偏見的第三方審查」。子 Agent 寫完代碼後，由 Supervisor 檢查 diff 並由測試窗格確認通過，杜絕 AI 幻覺與自誇。
 4. **善用 Herdr 視覺化佈局**：
    人類開發者隨時可按 `prefix+w` 或使用滑鼠點擊各個窗格，隨時接管任何一個 SubAgent 的操作，人機協同最為順暢。
+
+---
+
+## 動手練習
+
+看懂原理後，跟著由淺至深的 6 關小範例實際操作一次：👉 **[Herdr 多 Agent 協同練習](practice/README.md)**

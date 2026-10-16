@@ -200,6 +200,9 @@ Herdr 的底層以 Unix Domain Socket 與 PTY 終端虛擬層為基礎，讓 Sup
 
 > 完整底層架構原理、SVG 數據流向圖與端到端實戰演練，請參閱專題指南：  
 > 👉 **[Supervisor 與 SubAgent 終端協同指南](supervisor-subagent.md)**
+>
+> 想動手練習？由淺至深 6 關小範例：  
+> 👉 **[Herdr 多 Agent 協同練習](practice/README.md)**
 
 ---
 
