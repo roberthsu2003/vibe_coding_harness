@@ -52,7 +52,7 @@ opencode run -m opencode/muse-spark-1.3-contributor-free "只回覆 OK 兩個字
 >
 > | 用途 | 模型 | 說明 |
 > | :--- | :--- | :--- |
-> | 預設 | `opencode/muse-spark-1.3-contributor-free` | Muse Spark 免費版，速度快 |
+> | 預設 | `opencode/nemotron-3.5-Super-vl-free` | **已經停用**Muse Spark 免費版，速度快 |
 > | 備用 | `opencode/nemotron-3.5-lightning-free` | NVIDIA Nemotron 免費版，速度較慢 |
 >
 > 備用模型也可以先測試一次：`opencode run -m opencode/nemotron-3.5-lightning-free "只回覆 OK 兩個字"`
@@ -60,8 +60,8 @@ opencode run -m opencode/muse-spark-1.3-contributor-free "只回覆 OK 兩個字
 ### 4. 準備練習資料夾與主管規則檔
 
 ```bash
-mkdir -p ~/herdr-lab
-cd ~/herdr-lab
+mkdir -p herdr-lab
+cd herdr-lab
 curl -fsSLO https://raw.githubusercontent.com/roberthsu2003/vibe_coding_harness/main/herdr/practice/GEMINI.md
 ```
 
@@ -84,7 +84,7 @@ AI 會在畫面上切出好幾個窗格。視窗太小時，窗格會窄到幾�
 - [ ] 六個確認指令都有顯示版本號
 - [ ] `agy` 可以登入並看到輸入框
 - [ ] 免費模型回覆了 `OK`
-- [ ] `~/herdr-lab/GEMINI.md` 存在
+- [ ] `herdr-lab/GEMINI.md` 存在
 - [ ] 終端機視窗已最大化
 
 ---
