@@ -25,6 +25,13 @@ OpenCode 是可在終端機中執行的開源 AI coding agent，也是本 repo �
 完整的安裝、CLI 操作與設定請參考 [OpenCode 操作指南](opencode/README.md)。
 
 
+### Antigravity CLI (agy)
+
+Antigravity CLI (`agy`) 是 Google Antigravity 的終端機代理介面，能直接在命令列中與多代理（Subagents）協同工作、執行自動化任務、使用工作空間自訂規則與外掛（Plugins/Skills）。
+
+完整的安裝、CLI 操作與設定請參考 [Antigravity CLI 操作指南](agy/README.md)。
+
+
 ## ADE：管理多個 agent 工作階段
 
 ADE 是 **Agentic Development Environment** 的縮寫，可理解為以 agent 工作流程為中心的開發環境。這是正在發展中的工具類別；不同專案可能是 TUI、桌面程式或其他介面，因此本 repo 會介紹實際功能，不把它限定成單一介面或已定型的標準。
