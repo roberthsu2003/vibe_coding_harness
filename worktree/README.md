@@ -137,7 +137,7 @@ cat .gitignore                   # 確認內容
 請建立 .gitignore，忽略 .DS_Store 和 Thumbs.db。
 ```
 
-> 第 06 站還會再加入 `.worktrees/` 和 `references/`，原因在[第 05 站](05-worktree-structure.md)說明。
+> [第 05 站](05-worktree-structure.md)還會再加入 `.worktrees/` 和 `references/`，到時候再說明原因。
 
 ### 步驟 5：做第一次 commit
 
@@ -218,6 +218,8 @@ git commit -m "docs: 新增過擬合和準確率講義"
 ## 學習路線
 
 ![Branch 與 Worktree 學習路線](assets/learning-path.svg)
+
+**請一站接一站學。** 全章只有一條路線，每個動作只做一次，下一步都接著上一步的結果。01、04 站只講觀念，02、03、05、06 站和 07 站的第一部分，都要在 `ml-notes` 裡跟著做；每站結尾的「目前進度」可以用來對照。07 站的第二部分遇到時再查。
 
 | 部分 | 站 | 主題 | 難度 | 你會學到 |
 | :--- | :---: | :--- | :---: | :--- |

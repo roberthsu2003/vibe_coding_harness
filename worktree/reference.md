@@ -72,7 +72,7 @@ Git 的訊息會依介面語言顯示英文或中文，兩種都列出來方便�
 | 切換分支後，改動跟著過來了 | 這些改動還沒 commit，不屬於任何分支。切換前先 commit |
 | AI 直接改在 main 上 | 見[情境 A](07-scenarios.md#情境-aai-直接改在-main-上) |
 | `CONFLICT`<br>`衝突（內容）`；`git status` 裡的 `both modified`／`雙方修改` | 合併衝突，見 [03 合併與衝突](03-merge-conflict.md#4-處理衝突) |
-| `Already up to date`／`已經是最新的`，但改動沒回來 | 這次合併之前可能被 revert 過，見[合併完才發現不對](03-merge-conflict.md#6-合併完才發現不對) |
+| `Already up to date`／`已經是最新的`，但改動沒回來 | 這次合併之前可能被 revert 過，見[合併完才發現不對](03-merge-conflict.md#5-合併完才發現不對) |
 | `git merge` 後跳出編輯器 | 正在確認合併訊息，不是當機。nano 按 `Ctrl+X`；Vim 輸入 `:wq` 按 `Enter` |
 
 ### Worktree

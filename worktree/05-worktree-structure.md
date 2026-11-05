@@ -4,9 +4,13 @@
 
 **這一站你會學到**：worktree 建議放在哪裡、為什麼要加進 `.gitignore`、它為什麼比較省空間，以及哪些東西隔離了、哪些還是共用。
 
+> 接續 [03 站](03-merge-conflict.md)的 `ml-notes`。這一站先把專案準備好，[06 站](06-worktree-lifecycle.md)才會真的建立 worktree。
+
 ---
 
 ## 1. 建議放在專案裡的 `.worktrees/`
+
+下一站完成後，專案會暫時變成這樣：
 
 ```text
 ml-notes/                        ← 母目錄（主專案，停在 main）
@@ -29,6 +33,8 @@ ml-notes/                        ← 母目錄（主專案，停在 main）
 > [!IMPORTANT]
 > 開始之前要先做好這件事，否則主目錄的 Git 會把整個 `.worktrees/` 當成新檔案。**而且一定要 commit**：新的 worktree 只會拿到已經 commit 的檔案，沒有 commit 的 `.gitignore` 不會跟過去。
 
+這一行是專案設定，不會改到任何講義，而且建立 worktree 前就要用到，所以直接 commit 在 main。
+
 **自己打指令**
 
 ```bash
@@ -40,7 +46,7 @@ git commit -m "chore: 忽略 .worktrees"
 **請 AI 做**
 
 ```text
-請把 .worktrees/ 加進 .gitignore 並 commit。
+請把 .worktrees/ 加進 .gitignore。這是專案設定，請直接 commit 在 main，訊息是「chore: 忽略 .worktrees」。
 ```
 
 ---
@@ -56,21 +62,7 @@ git commit -m "chore: 忽略 .worktrees"
 gitdir: /path/to/ml-notes/.git/worktrees/feature-neural-network
 ```
 
-所以不管開幾個 worktree，歷史紀錄都只存一份。
-
-親眼確認一下（要先有 worktree 才能執行，可以等 [06 站](06-worktree-lifecycle.md)做練習時再試）：
-
-**自己打指令**
-
-```bash
-cat .worktrees/feature-neural-network/.git   # 會看到 gitdir 那一行
-```
-
-**請 AI 做**
-
-```text
-請顯示 .worktrees/feature-neural-network/.git 的內容，並說明它是檔案還是資料夾。
-```
+所以不管開幾個 worktree，歷史紀錄都只存一份。[06 站](06-worktree-lifecycle.md)建立 worktree 後，會親眼確認這一行。
 
 > 每個 worktree 還是有自己的一份工作檔案，所以講義本身會各有一份。Markdown 檔案很小，不用擔心；如果放了大型 PDF，就要留意空間。
 
@@ -80,16 +72,33 @@ cat .worktrees/feature-neural-network/.git   # 會看到 gitdir 那一行
 
 Worktree 隔離的是**專案裡的檔案和目前的分支**，不是整台電腦。
 
-> 老師的投影片和課本 PDF 有版權，不適合放進 Git。你把它們放在 `references/`，並加進 `.gitignore`。這個資料夾只留在你的電腦上，AI 寫講義時可以參考，但 Git 不會追蹤它。
+> 老師的投影片和課本 PDF 有版權，不適合放進 Git。你打算把它們放在 `references/`，並加進 `.gitignore`。這個資料夾只留在你的電腦上，AI 寫講義時可以參考，但 Git 不會追蹤它。
 
-| | 內容 | 要注意什麼 |
-| :--- | :--- | :--- |
-| ✅ **各自獨立** | 被 Git 追蹤的檔案（`terms/`、`README.md`）、目前的分支 | 這就是 worktree 的主要好處 |
-| ⚠️ **不會自動帶過去** | 被 `.gitignore` 忽略的檔案，例如 `references/` | 新 worktree 裡沒有它們，AI 會找不到參考資料（解法見 [06 站](06-worktree-lifecycle.md)） |
-| ⚠️ **大家共用** | Git 的 stash 和設定 | 在這個 worktree 做的 `git stash`，換到另一個 worktree 也看得到 |
-| ⚠️ **同一台電腦** | 連接埠、資料庫、全域安裝的套件 | 寫講義不會遇到。之後用 AI 寫程式時，兩個 AI 同時啟動網站可能會搶同一個連接埠 |
+先把 `references/` 加進 `.gitignore`：
 
-想知道專案裡有哪些被忽略的檔案：
+**自己打指令**
+
+```bash
+echo 'references/' >> .gitignore
+git add .gitignore
+git commit -m "chore: 忽略 references"
+```
+
+**請 AI 做**
+
+```text
+請把 references/ 加進 .gitignore。這是專案設定，請直接 commit 在 main，訊息是「chore: 忽略 references」。
+```
+
+再放入老師的投影片，下一站寫神經網路講義時會用到。這裡請 AI 寫一份當作練習用的投影片：
+
+**請 AI 寫**
+
+```text
+請建立 references/slides.md，當作老師的投影片，用幾行重點介紹神經網路的輸入層、隱藏層和輸出層。
+```
+
+確認 Git 真的忽略了它。`references/` 應該只出現在被忽略的檔案裡：
 
 **自己打指令**
 
@@ -100,8 +109,15 @@ git status --ignored
 **請 AI 做**
 
 ```text
-請列出這個專案裡被 Git 忽略的檔案。
+請列出這個專案裡被 Git 忽略的檔案，並確認 references 有在裡面。
 ```
+
+| | 內容 | 要注意什麼 |
+| :--- | :--- | :--- |
+| ✅ **各自獨立** | 被 Git 追蹤的檔案（`terms/`、`README.md`）、目前的分支 | 這就是 worktree 的主要好處 |
+| ⚠️ **不會自動帶過去** | 被 `.gitignore` 忽略的檔案，例如 `references/` | 新 worktree 裡沒有它們，AI 會找不到參考資料（解法見 [06 站](06-worktree-lifecycle.md)的步驟 1） |
+| ⚠️ **大家共用** | Git 的 stash 和設定 | 在這個 worktree 做的 `git stash`，換到另一個 worktree 也看得到 |
+| ⚠️ **同一台電腦** | 連接埠、資料庫、全域安裝的套件 | 寫講義不會遇到。之後用 AI 寫程式時，兩個 AI 同時啟動網站可能會搶同一個連接埠 |
 
 > 之後寫程式的專案也一樣：`.env`、`.venv`、`node_modules` 通常都被忽略，不會自動帶到新的 worktree。
 
@@ -113,5 +129,7 @@ git status --ignored
 - [ ] 能說出 worktree 裡的 `.git` 是檔案還是資料夾、裡面寫了什麼
 - [ ] 能說出新 worktree 為什麼沒有 `references/`
 - [ ] 知道怎麼用 `git status --ignored` 查看被忽略的檔案
+
+> 📍 **目前進度**：只有 `main` 一條分支，還沒有任何 worktree。`.gitignore` 已經忽略 `.worktrees/` 和 `references/`，`references/slides.md` 只留在你的電腦上。
 
 > 下一站：[06 Worktree 完整流程 →](06-worktree-lifecycle.md)
