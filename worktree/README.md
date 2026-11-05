@@ -30,14 +30,6 @@ ml-notes/
     └── supervised-learning.md  ← 監督式學習
 ```
 
-| 老師說 | 你遇到的問題 | 學到什麼 | 站 |
-| :--- | :--- | :--- | :---: |
-| 「這週教了過擬合和準確率。」 | 還沒有地方整理講義 | 建立專案、第一次 commit | [開始之前](#開始之前準備-ml-notes-資料夾) |
-| 「下週要教監督式學習。」 | AI 可能改壞已經寫好的講義 | Branch | [01](01-why-branch.md)、[02](02-branch-basics.md) |
-| 「過擬合要講原因，也要講現象。」 | 兩條分支改到同一行 | 合併與衝突 | [03](03-merge-conflict.md) |
-| 「要開始教神經網路，監督式學習的例子也要改寫。」 | 想讓兩個 AI 同時做 | Worktree | [04](04-why-worktree.md)、[05](05-worktree-structure.md)、[06](06-worktree-lifecycle.md) |
-| 「準確率的公式寫錯了，明天就要考試！」 | 手上的講義還沒寫完 | 實戰情境 | [07](07-scenarios.md) |
-
 ---
 
 ## 開始之前：準備 ml-notes 資料夾
