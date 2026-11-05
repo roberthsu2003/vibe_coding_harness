@@ -62,6 +62,8 @@ Git 的訊息會依介面語言顯示英文或中文，兩種都列出來方便�
 
 | 錯誤訊息或狀況 | 原因與解法 |
 | :--- | :--- |
+| `Author identity unknown`<br>`作者身分未知` | 還沒設定 `user.name` 和 `user.email`，見[開始之前的步驟 3](README.md#步驟-3檢查-username-和-useremail) |
+| `not a git repository`<br>`不是一個 git 版本庫` | 這個資料夾還沒初始化，或是你不在專案資料夾裡。先確認位置，再見[開始之前的步驟 2](README.md#步驟-2初始化-git) |
 | `Your local changes to the following files would be overwritten by checkout`<br>`您對下列檔案的本機修改將被簽出動作覆蓋` | 還沒 commit 的改動會被切換蓋掉，Git 擋下來保護你，見[情境 B](07-scenarios.md#情境-b切換分支被擋下) |
 | `the branch … is not fully merged`<br>`分支…沒有完全合併` | 分支還有 commit 沒合併。先合併；確定整條都不要時才用 `-D` |
 | `invalid reference`<br>`無效引用` | 找不到這條分支。先用 `git branch` 檢查名稱；如果是刪掉的分支，見[情境 C](07-scenarios.md#情境-c刪錯分支) |

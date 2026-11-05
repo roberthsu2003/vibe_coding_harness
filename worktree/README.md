@@ -14,10 +14,11 @@
 
 你正在學機器學習，決定請 AI 幫忙把課堂上的專有名詞整理成講義，每個名詞一個 Markdown 檔。**全程不用寫程式。**
 
-請開一個專用的本地資料夾（本章以 `ml-notes` 為例），各站的練習都接著在這裡做。走完全章，你會得到一份真正能複習的講義：
+請開一個專用的本地資料夾（本章以 `ml-notes` 為例，準備步驟見[開始之前](#開始之前準備-ml-notes-資料夾)），各站的練習都接著在這裡做。走完全章，你會得到一份真正能複習的講義：
 
 ```text
 ml-notes/
+├── .gitignore                  ← 告訴 Git 哪些檔案不用記錄
 ├── README.md                   ← 講義目錄
 ├── references/                 ← 老師的投影片（不放進 Git）
 └── terms/                      ← 每個專有名詞一個檔案
@@ -35,6 +36,94 @@ ml-notes/
 | 「過擬合要講原因，也要講現象。」 | 兩條分支改到同一行 | 合併與衝突 | [03](03-merge-conflict.md) |
 | 「要開始教神經網路，混淆矩陣的表格也標反了。」 | 想讓兩個 AI 同時做 | Worktree | [04](04-why-worktree.md)、[05](05-worktree-structure.md)、[06](06-worktree-lifecycle.md) |
 | 「準確率的公式寫錯了，明天就要考試！」 | 手上的講義還沒寫完 | 實戰情境 | [07](07-scenarios.md) |
+
+---
+
+## 開始之前：準備 ml-notes 資料夾
+
+開始第 01 站前，先花幾分鐘把資料夾準備好。**這些步驟只需要做一次。**
+
+### 步驟 1：建立資料夾並啟動 AI
+
+在終端機輸入：
+
+```bash
+mkdir ~/ml-notes
+cd ~/ml-notes
+opencode
+```
+
+> [!WARNING]
+> 不要把 `ml-notes` 建在其他 Git 專案裡面，否則兩個專案的紀錄很容易搞混。
+
+接下來的步驟都是對 AI 說的。
+
+### 步驟 2：初始化 Git
+
+初始化會在資料夾裡建立 `.git`，Git 從此才開始記錄這個資料夾的版本。
+
+```text
+請確認電腦已經安裝 Git，並確認這個資料夾還不是 Git 專案。確認後把它初始化成 Git 專案，主分支叫 main。
+```
+
+### 步驟 3：檢查 user.name 和 user.email
+
+每個 commit 都會記錄是誰做的。這兩項沒有設定的話，commit 時會出現 `Author identity unknown`（作者身分未知）。
+
+```text
+請檢查 Git 的 user.name 和 user.email 有沒有設定，並把結果告訴我。如果沒有設定，先問我要填什麼，不要自己編，再設定到這台電腦的全域設定。
+```
+
+> [!NOTE]
+> - **電腦教室或共用電腦：** 如果顯示的是別人的名字，請 AI「只在這個專案設定 user.name 和 user.email」，不要改到全域設定。
+> - **Email 會被公開：** 之後把 commit push 到 GitHub，這裡的 email 會公開顯示。不想公開的話，可以使用 GitHub 提供的 noreply 信箱。
+
+### 步驟 4：建立 .gitignore
+
+`.gitignore` 列出 Git 不用記錄的檔案。電腦會自動產生一些和講義無關的檔案，例如 macOS 的 `.DS_Store`、Windows 的 `Thumbs.db`，先把它們排除。
+
+```text
+請建立 .gitignore，忽略 .DS_Store 和 Thumbs.db。
+```
+
+> 第 06 站還會再加入 `.worktrees/` 和 `references/`，原因在[第 05 站](05-worktree-structure.md)說明。
+
+### 步驟 5：做第一次 commit
+
+專案要先有第一個 commit，後面才能順利開分支。
+
+```text
+請把 .gitignore 做第一次 commit，然後顯示 commit 紀錄和目前的狀態。
+```
+
+### ✅ 確認準備好了
+
+- [ ] 目前的分支是 `main`
+- [ ] commit 紀錄裡有一筆，作者是你的名字和 email
+- [ ] 目前的狀態沒有未提交的改動
+
+準備好了，就可以從[第 01 站](01-why-branch.md)開始。
+
+### 進階（選修）：自己打指令
+
+```bash
+git --version                           # 確認已經安裝 Git
+git rev-parse --is-inside-work-tree     # 出現 not a git repository 代表還不是 Git 專案
+git init -b main                        # 初始化，主分支叫 main
+
+git config user.name                    # 檢查名字，沒有輸出代表還沒設定
+git config user.email                   # 檢查 email
+git config --global user.name "你的名字"
+git config --global user.email "you@example.com"
+# 共用電腦請拿掉 --global，只在這個專案設定
+
+printf '.DS_Store\nThumbs.db\n' > .gitignore   # 建立 .gitignore
+
+git add .gitignore
+git commit -m "chore: 初始化專案"
+git log --oneline
+git status
+```
 
 ---
 

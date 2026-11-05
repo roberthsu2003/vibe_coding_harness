@@ -133,9 +133,9 @@ Commit 只存在你的電腦上，要 push 才會上傳：
 
 ## ✅ 動手練習
 
-開一個專用的資料夾 `ml-notes`，在裡面啟動 AI，依序說：
+還沒準備資料夾的話，請先完成[開始之前](README.md#開始之前準備-ml-notes-資料夾)的步驟。接著在 `ml-notes` 裡啟動 AI，依序說：
 
-1. 「請把這個資料夾變成 Git 專案，主分支叫 main。建立 `terms/overfitting.md`，內容只有一行：『過擬合：模型學得太細。』建立 `terms/accuracy.md`，內容只有一行：『準確率 = 預測為正且正確的筆數 ÷ 預測為正的筆數』。再建立 `README.md` 當講義目錄，連到這兩個檔案。然後做第一次 commit。」
+1. 「請建立 `terms/overfitting.md`，內容只有一行：『過擬合：模型學得太細。』建立 `terms/accuracy.md`，內容只有一行：『準確率 = 預測為正且正確的筆數 ÷ 預測為正的筆數』。再建立 `README.md` 當講義目錄，連到這兩個檔案。然後 commit。」
 2. 「請開一條分支 `feature/supervised-learning`，新增 `terms/supervised-learning.md`，說明監督式學習，包含定義、白話比喻和一個例子，並加進目錄，然後 commit。」
 3. 「請切回 main，列出 `terms` 資料夾的檔案。」確認看不到 `supervised-learning.md`。
 4. 「請把 `feature/supervised-learning` 合併進 main，再刪除這條分支。」
