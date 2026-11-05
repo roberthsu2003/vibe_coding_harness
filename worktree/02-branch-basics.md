@@ -255,35 +255,7 @@ git push origin --delete feature/supervised-learning   # 刪除 GitHub 上的分
 
 還沒準備資料夾的話，請先完成[開始之前](README.md#開始之前準備-ml-notes-資料夾)的步驟。接著進入 `ml-notes`，**先用指令做一遍**。之後想再練習請 AI 做，可以另開一個資料夾重來。
 
-### 第 1 步：建立前兩份講義
-
-> `過擬合` 這句定義故意寫得不夠完整，`準確率` 的公式也藏了一個錯誤（其實是精確率的公式）。請先照抄，下一站和第 07 站會修正它們。
-
-**自己打指令**
-
-```bash
-mkdir terms
-echo '過擬合：模型學得太細。' > terms/overfitting.md
-echo '準確率 = 預測為正且正確的筆數 ÷ 預測為正的筆數' > terms/accuracy.md
-cat > README.md <<'EOF'
-# 機器學習名詞講義
-
-- [過擬合](terms/overfitting.md)
-- [準確率](terms/accuracy.md)
-EOF
-git add .
-git commit -m "docs: 新增過擬合和準確率講義"
-```
-
-> **怎麼把內容寫進檔案？** 3 行以內用 `echo`，`>` 會覆蓋檔案，`>>` 會加在檔案最後。超過 3 行用 `cat > 檔名 <<'EOF'`，它會把接下來的每一行都寫進檔案，直到遇到單獨一行的 `EOF` 才結束。`EOF` 外面的單引號可以讓內容照原樣寫入，不會被終端機解讀。
-
-**請 AI 做**
-
-```text
-請建立 terms/overfitting.md，內容只有一行：「過擬合：模型學得太細。」建立 terms/accuracy.md，內容只有一行：「準確率 = 預測為正且正確的筆數 ÷ 預測為正的筆數」。再建立 README.md 當講義目錄，連到這兩個檔案。然後 commit。
-```
-
-### 第 2 步：在分支上新增講義
+### 第 1 步：在分支上新增講義
 
 **自己打指令**
 
@@ -307,7 +279,7 @@ git commit -m "docs: 新增監督式學習講義"
 請開一條分支 feature/supervised-learning，新增 terms/supervised-learning.md，說明監督式學習，包含定義、白話比喻和一個例子，並加進目錄，然後 commit。
 ```
 
-### 第 3 步：確認 main 沒有變動
+### 第 2 步：確認 main 沒有變動
 
 應該看不到 `supervised-learning.md`。
 
@@ -324,7 +296,7 @@ ls terms
 請切回 main，列出 terms 資料夾的檔案。
 ```
 
-### 第 4 步：合併並刪除分支
+### 第 3 步：合併並刪除分支
 
 **自己打指令**
 
@@ -339,7 +311,7 @@ git branch -d feature/supervised-learning
 請把 feature/supervised-learning 合併進 main，再刪除這條分支。
 ```
 
-### 第 5 步：試做問答式講義
+### 第 4 步：試做問答式講義
 
 **自己打指令**
 
@@ -357,7 +329,7 @@ git commit -m "docs: 試做問答式講義"
 請開一條分支 experiment/qa-format，把 terms/overfitting.md 改成問答式並 commit。
 ```
 
-### 第 6 步：丟掉實驗分支
+### 第 5 步：丟掉實驗分支
 
 **自己打指令**
 
@@ -373,7 +345,7 @@ git branch -D experiment/qa-format
 這條分支不要了。請切回 main，列出還沒合併的 commit，等我確認後刪除。
 ```
 
-### 第 7 步：確認結果
+### 第 6 步：確認結果
 
 應該只剩 main，內容也還是原本那一行。
 

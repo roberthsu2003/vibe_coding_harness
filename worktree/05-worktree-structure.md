@@ -16,7 +16,7 @@ ml-notes/                        ← 母目錄（主專案，停在 main）
 ├── terms/
 └── .worktrees/                  ← 所有 worktree 都收在這裡
     ├── feature-neural-network/  ← AI A 的工作資料夾
-    └── fix-confusion-matrix/    ← AI B 的工作資料夾
+    └── fix-supervised-example/  ← AI B 的工作資料夾
 ```
 
 | 比較 | 專案內 `.worktrees/`（本章使用） | 專案外 `../ml-notes-xxx/` |
