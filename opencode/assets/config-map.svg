@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .tree { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; fill: #e2e8f0; }
+    .file { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; font-weight: 800; }
+    .txt { font-size: 12px; fill: #475569; }
+    .tag { font-size: 11px; font-weight: 800; fill: #ffffff; }
+  </style>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">OpenCode 的設定地圖：放在哪、管什麼</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">越靠近專案的設定越優先；初學者只需要 AGENTS.md，想固定模型或限制 AI 時再加 opencode.json</text>
+  <g filter="url(#shadow)"><rect x="30" y="84" width="350" height="322" rx="14" fill="#0f172a"/></g>
+  <text x="50" y="112" class="tree" style="fill:#94a3b8" xml:space="preserve">你的專案/</text>
+  <text x="50" y="136" class="tree" style="fill:#86efac" xml:space="preserve">├── AGENTS.md</text>
+  <text x="50" y="160" class="tree" style="fill:#93c5fd" xml:space="preserve">├── opencode.json</text>
+  <text x="50" y="184" class="tree" style="fill:#e2e8f0" xml:space="preserve">└── .opencode/</text>
+  <text x="50" y="208" class="tree" style="fill:#fcd34d" xml:space="preserve">    ├── commands/</text>
+  <text x="50" y="232" class="tree" style="fill:#f9a8d4" xml:space="preserve">    ├── skills/</text>
+  <text x="50" y="256" class="tree" style="fill:#c4b5fd" xml:space="preserve">    └── agents/</text>
+  <text x="50" y="296" class="tree" style="fill:#94a3b8" xml:space="preserve">~/.config/opencode/   （全域）</text>
+  <text x="50" y="320" class="tree" style="fill:#93c5fd" xml:space="preserve">├── opencode.json</text>
+  <text x="50" y="344" class="tree" style="fill:#5eead4" xml:space="preserve">├── cli.json</text>
+  <text x="50" y="368" class="tree" style="fill:#86efac" xml:space="preserve">├── AGENTS.md</text>
+  <text x="50" y="392" class="tree" style="fill:#e2e8f0" xml:space="preserve">└── commands/ skills/ agents/</text>
+  <g filter="url(#shadow)">
+    <rect x="400" y="84" width="260" height="98" rx="12" fill="#ffffff" stroke="#86efac" stroke-width="1.5"/>
+    <rect x="670" y="84" width="260" height="98" rx="12" fill="#ffffff" stroke="#93c5fd" stroke-width="1.5"/>
+    <rect x="400" y="192" width="260" height="98" rx="12" fill="#ffffff" stroke="#5eead4" stroke-width="1.5"/>
+    <rect x="670" y="192" width="260" height="98" rx="12" fill="#ffffff" stroke="#fcd34d" stroke-width="1.5"/>
+    <rect x="400" y="300" width="260" height="98" rx="12" fill="#ffffff" stroke="#f9a8d4" stroke-width="1.5"/>
+    <rect x="670" y="300" width="260" height="98" rx="12" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+  </g>
+  <text x="416" y="108" class="file" style="fill:#047857">AGENTS.md</text>
+  <text x="416" y="130" class="txt">用中文寫的專案規則</text>
+  <text x="416" y="148" class="txt">每次對話都會載入</text>
+  <text x="416" y="166" class="txt">/init 可以自動產生</text>
+  <text x="686" y="108" class="file" style="fill:#1d4ed8">opencode.json</text>
+  <text x="686" y="130" class="txt">模型、權限、MCP</text>
+  <text x="686" y="148" class="txt">專案和全域可以各有一份</text>
+  <text x="686" y="166" class="txt">寫成 .jsonc 就能加註解</text>
+  <text x="416" y="216" class="file" style="fill:#0f766e">cli.json</text>
+  <text x="416" y="238" class="txt">介面主題、滑鼠、快捷鍵</text>
+  <text x="416" y="256" class="txt">只有全域一份</text>
+  <text x="416" y="274" class="txt">用 /settings 改最簡單</text>
+  <text x="686" y="216" class="file" style="fill:#b45309">commands/*.md</text>
+  <text x="686" y="238" class="txt">自訂斜線指令</text>
+  <text x="686" y="256" class="txt">hello.md → /hello</text>
+  <text x="686" y="274" class="txt">你輸入時才執行</text>
+  <text x="416" y="324" class="file" style="fill:#be185d">skills/*/SKILL.md</text>
+  <text x="416" y="346" class="txt">AI 的工作手冊</text>
+  <text x="416" y="364" class="txt">需要時才載入</text>
+  <text x="416" y="382" class="txt">@名稱 可以直接指定</text>
+  <text x="686" y="324" class="file" style="fill:#6d28d9">agents/*.md</text>
+  <text x="686" y="346" class="txt">自訂子代理</text>
+  <text x="686" y="364" class="txt">reviewer.md → @reviewer</text>
+  <text x="686" y="382" class="txt">可以單獨限制權限</text>
+</svg>

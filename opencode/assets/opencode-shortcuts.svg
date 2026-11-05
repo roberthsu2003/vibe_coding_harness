@@ -41,7 +41,7 @@
   <text x="156" y="284" class="act">中斷 AI</text>
   <text x="300" y="284" class="star">★</text>
   <rect x="46" y="306" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
-  <text x="94" y="326" class="key" text-anchor="middle">Tab</text>
+  <text x="94" y="326" class="key" text-anchor="middle">Shift+Tab</text>
   <text x="156" y="326" class="act">切換主代理</text>
   <rect x="46" y="348" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
   <text x="94" y="368" class="key" text-anchor="middle">Ctrl+P</text>
@@ -49,7 +49,7 @@
   <rect x="46" y="390" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
   <text x="94" y="410" class="key" text-anchor="middle">Ctrl+T</text>
   <text x="156" y="410" class="act">切換思考強度</text>
-  <text x="48" y="456" class="sub">Tab 切換 Build / Plan 主代理</text>
+  <text x="48" y="456" class="sub">Shift+Tab 切換 Build / Plan 主代理</text>
   <g filter="url(#shadow)"><rect x="335" y="82" width="290" height="392" rx="14" fill="#ffffff"/></g>
   <rect x="335" y="82" width="290" height="40" rx="14" fill="#3b82f6"/>
   <rect x="335" y="108" width="290" height="14" fill="#3b82f6"/>
@@ -94,11 +94,11 @@
   <text x="704" y="242" class="key" text-anchor="middle">/export</text>
   <text x="766" y="242" class="act">匯出成 Markdown</text>
   <rect x="656" y="264" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
-  <text x="704" y="284" class="key" text-anchor="middle">/thinking</text>
-  <text x="766" y="284" class="act">顯示思考過程</text>
+  <text x="704" y="284" class="key" text-anchor="middle">/diff</text>
+  <text x="766" y="284" class="act">看 AI 改了什麼</text>
   <rect x="656" y="306" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
-  <text x="704" y="326" class="key" text-anchor="middle">/details</text>
-  <text x="766" y="326" class="act">顯示工具細節</text>
+  <text x="704" y="326" class="key" text-anchor="middle">/review</text>
+  <text x="766" y="326" class="act">AI 審查程式</text>
   <rect x="656" y="348" width="96" height="30" rx="7" fill="#f1f5f9" stroke="#cbd5e1"/>
   <text x="704" y="368" class="key" text-anchor="middle">/themes</text>
   <text x="766" y="368" class="act">切換主題</text>
@@ -106,5 +106,5 @@
   <text x="704" y="410" class="key" text-anchor="middle">/exit</text>
   <text x="766" y="410" class="act">離開</text>
   <text x="910" y="410" class="star">★</text>
-  <text x="658" y="456" class="sub">忘記指令時輸入 /help</text>
+  <text x="658" y="456" class="sub">忘記指令時打 / 或按 Ctrl+P</text>
 </svg>

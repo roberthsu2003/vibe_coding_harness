@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .num { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .name { font-size: 15px; font-weight: 700; fill: #0f172a; }
+    .desc { font-size: 12.5px; fill: #475569; }
+    .code { font-size: 12px; font-weight: 600; fill: #0f172a; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+  <rect width="960" height="340" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">Skill 怎麼運作：平常只看簡介，需要時才讀全文</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">所以 Skill 再多也不會把對話塞滿，而 description 就是 AI 決定要不要用它的依據</text>
+  <g filter="url(#shadow)">
+    <rect x="30" y="86" width="270" height="170" rx="12" fill="#ffffff"/>
+    <rect x="345" y="86" width="270" height="170" rx="12" fill="#ffffff"/>
+    <rect x="660" y="86" width="270" height="170" rx="12" fill="#ffffff"/>
+  </g>
+  <line x1="302" y1="171" x2="341" y2="171" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="617" y1="171" x2="656" y2="171" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <circle cx="60" cy="116" r="16" fill="#10b981"/>
+  <text x="60" y="121" class="num" text-anchor="middle">1</text>
+  <text x="86" y="121" class="name">每一輪：先看簡介</text>
+  <text x="50" y="158" class="desc">AI 只知道每個 Skill 的</text>
+  <text x="50" y="186" class="code">name 和 description</text>
+  <text x="50" y="214" class="desc">內文還不會佔用對話空間</text>
+  <circle cx="375" cy="116" r="16" fill="#3b82f6"/>
+  <text x="375" y="121" class="num" text-anchor="middle">2</text>
+  <text x="401" y="121" class="name">遇到相關需求：讀全文</text>
+  <text x="365" y="158" class="desc">你的話符合 description，</text>
+  <text x="365" y="186" class="code">或你輸入 @skill名稱</text>
+  <text x="365" y="214" class="desc">這時才載入 SKILL.md 內文</text>
+  <circle cx="690" cy="116" r="16" fill="#8b5cf6"/>
+  <text x="690" y="121" class="num" text-anchor="middle">3</text>
+  <text x="716" y="121" class="name">照著流程做</text>
+  <text x="680" y="158" class="desc">依步驟執行，有需要時才看</text>
+  <text x="680" y="186" class="code">scripts/ 和 references/</text>
+  <text x="680" y="214" class="desc">最後回報結果給你</text>
+  <rect x="30" y="274" width="900" height="46" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="480" y="302" class="desc" text-anchor="middle" style="font-size:13px;fill:#1d4ed8;font-weight:600">比較：AGENTS.md 每次對話都全部載入，適合「永遠要遵守的規矩」；Skill 用到才載入，適合「特定工作的流程」</text>
+</svg>

@@ -1,6 +1,6 @@
-# 07　指令模式與 Herdr
+# 10　指令模式與 Herdr
 
-> ★★★ 深入　｜　[← 06 權限設定](06-permissions.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
+> ★★★ 深入　｜　[← 09 權限設定](09-permissions.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
 
 **這一站你會學到**：不進入對話介面，直接用一行指令叫 OpenCode 做事；以及搭配 Herdr 同時跑好幾個工作。
 
@@ -16,7 +16,7 @@ opencode run "請用繁體中文檢查 README.md 的連結是否正確"
 opencode run "優化這段程式的效能並加上型別標註" -f main.py
 
 # 指定模型
-opencode run "解釋這個專案的架構" -m opencode/muse-spark-1.3-contributor-free
+opencode run "解釋這個專案的架構" -m opencode/nemotron-3.5-lightning-free
 
 # 接著上一次的對話
 opencode run "為剛才修改的函式補上單元測試" -c
@@ -30,8 +30,14 @@ opencode run "列出專案裡所有的 TODO" --format json
 | `-m`、`--model` | 指定模型（`供應商/模型`） |
 | `-f`、`--file` | 附上檔案 |
 | `-c`、`--continue` | 接續上一次的對話 |
+| `-s`、`--session` | 接續指定的對話 |
 | `--agent` | 指定代理，例如 `--agent plan` |
 | `--format json` | 輸出 JSON |
+| `--auto` | 自動同意沒有被 `deny` 的操作（見 [09](09-permissions.md)） |
+| `--standalone` | 不使用背景服務（見 [04](04-config.md#4-環境變數)） |
+
+> [!NOTE]
+> **斜線指令在 `opencode run` 裡沒有作用。** `opencode run "/hello 小明"` 會把這串文字原封不動送給 AI。請直接寫出你要它做的事。
 
 > 💡 搭配 [Glow](../glow/README.md) 閱讀長回答：`opencode run "說明專案架構" | glow -p`
 

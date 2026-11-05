@@ -41,8 +41,8 @@
   <rect x="225" y="140" width="165" height="86" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
   <text x="239" y="164" class="h">Plan</text>
   <text x="239" y="186" class="txt">只分析、規劃，</text>
-  <text x="239" y="204" class="txt">修改前會先問你</text>
-  <text x="50" y="250" class="txt">按 Tab 在 Build / Plan 之間切換</text>
+  <text x="239" y="204" class="txt">不修改專案檔案</text>
+  <text x="50" y="250" class="txt">按 Shift+Tab 在 Build / Plan 之間切換</text>
 
   <rect x="50" y="266" width="340" height="106" rx="10" fill="#0f172a"/>
   <text x="64" y="290" class="mono" style="fill:#94a3b8">主對話（保持精簡）</text>
@@ -63,13 +63,13 @@
 
   <rect x="535" y="140" width="185" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
   <text x="549" y="164" class="mono">@explore</text>
-  <text x="549" y="190" class="txt">快速搜尋專案（唯讀）</text>
+  <text x="549" y="190" class="txt">搜尋程式碼與網路（不改檔案）</text>
   <rect x="730" y="140" width="185" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
-  <text x="744" y="164" class="mono">@scout</text>
-  <text x="744" y="190" class="txt">查外部文件與套件（唯讀）</text>
-  <rect x="535" y="222" width="185" height="70" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
-  <text x="549" y="246" class="mono">@general</text>
-  <text x="549" y="272" class="txt">通用的多步驟任務</text>
+  <text x="744" y="164" class="mono">@general</text>
+  <text x="744" y="190" class="txt">研究與多步驟任務</text>
+  <rect x="535" y="222" width="185" height="70" rx="10" fill="#faf5ff" stroke="#d8b4fe" stroke-dasharray="5 4"/>
+  <text x="549" y="246" class="mono" style="fill:#7e22ce">@tester（自訂）</text>
+  <text x="549" y="272" class="txt">跑測試、補測試</text>
   <rect x="730" y="222" width="185" height="70" rx="10" fill="#faf5ff" stroke="#d8b4fe" stroke-dasharray="5 4"/>
   <text x="744" y="246" class="mono" style="fill:#7e22ce">@reviewer（自訂）</text>
   <text x="744" y="272" class="txt">自己定義的角色</text>
