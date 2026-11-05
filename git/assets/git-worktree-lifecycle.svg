@@ -57,7 +57,7 @@
   <text x="384" y="293" class="h">AI 開發</text>
   <text x="358" y="318" class="cmd">cd .worktrees/…</text>
   <text x="358" y="334" class="cmd">opencode</text>
-  <text x="358" y="354" class="txt">改壞也不影響 main</text>
+  <text x="358" y="354" class="txt">改壞了 main 也不會變</text>
 
   <circle cx="516" cy="288" r="11" fill="#10b981"/><text x="516" y="293" class="num" text-anchor="middle">4</text>
   <text x="534" y="293" class="h">提交</text>

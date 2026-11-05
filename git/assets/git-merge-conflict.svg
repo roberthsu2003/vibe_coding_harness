@@ -50,7 +50,7 @@
   <circle cx="546" cy="114" r="11" fill="#3b82f6"/><text x="546" y="118" class="num" text-anchor="middle">1</text>
   <text x="566" y="119" class="h">找出衝突的檔案</text>
   <text x="566" y="140" class="cmd">git status</text>
-  <text x="680" y="140" class="txt">標示 both modified 的就是</text>
+  <text x="680" y="140" class="txt">both modified（雙方修改）</text>
 
   <circle cx="546" cy="174" r="11" fill="#3b82f6"/><text x="546" y="178" class="num" text-anchor="middle">2</text>
   <text x="566" y="179" class="h">打開檔案，留下正確的內容</text>
