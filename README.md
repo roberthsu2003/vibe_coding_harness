@@ -20,7 +20,7 @@
 
 | 階段 | 教材 | 你會學到 | 內容 |
 | :--- | :--- | :--- | :--- |
-| **1. 讓一個 AI 動手做** | [OpenCode](opencode/README.md) | 開源的 AI coding agent，可使用免費模型，是本教材的主要範例 | 10 站 |
+| **1. 讓一個 AI 動手做** | [OpenCode](opencode/README.md) | 開源的 AI coding agent，可使用免費模型 | 10 站 |
 | | [Antigravity CLI (agy)](agy/README.md) | Google Antigravity 的終端機 agent，可切換 Gemini、Claude 等模型 | 10 站 |
 | **2. 放心地改程式** | [Branch 分支篇](worktree/README.md)（第 01～03 站） | 開分支、合併、解決衝突，AI 改壞了也不影響 main | 準備步驟＋3 站 |
 | **3. 讓多個 AI 同時做** | [Worktree 多工篇](worktree/README.md#學習路線)（第 04～07 站） | 每個 AI 一個資料夾，同時開發互不干擾 | 4 站 |
@@ -32,7 +32,7 @@
 > 每一章都從入門排到進階，並標示難度（★～★★★）。遇到問題時，可以查閱各章附的速查表與疑難排解。
 
 > [!TIP]
-> Agent 工具選一個學就好。兩者的章節安排相近，本教材的範例主要使用 OpenCode。
+> Agent 工具選一個學就好，兩者的章節安排相近。Branch 與 Worktree 章節不限定 AI 工具。
 
 > [!IMPORTANT]
 > **需要先會的 Git 基礎**：Branch 與 Worktree 章節假設你已經知道 commit 是什麼。還不熟的話，請先看 [Git 學習筆記](https://github.com/roberthsu2003/git)。

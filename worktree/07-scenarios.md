@@ -125,7 +125,7 @@ git worktree add .worktrees/feature-gradient-descent -b feature/gradient-descent
 
 ### 第 2 步：開始寫，但先不要 commit
 
-開新的終端機視窗，先進入 `ml-notes` 資料夾，再用 `opencode .worktrees/feature-gradient-descent` 進入 worktree，說：
+開新的終端機視窗，先進入 `ml-notes` 資料夾，再用 `cd .worktrees/feature-gradient-descent` 進入 worktree，啟動你使用的 AI 工具，然後說：
 
 **請 AI 寫**
 
@@ -153,7 +153,7 @@ git worktree add .worktrees/hotfix-accuracy -b hotfix/accuracy-formula main
 
 ### 第 4 步：請 AI 修正公式
 
-再開一個新的終端機視窗，先進入 `ml-notes` 資料夾，再用 `opencode .worktrees/hotfix-accuracy` 進入 worktree，說：
+再開一個新的終端機視窗，先進入 `ml-notes` 資料夾，再用 `cd .worktrees/hotfix-accuracy` 進入 worktree，啟動你使用的 AI 工具，然後說：
 
 **請 AI 寫**
 
@@ -429,7 +429,7 @@ git worktree add .worktrees/feature-loss-function -b feature/loss-function
 | Herdr 分頁 | 位置 | 做什麼 |
 | :--- | :--- | :--- |
 | 分頁 1 | 母目錄 | 維護 main、最後合併 |
-| 分頁 2 | `.worktrees/feature-activation-function` | OpenCode 寫激活函數講義 |
+| 分頁 2 | `.worktrees/feature-activation-function` | 一個 AI 寫激活函數講義 |
 | 分頁 3 | `.worktrees/feature-loss-function` | 另一個 AI 寫損失函數講義 |
 
 看 Herdr 側欄的狀態燈號（🟡 工作中、🔴 等你回應、🟢 做完了），一個人就能同時管好幾個 AI。

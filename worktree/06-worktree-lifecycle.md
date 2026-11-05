@@ -12,7 +12,7 @@
 
 ![Worktree 的完整流程](assets/git-worktree-lifecycle.svg)
 
-請 AI 做的範例用 [OpenCode](../opencode/README.md)，其他 AI 工具的說法也一樣。
+請 AI 做的範例不限定工具，用你使用的 AI 工具就可以。
 
 ## 步驟 1：建立（在母目錄）
 
@@ -59,10 +59,10 @@ cat .worktrees/feature-neural-network/.git   # 會看到 gitdir 那一行
 開第一個新的終端機視窗，先進入 `ml-notes` 資料夾，再輸入這一行，讓 AI A 在 worktree 裡工作：
 
 ```bash
-opencode .worktrees/feature-neural-network
+cd .worktrees/feature-neural-network   # 進入 worktree，再啟動你使用的 AI 工具
 ```
 
-確認 OpenCode 畫面下方顯示 `.worktrees/feature-neural-network:feature/neural-network`，再交代工作：
+先問 AI「你現在在哪個資料夾、哪個分支？」，確認是 `feature-neural-network` 和 `feature/neural-network`，再交代工作：
 
 **請 AI 寫**
 
@@ -73,7 +73,7 @@ opencode .worktrees/feature-neural-network
 AI A 寫的同時，開第二個新的終端機視窗，先進入 `ml-notes` 資料夾，再讓 AI B 開工：
 
 ```bash
-opencode .worktrees/fix-supervised-example
+cd .worktrees/fix-supervised-example   # 進入 worktree，再啟動你使用的 AI 工具
 ```
 
 **請 AI 寫**
@@ -118,7 +118,7 @@ cd ../..
 
 其他快速確認的方法：
 
-- **看 OpenCode 畫面下方**：顯示 `資料夾:分支`，例如 `.worktrees/feature-neural-network:feature/neural-network`。
+- **看 AI 工具的畫面**：有些工具會顯示目前的資料夾和分支。
 - **看終端機提示字元**：很多設定（例如 Oh My Zsh、Starship）會顯示目前分支。
 
 ## 步驟 4：驗收並提交（在各自的 worktree）
