@@ -50,8 +50,8 @@ ml-notes/
 **自己打指令**
 
 ```bash
-mkdir ~/ml-notes      # 建立資料夾
-cd ~/ml-notes         # 進入資料夾
+mkdir ./ml-notes      # 建立資料夾
+cd ./ml-notes         # 進入資料夾
 ```
 
 **請 AI 做**
@@ -115,8 +115,9 @@ git config --global user.email "you@example.com"
 **自己打指令**
 
 ```bash
-printf '.DS_Store\nThumbs.db\n' > .gitignore   # 建立 .gitignore，每行一個規則
-cat .gitignore                                  # 確認內容
+echo '.DS_Store' > .gitignore    # > 會建立或覆蓋檔案
+echo 'Thumbs.db' >> .gitignore   # >> 會加在檔案最後
+cat .gitignore                   # 確認內容
 ```
 
 **請 AI 做**

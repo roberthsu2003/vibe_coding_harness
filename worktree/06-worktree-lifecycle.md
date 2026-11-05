@@ -206,7 +206,8 @@ git rev-parse --git-dir          # 判斷是母目錄還是 worktree
 
 ```bash
 cd ~/ml-notes
-printf '.worktrees/\nreferences/\n' >> .gitignore
+echo '.worktrees/' >> .gitignore
+echo 'references/' >> .gitignore
 git add .gitignore
 git commit -m "chore: 忽略 .worktrees 和 references"
 
