@@ -275,6 +275,8 @@ git add .
 git commit -m "docs: 新增過擬合和準確率講義"
 ```
 
+> **怎麼把內容寫進檔案？** 3 行以內用 `echo`，`>` 會覆蓋檔案，`>>` 會加在檔案最後。超過 3 行用 `cat > 檔名 <<'EOF'`，它會把接下來的每一行都寫進檔案，直到遇到單獨一行的 `EOF` 才結束。`EOF` 外面的單引號可以讓內容照原樣寫入，不會被終端機解讀。
+
 **請 AI 做**
 
 ```text
@@ -343,10 +345,8 @@ git branch -d feature/supervised-learning
 
 ```bash
 git switch -c experiment/qa-format
-cat > terms/overfitting.md <<'EOF'
-問：什麼是過擬合？
-答：模型學得太細。
-EOF
+echo '問：什麼是過擬合？' > terms/overfitting.md
+echo '答：模型學得太細。' >> terms/overfitting.md
 git add .
 git commit -m "docs: 試做問答式講義"
 ```

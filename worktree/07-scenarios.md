@@ -277,7 +277,6 @@ git worktree add .worktrees/feature-gradient-descent -b feature/gradient-descent
 **自己打指令**
 
 ```bash
-cd ~/ml-notes
 git switch main
 cat > terms/cross-validation.md <<'EOF'
 # 交叉驗證
@@ -349,10 +348,10 @@ git worktree add .worktrees/feature-gradient-descent -b feature/gradient-descent
 
 **自己打指令**
 
-開新的終端機視窗：
+開新的終端機視窗，先進入 `ml-notes` 資料夾，再執行：
 
 ```bash
-cd ~/ml-notes/.worktrees/feature-gradient-descent
+cd .worktrees/feature-gradient-descent
 cat > terms/gradient-descent.md <<'EOF'
 # 梯度下降
 
@@ -379,7 +378,6 @@ git status
 回到原本的視窗：
 
 ```bash
-cd ~/ml-notes
 git worktree add .worktrees/hotfix-accuracy -b hotfix/accuracy-formula main
 cd .worktrees/hotfix-accuracy
 echo '準確率 = 預測正確的筆數 ÷ 全部筆數' > terms/accuracy.md
@@ -421,7 +419,6 @@ git branch -d hotfix/accuracy-formula
 回到梯度下降的視窗：
 
 ```bash
-cd ~/ml-notes/.worktrees/feature-gradient-descent
 git add .
 git commit -m "docs: 新增梯度下降講義"
 git merge --no-edit main
@@ -443,7 +440,6 @@ cat terms/accuracy.md
 回到原本的視窗：
 
 ```bash
-cd ~/ml-notes
 git merge feature/gradient-descent
 ```
 

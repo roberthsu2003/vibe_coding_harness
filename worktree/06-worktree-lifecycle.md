@@ -205,7 +205,6 @@ git rev-parse --git-dir          # 判斷是母目錄還是 worktree
 **自己打指令**
 
 ```bash
-cd ~/ml-notes
 echo '.worktrees/' >> .gitignore
 echo 'references/' >> .gitignore
 git add .gitignore
@@ -242,10 +241,10 @@ git worktree list
 
 **自己打指令**
 
-開新的終端機視窗：
+開新的終端機視窗，先進入 `ml-notes` 資料夾，再執行：
 
 ```bash
-cd ~/ml-notes/.worktrees/feature-neural-network
+cd .worktrees/feature-neural-network
 cat > terms/neural-network.md <<'EOF'
 # 神經網路
 
@@ -275,7 +274,6 @@ git commit -m "docs: 新增神經網路講義"
 回到原本的視窗：
 
 ```bash
-cd ~/ml-notes
 ls terms
 ```
 
