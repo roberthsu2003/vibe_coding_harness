@@ -2,50 +2,71 @@
 
 > ★ 入門　｜　[章節首頁](README.md)　｜　下一站：[02 基本操作 →](02-basics.md)
 
-**這一站你會學到**：安裝 Antigravity CLI (`agy`)、進行身分認證登入，以及查看可用模型。
+**這一站你會學到**：安裝 Antigravity CLI (`agy`)、完成第一次啟動與登入，以及查看和切換模型。
 
 ---
 
-## 1. 安裝與設定環境
+## 1. 安裝
 
-`agy` 是 Antigravity 的終端命令列工具。可透過官方安裝工具或套件管理工具安裝，安裝後可透過內建指令配置 Shell 環境：
+依照你的作業系統，複製指令到終端機執行：
+
+**macOS / Linux**
 
 ```bash
-# 配置環境路徑與 Shell 自動補全
-agy install
+curl -fsSL https://antigravity.google/cli/install.sh | bash
 ```
+
+**Windows（PowerShell）**
+
+```powershell
+irm https://antigravity.google/cli/install.ps1 | iex
+```
+
+---
 
 ## 2. 確認安裝成功
 
-執行以下指令確認 `agy` 指令已正確加入至 PATH：
+重新開啟終端機，然後執行：
 
 ```bash
-which agy
+agy --version
 ```
 
-看到執行路徑（例如 `/Users/.../.gemini/antigravity/bin/agy`）且可以執行 `agy help` 即代表安裝成功。
+看到版本號就成功了。
+
+> [!NOTE]
+> 如果出現「找不到指令」，執行檔可能還沒加入 PATH。macOS / Linux 的預設位置是 `~/.local/bin/agy`，可以用完整路徑執行 `~/.local/bin/agy install` 來設定環境路徑，再重開終端機。
 
 ---
 
-## 3. 登入與身分認證
+## 3. 第一次啟動與登入
 
-在專案目錄下啟動 `agy`：
+進入專案資料夾後啟動：
 
 ```bash
 cd ~/my-project
 agy
 ```
 
-如果是第一次執行，`agy` 會在終端機中顯示認證提示：
-1. 終端機會顯示登入連結或驗證碼。
-2. 依照指示在瀏覽器中完成 Google 帳號授權。
-3. 授權成功後，終端機會自動儲存憑證並進入互動對話介面。
+第一次執行時，畫面會一步一步帶你完成：
+
+1. **選擇配色與顯示方式**：不確定就用預設值，之後能用 `/config` 修改。
+2. **信任這個資料夾**：確認這是你自己的專案後再同意。
+3. **登入**：依照畫面指示，在瀏覽器完成 Google 帳號授權。
+
+完成後就會進入對話畫面。
 
 ---
 
 ## 4. 查看與選擇模型
 
-`agy` 支援多種強大的大型語言模型與快速推理模型。
+### 在 agy 裡切換（推薦）
+
+```text
+/model
+```
+
+用方向鍵選擇模型，按 `Enter` 確認。
 
 ### 列出所有可用模型
 
@@ -55,35 +76,36 @@ agy
 agy models
 ```
 
-輸出範例：
+輸出範例（實際內容依帳號和版本而定）：
 
 ```text
 gemini-4-argon-medium     Gemini 4 Argon (Medium)
 gemini-4-argon-high       Gemini 4 Argon (High)
-gemini-3.8-flash-high     Gemini 3.8 Flash (High)
 gemini-3.8-flash-medium   Gemini 3.8 Flash (Medium)
+gemini-3.8-flash-low      Gemini 3.8 Flash (Low)
 claude-sonnet-5-5-medium  Claude Sonnet 5.5 (Medium)
 ```
 
+名稱最後的 `low`、`medium`、`high` 是思考強度：越高想得越深，通常也越慢。
+
 ### 啟動時指定模型
 
-如果想針對複雜重構或快速修復選用特定模型，可在啟動時透過 `--model` 指定：
-
 ```bash
-# 使用高推理強度模型
+# 複雜的工作：用強一點的模型
 agy --model gemini-4-argon-high
 
-# 使用快速響應模型
+# 簡單的工作：用快一點的模型
 agy --model gemini-3.8-flash-medium
 ```
 
-也可以設定推理事實強度（Reasoning Effort）：
+---
+
+## 5. 保持最新版本
 
 ```bash
-agy --model gemini-3.8-flash-high --effort high
+agy update
 ```
 
 ---
 
 ← [章節首頁](README.md)　｜　下一站：[02 基本操作 →](02-basics.md)
-

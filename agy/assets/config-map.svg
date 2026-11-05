@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .head { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .path { font-size: 13px; font-weight: 600; fill: #0f172a; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .desc { font-size: 12px; fill: #475569; }
+  </style>
+
+  <rect width="960" height="400" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">agy 的設定都放在哪裡？</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">左邊跟著你走，所有專案都生效；右邊跟著專案走，可以用 Git 分享給同學</text>
+
+  <g filter="url(#shadow)">
+    <rect x="30" y="84" width="440" height="292" rx="12" fill="#ffffff"/>
+    <rect x="490" y="84" width="440" height="292" rx="12" fill="#ffffff"/>
+  </g>
+  <rect x="30" y="84" width="440" height="38" rx="12" fill="#3b82f6"/>
+  <rect x="490" y="84" width="440" height="38" rx="12" fill="#10b981"/>
+  <text x="250" y="109" class="head" text-anchor="middle">全域：放在你的家目錄 ~/.gemini/</text>
+  <text x="710" y="109" class="head" text-anchor="middle">專案：放在專案資料夾裡</text>
+
+  <text x="50" y="150" class="path">antigravity-cli/settings.json</text>
+  <text x="50" y="169" class="desc">CLI 設定：模型、執行模式、權限、外觀</text>
+  <text x="50" y="199" class="path">config/AGENTS.md</text>
+  <text x="50" y="218" class="desc">個人規則：例如「一律用繁體中文回覆」</text>
+  <text x="50" y="248" class="path">config/rules/*.md</text>
+  <text x="50" y="267" class="desc">個人規則（拆成多個檔案）</text>
+  <text x="50" y="297" class="path">config/skills/&lt;名稱&gt;/SKILL.md</text>
+  <text x="50" y="316" class="desc">個人 Skill：每個專案都用得到的流程</text>
+  <text x="50" y="346" class="path">config/mcp_config.json</text>
+  <text x="50" y="365" class="desc">MCP 伺服器：連接外部工具</text>
+
+  <text x="510" y="150" class="path">AGENTS.md</text>
+  <text x="510" y="169" class="desc">專案規則：每次對話都會載入</text>
+  <text x="510" y="199" class="path">.agents/rules/*.md</text>
+  <text x="510" y="218" class="desc">專案規則（拆成多個檔案，可依情境載入）</text>
+  <text x="510" y="248" class="path">.agents/skills/&lt;名稱&gt;/SKILL.md</text>
+  <text x="510" y="267" class="desc">專案 Skill：這個專案專屬的流程</text>
+  <rect x="510" y="298" width="400" height="60" rx="10" fill="#ecfdf5" stroke="#a7f3d0"/>
+  <text x="710" y="322" class="desc" text-anchor="middle" style="font-weight:700;fill:#047857">小提醒</text>
+  <text x="710" y="344" class="desc" text-anchor="middle" style="fill:#047857">專案設定請 commit 進 Git，全班就能共用同一套規則</text>
+</svg>

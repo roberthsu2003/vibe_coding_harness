@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 330" width="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .head { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .q { font-size: 12px; fill: #475569; }
+    .cmd { font-size: 13px; font-weight: 600; fill: #0f172a; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+
+  <rect width="960" height="330" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">斜線指令地圖：想做什麼，就找哪一區</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">忘記了也沒關係，輸入 / 會跳出選單，輸入 /help 會列出全部</text>
+
+  <g filter="url(#shadow)">
+    <rect x="28" y="82" width="170" height="225" rx="12" fill="#ffffff"/>
+    <rect x="212" y="82" width="170" height="225" rx="12" fill="#ffffff"/>
+    <rect x="396" y="82" width="170" height="225" rx="12" fill="#ffffff"/>
+    <rect x="580" y="82" width="170" height="225" rx="12" fill="#ffffff"/>
+    <rect x="764" y="82" width="170" height="225" rx="12" fill="#ffffff"/>
+  </g>
+  <rect x="28" y="82" width="170" height="36" rx="12" fill="#10b981"/>
+  <rect x="212" y="82" width="170" height="36" rx="12" fill="#3b82f6"/>
+  <rect x="396" y="82" width="170" height="36" rx="12" fill="#8b5cf6"/>
+  <rect x="580" y="82" width="170" height="36" rx="12" fill="#f59e0b"/>
+  <rect x="764" y="82" width="170" height="36" rx="12" fill="#64748b"/>
+  <text x="113" y="106" class="head" text-anchor="middle">A 查狀態</text>
+  <text x="297" y="106" class="head" text-anchor="middle">B 管對話</text>
+  <text x="481" y="106" class="head" text-anchor="middle">C 派任務</text>
+  <text x="665" y="106" class="head" text-anchor="middle">D 看成果</text>
+  <text x="849" y="106" class="head" text-anchor="middle">E 調環境</text>
+
+  <text x="113" y="138" class="q" text-anchor="middle">現在狀況如何？</text>
+  <text x="297" y="138" class="q" text-anchor="middle">對話太長或走錯了？</text>
+  <text x="481" y="138" class="q" text-anchor="middle">要 AI 怎麼做事？</text>
+  <text x="665" y="138" class="q" text-anchor="middle">AI 改了什麼？</text>
+  <text x="849" y="138" class="q" text-anchor="middle">想換模型或設定？</text>
+
+  <g class="cmd">
+    <text x="46" y="166" class="cmd">/help</text>
+    <text x="46" y="190" class="cmd">/context</text>
+    <text x="46" y="214" class="cmd">/usage</text>
+    <text x="46" y="238" class="cmd">/credits</text>
+    <text x="46" y="262" class="cmd">/changelog</text>
+
+    <text x="230" y="166" class="cmd">/compact</text>
+    <text x="230" y="190" class="cmd">/clear</text>
+    <text x="230" y="214" class="cmd">/resume</text>
+    <text x="230" y="238" class="cmd">/rewind</text>
+    <text x="230" y="262" class="cmd">/fork</text>
+    <text x="230" y="286" class="cmd">/btw　/rename</text>
+
+    <text x="414" y="166" class="cmd">/plan</text>
+    <text x="414" y="190" class="cmd">/grill-me</text>
+    <text x="414" y="214" class="cmd">/goal</text>
+    <text x="414" y="238" class="cmd">/browser</text>
+    <text x="414" y="262" class="cmd">/schedule</text>
+    <text x="414" y="286" class="cmd">/boost　/learn</text>
+
+    <text x="598" y="166" class="cmd">/diff</text>
+    <text x="598" y="190" class="cmd">/artifact</text>
+    <text x="598" y="214" class="cmd">/tasks</text>
+    <text x="598" y="238" class="cmd">/codesearch</text>
+    <text x="598" y="262" class="cmd">/copy</text>
+    <text x="598" y="286" class="cmd">/open</text>
+
+    <text x="782" y="166" class="cmd">/model</text>
+    <text x="782" y="190" class="cmd">/effort</text>
+    <text x="782" y="214" class="cmd">/config</text>
+    <text x="782" y="238" class="cmd">/permissions</text>
+    <text x="782" y="262" class="cmd">/skills</text>
+    <text x="782" y="286" class="cmd">/mcp　/add-dir</text>
+  </g>
+</svg>

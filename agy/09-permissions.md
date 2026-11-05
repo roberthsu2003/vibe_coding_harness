@@ -1,6 +1,6 @@
-# 06　權限設定與沙盒
+# 09　權限設定與沙盒
 
-> ★★★ 深入　｜　[← 05 Subagent 子代理](05-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[07 指令模式與 Herdr →](07-cli-run.md)
+> ★★★ 深入　｜　[← 08 Subagent 子代理](08-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[10 指令模式與 Herdr →](10-cli-run.md)
 
 **這一站你會學到**：設定檔位置、終端安全沙盒（Sandbox）機制、工具執行授權，以及 MCP 與外掛的安全管理。
 
@@ -14,15 +14,35 @@ AI coding agent 擁有執行 Shell 指令、讀寫檔案與調用外部工具的
 
 ---
 
-## 2. CLI 設定檔位置
+## 2. 權限規則
 
-`agy` 的使用者全域設定檔存放在：
+在對話中輸入 `/permissions` 就能管理權限。規則會存放在 `~/.gemini/antigravity-cli/settings.json` 的 `permissions` 裡（設定檔的完整介紹請見 [04 環境配置](04-config.md)）：
 
-```text
-~/.gemini/antigravity-cli/settings.json
+```json
+{
+  "permissions": {
+    "allow": ["command(git)", "read_url(google.com)"],
+    "deny": ["command(sudo)", "write_file(.git/)"],
+    "ask": ["command(*)"]
+  }
+}
 ```
 
-在此設定檔中可以設定預設使用的模型、推理強度、預設執行模式以及各類外掛的行為。
+| 清單 | 意思 |
+| :--- | :--- |
+| `allow` | 直接執行，不詢問 |
+| `ask` | 每次都先問你 |
+| `deny` | 一律禁止 |
+
+規則衝突時的優先順序是 **deny > ask > allow**。規則也優先於[執行模式](02-basics.md#4-執行模式)。
+
+| 寫法 | 比對對象 |
+| :--- | :--- |
+| `command(git)` | 開頭是 `git` 的指令 |
+| `command(regex:npm run (build\|lint\|test))` | 符合正規表達式的指令 |
+| `read_url(google.com)` | 該網域與其子網域 |
+| `mcp(linter/*)` | `linter` 伺服器的所有工具 |
+| `command(*)` | 所有指令 |
 
 ---
 
@@ -84,5 +104,5 @@ agy plugin disable <plugin-name>
 
 ---
 
-← [← 05 Subagent 子代理](05-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[07 指令模式與 Herdr →](07-cli-run.md)
+← [← 08 Subagent 子代理](08-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[10 指令模式與 Herdr →](10-cli-run.md)
 

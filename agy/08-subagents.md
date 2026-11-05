@@ -1,6 +1,6 @@
-# 05　Subagent 子代理
+# 08　Subagent 子代理
 
-> ★★★ 深入　｜　[← 04 實戰情境](04-scenarios.md)　｜　[章節首頁](README.md)　｜　下一站：[06 權限設定與沙盒 →](06-permissions.md)
+> ★★★ 深入　｜　[← 07 實戰情境](07-scenarios.md)　｜　[章節首頁](README.md)　｜　下一站：[09 權限設定與沙盒 →](09-permissions.md)
 
 **這一站你會學到**：主代理與子代理的協同機制、如何檢視與呼叫子代理，以及子代理如何保持上下文乾淨。
 
@@ -25,7 +25,7 @@
 agy agent
 ```
 
-輸出範例：
+輸出範例（實際內容依環境與安裝的外掛而定）：
 
 ```text
 Available agents:
@@ -68,15 +68,15 @@ agy --agent research
 
 ## 5. 多代理模式（Teamwork）
 
-如果想讓多個代理平行協同作業，可在對話中輸入斜線指令：
+如果想讓多個代理平行協同作業，可在對話中輸入斜線指令，並接上任務：
 
 ```text
-/teamwork
+/teamwork 把這個網站從 JavaScript 改寫成 TypeScript
 ```
 
-這會引導主代理拆分任務樹，協調多個子代理同時進行模組撰寫、單元測試補齊與自動審查（Auto-review），顯著加快大型功能的交付進度。
+這會讓多個代理分工處理長期專案。此功能**僅限付費方案**。
 
 ---
 
-← [← 04 實戰情境](04-scenarios.md)　｜　[章節首頁](README.md)　｜　下一站：[06 權限設定與沙盒 →](06-permissions.md)
+← [← 07 實戰情境](07-scenarios.md)　｜　[章節首頁](README.md)　｜　下一站：[09 權限設定與沙盒 →](09-permissions.md)
 
