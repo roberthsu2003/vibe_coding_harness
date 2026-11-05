@@ -81,8 +81,8 @@ Git 的訊息會依介面語言顯示英文或中文，兩種都列出來方便�
 | `contains modified or untracked files, use --force`<br>`包含修改或未追蹤的檔案，使用 --force 刪除` | worktree 裡還有未 commit 的改動。先 commit 或確認不要了，再移除。**不要沒看內容就加 `--force`** |
 | `cannot delete branch … used by worktree`<br>`無法刪除被位於…的工作區使用的分支` | worktree 還在。先移除 worktree，再刪除分支 |
 | `is a missing but already registered worktree`<br>`是個遺失但已註冊的工作區` | 資料夾被刪了但紀錄還在。先執行 `git worktree prune`，見[情境 E](07-scenarios.md#情境-e不小心刪掉了-worktree-資料夾) |
-| 新 worktree 跑不起來、少了 `.env` | 被忽略的檔案不會帶過去，見[情境 F](07-scenarios.md#情境-f新的-worktree-跑不起來) |
-| 移除 worktree 後 `.env` 不見了 | 被忽略的檔案會直接刪除，不會警告。移除前先用 `git status --ignored` 檢查 |
+| 新 worktree 少了 `references/`、`.env` 等資料 | 被忽略的檔案不會帶過去，見[情境 F](07-scenarios.md#情境-f新的-worktree-少了資料) |
+| 移除 worktree 後 `references/`、`.env` 不見了 | 被忽略的檔案會直接刪除，不會警告。移除前先用 `git status --ignored` 檢查 |
 | 新 worktree 裡沒有 `.gitignore` | `.gitignore` 還沒 commit。回母目錄 commit 後，在 worktree 裡 `git merge main` |
 | `git status` 出現 `.worktrees/` | `.gitignore` 沒有寫 `.worktrees/`，加上即可 |
 | 已經把 `.worktrees/` commit 進去了 | 加入 `.gitignore` 後執行 `git rm -r --cached .worktrees/`，再 commit（不會刪掉磁碟上的檔案） |

@@ -30,7 +30,7 @@
   <rect x="30" y="82" width="900" height="140" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
   <text x="48" y="104" class="lane" style="fill:#1d4ed8">母目錄（main 分支）</text>
   <rect x="30" y="236" width="900" height="140" rx="12" fill="#ecfdf5" stroke="#a7f3d0"/>
-  <text x="48" y="258" class="lane" style="fill:#047857">worktree（feature/login 分支）</text>
+  <text x="48" y="258" class="lane" style="fill:#047857">worktree（feature/neural-network 分支）</text>
 
   <!-- Step cards: 1,2 top; 3,4 bottom; 5,6 top -->
   <g filter="url(#shadow)">

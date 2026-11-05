@@ -29,11 +29,11 @@
   <!-- parent -->
   <g filter="url(#shadow)"><rect x="210" y="84" width="540" height="124" rx="14" fill="#ffffff"/></g>
   <rect x="210" y="84" width="540" height="38" rx="14" fill="#3b82f6"/><rect x="210" y="108" width="540" height="14" fill="#3b82f6"/>
-  <text x="480" y="108" class="head" text-anchor="middle">母目錄　my-project（main 分支）</text>
+  <text x="480" y="108" class="head" text-anchor="middle">母目錄　ml-notes（main 分支）</text>
   <text x="234" y="150" class="mono">.git/</text>
   <text x="290" y="150" class="txt">Git 資料庫，所有歷史都存在這裡</text>
   <text x="234" y="180" class="mono">.gitignore</text>
-  <text x="318" y="180" class="txt">要寫入 .worktrees/　｜　保持穩定，最後在這裡合併</text>
+  <text x="318" y="180" class="txt">要寫入 .worktrees/　｜　保持正確，最後在這裡合併</text>
 
   <!-- connectors -->
   <path d="M 350 208 L 350 232 L 250 232 L 250 262" fill="none" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
@@ -43,17 +43,17 @@
   <!-- worktree A -->
   <g filter="url(#shadow)"><rect x="40" y="266" width="420" height="124" rx="14" fill="#ffffff"/></g>
   <rect x="40" y="266" width="420" height="38" rx="14" fill="#10b981"/><rect x="40" y="290" width="420" height="14" fill="#10b981"/>
-  <text x="250" y="290" class="head" text-anchor="middle">.worktrees/feature-login</text>
-  <text x="64" y="332" class="h">分支：feature/login</text>
-  <text x="64" y="356" class="txt">AI A 在這裡開發登入功能</text>
+  <text x="250" y="290" class="head" text-anchor="middle">.worktrees/feature-neural-network</text>
+  <text x="64" y="332" class="h">分支：feature/neural-network</text>
+  <text x="64" y="356" class="txt">AI A 在這裡寫神經網路講義</text>
   <text x="64" y="376" class="txt">裡面的 .git 只是一行指向母目錄的文字</text>
 
   <!-- worktree B -->
   <g filter="url(#shadow)"><rect x="500" y="266" width="420" height="124" rx="14" fill="#ffffff"/></g>
   <rect x="500" y="266" width="420" height="38" rx="14" fill="#8b5cf6"/><rect x="500" y="290" width="420" height="14" fill="#8b5cf6"/>
-  <text x="710" y="290" class="head" text-anchor="middle">.worktrees/fix-header</text>
-  <text x="524" y="332" class="h">分支：fix/header</text>
-  <text x="524" y="356" class="txt">AI B 在這裡修畫面上的 bug</text>
+  <text x="710" y="290" class="head" text-anchor="middle">.worktrees/fix-confusion-matrix</text>
+  <text x="524" y="332" class="h">分支：fix/confusion-matrix</text>
+  <text x="524" y="356" class="txt">AI B 在這裡修混淆矩陣的表格</text>
   <text x="524" y="376" class="txt">裡面的 .git 只是一行指向母目錄的文字</text>
 
   <rect x="40" y="408" width="880" height="42" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>

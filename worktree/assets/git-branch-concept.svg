@@ -18,27 +18,27 @@
   </style>
 
   <rect width="960" height="465" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
-  <text x="480" y="38" class="title" text-anchor="middle">Branch：在分支上開發，main 保持可用</text>
+  <text x="480" y="38" class="title" text-anchor="middle">Branch：在分支上修改，main 保持正確</text>
   <text x="480" y="62" class="sub" text-anchor="middle">圓點是一次 commit，每條線是一條分支</text>
 
   <!-- experiment branch: abandoned -->
   <path d="M 270 225 C 320 225, 340 125, 400 125 L 590 125" fill="none" stroke="#8b5cf6" stroke-width="4" stroke-dasharray="9 7" stroke-linecap="round"/>
   <circle cx="400" cy="125" r="11" fill="#ffffff" stroke="#8b5cf6" stroke-width="4"/>
-  <text x="400" y="101" class="txt" text-anchor="middle">試做深色主題</text>
+  <text x="400" y="101" class="txt" text-anchor="middle">改成問答式</text>
   <path d="M 594 113 L 618 137 M 618 113 L 594 137" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/>
-  <rect x="640" y="92" width="196" height="28" rx="14" fill="#8b5cf6"/>
-  <text x="738" y="111" class="pill" text-anchor="middle">experiment/dark-theme</text>
-  <text x="640" y="144" class="note" style="fill:#7c3aed">老闆不喜歡：整條刪掉，main 不受影響</text>
+  <rect x="640" y="92" width="184" height="28" rx="14" fill="#8b5cf6"/>
+  <text x="732" y="111" class="pill" text-anchor="middle">experiment/qa-format</text>
+  <text x="640" y="144" class="note" style="fill:#7c3aed">讀起來太零碎：整條刪掉，main 不受影響</text>
 
   <!-- feature branch: merged -->
   <path d="M 270 225 C 320 225, 340 325, 390 325 L 510 325 C 570 325, 590 225, 650 225" fill="none" stroke="#10b981" stroke-width="4"/>
   <circle cx="390" cy="325" r="11" fill="#10b981"/>
   <circle cx="510" cy="325" r="11" fill="#10b981"/>
-  <text x="390" y="358" class="txt" text-anchor="middle">新增菜單頁</text>
-  <text x="510" y="358" class="txt" text-anchor="middle">加上連結</text>
-  <rect x="384" y="370" width="132" height="28" rx="14" fill="#10b981"/>
-  <text x="450" y="389" class="pill" text-anchor="middle">feature/menu</text>
-  <text x="618" y="326" class="note" style="fill:#047857">老闆看過沒問題：合併回 main</text>
+  <text x="390" y="358" class="txt" text-anchor="middle">新增講義</text>
+  <text x="510" y="358" class="txt" text-anchor="middle">補上例子</text>
+  <rect x="332" y="370" width="236" height="28" rx="14" fill="#10b981"/>
+  <text x="450" y="389" class="pill" text-anchor="middle">feature/supervised-learning</text>
+  <text x="618" y="326" class="note" style="fill:#047857">對照課本沒問題：合併回 main</text>
 
   <!-- main -->
   <line x1="70" y1="225" x2="900" y2="225" stroke="#3b82f6" stroke-width="5" marker-end="url(#arrow)"/>
@@ -47,11 +47,11 @@
   <circle cx="650" cy="225" r="13" fill="#3b82f6" stroke="#ffffff" stroke-width="3"/>
   <rect x="40" y="172" width="70" height="28" rx="14" fill="#3b82f6"/>
   <text x="75" y="191" class="pill" text-anchor="middle">main</text>
-  <text x="110" y="258" class="txt" text-anchor="middle">網站上線</text>
+  <text x="110" y="258" class="txt" text-anchor="middle">講義第一版</text>
   <text x="270" y="258" class="txt" text-anchor="middle">開分支</text>
   <text x="650" y="200" class="txt" text-anchor="middle">合併</text>
-  <text x="810" y="258" class="txt" text-anchor="middle">一直都是可用的版本</text>
+  <text x="810" y="258" class="txt" text-anchor="middle">一直都是正確的版本</text>
 
   <rect x="40" y="410" width="880" height="40" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
-  <text x="480" y="435" class="note" text-anchor="middle" style="fill:#1d4ed8">比喻：main 是貼在店門口的正式菜單，branch 是拿去試寫的草稿</text>
+  <text x="480" y="435" class="note" text-anchor="middle" style="fill:#1d4ed8">比喻：main 是發給全班的正式講義，branch 是拿去試寫的草稿</text>
 </svg>

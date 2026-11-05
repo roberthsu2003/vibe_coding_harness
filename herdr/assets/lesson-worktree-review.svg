@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" role="img" aria-label="第 4 關的流程：主管 AI 留在主目錄，小模型在獨立的 worktree 裡寫筆記，經過審查再合併回 main，最後移除 worktree 和分支。">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .head { font-size: 15px; font-weight: 800; fill: #ffffff; }
+    .h { font-size: 14px; font-weight: 700; fill: #0f172a; }
+    .txt { font-size: 13px; fill: #475569; }
+    .edge { font-size: 13px; font-weight: 700; fill: #475569; }
+    .step { font-size: 13px; font-weight: 700; fill: #1d4ed8; }
+  </style>
+
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="38" class="title" text-anchor="middle">第 4 關：小模型在隔離的資料夾工作，主管審查後才合併</text>
+  <text x="480" y="62" class="sub" text-anchor="middle">就算小模型改壞了，主目錄的 main 也不會受影響</text>
+
+  <!-- main folder -->
+  <g filter="url(#shadow)"><rect x="40" y="90" width="380" height="190" rx="14" fill="#ffffff"/></g>
+  <rect x="40" y="90" width="380" height="38" rx="14" fill="#3b82f6"/><rect x="40" y="114" width="380" height="14" fill="#3b82f6"/>
+  <text x="230" y="114" class="head" text-anchor="middle">主目錄　work/git-notes</text>
+  <text x="64" y="162" class="h">分支：main</text>
+  <text x="64" y="192" class="txt">主管 AI（agy）在這裡指揮</text>
+  <text x="64" y="218" class="txt">建立 worktree、審查改動</text>
+  <text x="64" y="244" class="txt">沒問題才合併回 main</text>
+
+  <!-- worktree -->
+  <g filter="url(#shadow)"><rect x="540" y="90" width="380" height="190" rx="14" fill="#ffffff"/></g>
+  <rect x="540" y="90" width="380" height="38" rx="14" fill="#10b981"/><rect x="540" y="114" width="380" height="14" fill="#10b981"/>
+  <text x="730" y="114" class="head" text-anchor="middle">worktree　.worktrees/notes</text>
+  <text x="564" y="162" class="h">分支：feature/git-basics</text>
+  <text x="564" y="192" class="txt">小模型只在這裡寫筆記</text>
+  <text x="564" y="218" class="txt">不執行 git commit</text>
+  <text x="564" y="244" class="txt">由主管審查後才 commit</text>
+
+  <!-- connectors -->
+  <path d="M 424 160 L 536 160" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="480" y="148" class="edge" text-anchor="middle">派工</text>
+  <path d="M 536 220 L 424 220" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="480" y="208" class="edge" text-anchor="middle">審查</text>
+
+  <!-- flow strip -->
+  <rect x="40" y="304" width="880" height="100" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="480" y="334" class="edge" text-anchor="middle" style="fill:#1d4ed8">完整流程</text>
+  <text x="480" y="370" class="step" text-anchor="middle" style="font-size:15px">準備　→　隔離　→　派工　→　審查　→　合併　→　清理</text>
+</svg>
