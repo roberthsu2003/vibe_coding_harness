@@ -3,25 +3,9 @@
 這是給剛開始用終端機開發的人看的操作手冊：從安裝工具、理解 AI coding agent，到用 Git 管理平行工作的程式版本。內容以實際操作為主，逐步帶你建立一套可以重複使用的終端機工作流程。
 
 
-## Harness：AI coding agent
+## AI coding agent 與 Harness
 
-Harness 在這個 repo 指能直接操作專案的 AI coding agent 及其工作規則、工具與權限設定。它不只是回答問題，也能讀寫專案檔案、執行終端指令，並根據結果繼續修正。
-
-### Harness 核心的五大職責
-
-| 核心職責 | 領域 / 英文 | 說明與主要功能 |
-| :--- | :--- | :--- |
-| **工具連接與環境控制** | Tools & MCP | 提供檔案讀寫、終端機執行、Git 操作以及 MCP (Model Context Protocol) 伺服器介接能力，把大腦與真實開發環境連接起來。 |
-| **上下文治理與持久化** | Context & State Management | 自動載入專案規範（如 AGENTS.md、架構設定）、過濾過大檔案或 lockfile 避免爆 token，並維護 session 狀態與對話交接（Handoff）。 |
-| **權限約束與安全圍欄** | Constrain & Permissions | 透過設定檔（如 opencode.json）定義哪些操作可以直接執行（auto-run）、哪些需要人類確認（ask），防止危險指令破壞系統。 |
-| **自動化驗證與修正迴圈** | Verify & Self-Correction | 代碼生成後自動掛載測試或 Linter 執行，並把失敗日誌餵回給模型修復，無需人類來回複製貼上終端機錯誤。 |
-| **多 Agent 協同與分工** | Agent Orchestration | 支援主代理（Supervisor）與子代理（Subagent）拆分規劃、撰寫與評審（Auto-review）任務，避免單一模型包辦全部而失控。 |
-
-### Branch 與 Worktree
-
-Branch（分支）與 Worktree 是 AI coding agent 平行開發與任務隔離的核心機制。透過 Branch 劃分功能與實驗，搭配 `git worktree` 讓同一個專案同時擁有數個獨立的工作資料夾，多個 agent 即可在各自的分支上平行修改與驗證程式，互不干擾。
-
-教材以咖啡店網站的故事貫穿，從單一 AI 用 Branch，一路學到多個 AI 用 Worktree 同時開發。詳細概念、目錄規劃與操作步驟請參考 [Branch 與 Worktree 操作指南](worktree/README.md)。
+AI coding agent 由模型和 Harness 組成。Harness 把模型接上真實的開發環境，讓 AI 不只回答問題，還能讀寫專案檔案、執行終端指令，並根據結果繼續修正。想深入了解，請參考 [Harness 是什麼](harness.md)。
 
 ### OpenCode
 
@@ -35,6 +19,13 @@ OpenCode 是可在終端機中執行的開源 AI coding agent，也是本 repo �
 Antigravity CLI (`agy`) 是 Google Antigravity 的終端機代理介面，能直接在命令列中與多代理（Subagents）協同工作、執行自動化任務、使用工作空間自訂規則與外掛（Plugins/Skills）。
 
 完整的安裝、CLI 操作與設定請參考 [Antigravity CLI 操作指南](agy/README.md)。
+
+
+## Git：Branch 與 Worktree
+
+Branch（分支）與 Worktree 是 AI coding agent 平行開發與任務隔離的核心機制。透過 Branch 劃分功能與實驗，搭配 `git worktree` 讓同一個專案同時擁有數個獨立的工作資料夾，多個 agent 即可在各自的分支上平行修改與驗證程式，互不干擾。
+
+教材以咖啡店網站的故事貫穿，從單一 AI 用 Branch，一路學到多個 AI 用 Worktree 同時開發。詳細概念、目錄規劃與操作步驟請參考 [Branch 與 Worktree 操作指南](worktree/README.md)。
 
 
 ## ADE：管理多個 agent 工作階段
