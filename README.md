@@ -7,7 +7,6 @@
 <p align="center">
   <a href="#學習路線">學習路線</a> ·
   <a href="#教材總覽">教材總覽</a> ·
-  <a href="#從哪裡開始">從哪裡開始</a> ·
   <a href="#核心概念">核心概念</a>
 </p>
 
@@ -23,23 +22,14 @@
 | :--- | :--- | :--- | :--- |
 | **1. 讓一個 AI 動手做** | [OpenCode](opencode/README.md) | 開源的 AI coding agent，可使用免費模型，是本教材的主要範例 | 10 站 |
 | | [Antigravity CLI (agy)](agy/README.md) | Google Antigravity 的終端機 agent，可切換 Gemini、Claude 等模型 | 10 站 |
-| **2. 放心地改程式** | [Branch 與 Worktree](worktree/README.md)（第 01～03 站） | 開分支、合併、解決衝突，AI 改壞了也不影響 main | 3 站 |
-| **3. 讓多個 AI 同時做** | [Branch 與 Worktree](worktree/README.md)（第 04～07 站） | 每個 AI 一個資料夾，同時開發互不干擾 | 4 站 |
+| **2. 放心地改程式** | [Branch 分支篇](worktree/01-why-branch.md)（第 01～03 站） | 開分支、合併、解決衝突，AI 改壞了也不影響 main | 3 站 |
+| **3. 讓多個 AI 同時做** | [Worktree 多工篇](worktree/04-why-worktree.md)（第 04～07 站） | 每個 AI 一個資料夾，同時開發互不干擾 | 4 站 |
 | | [Herdr](herdr/README.md) | 在同一個終端機管理多個 AI，用燈號掌握狀態 | 6 站＋6 關練習 |
 | **全程輔助** | [Yazi](yazi/README.md) | 用鍵盤瀏覽與管理檔案，驗收 AI 改的內容 | 6 站 |
 | | [Glow](glow/README.md) | 在終端機裡閱讀排版好的 Markdown 文件 | 4 站 |
 
 > [!NOTE]
 > 每一章都從入門排到進階，並標示難度（★～★★★）。遇到問題時，可以查閱各章附的速查表與疑難排解。
-
-## 從哪裡開始
-
-| 你的情況 | 建議從這裡開始 |
-| :--- | :--- |
-| 還沒用過 AI coding agent | [OpenCode 第 01～03 站](opencode/README.md)：裝好工具就能開始用 |
-| 已經會用 agent，怕 AI 改壞程式 | [Branch 第 01～03 站](worktree/README.md) |
-| 想讓多個 AI 同時開發 | [Worktree 第 04～06 站](worktree/README.md)，再接著學 [Herdr](herdr/README.md) |
-| 想知道 agent 背後怎麼運作 | [Harness 是什麼](harness.md) |
 
 > [!TIP]
 > Agent 工具選一個學就好。兩者的章節安排相近，本教材的範例主要使用 OpenCode。
