@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 340" width="100%" role="img" aria-label="學習路線：先用一個 AI 動手做，再用 Branch 安全地改程式，最後用 Worktree 和 Herdr 讓多個 AI 同時開發；Yazi 和 Glow 全程輔助。">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif; }
+    .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
+    .sub { font-size: 13px; fill: #475569; }
+    .step { font-size: 13px; font-weight: 700; fill: #ffffff; }
+    .head { font-size: 18px; font-weight: 800; fill: #0f172a; }
+    .tool { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 14px; font-weight: 700; }
+    .txt { font-size: 13px; fill: #475569; }
+  </style>
+
+  <rect width="960" height="340" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+  <text x="480" y="40" class="title" text-anchor="middle">從指揮一個 AI，到同時指揮多個 AI</text>
+  <text x="480" y="64" class="sub" text-anchor="middle">每個階段只多學一件事</text>
+
+  <!-- stage cards -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="88" width="270" height="164" rx="14" fill="#ffffff"/>
+    <rect x="345" y="88" width="270" height="164" rx="14" fill="#ffffff"/>
+    <rect x="650" y="88" width="270" height="164" rx="14" fill="#ffffff"/>
+  </g>
+  <path d="M 312 170 L 342 170" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M 617 170 L 647 170" stroke="#64748b" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- stage 1 -->
+  <rect x="62" y="106" width="76" height="26" rx="13" fill="#10b981"/>
+  <text x="100" y="124" class="step" text-anchor="middle">階段 1</text>
+  <text x="62" y="162" class="head">讓一個 AI 動手做</text>
+  <text x="62" y="190" class="tool" style="fill:#047857">OpenCode 或 agy</text>
+  <text x="62" y="222" class="txt">說中文，AI 就會改檔案、跑指令</text>
+
+  <!-- stage 2 -->
+  <rect x="367" y="106" width="76" height="26" rx="13" fill="#3b82f6"/>
+  <text x="405" y="124" class="step" text-anchor="middle">階段 2</text>
+  <text x="367" y="162" class="head">放心地改程式</text>
+  <text x="367" y="190" class="tool" style="fill:#1d4ed8">Branch</text>
+  <text x="367" y="222" class="txt">AI 改壞了，main 還是好的</text>
+
+  <!-- stage 3 -->
+  <rect x="672" y="106" width="76" height="26" rx="13" fill="#8b5cf6"/>
+  <text x="710" y="124" class="step" text-anchor="middle">階段 3</text>
+  <text x="672" y="162" class="head">讓多個 AI 同時做</text>
+  <text x="672" y="190" class="tool" style="fill:#6d28d9">Worktree + Herdr</text>
+  <text x="672" y="222" class="txt">各用各的資料夾，一眼看出狀態</text>
+
+  <!-- supporting tools -->
+  <rect x="40" y="272" width="880" height="44" rx="10" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="480" y="299" class="txt" text-anchor="middle" style="fill:#1d4ed8;font-weight:600">全程輔助：用 Yazi 查看 AI 改的檔案，用 Glow 閱讀 AI 寫的文件</text>
+</svg>

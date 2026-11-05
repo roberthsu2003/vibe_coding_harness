@@ -1,55 +1,58 @@
-# 終端機 AI 開發入門
+<h1 align="center">終端機 AI 開發入門</h1>
 
-這是給剛開始用終端機開發的人看的操作手冊：從安裝工具、理解 AI coding agent，到用 Git 管理平行工作的程式版本。內容以實際操作為主，逐步帶你建立一套可以重複使用的終端機工作流程。
+<p align="center">
+  <strong>從第一次用 AI 寫程式，到同時指揮多個 AI 開發的實作教材</strong>
+</p>
 
+<p align="center">
+  <a href="#學習路線">學習路線</a> ·
+  <a href="#教材總覽">教材總覽</a> ·
+  <a href="#從哪裡開始">從哪裡開始</a> ·
+  <a href="#核心概念">核心概念</a>
+</p>
 
-## AI coding agent 與 Harness
+這是一份寫給終端機初學者的操作手冊。內容以實際操作為主，帶你安裝工具、學會指揮 AI coding agent，再用 Git 隔開每個 AI 的工作，逐步建立一套可以重複使用的開發流程。
 
-AI coding agent 由模型和 Harness 組成。Harness 把模型接上真實的開發環境，讓 AI 不只回答問題，還能讀寫專案檔案、執行終端指令，並根據結果繼續修正。想深入了解，請參考 [Harness 是什麼](harness.md)。
+## 學習路線
 
-### OpenCode
+![學習路線：先讓一個 AI 動手做，再用 Branch 放心地改程式，最後用 Worktree 和 Herdr 讓多個 AI 同時開發](assets/roadmap.svg)
 
-OpenCode 是可在終端機中執行的開源 AI coding agent，也是本 repo 目前的主要範例；它能讀寫專案檔案、修改程式並自動執行指令。
+## 教材總覽
 
-完整的安裝、CLI 操作與設定請參考 [OpenCode 操作指南](opencode/README.md)。
+| 階段 | 教材 | 你會學到 | 內容 |
+| :--- | :--- | :--- | :--- |
+| **1. 讓一個 AI 動手做** | [OpenCode](opencode/README.md) | 開源的 AI coding agent，可使用免費模型，是本教材的主要範例 | 10 站 |
+| | [Antigravity CLI (agy)](agy/README.md) | Google Antigravity 的終端機 agent，可切換 Gemini、Claude 等模型 | 10 站 |
+| **2. 放心地改程式** | [Branch 與 Worktree](worktree/README.md)（第 01～03 站） | 開分支、合併、解決衝突，AI 改壞了也不影響 main | 3 站 |
+| **3. 讓多個 AI 同時做** | [Branch 與 Worktree](worktree/README.md)（第 04～07 站） | 每個 AI 一個資料夾，同時開發互不干擾 | 4 站 |
+| | [Herdr](herdr/README.md) | 在同一個終端機管理多個 AI，用燈號掌握狀態 | 6 站＋6 關練習 |
+| **全程輔助** | [Yazi](yazi/README.md) | 用鍵盤瀏覽與管理檔案，驗收 AI 改的內容 | 6 站 |
+| | [Glow](glow/README.md) | 在終端機裡閱讀排版好的 Markdown 文件 | 4 站 |
 
+> [!NOTE]
+> 每一章都從入門排到進階，並標示難度（★～★★★）。遇到問題時，可以查閱各章附的速查表與疑難排解。
 
-### Antigravity CLI (agy)
+## 從哪裡開始
 
-Antigravity CLI (`agy`) 是 Google Antigravity 的終端機代理介面，能直接在命令列中與多代理（Subagents）協同工作、執行自動化任務、使用工作空間自訂規則與外掛（Plugins/Skills）。
+| 你的情況 | 建議從這裡開始 |
+| :--- | :--- |
+| 還沒用過 AI coding agent | [OpenCode 第 01～03 站](opencode/README.md)：裝好工具就能開始用 |
+| 已經會用 agent，怕 AI 改壞程式 | [Branch 第 01～03 站](worktree/README.md) |
+| 想讓多個 AI 同時開發 | [Worktree 第 04～06 站](worktree/README.md)，再接著學 [Herdr](herdr/README.md) |
+| 想知道 agent 背後怎麼運作 | [Harness 是什麼](harness.md) |
 
-完整的安裝、CLI 操作與設定請參考 [Antigravity CLI 操作指南](agy/README.md)。
+> [!TIP]
+> Agent 工具選一個學就好。兩者的章節安排相近，本教材的範例主要使用 OpenCode。
 
+> [!IMPORTANT]
+> **需要先會的 Git 基礎**：Branch 與 Worktree 章節假設你已經知道 commit 是什麼。還不熟的話，請先看 [Git 學習筆記](https://github.com/roberthsu2003/git)。
 
-## Git：Branch 與 Worktree
+## 核心概念
 
-Branch（分支）與 Worktree 是 AI coding agent 平行開發與任務隔離的核心機制。透過 Branch 劃分功能與實驗，搭配 `git worktree` 讓同一個專案同時擁有數個獨立的工作資料夾，多個 agent 即可在各自的分支上平行修改與驗證程式，互不干擾。
-
-教材以咖啡店網站的故事貫穿，從單一 AI 用 Branch，一路學到多個 AI 用 Worktree 同時開發。詳細概念、目錄規劃與操作步驟請參考 [Branch 與 Worktree 操作指南](worktree/README.md)。
-
-
-## ADE：管理多個 agent 工作階段
-
-ADE 是 **Agentic Development Environment** 的縮寫，可理解為以 agent 工作流程為中心的開發環境。這是正在發展中的工具類別；不同專案可能是 TUI、桌面程式或其他介面，因此本 repo 會介紹實際功能，不把它限定成單一介面或已定型的標準。
-
-### Herdr
-
-Herdr 是終端機內的 agent multiplexer，可用 workspace、tab 和 pane 管理 agent 與 shell，隨時查看狀態並重新連回工作階段。完整的安裝與操作請參考 
-
-[Herdr 操作指南](herdr/README.md)。
-
-## 終端機工具
-
-### Yazi
-
-Yazi 是終端機內的檔案管理器，可用鍵盤瀏覽目錄、預覽檔案並快速管理路徑。完整的安裝與操作請參考 
-
-[Yazi 操作指南](yazi/README.md)。
-
-
-### Glow
-
-Glow 是終端機內的 Markdown 渲染與閱讀工具，能將 AI 產出的規格文件、README 與日誌直接在終端內呈現出精美的排版與語法高亮，無需切換瀏覽器或圖形編輯器。完整的安裝與操作請參考 
-
-[Glow 操作指南](glow/README.md)。
-
+| 名詞 | 一句話說明 |
+| :--- | :--- |
+| **AI coding agent** | 能直接操作專案的 AI，由模型和 Harness 組成 |
+| **Harness** | 把模型接上真實開發環境的那一層，讓 AI 能讀寫檔案、執行指令，並根據結果繼續修正（[深入了解](harness.md)） |
+| **Branch（分支）** | 一條獨立的開發路線，確定沒問題再合併回 main |
+| **Worktree** | 讓同一個專案同時有多個工作資料夾，每個資料夾停在各自的分支上 |
+| **ADE** | Agentic Development Environment，以 agent 工作流程為中心的開發環境。這類工具還在發展中，介面和標準都尚未定型，本教材以 Herdr 為例 |
