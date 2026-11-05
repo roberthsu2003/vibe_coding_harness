@@ -22,8 +22,8 @@
 | :--- | :--- | :--- | :--- |
 | **1. 讓一個 AI 動手做** | [OpenCode](opencode/README.md) | 開源的 AI coding agent，可使用免費模型，是本教材的主要範例 | 10 站 |
 | | [Antigravity CLI (agy)](agy/README.md) | Google Antigravity 的終端機 agent，可切換 Gemini、Claude 等模型 | 10 站 |
-| **2. 放心地改程式** | [Branch 分支篇](worktree/01-why-branch.md)（第 01～03 站） | 開分支、合併、解決衝突，AI 改壞了也不影響 main | 3 站 |
-| **3. 讓多個 AI 同時做** | [Worktree 多工篇](worktree/04-why-worktree.md)（第 04～07 站） | 每個 AI 一個資料夾，同時開發互不干擾 | 4 站 |
+| **2. 放心地改程式** | [Branch 分支篇](worktree/README.md)（第 01～03 站） | 開分支、合併、解決衝突，AI 改壞了也不影響 main | 準備步驟＋3 站 |
+| **3. 讓多個 AI 同時做** | [Worktree 多工篇](worktree/README.md#學習路線)（第 04～07 站） | 每個 AI 一個資料夾，同時開發互不干擾 | 4 站 |
 | | [Herdr](herdr/README.md) | 在同一個終端機管理多個 AI，用燈號掌握狀態 | 6 站＋6 關練習 |
 | **全程輔助** | [Yazi](yazi/README.md) | 用鍵盤瀏覽與管理檔案，驗收 AI 改的內容 | 6 站 |
 | | [Glow](glow/README.md) | 在終端機裡閱讀排版好的 Markdown 文件 | 4 站 |
@@ -36,6 +36,9 @@
 
 > [!IMPORTANT]
 > **需要先會的 Git 基礎**：Branch 與 Worktree 章節假設你已經知道 commit 是什麼。還不熟的話，請先看 [Git 學習筆記](https://github.com/roberthsu2003/git)。
+
+> [!IMPORTANT]
+> **Branch 與 Worktree 是連續的同一章**：請從[章節首頁](worktree/README.md)的「開始之前」開始，第 04 站之後的操作都接著前面的 `ml-notes` 資料夾。
 
 ## 核心概念
 
