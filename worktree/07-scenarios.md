@@ -126,21 +126,12 @@ git log experiment/qa-format --oneline -3        # 確認內容
 
 **用 worktree**：原本的資料夾完全不動，從 main 另外開一個資料夾來修。
 
+先在母目錄建立 worktree：
+
 **自己打指令**
 
 ```bash
-# 在母目錄
 git worktree add .worktrees/hotfix-accuracy -b hotfix/accuracy-formula main
-
-# 到新的 worktree 修正
-cd .worktrees/hotfix-accuracy
-echo '準確率 = 預測正確的筆數 ÷ 全部筆數' > terms/accuracy.md
-git add .
-git commit -m "fix: 修正準確率公式"
-
-# 回母目錄合併
-cd ../..
-git merge hotfix/accuracy-formula
 ```
 
 **請 AI 做**
@@ -153,8 +144,38 @@ git merge hotfix/accuracy-formula
 
 然後開新視窗，用 `opencode .worktrees/hotfix-accuracy` 進去，告訴 AI 正確的公式：
 
+**請 AI 寫**
+
 ```text
-terms/accuracy.md 的公式寫錯了。正確的公式是「準確率 = 預測正確的筆數 ÷ 全部筆數」。請修正後 commit。
+terms/accuracy.md 的公式寫錯了，那其實是精確率的公式。正確的公式是「準確率 = 預測正確的筆數 ÷ 全部筆數」。請修正定義，並讓白話比喻和例子也跟著正確。先不要 commit。
+```
+
+確認內容正確後，提交並合併：
+
+**自己打指令**
+
+```bash
+cd .worktrees/hotfix-accuracy
+git add .
+git commit -m "fix: 修正準確率公式"
+
+# 回母目錄合併
+cd ../..
+git merge hotfix/accuracy-formula
+```
+
+**請 AI 做**
+
+先對 worktree 裡的 AI 說：
+
+```text
+內容沒問題，請 commit，訊息是「fix: 修正準確率公式」。
+```
+
+再對母目錄的 AI 說：
+
+```text
+請把 hotfix/accuracy-formula 合併進 main。
 ```
 
 合併後，同學馬上就能拿到正確的講義。回到梯度下降時，再把最新的 main 合併進那條分支就好。
@@ -260,7 +281,7 @@ git worktree add .worktrees/feature-gradient-descent -b feature/gradient-descent
 
 看 Herdr 側欄的狀態燈號（🟡 工作中、🔴 等你回應、🟢 做完了），一個人就能同時管好幾個 AI。
 
-> 兩個 AI 都會在 `README.md` 目錄的最後加一行，第二條分支合併時很可能發生衝突。這兩行互不相關，兩行都留下就好，見 [03 站第 4 節](03-merge-conflict.md#4-處理衝突)。
+> 兩個 AI 都會在 `README.md` 索引的最後加一行，第二條分支合併時很可能發生衝突。這兩行互不相關，兩行都留下就好，見 [03 站第 4 節](03-merge-conflict.md#4-處理衝突)。
 
 > 想讓主管 AI 自動完成這整套流程？見 [Herdr 動手練習第 5 關](../herdr/practice/05-parallel-worktrees/README.md)。
 
@@ -274,25 +295,24 @@ git worktree add .worktrees/feature-gradient-descent -b feature/gradient-descent
 
 #### 第 1 步：不小心直接改在 main 上
 
+先確認目前在 main。
+
 **自己打指令**
 
 ```bash
 git switch main
-cat > terms/cross-validation.md <<'EOF'
-# 交叉驗證
-
-- **定義**：把資料分成多份，輪流當驗證資料，評估模型的表現。
-- **白話比喻**：同一份教材輪流出不同範圍的模擬考。
-- **例子**：5 折交叉驗證會訓練並評估模型 5 次。
-EOF
-echo '- [交叉驗證](terms/cross-validation.md)' >> README.md
-git status
 ```
 
 **請 AI 做**
 
 ```text
-請新增 terms/cross-validation.md，說明交叉驗證，並加進目錄。先不要 commit。
+請切換到 main。
+```
+
+**請 AI 寫**
+
+```text
+請新增 terms/cross-validation.md，說明交叉驗證，格式和現有的講義一樣，並把它加進 README.md 的索引。這次是練習，請直接改在 main 上，先不要 commit。
 ```
 
 #### 第 2 步：把改動帶到新分支
@@ -346,44 +366,20 @@ git worktree add .worktrees/feature-gradient-descent -b feature/gradient-descent
 
 #### 第 2 步：開始寫，但先不要 commit
 
-**自己打指令**
+開新的終端機視窗，先進入 `ml-notes` 資料夾，再用 `opencode .worktrees/feature-gradient-descent` 進入 worktree，說：
 
-開新的終端機視窗，先進入 `ml-notes` 資料夾，再執行：
-
-```bash
-cd .worktrees/feature-gradient-descent
-cat > terms/gradient-descent.md <<'EOF'
-# 梯度下降
-
-- **定義**：沿著讓誤差下降最快的方向，一步步調整模型參數。
-- **白話比喻**：在濃霧中下山，每一步都往最陡的下坡走。
-- **例子**：訓練神經網路時，用它來更新權重。
-EOF
-echo '- [梯度下降](terms/gradient-descent.md)' >> README.md
-git status
-```
-
-**請 AI 做**
-
-開新的終端機視窗，用 `opencode .worktrees/feature-gradient-descent` 進入 worktree，說：
+**請 AI 寫**
 
 ```text
-請新增 terms/gradient-descent.md，說明梯度下降，並加進目錄。先不要 commit。
+請新增 terms/gradient-descent.md，說明梯度下降，格式和現有的講義一樣，並把它加進 README.md 的索引。先不要 commit。
 ```
 
-#### 第 3 步：在另一個 worktree 緊急修正
+#### 第 3 步：建立緊急修正的 worktree
 
 **自己打指令**
-
-回到原本的視窗：
 
 ```bash
 git worktree add .worktrees/hotfix-accuracy -b hotfix/accuracy-formula main
-cd .worktrees/hotfix-accuracy
-echo '準確率 = 預測正確的筆數 ÷ 全部筆數' > terms/accuracy.md
-git add .
-git commit -m "fix: 修正準確率公式"
-cd ../..
 ```
 
 **請 AI 做**
@@ -391,10 +387,39 @@ cd ../..
 回到母目錄的 AI，說：
 
 ```text
-我要緊急修正準確率的公式。請從 main 建立一個新的 worktree，分支叫 hotfix/accuracy-formula，放在 .worktrees/hotfix-accuracy，把 terms/accuracy.md 的公式改成「準確率 = 預測正確的筆數 ÷ 全部筆數」並 commit。
+我要緊急修正準確率的公式。請從 main 建立一個新的 worktree，分支叫 hotfix/accuracy-formula，放在 .worktrees/hotfix-accuracy。
 ```
 
-#### 第 4 步：合併修正，清理 worktree
+#### 第 4 步：請 AI 修正公式
+
+再開一個新的終端機視窗，先進入 `ml-notes` 資料夾，再用 `opencode .worktrees/hotfix-accuracy` 進入 worktree，說：
+
+**請 AI 寫**
+
+```text
+terms/accuracy.md 的公式寫錯了，那其實是精確率的公式。正確的公式是「準確率 = 預測正確的筆數 ÷ 全部筆數」。請修正定義，並讓白話比喻和例子也跟著正確。先不要 commit。
+```
+
+讀完後，試著用自己的話說明準確率和精確率有什麼不同。
+
+#### 第 5 步：提交修正
+
+**自己打指令**
+
+```bash
+cd .worktrees/hotfix-accuracy
+git add .
+git commit -m "fix: 修正準確率公式"
+cd ../..
+```
+
+**請 AI 做**
+
+```text
+內容沒問題，請 commit，訊息是「fix: 修正準確率公式」。
+```
+
+#### 第 6 步：合併修正，清理 worktree
 
 **自己打指令**
 
@@ -406,23 +431,25 @@ git branch -d hotfix/accuracy-formula
 
 **請 AI 做**
 
+先關掉 hotfix worktree 裡的 AI，再回到母目錄的 AI，說：
+
 ```text
 請把 hotfix/accuracy-formula 合併進 main，再移除這個 worktree 和它的分支。
 ```
 
-#### 第 5 步：回去完成梯度下降
+#### 第 7 步：回去完成梯度下降
 
 公式應該已經是正確的。
 
 **自己打指令**
 
-回到梯度下降的視窗：
-
 ```bash
+cd .worktrees/feature-gradient-descent
 git add .
 git commit -m "docs: 新增梯度下降講義"
 git merge --no-edit main
 cat terms/accuracy.md
+cd ../..
 ```
 
 **請 AI 做**
@@ -433,11 +460,9 @@ cat terms/accuracy.md
 內容沒問題，請 commit，再把最新的 main 合併進來，並顯示 terms/accuracy.md 的內容。
 ```
 
-#### 第 6 步：合併梯度下降
+#### 第 8 步：合併梯度下降
 
 **自己打指令**
-
-回到原本的視窗：
 
 ```bash
 git merge feature/gradient-descent
@@ -451,7 +476,7 @@ git merge feature/gradient-descent
 請把 feature/gradient-descent 合併進 main。
 ```
 
-#### 第 7 步：清理並確認成果
+#### 第 9 步：清理並確認成果
 
 應該只剩 main，`terms` 裡有 6 份講義。
 
@@ -485,5 +510,6 @@ ls terms
 - [ ] 知道刪掉 worktree 資料夾後，哪些內容救得回來、要用哪個指令清理紀錄
 - [ ] 知道新 worktree 少了資料時先檢查什麼
 - [ ] 知道 `--amend` 只適合還沒 push 的 commit
+- [ ] 能用自己的話說明交叉驗證、梯度下降，以及準確率和精確率的差別
 
 > 🎉 完成 Branch 與 Worktree 章節！遇到問題時查閱 [指令速查與疑難排解](reference.md)。

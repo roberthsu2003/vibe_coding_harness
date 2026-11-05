@@ -28,19 +28,10 @@ git switch -c feature/supervised-learning   # 建立分支並切換過去
 
 ### 步驟 2：撰寫講義
 
-**自己打指令**
-
-```bash
-nano terms/supervised-learning.md   # 輸入定義、白話比喻和一個例子
-nano README.md                      # 在目錄加一行連結
-```
-
-> nano 的存檔方式：按 `Ctrl+X`，按 `Y`，再按 `Enter`。
-
-**請 AI 做**
+**請 AI 寫**
 
 ```text
-請新增 terms/supervised-learning.md，說明「監督式學習」，包含定義、白話比喻和一個例子，並把它加進 README.md 的目錄。
+請新增 terms/supervised-learning.md，說明「監督式學習」，格式和現有的講義一樣，並把它加進 README.md 的索引。先不要 commit。
 ```
 
 ### 步驟 3：驗收並提交
@@ -67,7 +58,7 @@ git commit -m "docs: 新增監督式學習講義"
 ```
 
 > [!IMPORTANT]
-> **不管是誰寫的都要讀一遍。** AI 可能把專有名詞解釋錯，請對照課本或投影片。想在終端機裡看排版，可以用 [Glow](../glow/README.md)。
+> **AI 寫的內容一定要讀一遍。** AI 可能把專有名詞解釋錯，請對照課本或投影片，確認自己能用自己的話說明這個名詞。想在終端機裡看排版，可以用 [Glow](../glow/README.md)。
 
 **親眼看看分支的效果。**
 
@@ -127,11 +118,33 @@ git branch                                  # 列出分支，* 是目前所在�
 
 > 同學說問答式的講義比較好背，你想試試看。
 
+先開一條實驗分支：
+
 **自己打指令**
 
 ```bash
 git switch -c experiment/qa-format
-nano terms/overfitting.md            # 改成問答式
+```
+
+**請 AI 做**
+
+```text
+請從 main 開一條分支 experiment/qa-format，並切換過去。
+```
+
+再請 AI 改寫：
+
+**請 AI 寫**
+
+```text
+請把 terms/overfitting.md 改成問答式。先不要 commit。
+```
+
+把這次實驗提交到分支上：
+
+**自己打指令**
+
+```bash
 git add .
 git commit -m "docs: 試做問答式講義"
 ```
@@ -139,7 +152,7 @@ git commit -m "docs: 試做問答式講義"
 **請 AI 做**
 
 ```text
-請從 main 開一條分支 experiment/qa-format，把 terms/overfitting.md 改成問答式，然後 commit。
+請把這次的改動 commit，訊息是「docs: 試做問答式講義」。
 ```
 
 讀完覺得太零碎，定義反而看不清楚，決定不要了：
@@ -197,10 +210,17 @@ git status                  # 有沒有還沒 commit 的改動
 
 每次都提醒 AI 很麻煩，可以把規則寫進專案的 `AGENTS.md`，OpenCode 開始工作時會讀這個檔案。
 
+**請 AI 寫**
+
+```text
+請在 AGENTS.md 加兩條規則：開始修改檔案前，先確認目前的分支；如果在 main 上，先問我要不要開新分支。新增講義時，要同步更新 README.md 的索引。先不要 commit。
+```
+
+確認規則寫對了，再提交：
+
 **自己打指令**
 
 ```bash
-echo '開始修改檔案前，先確認目前的分支；如果在 main 上，先問我要不要開新分支。' >> AGENTS.md
 git add AGENTS.md
 git commit -m "docs: 新增 AI 工作規則"
 ```
@@ -208,7 +228,7 @@ git commit -m "docs: 新增 AI 工作規則"
 **請 AI 做**
 
 ```text
-請在 AGENTS.md 加一條規則：開始修改檔案前，先確認目前的分支；如果在 main 上，先問我要不要開新分支。然後 commit。
+請把 AGENTS.md commit，訊息是「docs: 新增 AI 工作規則」。
 ```
 
 > 規則能降低出錯的機率，但不是保證。AI 還是改到 main 上的話，見[情境 A](07-scenarios.md#情境-aai-直接改在-main-上)。
@@ -253,22 +273,38 @@ git push origin --delete feature/supervised-learning   # 刪除 GitHub 上的分
 
 ## ✅ 動手練習
 
-還沒準備資料夾的話，請先完成[開始之前](README.md#開始之前準備-ml-notes-資料夾)的步驟。接著進入 `ml-notes`，**先用指令做一遍**。之後想再練習請 AI 做，可以另開一個資料夾重來。
+還沒準備資料夾的話，請先完成[開始之前](README.md#開始之前準備-ml-notes-資料夾)的步驟。接著進入 `ml-notes`，內容請 AI 寫，**Git 指令先自己打一遍**。之後想再練習請 AI 做，可以另開一個資料夾重來。
 
-### 第 1 步：在分支上新增講義
+### 第 1 步：開一條分支
 
 **自己打指令**
 
 ```bash
 git switch -c feature/supervised-learning
-cat > terms/supervised-learning.md <<'EOF'
-# 監督式學習
+```
 
-- **定義**：用有標準答案（標籤）的資料訓練模型。
-- **白話比喻**：拿附解答的考古題練習。
-- **例子**：用標記好的郵件，訓練模型分辨垃圾郵件。
-EOF
-echo '- [監督式學習](terms/supervised-learning.md)' >> README.md
+**請 AI 做**
+
+```text
+請開一條分支 feature/supervised-learning，並切換過去。
+```
+
+### 第 2 步：請 AI 寫講義
+
+**請 AI 寫**
+
+```text
+請新增 terms/supervised-learning.md，說明監督式學習，格式和現有的講義一樣，並把它加進 README.md 的索引。先不要 commit。
+```
+
+讀完後，試著用自己的話說明什麼是監督式學習。有不確定的地方，可以直接問 AI 或對照課本。
+
+### 第 3 步：提交
+
+**自己打指令**
+
+```bash
+git status
 git add .
 git commit -m "docs: 新增監督式學習講義"
 ```
@@ -276,10 +312,10 @@ git commit -m "docs: 新增監督式學習講義"
 **請 AI 做**
 
 ```text
-請開一條分支 feature/supervised-learning，新增 terms/supervised-learning.md，說明監督式學習，包含定義、白話比喻和一個例子，並加進目錄，然後 commit。
+內容沒問題，請 commit，訊息是「docs: 新增監督式學習講義」。
 ```
 
-### 第 2 步：確認 main 沒有變動
+### 第 4 步：確認 main 沒有變動
 
 應該看不到 `supervised-learning.md`。
 
@@ -296,7 +332,7 @@ ls terms
 請切回 main，列出 terms 資料夾的檔案。
 ```
 
-### 第 3 步：合併並刪除分支
+### 第 5 步：合併並刪除分支
 
 **自己打指令**
 
@@ -311,14 +347,33 @@ git branch -d feature/supervised-learning
 請把 feature/supervised-learning 合併進 main，再刪除這條分支。
 ```
 
-### 第 4 步：試做問答式講義
+### 第 6 步：開一條實驗分支
 
 **自己打指令**
 
 ```bash
 git switch -c experiment/qa-format
-echo '問：什麼是過擬合？' > terms/overfitting.md
-echo '答：模型學得太細。' >> terms/overfitting.md
+```
+
+**請 AI 做**
+
+```text
+請開一條分支 experiment/qa-format，並切換過去。
+```
+
+### 第 7 步：請 AI 試做問答式講義
+
+**請 AI 寫**
+
+```text
+請把 terms/overfitting.md 改成問答式。先不要 commit。
+```
+
+### 第 8 步：提交這次實驗
+
+**自己打指令**
+
+```bash
 git add .
 git commit -m "docs: 試做問答式講義"
 ```
@@ -326,10 +381,10 @@ git commit -m "docs: 試做問答式講義"
 **請 AI 做**
 
 ```text
-請開一條分支 experiment/qa-format，把 terms/overfitting.md 改成問答式並 commit。
+請把這次的改動 commit，訊息是「docs: 試做問答式講義」。
 ```
 
-### 第 5 步：丟掉實驗分支
+### 第 9 步：丟掉實驗分支
 
 **自己打指令**
 
@@ -345,9 +400,9 @@ git branch -D experiment/qa-format
 這條分支不要了。請切回 main，列出還沒合併的 commit，等我確認後刪除。
 ```
 
-### 第 6 步：確認結果
+### 第 10 步：確認結果
 
-應該只剩 main，內容也還是原本那一行。
+應該只剩 main，過擬合的講義也回到原本的格式，定義還是「模型學得太細。」
 
 **自己打指令**
 
@@ -373,6 +428,7 @@ cat terms/overfitting.md
 - [ ] 知道 `-d` 和 `-D` 的差別，以及為什麼 `-D` 要特別小心
 - [ ] 知道切回 main 後看不到新講義是正常的
 - [ ] 知道切換分支前要先處理還沒 commit 的改動
+- [ ] 能用自己的話說明什麼是監督式學習
 
 > 舊教材常見的 `git checkout` 也能切換分支，`git switch` 是專門用來切換分支的指令，比較不容易用錯。
 

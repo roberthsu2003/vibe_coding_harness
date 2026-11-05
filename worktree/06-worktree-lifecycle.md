@@ -50,16 +50,6 @@ git worktree list
 
 ## 步驟 3：撰寫講義（在 worktree）
 
-**自己打指令**
-
-```bash
-cd .worktrees/feature-neural-network
-nano terms/neural-network.md          # 輸入定義、白話比喻和一個例子
-nano README.md                        # 在目錄加一行連結
-```
-
-**請 AI 做**
-
 開一個新的終端機視窗，在專案的母目錄輸入這一行，讓另一個 AI 在 worktree 裡工作：
 
 ```bash
@@ -68,8 +58,10 @@ opencode .worktrees/feature-neural-network
 
 確認 OpenCode 畫面下方顯示 `.worktrees/feature-neural-network:feature/neural-network`，再交代工作：
 
+**請 AI 寫**
+
 ```text
-請新增 terms/neural-network.md，說明「神經網路」，包含定義、白話比喻和一個例子，並把它加進 README.md 的目錄。
+請新增 terms/neural-network.md，說明「神經網路」，格式和現有的講義一樣，並把它加進 README.md 的索引。先不要 commit。
 ```
 
 在這裡改的檔案都只在 `feature/neural-network` 分支上，main 的檔案不會變動。
@@ -81,6 +73,7 @@ opencode .worktrees/feature-neural-network
 **自己打指令**
 
 ```bash
+cd .worktrees/feature-neural-network  # 指令視窗也要進入 worktree
 git status
 git add .
 git diff --staged                     # 對照課本確認內容，按 q 離開
@@ -90,7 +83,7 @@ git commit -m "docs: 新增神經網路講義"
 **請 AI 做**
 
 ```text
-請列出你改了哪些檔案，並確認目錄的連結正確。先不要 commit，等我看過內容。
+請列出你改了哪些檔案，並確認索引的連結正確。先不要 commit，等我看過內容。
 ```
 
 對照課本確認定義沒有寫錯，再說：
@@ -200,7 +193,7 @@ git rev-parse --git-dir          # 判斷是母目錄還是 worktree
 
 回到 [02 站](02-branch-basics.md#-動手練習)的 `ml-notes` 資料夾。
 
-### 第 1 步：更新 .gitignore，放入老師的投影片
+### 第 1 步：更新 .gitignore
 
 **自己打指令**
 
@@ -209,19 +202,37 @@ echo '.worktrees/' >> .gitignore
 echo 'references/' >> .gitignore
 git add .gitignore
 git commit -m "chore: 忽略 .worktrees 和 references"
+```
 
-mkdir references
-echo '神經網路由輸入層、隱藏層和輸出層組成。' > references/slides.md
+**請 AI 做**
+
+```text
+請把 .worktrees/ 和 references/ 加進 .gitignore 並 commit。
+```
+
+### 第 2 步：放入老師的投影片
+
+**請 AI 寫**
+
+```text
+請建立 references/slides.md，當作老師的投影片，用幾行重點介紹神經網路的輸入層、隱藏層和輸出層。
+```
+
+確認 Git 沒有追蹤這個資料夾：
+
+**自己打指令**
+
+```bash
 git status      # 不應該出現 references
 ```
 
 **請 AI 做**
 
 ```text
-請把 .worktrees/ 和 references/ 加進 .gitignore 並 commit。然後建立 references/slides.md，內容寫「神經網路由輸入層、隱藏層和輸出層組成。」，當作老師的投影片。
+請顯示目前的 Git 狀態，並確認 references 沒有出現在裡面。
 ```
 
-### 第 2 步：建立 worktree
+### 第 3 步：建立 worktree
 
 **自己打指令**
 
@@ -237,41 +248,40 @@ git worktree list
 請建立一個 worktree 來寫神經網路講義，分支叫 feature/neural-network，放在 .worktrees/feature-neural-network，並把 references 複製過去。
 ```
 
-### 第 3 步：在 worktree 裡撰寫並提交
+### 第 4 步：在 worktree 裡請 AI 寫講義
+
+開新的終端機視窗，先進入 `ml-notes` 資料夾，再用 `opencode .worktrees/feature-neural-network` 進入 worktree，說：
+
+**請 AI 寫**
+
+```text
+請參考 references/slides.md，新增 terms/neural-network.md，說明神經網路，格式和現有的講義一樣，並把它加進 README.md 的索引。先不要 commit。
+```
+
+讀完後，試著用自己的話說明輸入層、隱藏層和輸出層各做什麼。
+
+### 第 5 步：在 worktree 裡提交
 
 **自己打指令**
 
-開新的終端機視窗，先進入 `ml-notes` 資料夾，再執行：
-
 ```bash
 cd .worktrees/feature-neural-network
-cat > terms/neural-network.md <<'EOF'
-# 神經網路
-
-- **定義**：由輸入層、隱藏層和輸出層組成的模型。
-- **白話比喻**：一群人層層傳話，每個人都會調整訊息的重要性。
-- **例子**：輸入手寫數字的圖片，輸出它是哪個數字。
-EOF
-echo '- [神經網路](terms/neural-network.md)' >> README.md
 git add .
 git commit -m "docs: 新增神經網路講義"
+cd ../..
 ```
 
 **請 AI 做**
 
-開新的終端機視窗，用 `opencode .worktrees/feature-neural-network` 進入 worktree，說：
-
 ```text
-請參考 references/slides.md，新增 terms/neural-network.md，說明神經網路，包含定義、白話比喻和一個例子，並加進 README.md 的目錄，然後 commit。
+內容沒問題，請 commit，訊息是「docs: 新增神經網路講義」。
 ```
 
-### 第 4 步：確認母目錄還沒有變動
+### 第 6 步：確認母目錄還沒有變動
 
 應該還看不到 `neural-network.md`。
 
 **自己打指令**
-
-回到原本的視窗：
 
 ```bash
 ls terms
@@ -285,7 +295,7 @@ ls terms
 請列出 terms 資料夾的檔案。
 ```
 
-### 第 5 步：合併
+### 第 7 步：合併
 
 **自己打指令**
 
@@ -299,7 +309,7 @@ git merge feature/neural-network
 請把 feature/neural-network 合併進 main。
 ```
 
-### 第 6 步：清理
+### 第 8 步：清理
 
 **自己打指令**
 
@@ -327,5 +337,6 @@ git worktree list
 - [ ] 知道為什麼在 worktree 裡不能切換到 main
 - [ ] 知道移除 worktree 前要先檢查什麼
 - [ ] 能用 `git rev-parse --git-dir` 判斷自己在母目錄還是 worktree
+- [ ] 能用自己的話說明什麼是神經網路
 
 > 下一站：[07 實戰情境 →](07-scenarios.md)
