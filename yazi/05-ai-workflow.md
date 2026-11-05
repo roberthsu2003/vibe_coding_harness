@@ -46,7 +46,7 @@ AI 說它改了 5 個檔案。切到 Yazi 窗格，用 `j` / `k` 掃過那些檔
 
 ### 情境 C：找不到 `.env` 或 `.worktrees/`
 
-按 `.` 顯示隱藏檔。在 Git worktree 開發時，用這招進入 `.worktrees/` 查看各分支的成果（見 [Git 與 Worktree 章節](../git/README.md)）。
+按 `.` 顯示隱藏檔。在 Git worktree 開發時，用這招進入 `.worktrees/` 查看各分支的成果（見 [Branch 與 Worktree 章節](../worktree/README.md)）。
 
 ---
 

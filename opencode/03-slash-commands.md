@@ -283,7 +283,7 @@
 /worktrees
 ```
 
-**結果**：列出這個專案的 worktree。按 `Ctrl+A` 新增、`Ctrl+D` 刪除。Worktree 是什麼，見 [Git Worktree](../git/README.md)。
+**結果**：列出這個專案的 worktree。按 `Ctrl+A` 新增、`Ctrl+D` 刪除。Worktree 是什麼，見 [Branch 與 Worktree](../worktree/README.md)。
 
 ### `/pair`：用手機或瀏覽器連線
 

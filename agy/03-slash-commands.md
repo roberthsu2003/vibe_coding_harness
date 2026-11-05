@@ -138,7 +138,7 @@
 **結果**：複製目前的對話到新的工作階段。試失敗了，用 `/resume` 就能回到原本的對話。別名：`/branch`。
 
 > [!WARNING]
-> `/fork` 只複製**對話**，不會複製你的檔案。要隔離檔案，請搭配 [Git 分支或 worktree](../git/README.md)。
+> `/fork` 只複製**對話**，不會複製你的檔案。要隔離檔案，請搭配 [Git 分支或 worktree](../worktree/README.md)。
 
 ### `/btw`：順便問個問題
 

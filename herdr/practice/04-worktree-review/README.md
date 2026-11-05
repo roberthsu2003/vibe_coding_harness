@@ -8,9 +8,9 @@
 - 看主管**審查**小模型的改動（`git diff`），確認沒問題才**合併**回 main。
 - 看到完整的收尾：**合併 → 移除 worktree → 刪除分支**。
 
-![Git Worktree 平行架構](../../../git/assets/git-worktree-concept.svg)
+![Git Worktree 平行架構](../../../worktree/assets/git-worktree-concept.svg)
 
-> 想深入了解 worktree？見 [Git 操作指南](../../../git/README.md)。
+> 想深入了解 worktree？見 [Branch 與 Worktree 操作指南](../../../worktree/README.md)。
 
 ---
 

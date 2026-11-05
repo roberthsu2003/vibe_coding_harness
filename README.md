@@ -17,6 +17,11 @@ Harness 在這個 repo 指能直接操作專案的 AI coding agent 及其工作�
 | **自動化驗證與修正迴圈** | Verify & Self-Correction | 代碼生成後自動掛載測試或 Linter 執行，並把失敗日誌餵回給模型修復，無需人類來回複製貼上終端機錯誤。 |
 | **多 Agent 協同與分工** | Agent Orchestration | 支援主代理（Supervisor）與子代理（Subagent）拆分規劃、撰寫與評審（Auto-review）任務，避免單一模型包辦全部而失控。 |
 
+### Branch 與 Worktree
+
+Branch（分支）與 Worktree 是 AI coding agent 平行開發與任務隔離的核心機制。透過 Branch 劃分功能與實驗，搭配 `git worktree` 讓同一個專案同時擁有數個獨立的工作資料夾，多個 agent 即可在各自的分支上平行修改與驗證程式，互不干擾衝突。
+
+詳細概念、目錄規劃與操作步驟請參考 [Branch 與 Worktree 操作指南](worktree/README.md)。
 
 ### OpenCode
 
@@ -56,12 +61,4 @@ Yazi 是終端機內的檔案管理器，可用鍵盤瀏覽目錄、預覽檔案
 Glow 是終端機內的 Markdown 渲染與閱讀工具，能將 AI 產出的規格文件、README 與日誌直接在終端內呈現出精美的排版與語法高亮，無需切換瀏覽器或圖形編輯器。完整的安裝與操作請參考 
 
 [Glow 操作指南](glow/README.md)。
-
-
-### Git 與 worktree：同一個 repo 的多個工作目錄
-
-Git 與 `git worktree` 是 AI coding agent 平行開發與任務隔離的核心機制，能讓多個 agent 同時在不同目錄處理各自的分支任務。詳細概念、目錄規劃與操作步驟請參考 
-
-[Git 與 Worktree 操作指南](git/README.md)。
-
 
