@@ -19,9 +19,9 @@ Harness 在這個 repo 指能直接操作專案的 AI coding agent 及其工作�
 
 ### Branch 與 Worktree
 
-Branch（分支）與 Worktree 是 AI coding agent 平行開發與任務隔離的核心機制。透過 Branch 劃分功能與實驗，搭配 `git worktree` 讓同一個專案同時擁有數個獨立的工作資料夾，多個 agent 即可在各自的分支上平行修改與驗證程式，互不干擾衝突。
+Branch（分支）與 Worktree 是 AI coding agent 平行開發與任務隔離的核心機制。透過 Branch 劃分功能與實驗，搭配 `git worktree` 讓同一個專案同時擁有數個獨立的工作資料夾，多個 agent 即可在各自的分支上平行修改與驗證程式，互不干擾。
 
-詳細概念、目錄規劃與操作步驟請參考 [Branch 與 Worktree 操作指南](worktree/README.md)。
+教材以咖啡店網站的故事貫穿，從單一 AI 用 Branch，一路學到多個 AI 用 Worktree 同時開發。詳細概念、目錄規劃與操作步驟請參考 [Branch 與 Worktree 操作指南](worktree/README.md)。
 
 ### OpenCode
 

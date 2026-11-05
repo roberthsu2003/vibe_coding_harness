@@ -26,15 +26,15 @@
 
   <!-- Left: conflicted file -->
   <g filter="url(#shadow)"><rect x="30" y="84" width="470" height="300" rx="14" fill="#0f172a"/></g>
-  <text x="50" y="112" class="mono" style="fill:#94a3b8">app.py（發生衝突的檔案）</text>
+  <text x="50" y="112" class="mono" style="fill:#94a3b8">index.html（發生衝突的檔案）</text>
   <rect x="44" y="128" width="442" height="28" rx="5" fill="#1e3a8a"/>
   <text x="56" y="147" class="mono" style="fill:#93c5fd">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</text>
-  <text x="56" y="178" class="mono">title = "我的網站"</text>
+  <text x="56" y="178" class="mono">&lt;p&gt;營業時間：07:00-18:00&lt;/p&gt;</text>
   <rect x="44" y="192" width="442" height="28" rx="5" fill="#334155"/>
   <text x="56" y="211" class="mono" style="fill:#fcd34d">=======</text>
-  <text x="56" y="242" class="mono">title = "AI 網站"</text>
+  <text x="56" y="242" class="mono">&lt;p&gt;營業時間：08:00-20:00&lt;/p&gt;</text>
   <rect x="44" y="256" width="442" height="28" rx="5" fill="#14532d"/>
-  <text x="56" y="275" class="mono" style="fill:#86efac">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/login</text>
+  <text x="56" y="275" class="mono" style="fill:#86efac">&gt;&gt;&gt;&gt;&gt;&gt;&gt; feature/summer-hours</text>
 
   <text x="300" y="147" class="note" style="fill:#93c5fd">← 開始：main 的版本</text>
   <text x="300" y="211" class="note" style="fill:#fcd34d">← 分隔線</text>
@@ -42,7 +42,7 @@
 
   <rect x="44" y="300" width="442" height="68" rx="8" fill="#1e293b"/>
   <text x="56" y="324" class="note" style="fill:#e2e8f0">處理完應該只剩下你要的內容：</text>
-  <text x="56" y="350" class="mono" style="fill:#86efac">title = "我的 AI 網站"</text>
+  <text x="56" y="350" class="mono" style="fill:#86efac">&lt;p&gt;營業時間：07:00-20:00&lt;/p&gt;</text>
 
   <!-- Right: steps -->
   <g filter="url(#shadow)"><rect x="520" y="84" width="410" height="300" rx="14" fill="#ffffff"/></g>
@@ -62,11 +62,11 @@
 
   <circle cx="546" cy="294" r="11" fill="#10b981"/><text x="546" y="298" class="num" text-anchor="middle">4</text>
   <text x="566" y="299" class="h">標記已解決，完成合併</text>
-  <text x="566" y="320" class="cmd">git add app.py</text>
+  <text x="566" y="320" class="cmd">git add index.html</text>
   <text x="566" y="338" class="cmd">git commit -m "merge: …"</text>
 
   <rect x="536" y="350" width="378" height="26" rx="8" fill="#fef2f2" stroke="#fecaca"/>
   <text x="548" y="368" class="txt" style="fill:#b91c1c">想放棄這次合併：git merge --abort（回到合併前）</text>
 
-  <text x="480" y="406" class="sub" text-anchor="middle">也可以直接請 AI：「請幫我解決目前的 merge 衝突，保留兩邊的功能」</text>
+  <text x="480" y="406" class="sub" text-anchor="middle">也可以直接請 AI：「請說明這個衝突，等我決定後再解決」</text>
 </svg>

@@ -1,6 +1,6 @@
-# 02　目錄與原理
+# 05　目錄與原理
 
-> ★ 入門　｜　[← 01 為什麼需要 Worktree](01-why-worktree.md)　｜　[章節首頁](README.md)　｜　下一站：[03 完整流程 →](03-lifecycle.md)
+> ★ 入門　｜　[← 04 為什麼需要 Worktree](04-why-worktree.md)　｜　[章節首頁](README.md)　｜　下一站：[06 Worktree 完整流程 →](06-worktree-lifecycle.md)
 
 **這一站你會學到**：worktree 建議放在哪裡、為什麼要加進 `.gitignore`、它為什麼比較省空間，以及哪些東西隔離了、哪些還是共用。
 
@@ -57,10 +57,12 @@ gitdir: /path/to/my-project/.git/worktrees/feature-login
 
 Worktree 隔離的是**專案裡的檔案和目前的分支**，不是整台電腦。
 
+> 兩個 AI 分別做會員登入和修頁首時，下面這些情況都可能遇到。
+
 | | 內容 | 要注意什麼 |
 | :--- | :--- | :--- |
 | ✅ **各自獨立** | 被 Git 追蹤的檔案、目前的分支 | 這就是 worktree 的主要好處 |
-| ⚠️ **不會自動帶過去** | 被 `.gitignore` 忽略的檔案，例如 `.env`、`.venv`、`node_modules` | 新 worktree 裡沒有它們，專案可能跑不起來（解法見 [03 站](03-lifecycle.md)） |
+| ⚠️ **不會自動帶過去** | 被 `.gitignore` 忽略的檔案，例如 `.env`、`.venv`、`node_modules` | 新 worktree 裡沒有它們，專案可能跑不起來（解法見 [06 站](06-worktree-lifecycle.md)） |
 | ⚠️ **大家共用** | Git 的 stash 和設定 | 在這個 worktree 做的 `git stash`，換到另一個 worktree 也看得到 |
 | ⚠️ **同一台電腦** | 連接埠、資料庫、全域安裝的套件 | 兩個 AI 同時啟動網站，可能搶同一個連接埠，要請它們用不同的連接埠 |
 
@@ -81,4 +83,4 @@ cat .git                # 在 worktree 裡執行，會看到 gitdir 那一行
 git status --ignored    # 看有哪些被忽略的檔案
 ```
 
-> 下一站：[03 完整流程 →](03-lifecycle.md)
+> 下一站：[06 Worktree 完整流程 →](06-worktree-lifecycle.md)

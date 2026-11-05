@@ -1,10 +1,12 @@
-# 03　完整流程
+# 06　Worktree 完整流程
 
-> ★★ 進階　｜　[← 02 目錄與原理](02-structure.md)　｜　[章節首頁](README.md)　｜　下一站：[04 合併與衝突 →](04-merge-conflict.md)
+> ★★ 進階　｜　[← 05 目錄與原理](05-worktree-structure.md)　｜　[章節首頁](README.md)　｜　下一站：[07 實戰情境 →](07-scenarios.md)
 
-**這一站你會學到**：worktree 從建立到清理的 6 個步驟、每一步怎麼跟 AI 說，以及怎麼確認自己在哪個 worktree。
+**這一站你會學到**：worktree 從建立到清理的 6 個步驟、每一步怎麼跟 AI 說、為什麼要回母目錄合併，以及怎麼確認自己在哪個 worktree。
 
 ---
+
+> 老闆要的**會員登入**開工了。你想讓一個 AI 專心做這件事，自己的主資料夾保持乾淨。
 
 ![Worktree 的完整流程](assets/git-worktree-lifecycle.svg)
 
@@ -15,7 +17,7 @@
 在專案的母目錄啟動 AI，然後說：
 
 ```text
-請建立一個 worktree 來開發登入功能，放在 .worktrees/ 底下。如果專案有 .env，請複製一份過去；需要安裝套件的話也一起裝好。
+請建立一個 worktree 來開發會員登入，分支叫 feature/login，放在 .worktrees/feature-login。如果專案有 .env，請複製一份過去；需要安裝套件的話也一起裝好。
 ```
 
 > [!IMPORTANT]
@@ -40,7 +42,7 @@ opencode .worktrees/feature-login
 確認 OpenCode 畫面下方顯示 `.worktrees/feature-login:feature/login`，再交代工作：
 
 ```text
-請幫這個專案新增登入功能。
+請幫這個網站新增會員登入功能。
 ```
 
 AI 在這裡改的檔案都只在 `feature/login` 分支上，main 的檔案不會變動。
@@ -60,10 +62,21 @@ AI 在這裡改的檔案都只在 `feature/login` 分支上，main 的檔案不�
 切回母目錄的 AI，說：
 
 ```text
-請把 feature/login 合併進 main。合併前先告訴我會多出哪些 commit。
+請把 feature/login 合併進 main。合併前先告訴我會多出哪些 commit，等我同意再合併。
 ```
 
-詳細的合併步驟與衝突處理見 [04 合併與衝突](04-merge-conflict.md)。
+### 為什麼一定要回母目錄？
+
+`main` 分支已經被母目錄使用中，Git **不允許同一條分支同時在兩個地方使用**。所以在 worktree 裡切換到 main 會失敗：
+
+```text
+fatal: 'main' is already used by worktree at '/path/to/my-project'
+致命錯誤: 「main」已被位於「/path/to/my-project」的工作區使用
+```
+
+> 反過來就可以：在 worktree 裡把 main 的最新內容合併**進來**是允許的，做法見 [03 站第 5 節](03-merge-conflict.md#5-先把-main-同步進分支)。
+
+合併結果的判讀和衝突處理，都和只用分支時一樣，見 [03 合併與衝突](03-merge-conflict.md)。
 
 ## 步驟 6：清理（在母目錄）
 
@@ -93,15 +106,24 @@ AI 在這裡改的檔案都只在 `feature/login` 分支上，main 的檔案不�
 
 ## ✅ 動手練習
 
-在一個新的空資料夾裡啟動 AI：
+回到 [02 站](02-branch-basics.md#-動手練習)的 `xiaodou-cafe` 資料夾啟動 AI：
 
-1. 說：「請把這個資料夾變成 Git 專案，把 `.worktrees/` 加進 `.gitignore`，再加一個 README，然後做第一次 commit。」
-2. 說：「請建立一個叫 practice 的 worktree。」
-3. 開新視窗，用 `opencode .worktrees/practice` 進入 worktree，請 AI 新增一個檔案並 commit。
-4. 回到母目錄的 AI，請它把 `practice` 合併進 main。
-5. 請它移除 worktree 和分支，並確認只剩母目錄。
+1. 說：「請把 `.worktrees/` 加進 `.gitignore` 並 commit。」
+2. 說：「請建立一個 worktree 來做會員登入，分支叫 `feature/login`，放在 `.worktrees/feature-login`。」
+3. 開新視窗，用 `opencode .worktrees/feature-login` 進入 worktree，說：「請新增登入頁面 `login.html`，只要畫面就好，然後 commit。」
+4. 回到母目錄的 AI，說：「請列出目前資料夾的檔案。」確認還看不到 `login.html`。
+5. 說：「請把 `feature/login` 合併進 main。」
+6. 關掉 worktree 裡的 AI，說：「請移除 `feature-login` 這個 worktree 和它的分支，並確認只剩母目錄。」
 
-> 一定要先做第 1 步。專案還沒有任何 commit 時，建立 worktree 不會報錯，但會產生一條沒有歷史的分支。
+> 沒做過前面的練習，要從空資料夾開始的話，請先讓 AI 做第一次 commit。專案還沒有任何 commit 時，建立 worktree 不會報錯，但會產生一條沒有歷史的分支。
+
+---
+
+## ✅ 自我檢查
+
+- [ ] 能說出 worktree 的 6 個步驟，以及每一步在哪裡做
+- [ ] 知道為什麼在 worktree 裡不能切換到 main
+- [ ] 知道移除 worktree 前要先檢查什麼
 
 ---
 
@@ -125,10 +147,12 @@ git status
 git diff
 uv run pytest                          # 依專案調整
 git add .
-git commit -m "feat: 新增登入功能"
+git commit -m "feat: 新增會員登入"
 
 # 5. 合併（回到母目錄）
 cd ../..                               # 要在 worktree 的最上層執行才正確
+git branch --show-current              # 應該顯示 main
+git log main..feature/login --oneline  # 預覽會多出哪些 commit
 git merge feature/login
 
 # 6. 清理（在母目錄）
@@ -155,4 +179,4 @@ git rev-parse --git-dir          # 判斷是母目錄還是 worktree
 
 > `git worktree list` 會列出所有 worktree，但**不會標示你在哪一個**。
 
-> 下一站：[04 合併與衝突 →](04-merge-conflict.md)
+> 下一站：[07 實戰情境 →](07-scenarios.md)
