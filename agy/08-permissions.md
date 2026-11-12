@@ -1,6 +1,6 @@
-# 09　權限設定與沙盒
+# 08　權限設定與沙盒
 
-> ★★★ 深入　｜　[← 08 Subagent 子代理](08-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[10 指令模式與 Herdr →](10-cli-run.md)
+> ★★★ 深入　｜　[← 07 Subagent 子代理](07-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[09 指令模式與 Herdr →](09-cli-run.md)
 
 **這一站你會學到**：設定檔位置、終端安全沙盒（Sandbox）機制、工具執行授權，以及 MCP 與外掛的安全管理。
 
@@ -104,5 +104,5 @@ agy plugin disable <plugin-name>
 
 ---
 
-← [← 08 Subagent 子代理](08-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[10 指令模式與 Herdr →](10-cli-run.md)
+← [← 07 Subagent 子代理](07-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[09 指令模式與 Herdr →](09-cli-run.md)
 

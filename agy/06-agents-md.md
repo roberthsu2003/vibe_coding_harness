@@ -1,6 +1,6 @@
 # 06　專案規範與規則
 
-> ★★ 進階　｜　[← 05 Skill 配置](05-skills.md)　｜　[章節首頁](README.md)　｜　下一站：[07 實戰情境 →](07-scenarios.md)
+> ★★ 進階　｜　[← 05 Skill 配置](05-skills.md)　｜　[章節首頁](README.md)　｜　下一站：[07 Subagent 子代理 →](07-subagents.md)
 
 **這一站你會學到**：使用 `AGENTS.md` 與專案規則（Rules），讓 AI coding agent 嚴格遵守團隊規範與工程要求。
 
@@ -89,5 +89,5 @@ AI 會從讀取的專案脈絡中確認規範，後續指令與自動修正迴�
 
 ---
 
-← [← 05 Skill 配置](05-skills.md)　｜　[章節首頁](README.md)　｜　下一站：[07 實戰情境 →](07-scenarios.md)
+← [← 05 Skill 配置](05-skills.md)　｜　[章節首頁](README.md)　｜　下一站：[07 Subagent 子代理 →](07-subagents.md)
 

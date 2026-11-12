@@ -1,6 +1,6 @@
-# 10　指令模式與 Herdr
+# 09　指令模式與 Herdr
 
-> ★★★ 深入　｜　[← 09 權限設定與沙盒](09-permissions.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
+> ★★★ 深入　｜　[← 08 權限設定與沙盒](08-permissions.md)　｜　[章節首頁](README.md)　｜　下一站：[10 實戰情境 →](10-scenarios.md)
 
 **這一站你會學到**：不進入互動介面，直接用一行指令讓 agy 執行任務（Print Mode）；以及搭配 Herdr 同步多工作業。
 
@@ -64,5 +64,5 @@ agy -p "列出本專案目前所有的 API endpoints" --output-format json
 
 ---
 
-← [← 09 權限設定與沙盒](09-permissions.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
+← [← 08 權限設定與沙盒](08-permissions.md)　｜　[章節首頁](README.md)　｜　下一站：[10 實戰情境 →](10-scenarios.md)
 

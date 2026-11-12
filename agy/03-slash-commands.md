@@ -255,7 +255,7 @@ AI 這次犯的錯，下次不想再糾正一遍：
 ```
 
 > [!WARNING]
-> `/swarm` 目前為 Preview 功能，支援 **Google AI Pro** 與 **Google AI Ultra** 方案。由於每個工作代理都是獨立的 AI 代理，額度消耗速度會比單一對話快上許多。完整操作與快捷鍵（`Alt+S`）請見 [08 Subagent 與 Swarm](08-subagents.md#5-swarm平行代理協作團隊)。
+> `/swarm` 目前為 Preview 功能，支援 **Google AI Pro** 與 **Google AI Ultra** 方案。由於每個工作代理都是獨立的 AI 代理，額度消耗速度會比單一對話快上許多。完整操作與快捷鍵（`Alt+S`）請見 [07 Subagent 與 Swarm](07-subagents.md#5-swarm平行代理協作團隊)。
 
 ### `/teamwork`：組一個長期專案 AI 團隊
 
@@ -263,7 +263,7 @@ AI 這次犯的錯，下次不想再糾正一遍：
 /teamwork 把這個網站從 JavaScript 改寫成 TypeScript
 ```
 
-**結果**：先與你訪談確認規格，再由多個代理依里程碑與審核關卡分工處理大型長期專案。**僅限付費方案**，與 `/swarm` 的差異請見 [08 多代理模式比較](08-subagents.md#7-怎麼選subagentsboostswarm-與-teamwork)。
+**結果**：先與你訪談確認規格，再由多個代理依里程碑與審核關卡分工處理大型長期專案。**僅限付費方案**，與 `/swarm` 的差異請見 [07 多代理模式比較](07-subagents.md#7-怎麼選subagentsboostswarm-與-teamwork)。
 
 ---
 
@@ -362,7 +362,7 @@ AI 這次犯的錯，下次不想再糾正一遍：
 /permissions
 ```
 
-**結果**：開啟權限管理畫面，查看或修改哪些操作允許、詢問或禁止。詳見 [09 權限設定與沙盒](09-permissions.md)。
+**結果**：開啟權限管理畫面，查看或修改哪些操作允許、詢問或禁止。詳見 [08 權限設定與沙盒](08-permissions.md)。
 
 ### `/add-dir`：把別的資料夾加進來
 

@@ -1,6 +1,6 @@
-# 07　實戰情境
+# 10　實戰情境
 
-> ★★ 進階　｜　[← 06 專案規範與規則](06-agents-md.md)　｜　[章節首頁](README.md)　｜　下一站：[08 Subagent 子代理 →](08-subagents.md)
+> ★★ 進階　｜　[← 09 指令模式與 Herdr](09-cli-run.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
 
 **這一站你會學到**：處理即時中斷、壓縮超長對話、使用規劃模式、以及撰寫高品質 Prompt 的技巧。
 
@@ -73,5 +73,5 @@
 
 ---
 
-← [← 06 專案規範與規則](06-agents-md.md)　｜　[章節首頁](README.md)　｜　下一站：[08 Subagent 子代理 →](08-subagents.md)
+← [← 09 指令模式與 Herdr](09-cli-run.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
 

@@ -1,6 +1,6 @@
-# 08　Subagent 子代理
+# 07　Subagent 子代理
 
-> ★★★ 深入　｜　[← 07 實戰情境](07-scenarios.md)　｜　[章節首頁](README.md)　｜　下一站：[09 權限設定與沙盒 →](09-permissions.md)
+> ★★★ 深入　｜　[← 06 專案規範與規則](06-agents-md.md)　｜　[章節首頁](README.md)　｜　下一站：[08 權限設定與沙盒 →](08-permissions.md)
 
 **這一站你會學到**：主代理與子代理的協同機制、如何檢視與呼叫子代理，以及如何使用全新的 **`/swarm`** 讓多個代理在共享留言板上平行協作與交叉審查。
 
@@ -170,5 +170,5 @@ Antigravity 提供四種多代理機制，可依任務性質選擇：
 
 ---
 
-← [← 07 實戰情境](07-scenarios.md)　｜　[章節首頁](README.md)　｜　下一站：[09 權限設定與沙盒 →](09-permissions.md)
+← [← 06 專案規範與規則](06-agents-md.md)　｜　[章節首頁](README.md)　｜　下一站：[08 權限設定與沙盒 →](08-permissions.md)
 

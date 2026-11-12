@@ -89,7 +89,7 @@ agy --mode plan
 | `Ctrl+O` | 展開或收合工具執行的內容 |
 | `Ctrl+R` | 開啟產出物審查畫面，查看計畫和變更 |
 | `Ctrl+G` | 用編輯器撰寫比較長的訊息 |
-| `Alt+S` | 開啟全螢幕 [Swarm 即時看板](08-subagents.md#5-swarm平行代理協作團隊)（同 `/swarm board`） |
+| `Alt+S` | 開啟全螢幕 [Swarm 即時看板](07-subagents.md#5-swarm平行代理協作團隊)（同 `/swarm board`） |
 | `Alt+X` | 關閉已完成的 Swarm 底部狀態列 |
 | `Alt+J` | 快速切換焦點到下一個正在等待確認的子代理 |
 | `Ctrl+K` | 快速批准狀態列提示中待確認的子代理操作 |

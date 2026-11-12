@@ -82,9 +82,9 @@
 | `verbosity` | 畫面顯示的詳細程度 | `medium` | 建議用 `/config` 選擇 |
 | `showTips` | 顯示使用小提示 | `true` | `false` |
 | `queuedMessages` | AI 工作中收到新訊息的處理方式 | `queue` | `send-immediately` |
-| `toolPermission` | 工具的整體授權方式 | `request-review` | 詳見 [09](09-permissions.md) |
+| `toolPermission` | 工具的整體授權方式 | `request-review` | 詳見 [08](08-permissions.md) |
 | `enableTerminalSandbox` | 在沙盒裡執行終端指令 | `false` | `true` |
-| `permissions` | 允許、詢問、禁止的規則 | 無 | 詳見 [09](09-permissions.md) |
+| `permissions` | 允許、詢問、禁止的規則 | 無 | 詳見 [08](08-permissions.md) |
 
 完整清單請見[官方 CLI Reference](https://antigravity.google/docs/cli/reference/)。
 
