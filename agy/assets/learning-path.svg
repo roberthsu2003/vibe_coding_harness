@@ -22,12 +22,14 @@
   <text x="480" y="40" class="title" text-anchor="middle">agy 學習路線：由淺至深</text>
   <text x="480" y="64" class="sub" text-anchor="middle">跟著編號走，每一站只學一件事</text>
 
-  <rect x="60" y="88" width="270" height="28" rx="14" fill="#10b981"/>
-  <text x="195" y="107" class="band" text-anchor="middle">★ 入門：先會用</text>
-  <rect x="345" y="88" width="270" height="28" rx="14" fill="#3b82f6"/>
-  <text x="480" y="107" class="band" text-anchor="middle">★★ 進階：調成你的樣子</text>
-  <rect x="630" y="88" width="270" height="28" rx="14" fill="#8b5cf6"/>
-  <text x="765" y="107" class="band" text-anchor="middle">★★★ 深入：分工與自動化</text>
+  <rect x="35" y="88" width="210" height="28" rx="14" fill="#10b981"/>
+  <text x="140" y="107" class="band" text-anchor="middle">★ 入門：先會用（01～03）</text>
+  <rect x="260" y="88" width="225" height="28" rx="14" fill="#3b82f6"/>
+  <text x="372" y="107" class="band" text-anchor="middle">★★ 進階：調成你的樣子（04～06）</text>
+  <rect x="500" y="88" width="225" height="28" rx="14" fill="#8b5cf6"/>
+  <text x="612" y="107" class="band" text-anchor="middle">★★★ 深入：分工與自動化（07～09）</text>
+  <rect x="740" y="88" width="185" height="28" rx="14" fill="#0ea5e9"/>
+  <text x="832" y="107" class="band" text-anchor="middle">★★ 實戰總結（10）</text>
 
   <!-- 第一排：01 至 05 -->
   <line x1="100" y1="170" x2="860" y2="170" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
@@ -61,7 +63,7 @@
     <circle cx="290" cy="295" r="27" fill="#8b5cf6"/>
     <circle cx="480" cy="295" r="27" fill="#8b5cf6"/>
     <circle cx="670" cy="295" r="27" fill="#8b5cf6"/>
-    <circle cx="860" cy="295" r="27" fill="#3b82f6"/>
+    <circle cx="860" cy="295" r="27" fill="#0ea5e9"/>
   </g>
   <text x="100" y="302" class="num" text-anchor="middle">06</text>
   <text x="290" y="302" class="num" text-anchor="middle">07</text>
@@ -71,7 +73,7 @@
   <text x="100" y="345" class="name" text-anchor="middle">專案規範</text>
   <text x="100" y="365" class="desc" text-anchor="middle">用 AGENTS.md 定規矩</text>
   <text x="290" y="345" class="name" text-anchor="middle">Subagent</text>
-  <text x="290" y="365" class="desc" text-anchor="middle">主代理與子代理分工</text>
+  <text x="290" y="365" class="desc" text-anchor="middle">子代理分工、/swarm 團隊</text>
   <text x="480" y="345" class="name" text-anchor="middle">權限與沙盒</text>
   <text x="480" y="365" class="desc" text-anchor="middle">限制 AI 能做的事</text>
   <text x="670" y="345" class="name" text-anchor="middle">指令模式</text>

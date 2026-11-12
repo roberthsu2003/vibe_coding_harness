@@ -59,12 +59,12 @@
     <text x="230" y="262" class="cmd">/fork</text>
     <text x="230" y="286" class="cmd">/btw　/rename</text>
 
-    <text x="414" y="166" class="cmd">/plan</text>
-    <text x="414" y="190" class="cmd">/grill-me</text>
-    <text x="414" y="214" class="cmd">/goal</text>
-    <text x="414" y="238" class="cmd">/browser</text>
-    <text x="414" y="262" class="cmd">/schedule　/learn</text>
-    <text x="414" y="286" class="cmd">/swarm　/boost</text>
+    <text x="414" y="166" class="cmd">/plan　/grill-me</text>
+    <text x="414" y="190" class="cmd">/goal</text>
+    <text x="414" y="214" class="cmd">/browser</text>
+    <text x="414" y="238" class="cmd">/schedule　/learn</text>
+    <text x="414" y="262" class="cmd">/swarm　/teamwork</text>
+    <text x="414" y="286" class="cmd">/boost</text>
 
     <text x="598" y="166" class="cmd">/diff</text>
     <text x="598" y="190" class="cmd">/artifact</text>
@@ -73,11 +73,11 @@
     <text x="598" y="262" class="cmd">/copy</text>
     <text x="598" y="286" class="cmd">/open</text>
 
-    <text x="782" y="166" class="cmd">/model</text>
-    <text x="782" y="190" class="cmd">/effort</text>
-    <text x="782" y="214" class="cmd">/config</text>
-    <text x="782" y="238" class="cmd">/permissions</text>
-    <text x="782" y="262" class="cmd">/skills</text>
-    <text x="782" y="286" class="cmd">/mcp　/add-dir</text>
+    <text x="782" y="166" class="cmd">/model　/effort</text>
+    <text x="782" y="190" class="cmd">/config</text>
+    <text x="782" y="214" class="cmd">/permissions</text>
+    <text x="782" y="238" class="cmd">/skills　/agents</text>
+    <text x="782" y="262" class="cmd">/mcp　/plugin</text>
+    <text x="782" y="286" class="cmd">/add-dir　/exit</text>
   </g>
 </svg>

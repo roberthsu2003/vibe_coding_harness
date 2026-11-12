@@ -214,4 +214,4 @@ agy -p "/commit-message 我修正了登入錯誤"
 
 ---
 
-← [← 04 環境配置](04-config.md)　｜　[章節首頁](README.md)　｜　下一站：[06 專案規範與規則 →](06-agents-md.md)
+[← 04 環境配置](04-config.md)　｜　[章節首頁](README.md)　｜　下一站：[06 專案規範與規則 →](06-agents-md.md)

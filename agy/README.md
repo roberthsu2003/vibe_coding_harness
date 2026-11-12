@@ -38,6 +38,6 @@
 | [維護指令與疑難排解](reference.md) | 常用 CLI 子指令、設定檔位置與常見問題排解 |
 | [官方文件](https://antigravity.google/docs) | Google Antigravity 官方技術文件 |
 | [官方 CLI Reference](https://antigravity.google/docs/cli/reference/) | 完整的斜線指令、設定項目與命令列參數 |
-| [在 Herdr 中使用 agy](../herdr/README.md) | 搭配 Herdr 多工開發環境 |
+| [搭配 Herdr 多工環境](../herdr/README.md) | 在同一個終端機同時跑多個 AI 與測試 |
 
 ← [回到專案首頁](../README.md)
