@@ -192,7 +192,7 @@ weekly-report/
 
 ### 限制 AI 使用哪些 Skill（進階）
 
-在 `opencode.json` 用權限規則控制，規則的寫法見 [09 權限設定](09-permissions.md)：
+在 `opencode.json` 用權限規則控制，規則的寫法見 [08 權限設定](08-permissions.md)：
 
 ```jsonc
 {

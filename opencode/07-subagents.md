@@ -1,6 +1,6 @@
-# 08　Subagent 子代理
+# 07　Subagent 子代理
 
-> ★★★ 深入　｜　[← 07 實戰情境](07-scenarios.md)　｜　[章節首頁](README.md)　｜　下一站：[09 權限設定 →](09-permissions.md)
+> ★★★ 深入　｜　[← 06 AGENTS.md](06-agents-md.md)　｜　[章節首頁](README.md)　｜　下一站：[08 權限設定 →](08-permissions.md)
 
 **這一站你會學到**：主代理和子代理的差別、怎麼呼叫子代理，以及自訂專屬的子代理。
 
@@ -96,7 +96,7 @@ mode: subagent
 | `description` | 說明這個代理做什麼；主代理靠它判斷何時派工，子代理一定要寫 |
 | `mode` | `subagent`（只當子代理）、`primary`（可用 `Shift+Tab` 切換，**不寫時的預設值**）、`all`（兩者皆可） |
 | `model` | 指定模型，格式 `供應商/模型`；不寫就沿用目前的模型 |
-| `permissions` | 權限規則（見 [09 權限設定](09-permissions.md)） |
+| `permissions` | 權限規則（見 [08 權限設定](08-permissions.md)） |
 | `steps` | 最多執行幾個步驟 |
 
 > [!IMPORTANT]
@@ -112,4 +112,4 @@ mode: subagent
 - [ ] 建立了 `reviewer.md`，並用 `@reviewer` 呼叫它
 - [ ] 打 `@rev` 時，選單裡有標示 **agent** 的 `@reviewer`
 
-> 下一站：[09 權限設定 →](09-permissions.md)
+> 下一站：[08 權限設定 →](08-permissions.md)

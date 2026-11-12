@@ -1,6 +1,6 @@
-# 10　指令模式與 Herdr
+# 09　指令模式與 Herdr
 
-> ★★★ 深入　｜　[← 09 權限設定](09-permissions.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
+> ★★★ 深入　｜　[← 08 權限設定](08-permissions.md)　｜　[章節首頁](README.md)　｜　下一站：[10 實戰情境 →](10-scenarios.md)
 
 **這一站你會學到**：不進入對話介面，直接用一行指令叫 OpenCode 做事；以及搭配 Herdr 同時跑好幾個工作。
 
@@ -33,7 +33,7 @@ opencode run "列出專案裡所有的 TODO" --format json
 | `-s`、`--session` | 接續指定的對話 |
 | `--agent` | 指定代理，例如 `--agent plan` |
 | `--format json` | 輸出 JSON |
-| `--auto` | 自動同意沒有被 `deny` 的操作（見 [09](09-permissions.md)） |
+| `--auto` | 自動同意沒有被 `deny` 的操作（見 [08](08-permissions.md)） |
 | `--standalone` | 不使用背景服務（見 [04](04-config.md#4-環境變數)） |
 
 > [!NOTE]
@@ -67,4 +67,4 @@ herdr integration install opencode
 - [ ] 用 `-c` 接續過上一次的對話
 - [ ] 在 Herdr 裡做出「左邊 OpenCode、右邊測試」的版面
 
-> 🎉 完成 OpenCode 章節！遇到問題時查閱 [維護指令與疑難排解](reference.md)。
+> 下一站：[10 實戰情境 →](10-scenarios.md)

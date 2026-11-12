@@ -1,6 +1,6 @@
 # 06　AGENTS.md 專案規則
 
-> ★★ 進階　｜　[← 05 Skill 配置](05-skills.md)　｜　[章節首頁](README.md)　｜　下一站：[07 實戰情境 →](07-scenarios.md)
+> ★★ 進階　｜　[← 05 Skill 配置](05-skills.md)　｜　[章節首頁](README.md)　｜　下一站：[07 Subagent 子代理 →](07-subagents.md)
 
 **這一站你會學到**：用 `AGENTS.md` 告訴 AI 這個專案的規矩，讓它照你的方式工作。
 
@@ -91,4 +91,4 @@ AI 回答「使用 uv、用 `uv add` 安裝」就代表它讀到了。
 - [ ] AI 能正確說出專案的套件管理方式
 - [ ] 說得出 `AGENTS.md` 和 [Skill](05-skills.md) 的差別
 
-> 下一站：[07 實戰情境 →](07-scenarios.md)
+> 下一站：[07 Subagent 子代理 →](07-subagents.md)

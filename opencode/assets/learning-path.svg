@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 360" width="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 400" width="100%">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f8fafc"/>
       <stop offset="100%" stop-color="#e2e8f0"/>
     </linearGradient>
-    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%">
-      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.10"/>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.12"/>
     </filter>
   </defs>
   <style>
@@ -13,71 +13,71 @@
     .title { font-size: 22px; font-weight: 800; fill: #0f172a; }
     .sub { font-size: 13px; fill: #475569; }
     .band { font-size: 13px; font-weight: 700; fill: #ffffff; }
-    .num { font-size: 18px; font-weight: 800; fill: #ffffff; }
-    .name { font-size: 13.5px; font-weight: 700; fill: #0f172a; }
-    .desc { font-size: 11.5px; fill: #475569; }
+    .num { font-size: 19px; font-weight: 800; fill: #ffffff; }
+    .name { font-size: 14px; font-weight: 700; fill: #0f172a; }
+    .desc { font-size: 12px; fill: #475569; }
   </style>
-  <rect width="960" height="360" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
+
+  <rect width="960" height="400" rx="16" fill="url(#bg)" stroke="#cbd5e1" stroke-width="1.5"/>
   <text x="480" y="40" class="title" text-anchor="middle">OpenCode 學習路線：由淺至深</text>
-  <text x="480" y="64" class="sub" text-anchor="middle">跟著編號往右走，每一站只學一件事</text>
-  <rect x="17" y="92" width="268" height="28" rx="14" fill="#10b981"/>
-  <text x="151.0" y="111" class="band" text-anchor="middle">★ 入門</text>
-  <rect x="299" y="92" width="362" height="28" rx="14" fill="#3b82f6"/>
-  <text x="480.0" y="111" class="band" text-anchor="middle">★★ 進階</text>
-  <rect x="675" y="92" width="268" height="28" rx="14" fill="#8b5cf6"/>
-  <text x="809.0" y="111" class="band" text-anchor="middle">★★★ 深入</text>
-  <line x1="57" y1="178" x2="903" y2="178" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
+  <text x="480" y="64" class="sub" text-anchor="middle">跟著編號走，每一站只學一件事</text>
+
+  <rect x="35" y="88" width="210" height="28" rx="14" fill="#10b981"/>
+  <text x="140" y="107" class="band" text-anchor="middle">★ 入門：先會用（01～03）</text>
+  <rect x="260" y="88" width="225" height="28" rx="14" fill="#3b82f6"/>
+  <text x="372" y="107" class="band" text-anchor="middle">★★ 進階：調成你的樣子（04～06）</text>
+  <rect x="500" y="88" width="225" height="28" rx="14" fill="#8b5cf6"/>
+  <text x="612" y="107" class="band" text-anchor="middle">★★★ 深入：分工與自動化（07～09）</text>
+  <rect x="740" y="88" width="185" height="28" rx="14" fill="#0ea5e9"/>
+  <text x="832" y="107" class="band" text-anchor="middle">★★ 實戰總結（10）</text>
+
+  <!-- 第一排：01 至 05 -->
+  <line x1="100" y1="170" x2="860" y2="170" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
   <g filter="url(#shadow)">
-    <circle cx="57" cy="178" r="28" fill="#10b981"/>
-    <circle cx="151" cy="178" r="28" fill="#10b981"/>
-    <circle cx="245" cy="178" r="28" fill="#10b981"/>
-    <circle cx="339" cy="178" r="28" fill="#3b82f6"/>
-    <circle cx="433" cy="178" r="28" fill="#3b82f6"/>
-    <circle cx="527" cy="178" r="28" fill="#3b82f6"/>
-    <circle cx="621" cy="178" r="28" fill="#3b82f6"/>
-    <circle cx="715" cy="178" r="28" fill="#8b5cf6"/>
-    <circle cx="809" cy="178" r="28" fill="#8b5cf6"/>
-    <circle cx="903" cy="178" r="28" fill="#8b5cf6"/>
+    <circle cx="100" cy="170" r="27" fill="#10b981"/>
+    <circle cx="290" cy="170" r="27" fill="#10b981"/>
+    <circle cx="480" cy="170" r="27" fill="#10b981"/>
+    <circle cx="670" cy="170" r="27" fill="#3b82f6"/>
+    <circle cx="860" cy="170" r="27" fill="#3b82f6"/>
   </g>
-  <text x="57" y="184" class="num" text-anchor="middle">01</text>
-  <text x="57" y="236" class="name" text-anchor="middle">安裝連線</text>
-  <text x="57" y="257" class="desc" text-anchor="middle">裝好 OpenCode</text>
-  <text x="57" y="274" class="desc" text-anchor="middle">選好模型</text>
-  <text x="151" y="184" class="num" text-anchor="middle">02</text>
-  <text x="151" y="236" class="name" text-anchor="middle">基本操作</text>
-  <text x="151" y="257" class="desc" text-anchor="middle">對話、引用</text>
-  <text x="151" y="274" class="desc" text-anchor="middle">切換代理</text>
-  <text x="245" y="184" class="num" text-anchor="middle">03</text>
-  <text x="245" y="236" class="name" text-anchor="middle">斜線指令</text>
-  <text x="245" y="257" class="desc" text-anchor="middle">每個都有</text>
-  <text x="245" y="274" class="desc" text-anchor="middle">小範例</text>
-  <text x="339" y="184" class="num" text-anchor="middle">04</text>
-  <text x="339" y="236" class="name" text-anchor="middle">環境配置</text>
-  <text x="339" y="257" class="desc" text-anchor="middle">設定檔</text>
-  <text x="339" y="274" class="desc" text-anchor="middle">環境變數</text>
-  <text x="433" y="184" class="num" text-anchor="middle">05</text>
-  <text x="433" y="236" class="name" text-anchor="middle">Skill</text>
-  <text x="433" y="257" class="desc" text-anchor="middle">AI 的</text>
-  <text x="433" y="274" class="desc" text-anchor="middle">工作手冊</text>
-  <text x="527" y="184" class="num" text-anchor="middle">06</text>
-  <text x="527" y="236" class="name" text-anchor="middle">AGENTS.md</text>
-  <text x="527" y="257" class="desc" text-anchor="middle">專案規則</text>
-  <text x="527" y="274" class="desc" text-anchor="middle">/init 產生</text>
-  <text x="621" y="184" class="num" text-anchor="middle">07</text>
-  <text x="621" y="236" class="name" text-anchor="middle">實戰情境</text>
-  <text x="621" y="257" class="desc" text-anchor="middle">中斷、復原</text>
-  <text x="621" y="274" class="desc" text-anchor="middle">說清楚需求</text>
-  <text x="715" y="184" class="num" text-anchor="middle">08</text>
-  <text x="715" y="236" class="name" text-anchor="middle">Subagent</text>
-  <text x="715" y="257" class="desc" text-anchor="middle">子代理分工</text>
-  <text x="715" y="274" class="desc" text-anchor="middle">自訂角色</text>
-  <text x="809" y="184" class="num" text-anchor="middle">09</text>
-  <text x="809" y="236" class="name" text-anchor="middle">權限設定</text>
-  <text x="809" y="257" class="desc" text-anchor="middle">allow / ask</text>
-  <text x="809" y="274" class="desc" text-anchor="middle">deny</text>
-  <text x="903" y="184" class="num" text-anchor="middle">10</text>
-  <text x="903" y="236" class="name" text-anchor="middle">指令模式</text>
-  <text x="903" y="257" class="desc" text-anchor="middle">opencode run</text>
-  <text x="903" y="274" class="desc" text-anchor="middle">搭配 Herdr</text>
-  <text x="480" y="325" class="desc" text-anchor="middle" style="font-size:12.5px">遇到問題時查閱：維護指令、疑難排解、新舊版對照</text>
+  <text x="100" y="177" class="num" text-anchor="middle">01</text>
+  <text x="290" y="177" class="num" text-anchor="middle">02</text>
+  <text x="480" y="177" class="num" text-anchor="middle">03</text>
+  <text x="670" y="177" class="num" text-anchor="middle">04</text>
+  <text x="860" y="177" class="num" text-anchor="middle">05</text>
+  <text x="100" y="220" class="name" text-anchor="middle">安裝與連線</text>
+  <text x="100" y="240" class="desc" text-anchor="middle">裝好、連線、選免費模型</text>
+  <text x="290" y="220" class="name" text-anchor="middle">基本操作</text>
+  <text x="290" y="240" class="desc" text-anchor="middle">對話、引用、切換代理</text>
+  <text x="480" y="220" class="name" text-anchor="middle">斜線指令</text>
+  <text x="480" y="240" class="desc" text-anchor="middle">六大分區與自訂指令</text>
+  <text x="670" y="220" class="name" text-anchor="middle">環境配置</text>
+  <text x="670" y="240" class="desc" text-anchor="middle">設定檔、環境變數、MCP</text>
+  <text x="860" y="220" class="name" text-anchor="middle">Skill 配置</text>
+  <text x="860" y="240" class="desc" text-anchor="middle">教 AI 你的做事流程</text>
+
+  <!-- 第二排：06 至 10 -->
+  <line x1="100" y1="295" x2="860" y2="295" stroke="#cbd5e1" stroke-width="4" stroke-dasharray="2 8" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <circle cx="100" cy="295" r="27" fill="#3b82f6"/>
+    <circle cx="290" cy="295" r="27" fill="#8b5cf6"/>
+    <circle cx="480" cy="295" r="27" fill="#8b5cf6"/>
+    <circle cx="670" cy="295" r="27" fill="#8b5cf6"/>
+    <circle cx="860" cy="295" r="27" fill="#0ea5e9"/>
+  </g>
+  <text x="100" y="302" class="num" text-anchor="middle">06</text>
+  <text x="290" y="302" class="num" text-anchor="middle">07</text>
+  <text x="480" y="302" class="num" text-anchor="middle">08</text>
+  <text x="670" y="302" class="num" text-anchor="middle">09</text>
+  <text x="860" y="302" class="num" text-anchor="middle">10</text>
+  <text x="100" y="345" class="name" text-anchor="middle">AGENTS.md</text>
+  <text x="100" y="365" class="desc" text-anchor="middle">專案規則、/init 產生</text>
+  <text x="290" y="345" class="name" text-anchor="middle">Subagent</text>
+  <text x="290" y="365" class="desc" text-anchor="middle">子代理分工、自訂角色</text>
+  <text x="480" y="345" class="name" text-anchor="middle">權限設定</text>
+  <text x="480" y="365" class="desc" text-anchor="middle">allow / ask / deny</text>
+  <text x="670" y="345" class="name" text-anchor="middle">指令模式</text>
+  <text x="670" y="365" class="desc" text-anchor="middle">opencode run、搭配 Herdr</text>
+  <text x="860" y="345" class="name" text-anchor="middle">實戰情境</text>
+  <text x="860" y="365" class="desc" text-anchor="middle">中斷、復原、說清楚需求</text>
 </svg>

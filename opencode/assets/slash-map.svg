@@ -21,7 +21,7 @@
   <text x="480" y="62" class="sub" text-anchor="middle">打 / 看選單，繼續打字可以篩選；按 Ctrl+P 開指令面板</text>
   <g filter="url(#shadow)"><rect x="24" y="82" width="174" height="364" rx="12" fill="#ffffff"/></g>
   <rect x="24" y="82" width="174" height="36" rx="12" fill="#10b981"/><rect x="24" y="104" width="174" height="14" fill="#10b981"/>
-  <text x="111.0" y="106" class="head" text-anchor="middle">連線與模型</text>
+  <text x="111.0" y="106" class="head" text-anchor="middle">A 連線與模型</text>
   <text x="34" y="142" class="cmd">/connect</text>
   <text x="188" y="142" class="txt" text-anchor="end">連接供應商</text>
   <text x="34" y="169" class="cmd">/models</text>
@@ -36,7 +36,7 @@
   <text x="188" y="277" class="txt" text-anchor="end">MCP 伺服器</text>
   <g filter="url(#shadow)"><rect x="206" y="82" width="174" height="364" rx="12" fill="#ffffff"/></g>
   <rect x="206" y="82" width="174" height="36" rx="12" fill="#3b82f6"/><rect x="206" y="104" width="174" height="14" fill="#3b82f6"/>
-  <text x="293.0" y="106" class="head" text-anchor="middle">規則與檢查</text>
+  <text x="293.0" y="106" class="head" text-anchor="middle">B 規則與檢查</text>
   <text x="216" y="142" class="cmd">/init</text>
   <text x="370" y="142" class="txt" text-anchor="end">產生專案規則</text>
   <text x="216" y="169" class="cmd">/diff</text>
@@ -45,7 +45,7 @@
   <text x="370" y="196" class="txt" text-anchor="end">AI 審查程式</text>
   <g filter="url(#shadow)"><rect x="388" y="82" width="174" height="364" rx="12" fill="#ffffff"/></g>
   <rect x="388" y="82" width="174" height="36" rx="12" fill="#8b5cf6"/><rect x="388" y="104" width="174" height="14" fill="#8b5cf6"/>
-  <text x="475.0" y="106" class="head" text-anchor="middle">復原與對話</text>
+  <text x="475.0" y="106" class="head" text-anchor="middle">C 復原與對話</text>
   <text x="398" y="142" class="cmd">/undo</text>
   <text x="552" y="142" class="txt" text-anchor="end">復原</text>
   <text x="398" y="169" class="cmd">/redo</text>
@@ -70,7 +70,7 @@
   <text x="552" y="412" class="txt" text-anchor="end">匯出對話</text>
   <g filter="url(#shadow)"><rect x="570" y="82" width="174" height="364" rx="12" fill="#ffffff"/></g>
   <rect x="570" y="82" width="174" height="36" rx="12" fill="#f59e0b"/><rect x="570" y="104" width="174" height="14" fill="#f59e0b"/>
-  <text x="657.0" y="106" class="head" text-anchor="middle">輸入與位置</text>
+  <text x="657.0" y="106" class="head" text-anchor="middle">D 輸入與位置</text>
   <text x="580" y="142" class="cmd">/btw</text>
   <text x="734" y="142" class="txt" text-anchor="end">問題外話</text>
   <text x="580" y="169" class="cmd">/editor</text>
@@ -87,7 +87,7 @@
   <text x="734" y="304" class="txt" text-anchor="end">手機連線</text>
   <g filter="url(#shadow)"><rect x="752" y="82" width="174" height="364" rx="12" fill="#ffffff"/></g>
   <rect x="752" y="82" width="174" height="36" rx="12" fill="#64748b"/><rect x="752" y="104" width="174" height="14" fill="#64748b"/>
-  <text x="839.0" y="106" class="head" text-anchor="middle">狀態與設定</text>
+  <text x="839.0" y="106" class="head" text-anchor="middle">E 狀態與設定</text>
   <text x="762" y="142" class="cmd">/help</text>
   <text x="916" y="142" class="txt" text-anchor="end">求助</text>
   <text x="762" y="169" class="cmd">/status</text>

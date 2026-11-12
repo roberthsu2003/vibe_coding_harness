@@ -1,6 +1,6 @@
-# 07　實戰情境
+# 10　實戰情境
 
-> ★★ 進階　｜　[← 06 AGENTS.md](06-agents-md.md)　｜　[章節首頁](README.md)　｜　下一站：[08 Subagent 子代理 →](08-subagents.md)
+> ★★ 實戰　｜　[← 09 指令模式與 Herdr](09-cli-run.md)　｜　[章節首頁](README.md)　｜　📚 [維護指令與疑難排解](reference.md)
 
 **這一站你會學到**：AI 做到一半想補充、改錯了想復原、對話太長變遲鈍時怎麼辦，以及怎麼把需求說清楚。
 
@@ -95,4 +95,4 @@
 - [ ] 用 Plan 看過 AI 的計畫，再切回 Build 執行
 - [ ] 能用「目標、範圍、驗收」說出一個需求
 
-> 下一站：[08 Subagent 子代理 →](08-subagents.md)
+> 🎉 完成 OpenCode 章節！遇到問題時查閱 [維護指令與疑難排解](reference.md)。

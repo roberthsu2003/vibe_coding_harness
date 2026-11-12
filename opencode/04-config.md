@@ -73,14 +73,14 @@ opencode debug config
 | `model` | 預設模型 | `"opencode/nemotron-3.5-lightning-free"` |
 | `default_agent` | 預設的主代理 | `"plan"` |
 | `shell` | `!` 和 AI 執行指令時用的 shell | `"zsh"` |
-| `permissions` | 權限規則 | 見 [09 權限設定](09-permissions.md) |
+| `permissions` | 權限規則 | 見 [08 權限設定](08-permissions.md) |
 | `instructions` | 額外的規則檔 | `["docs/規範.md"]` |
 | `skills` | 額外的 Skill 來源 | `["~/my-skills"]` |
 | `commands` | 用 JSON 定義斜線指令 | 見下方 |
 | `mcp` | MCP 伺服器 | 見[第 5 節](#5-mcp讓-ai-使用外部工具) |
 | `compaction` | 自動壓縮對話 | `{ "auto": true }` |
 
-**範例：用 JSON 定義斜線指令**（效果和 [03 站](03-slash-commands.md#9-做一個自己的斜線指令)的 `.md` 檔一樣）
+**範例：用 JSON 定義斜線指令**（效果和 [03-F 自訂斜線指令](03-slash-commands/f-custom-commands.md)的 `.md` 檔一樣）
 
 ```jsonc
 {

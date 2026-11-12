@@ -1,6 +1,6 @@
-# 09　權限設定
+# 08　權限設定
 
-> ★★★ 深入　｜　[← 08 Subagent 子代理](08-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[10 指令模式與 Herdr →](10-cli-run.md)
+> ★★★ 深入　｜　[← 07 Subagent 子代理](07-subagents.md)　｜　[章節首頁](README.md)　｜　下一站：[09 指令模式與 Herdr →](09-cli-run.md)
 
 **這一站你會學到**：用 `opencode.json` 控制 AI 哪些事可以直接做、哪些要先問你、哪些完全禁止。
 
@@ -79,7 +79,7 @@ AI 問你的時候有三個選擇：
 
 ## 5. 只限制某個代理
 
-在子代理的 `.md` 檔開頭加上 `permissions`（見 [08 子代理](08-subagents.md)）：
+在子代理的 `.md` 檔開頭加上 `permissions`（見 [07 子代理](07-subagents.md)）：
 
 ```markdown
 ---
@@ -118,7 +118,7 @@ opencode debug config
 | `opencode.json` | 專案根目錄 | 權限、預設模型、MCP（見 [04](04-config.md)） |
 | `.opencode/commands/*.md` | 專案內 | 自訂斜線指令（見 [03](03-slash-commands.md)） |
 | `.opencode/skills/*/SKILL.md` | 專案內 | 自訂 Skill（見 [05](05-skills.md)） |
-| `.opencode/agents/*.md` | 專案內 | 自訂代理（見 [08](08-subagents.md)） |
+| `.opencode/agents/*.md` | 專案內 | 自訂代理（見 [07](07-subagents.md)） |
 | `~/.config/opencode/cli.json` | 全域 | 介面主題、快捷鍵（見 [04](04-config.md#調整介面clijson)） |
 
 ---
@@ -129,4 +129,4 @@ opencode debug config
 - [ ] 請 AI 修改檔案時，看到它先問你
 - [ ] 用 `opencode debug config` 確認設定
 
-> 下一站：[10 指令模式與 Herdr →](10-cli-run.md)
+> 下一站：[09 指令模式與 Herdr →](09-cli-run.md)
