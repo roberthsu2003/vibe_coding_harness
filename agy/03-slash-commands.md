@@ -238,13 +238,32 @@ AI 這次犯的錯，下次不想再糾正一遍：
 
 **結果**：AI 整理出規則或 Skill，經你確認後保存。下次對話會自動套用。
 
-### `/teamwork`：組一個 AI 團隊
+### `/swarm`：平行代理協作團隊
+
+當任務可以拆分成互不衝突的多個檔案、模組或調查方向時，派出多位具名代理平行動工，並由專屬審查代理（Verifier）跑測試與把關：
+
+```text
+/swarm 為 src/utils/date.ts 與 src/utils/currency.ts 補上單元測試，並執行 npm test 驗證
+```
+
+**結果**：主對話轉為協調者（Coordinator），自動建立具名工作代理（如 `@date-tests`、`@currency-tests`）與審查代理（`@verifier`），透過共享留言板同步進度。
+
+執行期間可隨時開啟全螢幕即時看板觀看團隊討論與狀態：
+
+```text
+/swarm board
+```
+
+> [!WARNING]
+> `/swarm` 目前為 Preview 功能，支援 **Google AI Pro** 與 **Google AI Ultra** 方案。由於每個工作代理都是獨立的 AI 代理，額度消耗速度會比單一對話快上許多。完整操作與快捷鍵（`Alt+S`）請見 [08 Subagent 與 Swarm](08-subagents.md#5-swarm平行代理協作團隊)。
+
+### `/teamwork`：組一個長期專案 AI 團隊
 
 ```text
 /teamwork 把這個網站從 JavaScript 改寫成 TypeScript
 ```
 
-**結果**：多個代理分工處理長期專案。**僅限付費方案**，詳見 [08 Subagent](08-subagents.md#5-多代理模式teamwork)。
+**結果**：先與你訪談確認規格，再由多個代理依里程碑與審核關卡分工處理大型長期專案。**僅限付費方案**，與 `/swarm` 的差異請見 [08 多代理模式比較](08-subagents.md#7-怎麼選subagentsboostswarm-與-teamwork)。
 
 ---
 

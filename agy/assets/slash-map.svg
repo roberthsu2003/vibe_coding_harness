@@ -63,8 +63,8 @@
     <text x="414" y="190" class="cmd">/grill-me</text>
     <text x="414" y="214" class="cmd">/goal</text>
     <text x="414" y="238" class="cmd">/browser</text>
-    <text x="414" y="262" class="cmd">/schedule</text>
-    <text x="414" y="286" class="cmd">/boost　/learn</text>
+    <text x="414" y="262" class="cmd">/schedule　/learn</text>
+    <text x="414" y="286" class="cmd">/swarm　/boost</text>
 
     <text x="598" y="166" class="cmd">/diff</text>
     <text x="598" y="190" class="cmd">/artifact</text>

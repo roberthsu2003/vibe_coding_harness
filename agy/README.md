@@ -22,7 +22,7 @@
 | 05 | [Skill 配置](05-skills.md) | ★★ | 建立、使用和管理自己的 Skill |
 | 06 | [專案規範與規則](06-agents-md.md) | ★★ | 用 AGENTS.md 讓 AI 遵守專案規範 |
 | 07 | [實戰情境](07-scenarios.md) | ★★ | 中斷任務、壓縮對話、Plan 模式、下好指示 |
-| 08 | [Subagent 子代理](08-subagents.md) | ★★★ | 主代理與子代理如何分工 |
+| 08 | [Subagent 子代理](08-subagents.md) | ★★★ | 主代理與子代理分工、`/swarm` 平行協作團隊 |
 | 09 | [權限設定與沙盒](09-permissions.md) | ★★★ | 權限規則、終端機沙盒、工具授權 |
 | 10 | [指令模式與 Herdr](10-cli-run.md) | ★★★ | `agy -p` 一行指令執行、搭配 Herdr 多工 |
 
