@@ -54,14 +54,35 @@
 
 為了讓你好找、好練，我們把所有斜線指令與自訂指令分成 **A～F 六大區**。每一區點進去都有詳細說明，以及**只用 Markdown 檔案、不寫程式的動手練習**：
 
-| 分區連結 | 解決什麼問題？ | 這一區包含的內容 | 動手練習主題 |
-| :--- | :--- | :--- | :--- |
-| 🟢 **[A 區：連線與模型 →](03-slash-commands/a-models.md)** | 怎麼連供應商、找免費模型、切換代理？ | `/connect`、`/models`、`/variants`、`/agents`、`/skills`、`/mcps` | 挑一個 `free` 免費模型並建立 `hello.md` |
-| 🔵 **[B 區：規則與檢查 →](03-slash-commands/b-review.md)** | 怎麼產生資料夾規矩、看 AI 改了哪幾行？ | `/init`、`/diff`、`/review` | 建立筆記規則、修改 `reading-notes.md` 並用 `/diff` 檢查 |
-| 🟣 **[C 區：復原與對話 →](03-slash-commands/c-session.md)** | AI 改錯怎麼馬上復原？對話太長怎麼辦？ | `/undo`、`/redo`、`/compact`、`/new`、`/clear`、`/sessions`、`/rename`、`/timeline`、`/fork`、`/copy`、`/export` | 用 `travel.md` 旅遊筆記體驗 `/undo` 後悔藥與找回舊對話 |
-| 🟠 **[D 區：輸入與位置 →](03-slash-commands/d-input-nav.md)** | 想隨口問問題、用編輯器打字或換資料夾？ | `/btw`、`/editor`、`/terminal`、`/cd`、`/open`、`/worktrees`、`/pair` | 用 `/btw` 查語法、建立 `notes/faq.md` 並用 `/cd` 切換目錄 |
-| ⚪ **[E 區：狀態與設定 →](03-slash-commands/e-status-settings.md)** | 怎麼換配色主題、看用量統計或離開？ | `/help`、`/status`、`/stats`、`/debug`、`/themes`、`/settings`、`/reload`、`/plugins`、`/highlights`、`/update`、`/exit` | 用 `/themes` 換喜歡的主題配色並查看 `/stats` 統計 |
-| ✨ **[F 區：自訂斜線指令 →](03-slash-commands/f-custom-commands.md)** | 常打的句子怎麼變成自己的 `/指令`？ | 用 `.opencode/commands/*.md` 建立專屬斜線指令 | 親手做出 `/hello` 打招呼與 `/diary` 自動寫日記指令 |
+### 🟢 [A 區：連線與模型 (Models) →](03-slash-commands/a-models.md)
+- **解決問題**：怎麼連供應商、找免費模型、切換代理？
+- **包含內容**：`/connect`、`/models`、`/variants`、`/agents`、`/skills`、`/mcps`
+- **動手練習**：挑一個 `free` 免費模型並建立 `hello.md`
+
+### 🔵 [B 區：規則與檢查 (Review) →](03-slash-commands/b-review.md)
+- **解決問題**：怎麼產生資料夾規矩、看 AI 改了哪幾行？
+- **包含內容**：`/init`、`/diff`、`/review`
+- **動手練習**：建立筆記規則、修改 `reading-notes.md` 並用 `/diff` 檢查
+
+### 🟣 [C 區：復原與對話 (Session) →](03-slash-commands/c-session.md)
+- **解決問題**：AI 改錯怎麼馬上復原？對話太長怎麼辦？
+- **包含內容**：`/undo`、`/redo`、`/compact`、`/new`、`/clear`、`/sessions`、`/rename`、`/timeline`、`/fork`、`/copy`、`/export`
+- **動手練習**：用 `travel.md` 旅遊筆記體驗 `/undo` 後悔藥與找回舊對話
+
+### 🟠 [D 區：輸入與位置 (Input & Nav) →](03-slash-commands/d-input-nav.md)
+- **解決問題**：想隨口問問題、用編輯器打字或換資料夾？
+- **包含內容**：`/btw`、`/editor`、`/terminal`、`/cd`、`/open`、`/worktrees`、`/pair`
+- **動手練習**：用 `/btw` 查語法、建立 `notes/faq.md` 並用 `/cd` 切換目錄
+
+### ⚪ [E 區：狀態與設定 (Status & Settings) →](03-slash-commands/e-status-settings.md)
+- **解決問題**：怎麼換配色主題、看用量統計或離開？
+- **包含內容**：`/help`、`/status`、`/stats`、`/debug`、`/themes`、`/settings`、`/reload`、`/plugins`、`/highlights`、`/update`、`/exit`
+- **動手練習**：用 `/themes` 換喜歡的主題配色並查看 `/stats` 統計
+
+### ✨ [F 區：自訂斜線指令 (Custom Commands) →](03-slash-commands/f-custom-commands.md)
+- **解決問題**：常打的句子怎麼變成自己的 `/指令`？
+- **包含內容**：用 `.opencode/commands/*.md` 建立專屬斜線指令
+- **動手練習**：親手做出 `/hello` 打招呼與 `/diary` 自動寫日記指令
 
 ---
 

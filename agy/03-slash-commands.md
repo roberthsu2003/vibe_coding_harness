@@ -48,13 +48,30 @@
 
 為了讓你好找、好練，我們把所有斜線指令分成 **A～E 五大區**。每一區點進去都有詳細說明，以及**只用 Markdown 檔案、不寫程式的動手練習**：
 
-| 分區連結 | 解決什麼問題？ | 這一區包含的指令 | 動手練習主題 |
-| :--- | :--- | :--- | :--- |
-| 🟢 **[A 區：查狀態 →](03-slash-commands/a-status.md)** | 現在狀況如何？額度與空間還夠嗎？ | `/help`、`/context`、`/usage`、`/credits`、`/changelog` | 建立 `hello.md` 並觀察對話空間與額度變化 |
-| 🔵 **[B 區：管對話 →](03-slash-commands/b-session.md)** | 對話太長、想順便提問或退回重來？ | `/btw`、`/rename`、`/compact`、`/rewind`、`/fork`、`/clear`、`/resume` | 用 `travel.md` 旅遊筆記體驗對話時光機與壓縮 |
-| 🟣 **[C 區：派任務 →](03-slash-commands/c-tasks.md)** | 要 AI 怎麼先問清楚、先規劃再做事？ | `/plan`、`/grill-me`、`/learn`、`/goal`、`/schedule`、`/browser`、`/boost`、`/swarm`、`/teamwork` | 讓 AI 採訪你並規劃 `weekend.md` 週末充電計畫 |
-| 🟠 **[D 區：看成果 →](03-slash-commands/d-output.md)** | AI 改了哪幾行？怎麼搜尋或打開檔案？ | `/diff`、`/artifact`、`/copy`、`/open`、`/codesearch`、`/tasks` | 修改 `reading-notes.md` 讀書筆記並用 `/diff` 檢查差異 |
-| ⚪ **[E 區：調環境 →](03-slash-commands/e-config.md)** | 想換模型、調整思考深度或離開？ | `/model`、`/effort`、`/config`、`/exit`、進階管理與其他指令速查 | 調高思考強度整理 `summary.md` 複習表並離開 |
+### 🟢 [A 區：查狀態 (Status) →](03-slash-commands/a-status.md)
+- **解決問題**：現在狀況如何？額度與空間還夠嗎？
+- **包含指令**：`/help`、`/context`、`/usage`、`/credits`、`/changelog`
+- **動手練習**：建立 `hello.md` 並觀察對話空間與額度變化
+
+### 🔵 [B 區：管對話 (Session) →](03-slash-commands/b-session.md)
+- **解決問題**：對話太長、想順便提問或退回重來？
+- **包含指令**：`/btw`、`/rename`、`/compact`、`/rewind`、`/fork`、`/clear`、`/resume`
+- **動手練習**：用 `travel.md` 旅遊筆記體驗對話時光機與壓縮
+
+### 🟣 [C 區：派任務 (Tasks) →](03-slash-commands/c-tasks.md)
+- **解決問題**：要 AI 怎麼先問清楚、先規劃再做事？
+- **包含指令**：`/plan`、`/grill-me`、`/learn`、`/goal`、`/schedule`、`/browser`、`/boost`、`/swarm`、`/teamwork`
+- **動手練習**：讓 AI 採訪你並規劃 `weekend.md` 週末充電計畫
+
+### 🟠 [D 區：看成果 (Output) →](03-slash-commands/d-output.md)
+- **解決問題**：AI 改了哪幾行？怎麼搜尋或打開檔案？
+- **包含指令**：`/diff`、`/artifact`、`/copy`、`/open`、`/codesearch`、`/tasks`
+- **動手練習**：修改 `reading-notes.md` 讀書筆記並用 `/diff` 檢查差異
+
+### ⚪ [E 區：調環境 (Config) →](03-slash-commands/e-config.md)
+- **解決問題**：想換模型、調整思考深度或離開？
+- **包含指令**：`/model`、`/effort`、`/config`、`/exit`、進階管理與其他指令速查
+- **動手練習**：調高思考強度整理 `summary.md` 複習表並離開
 
 ---
 
