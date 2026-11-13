@@ -236,11 +236,12 @@ Skill 資料夾裡還可以放參考資料或腳本，AI 只有在 `SKILL.md` �
 | **建立** | `mkdir -p .opencode/skills/<名稱>`<br>建立 `SKILL.md` | `mkdir -p ~/.config/opencode/skills/<名稱>`<br>建立 `SKILL.md` |
 | **套用變更** | `/reload` | `/reload` |
 | **暫時停用** | 把 `SKILL.md` 改名為 `SKILL.md.bak`<br>再輸入 `/reload` | 把 `SKILL.md` 改名為 `SKILL.md.bak`<br>再輸入 `/reload` |
-| **徹底刪除** | `rm -rf .opencode/skills/<名稱>`<br>再輸入 `/reload` | `rm -rf ~/.config/opencode/skills/<名稱>`<br>再輸入 `/reload` |
+| **徹底刪除（終端機）** | `rm -rf .opencode/skills/<名稱>`<br>再輸入 `/reload` | `rm -rf ~/.config/opencode/skills/<名稱>`<br>再輸入 `/reload` |
+| **徹底刪除（免打指令・叫 AI 刪）** | 對 AI 說：`請幫我刪除這個專案的 <名稱> skill`<br>再輸入 `/reload` | 對 AI 說：`請幫我刪除全域的 <名稱> skill`<br>再輸入 `/reload` |
 | **分享給同學** | Commit `.opencode/skills/` 進 Git | 把該資料夾壓縮或複製給對方 |
 
 > [!TIP]
-> 也可以直接用中文請 AI 幫忙刪除，例如：「請幫我刪除這個專案的 `explain-code` skill」，刪除後記得輸入 `/reload` 與 `/skills` 確認。
+> 也可以直接打開檔案總管 / Mac Finder（按 `Cmd + Shift + .` 顯示隱藏資料夾），把對應的 `<名稱>` 資料夾拖進垃圾桶，再輸入 `/reload` 與 `/skills` 確認。
 
 ### 限制 AI 使用哪些 Skill（進階）
 
@@ -279,7 +280,7 @@ Skill 資料夾裡還可以放參考資料或腳本，AI 只有在 `SKILL.md` �
 1. **建立一個區域 Skill**：用第 4 節的「範例 1」請 AI 建立 `explain-code`，輸入 `/reload` 後，用 `@explain-code` 解說專案裡的任一個檔案。
 2. **建立一個全域 Skill**：用第 4 節的「範例 2」手動建立 `~/.config/opencode/skills/study-quiz/SKILL.md`，輸入 `/reload` 後，用 `@study-quiz` 考自己 3 題。
 3. **測試自動觸發**：不用 `@`，改說「幫我針對這份程式出幾題測驗複習一下」，確認畫面出現 `skill  study-quiz`。
-4. **體驗刪除流程**：將剛建立的 `explain-code` 刪除（`rm -rf .opencode/skills/explain-code`），再輸入 `/reload` 和 `/skills` 確認它已消失。
+4. **體驗刪除流程**：請 AI 幫忙刪除剛建立的 `explain-code`（「`請幫我刪除這個專案的 explain-code skill`」），再輸入 `/reload` 和 `/skills` 確認它已消失。
 
 ---
 

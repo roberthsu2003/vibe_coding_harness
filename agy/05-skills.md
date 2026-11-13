@@ -269,11 +269,12 @@ AI 平常只看得到每個 Skill 的 `name` 和 `description`，寫太短就不
 | **建立** | `mkdir -p .agents/skills/<名稱>`<br>建立 `SKILL.md` | `mkdir -p ~/.gemini/config/skills/<名稱>`<br>建立 `SKILL.md` | `/plugin` 或<br>`agy plugin install <名稱>` |
 | **套用變更** | `/skills reload` | `/skills reload` | 安裝後自動生效 |
 | **暫時停用** | 把 `SKILL.md` 改名為 `SKILL.md.bak`<br>再輸入 `/skills reload` | 把 `SKILL.md` 改名為 `SKILL.md.bak`<br>再輸入 `/skills reload` | `agy plugin disable <名稱>` |
-| **徹底刪除** | `rm -rf .agents/skills/<名稱>`<br>再輸入 `/skills reload` | `rm -rf ~/.gemini/config/skills/<名稱>`<br>再輸入 `/skills reload` | `agy plugin uninstall <名稱>`<br>或透過 `/plugin` 解除安裝 |
+| **徹底刪除（終端機）** | `rm -rf .agents/skills/<名稱>`<br>再輸入 `/skills reload` | `rm -rf ~/.gemini/config/skills/<名稱>`<br>再輸入 `/skills reload` | `agy plugin uninstall <名稱>`<br>或透過 `/plugin` 解除安裝 |
+| **徹底刪除（免打指令・叫 AI 刪）** | 對 AI 說：`請幫我刪除這個專案的 <名稱> skill`<br>再輸入 `/skills reload` | 對 AI 說：`請幫我刪除全域的 <名稱> skill`<br>再輸入 `/skills reload` | 輸入 `/plugin` 從管理面板移除 |
 | **分享給同學** | Commit `.agents/skills/` 進 Git | 把該資料夾壓縮或複製給對方 | 請對方執行相同的 `install` 指令 |
 
 > [!TIP]
-> 也可以直接用自然語言請 AI 幫你刪除，例如：「請幫我刪除這個專案的 `explain-code` skill」，刪除後記得輸入 `/skills reload`。
+> 也可以直接打開檔案總管 / Mac Finder（按 `Cmd + Shift + .` 顯示隱藏資料夾），把對應的 `<名稱>` 資料夾拖進垃圾桶，再輸入 `/skills reload`。
 
 ---
 
@@ -302,7 +303,7 @@ AI 平常只看得到每個 Skill 的 `name` 和 `description`，寫太短就不
 
 1. **建立一個區域 Skill**：用第 4 節的「範例 1」請 AI 建立 `explain-code`，輸入 `/skills reload` 後，找一段專案裡的程式碼試用 `/explain-code`。
 2. **建立一個全域 Skill**：用第 4 節的「範例 2」手動建立 `~/.gemini/config/skills/study-quiz/SKILL.md`，重載後用 `/study-quiz` 考自己 3 題。
-3. **體驗刪除流程**：試著將剛建立的 `explain-code` 刪除（`rm -rf .agents/skills/explain-code`），再輸入 `/skills reload` 和 `/skills` 確認它已消失。
+3. **體驗刪除流程**：請 AI 幫忙刪除剛建立的 `explain-code`（「`請幫我刪除這個專案的 explain-code skill`」），再輸入 `/skills reload` 和 `/skills` 確認它已消失。
 4. **探索外部 Skill**：輸入 `/plugin` 逛逛官方外掛市集，看看有哪些現成的工具包可以用。
 
 ---
