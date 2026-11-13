@@ -60,7 +60,31 @@ OpenCode 會自動讀取其他工具的 Skill 資料夾，所以你在其他工�
 - **只給這個專案用（區域）**：放到 `<專案>/.opencode/skills/<skill-名稱>/`
 - **所有專案都要用（全域）**：放到 `~/.config/opencode/skills/<skill-名稱>/`
 
-放好後，在 OpenCode 對話框輸入 `/reload` 重新載入，再用 `/skills` 確認有出現即可。
+#### 動手實作：從 GitHub 安裝非程式類 Skill（以製作簡報 `pptx` 為例）
+
+[anthropics/skills](https://github.com/anthropics/skills) 是官方開源的 Skill 寶庫，裡面有很多**非寫程式**的實用 Skill（如製作簡報 `pptx`、Word 文件 `docx`、PDF 處理 `pdf`）。
+
+1. **下載並放到專案（區域）目錄**：
+   ```bash
+   git clone --depth 1 https://github.com/anthropics/skills.git /tmp/ext-skills
+   mkdir -p .opencode/skills
+   cp -r /tmp/ext-skills/skills/pptx .opencode/skills/pptx
+   rm -rf /tmp/ext-skills
+   ```
+   > 想改成**全域**（所有專案都能用），把 `.opencode/skills/pptx` 換成 `~/.config/opencode/skills/pptx` 即可。
+
+2. **檢查並載入**：打開 `.opencode/skills/pptx/SKILL.md` 確認內容安全後，在 OpenCode 輸入 `/reload`（再用 `/skills` 確認看到 `pptx`）。
+
+3. **實際試用（非程式任務）**：
+   ```text
+   @pptx 請幫我根據這個資料夾的 README.md，規劃並製作一份 5 頁的專題介紹簡報（intro.pptx）。
+   ```
+
+4. **不想用了怎麼刪**：
+   ```bash
+   rm -rf .opencode/skills/pptx
+   ```
+   回到 OpenCode 輸入 `/reload` 就移除了。
 
 > [!CAUTION]
 > Skill 資料夾裡可能包含腳本或操作指示。使用來路不明的外部 Skill 前，**請先打開 `SKILL.md`（與 `scripts/`）看過內容**，確認沒有危險指令再載入。
