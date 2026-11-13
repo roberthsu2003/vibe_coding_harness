@@ -2,7 +2,7 @@
 
 > ★★ 進階　｜　[← 04 環境配置](04-config.md)　｜　[章節首頁](README.md)　｜　下一站：[06 專案規範與規則 →](06-agents-md.md)
 
-**這一站你會學到**：Skill 是什麼、放在哪裡、`SKILL.md` 怎麼寫，以及如何建立、使用和管理自己的 Skill。
+**這一站你會學到**：Skill 的「區域 vs 全域」差異、如何安裝**外部 Skill**、如何從零建立**自訂 Skill**，以及怎麼測試、停用與刪除 Skill。
 
 ![Skill 的運作方式](assets/skill-flow.svg)
 
@@ -16,231 +16,238 @@
 | :--- | :--- | :--- |
 | **何時載入** | 每次對話都載入 | 用到時才載入 |
 | **適合內容** | 永遠要遵守的規矩 | 特定工作的步驟 |
-| **例子** | 一律用繁體中文回覆 | 怎麼寫週報、怎麼部署網站 |
+| **例子** | 一律用繁體中文回覆 | 幫我出複習測驗、檢查作業有沒有漏交 |
 
 > [!TIP]
 > 同一件事交代 AI 超過兩次，就值得做成 Skill。
 
 ---
 
-## 2. Skill 放在哪裡？
+## 2. 區域（專案） vs 全域（個人）
 
-| 範圍 | 位置 | 誰能用 |
-| :--- | :--- | :--- |
-| **專案** | `<專案根目錄>/.agents/skills/<skill 名稱>/` | 這個專案，可用 Git 分享給同學 |
-| **全域** | `~/.gemini/config/skills/<skill 名稱>/` | 你電腦上的所有專案 |
-| **外掛** | `~/.gemini/config/plugins/<外掛名稱>/skills/` | 用 `agy plugin` 安裝後自動載入 |
+Skill 可以放在**專案資料夾（區域）**，也可以放在**電腦個人目錄（全域）**，另外還有從市集安裝的**外部外掛（Plugin）**：
+
+| 類型 | 存放路徑 | 適用範圍 | 適合放什麼 | 優先順序 |
+| :--- | :--- | :--- | :--- | :---: |
+| **區域（專案）** | `<專案根目錄>/.agents/skills/<名稱>/` | **只有這個專案**（可 commit 進 Git 分享給組員） | 專案專用的檢查流程、部署步驟、團隊規範 | 1（最高，會覆蓋同名全域 Skill） |
+| **全域（個人）** | `~/.gemini/config/skills/<名稱>/` | **你電腦上的所有專案** | 個人習慣用的工具（出題複習、筆記整理、程式解說） | 2 |
+| **外部外掛（Plugin）** | `~/.gemini/config/plugins/<外掛名稱>/skills/` | **所有專案**（透過 `/plugin` 或 `agy plugin` 安裝） | 官方或社群打包好的專業能力（如前端、Firebase、瀏覽器除錯） | 3 |
 
 > [!NOTE]
-> 資料夾名稱是 `.agents`，有 **s**，而且前面有一個點，所以 Finder 預設看不到。
+> - 專案資料夾名稱是 `.agents`，有 **s**，而且前面有一個點（Finder 預設看不到）。
+> - 如果區域和全域有**同名的 Skill**，AI 會優先使用**區域（專案）**的版本。
 
 ---
 
-## 3. 方法一：一句話請 AI 建立（推薦）
+## 3. 使用「外部 Skill」的兩種方式
 
-不用自己寫檔案，用中文說明你要什麼：
+別人寫好的 Skill 不用自己重寫，常見有兩種取得方式：
+
+### 方式 A：透過官方／社群市集安裝 Plugin（推薦）
+
+**Plugin（外掛）** 是把「Skills + MCP 工具 + 規則」打包在一起的擴充套件包，安裝後裡面的 Skill 會自動載入。
 
 ```text
-請幫我在這個專案建立一個 skill，名稱叫 weekly-report，用途是把我這週做的事整理成繁體中文週報，分成「完成事項」「遇到問題」「下週計畫」三段。
+# 在 agy 對話框開啟外掛市集與管理面板
+/plugin
 ```
 
-AI 會建立 `.agents/skills/weekly-report/SKILL.md`。完成後請做兩件事：
+也可以直接在終端機管理（以安裝官方外掛為例）：
 
-1. **確認內容**：打開檔案看一下，不滿意就繼續用中文要求修改。
-2. **重新載入**：在對話框輸入下面的指令。
+```bash
+# 1. 安裝外掛
+agy plugin install modern-web-guidance-plugin
+
+# 2. 查看已安裝的外掛
+agy plugin list
+
+# 3. 暫時停用 / 重新啟用
+agy plugin disable modern-web-guidance-plugin
+agy plugin enable modern-web-guidance-plugin
+
+# 4. 刪除（解除安裝）外掛
+agy plugin uninstall modern-web-guidance-plugin
+```
+
+### 方式 B：從 GitHub 或同學分享取得單一 Skill
+
+如果網路上或同學分享了一個 Skill 資料夾（裡面有 `SKILL.md`），只要把整個資料夾放進對應目錄即可：
+
+- **只給這個專案用（區域）**：放到 `<專案>/.agents/skills/<skill-名稱>/`
+- **所有專案都要用（全域）**：放到 `~/.gemini/config/skills/<skill-名稱>/`
+
+放好後，在 `agy` 對話框輸入 `/skills reload` 就會生效。
+
+> [!CAUTION]
+> Skill 可以包含腳本或操作指示。使用來路不明的外部 Skill 前，**請先打開 `SKILL.md` 看過內容**，確認沒有危險指令再載入。
+
+---
+
+## 4. 自訂 Skill：兩個學生可直接動手做的範例
+
+以下兩個範例不需要複雜專案環境，**任何程式碼或筆記資料夾都能立刻測試**。
+
+### 範例 1（區域・專案 Skill）：用一句話請 AI 建立「程式碼白話解說員」
+
+適合放在課堂專案的 `.agents/skills/`，組員 pull 下來就能一起用。
+
+在 `agy` 對話框直接輸入：
+
+```text
+請幫我在這個專案建立一個 skill，名稱叫 explain-code，
+用途是用初學者聽得懂的繁體中文解說指定程式碼，必須包含：
+1. 一句話總結這段程式在做什麼
+2. 用一個生活比喻說明核心邏輯
+3. 逐段拆解關鍵步驟
+4. 提醒一個初學者常踩的坑
+```
+
+AI 會自動建立 `.agents/skills/explain-code/SKILL.md`。接著重新載入並測試：
 
 ```text
 /skills reload
 ```
 
-接著就能試用了：
+測試看看：
 
 ```text
-/weekly-report 這週完成了登入頁面，但部署時遇到權限錯誤，下週要做購物車
+/explain-code 請解說這個專案裡的主要程式檔案
 ```
-
-想做成所有專案都能用的 Skill，把「在這個專案」改成「在全域」就可以了。
 
 ---
 
-## 4. 方法二：自己動手建立
+### 範例 2（全域・個人 Skill）：自己動手寫「複習出題小老師」
 
-自己寫一次，就會知道 Skill 的結構。以下做一個幫你寫 commit 訊息的 Skill。
+這個 Skill 放在**全域目錄**，以後不管寫哪一科的作業都能叫它出題考你！
 
-### 步驟 1：建立資料夾和檔案
+#### 步驟 1：在全域目錄建立資料夾與 `SKILL.md`
 
 ```bash
-mkdir -p .agents/skills/commit-message
-touch .agents/skills/commit-message/SKILL.md
+mkdir -p ~/.gemini/config/skills/study-quiz
 ```
 
-### 步驟 2：寫入 `SKILL.md`
+用編輯器打開 `~/.gemini/config/skills/study-quiz/SKILL.md`，貼入以下內容：
 
 ````markdown
 ---
-name: commit-message
-description: 依照團隊格式撰寫繁體中文 Git commit 訊息。當使用者要寫 commit 訊息或整理變更內容時使用。
+name: study-quiz
+description: 根據指定的程式碼或筆記內容，出 3 題繁體中文選擇題幫助學生複習。當使用者想複習、自我測驗或輸入 /study-quiz 時使用。
 ---
 
-# 撰寫 Commit 訊息
+# 複習出題小老師
 
 ## 步驟
 
-1. 判斷變更類型：新功能用 `feat`、修錯誤用 `fix`、改文件用 `docs`。
-2. 第一行格式為 `類型: 一句話摘要`，摘要使用繁體中文。
-3. 只輸出訊息本身，不要執行 `git commit`。
+1. 閱讀使用者指定的檔案或段落內容。
+2. 設計 **3 題繁體中文單選題**（每題 A、B、C、D 四個選項），難度由淺入深。
+3. **先不要直接公布答案**，請使用者回覆他的答案（例如 `1A 2C 3B`）。
+4. 等使用者作答後，再逐題批改並用白話文解釋為什麼。
 
-## 範例
+## 輸出格式
 
 ```text
-feat: 新增會員登入頁面
+### 第 1 題：...
+A. ...
+B. ...
+C. ...
+D. ...
 ```
 ````
 
-### 步驟 3：重新載入並測試
+#### 步驟 2：重新載入並測試
 
 ```text
 /skills reload
 ```
 
-然後用兩種方式測試：
+用兩種方式試試看：
 
-| 測試 | 輸入 | 預期結果 |
+| 測試方式 | 輸入範例 | 預期結果 |
 | :--- | :--- | :--- |
-| 手動呼叫 | `/commit-message 我新增了登入頁面` | `feat: 新增登入頁面` |
-| 自動觸發 | `幫我替「修正購物車金額計算錯誤」寫一則 commit 訊息` | `fix: 修正購物車金額計算錯誤` |
+| **手動斜線呼叫** | `/study-quiz 根據 README.md 出題考我` | 出現 3 題選擇題，等你作答 |
+| **自然語言觸發** | `幫我針對這份程式出幾題測驗複習一下` | AI 自動載入 `study-quiz` 並出題 |
 
 ---
 
-## 5. 看懂 `SKILL.md`
+## 5. 看懂 `SKILL.md` 結構
 
-### Skill 資料夾的結構
+### 資料夾結構
 
 ```text
-.agents/skills/commit-message/
-├── SKILL.md       # 必要：說明與步驟
+<skill-名稱>/
+├── SKILL.md       # 必要：設定欄位與操作步驟
 ├── scripts/       # 選用：輔助腳本
 ├── examples/      # 選用：參考範例
 ├── resources/     # 選用：範本或資料檔
 └── references/    # 選用：比較長的參考文件
 ```
 
-大多數 Skill 只需要 `SKILL.md`。
+大多數自訂 Skill 只需要一個 `SKILL.md`。
 
-### 開頭的設定欄位
+### 開頭的設定欄位（Frontmatter）
 
-`SKILL.md` 最上面兩條 `---` 之間的內容叫做 frontmatter：
+`SKILL.md` 最上面兩條 `---` 之間的內容：
 
 | 欄位 | 必填 | 說明 |
 | :--- | :---: | :--- |
-| `name` | 建議填寫 | Skill 名稱，用小寫英文和連字號，也就是 `/` 後面的名字 |
-| `description` | ✅ | **最重要的欄位**：這個 Skill 做什麼、什麼時候用 |
-| `disable-slash-command` | | 設為 `true` 時不會出現在 `/` 選單，但 AI 仍可自動使用 |
+| `name` | ✅ | Skill 名稱，小寫英文＋連字號（例如 `study-quiz`），也是 `/` 後面的指令名稱 |
+| `description` | ✅ | **最重要的欄位**：寫清楚「做什麼」和「什麼時候用」 |
+| `disable-slash-command` | | 設為 `true` 時不會出現在 `/` 選單，但 AI 仍可自動觸發 |
 
-### `description` 決定 AI 會不會用它
+### `description` 決定 AI 會不會自動用它
 
-AI 平常只看得到 `description`，寫得太模糊，AI 就不知道該用它。
+AI 平常只看得到每個 Skill 的 `name` 和 `description`，寫太短就不會被觸發：
 
-| | 範例 | 問題 |
+| | 範例 | 原因 |
 | :---: | :--- | :--- |
-| ❌ | `處理文字` | 沒說做什麼，也沒說何時用 |
-| ❌ | `週報` | 太短，AI 難以判斷 |
-| ✅ | `把使用者這週做的事整理成繁體中文週報。當使用者要寫週報或總結本週進度時使用。` | 清楚說明「做什麼」和「何時用」 |
+| ❌ | `出題` | 太模糊，AI 不知道要出什麼題、何時用 |
+| ✅ | `根據程式碼或筆記出 3 題繁體中文選擇題幫助複習。當使用者想自我測驗時使用。` | 清楚說明功能與觸發時機 |
 
 ---
 
-## 6. 使用 Skill 的三種方式
+## 6. 建立、停用與刪除總整理（區域 vs 全域）
 
-| 方式 | 怎麼做 | 範例 |
-| :--- | :--- | :--- |
-| **自動觸發** | 正常說話，AI 判斷符合就使用 | `幫我寫這週的週報` |
-| **點名使用** | 在句子裡提到名稱 | `請用 weekly-report 這個 skill 整理進度` |
-| **斜線呼叫** | 輸入 `/` 加上 Skill 名稱 | `/weekly-report 這週完成了登入頁面` |
+| 操作 | 區域（專案 Skill） | 全域（個人 Skill） | 外部外掛（Plugin） |
+| :--- | :--- | :--- | :--- |
+| **查看已載入** | 在對話框輸入 `/skills` | 在對話框輸入 `/skills` | `agy plugin list` 或 `/plugin` |
+| **建立** | `mkdir -p .agents/skills/<名稱>`<br>建立 `SKILL.md` | `mkdir -p ~/.gemini/config/skills/<名稱>`<br>建立 `SKILL.md` | `/plugin` 或<br>`agy plugin install <名稱>` |
+| **套用變更** | `/skills reload` | `/skills reload` | 安裝後自動生效 |
+| **暫時停用** | 把 `SKILL.md` 改名為 `SKILL.md.bak`<br>再輸入 `/skills reload` | 把 `SKILL.md` 改名為 `SKILL.md.bak`<br>再輸入 `/skills reload` | `agy plugin disable <名稱>` |
+| **徹底刪除** | `rm -rf .agents/skills/<名稱>`<br>再輸入 `/skills reload` | `rm -rf ~/.gemini/config/skills/<名稱>`<br>再輸入 `/skills reload` | `agy plugin uninstall <名稱>`<br>或透過 `/plugin` 解除安裝 |
+| **分享給同學** | Commit `.agents/skills/` 進 Git | 把該資料夾壓縮或複製給對方 | 請對方執行相同的 `install` 指令 |
 
-進階：非互動模式也能使用。
-
-```bash
-agy -p "/commit-message 我修正了登入錯誤"
-```
-
----
-
-## 7. 管理與分享 Skill
-
-| 想做的事 | 小範例／做法 |
-| :--- | :--- |
-| **查看**已載入的 Skill | 在對話框輸入 `/skills` |
-| **新增** Skill | 建立 `.agents/skills/my-skill/SKILL.md`（或用 `/learn` 整理），再輸入 `/skills reload` |
-| **停用** Skill | 暫時將該資料夾移出 `skills/`（或將 `SKILL.md` 改名為 `SKILL.md.bak`），再輸入 `/skills reload` |
-| **刪除** Skill | 刪除資料夾（`rm -rf .agents/skills/my-skill`），再輸入 `/skills reload` |
-| **分享**給同學 | 把 `.agents/skills/` commit 進 Git，同學 pull 後就能用 |
-
-> [!CAUTION]
-> Skill 可以包含腳本，AI 會照著裡面的指示做事。安裝別人的 Skill 之前，請先看過內容，確認來源可信。
-
-### 什麼是 Plugin（外掛）？
-
-如果說 **Skill** 是一份單獨的工作手冊，那 **Plugin（外掛）** 就是一個**把多種自訂功能打包在一起的擴充套件包**（就像手機 App 或 VS Code 擴充功能）。
-
-一個 Plugin 可以同時包含：
-- **Skills**：工作手冊與斜線指令（例如 `/firebase`）
-- **MCP 伺服器**：連接外部服務的工具
-- **Subagents**：專屬子代理角色
-- **Rules & Hooks**：預設規則與自動化腳本
-
-**啟用時整包一起生效，停用時整包一起關閉。** 例如官方的 `chrome-devtools`、`firebase` 外掛，就是把該領域需要的 Skill、MCP 與工具打包在一起，安裝後就能直接使用。
-
-**怎麼新增、停用與刪除 Plugin？**
-
-- **在 `agy` 對話框**：輸入 **`/plugin`**（別名 `/plugins`），即可開啟互動式外掛市集與管理面板，瀏覽、安裝、停用或解除安裝外掛。
-- **在終端機**（以 `firebase` 外掛為例）：
-  ```bash
-  # 新增（安裝）外掛
-  agy plugin install firebase
-
-  # 查看已安裝的外掛
-  agy plugin list
-
-  # 停用 / 重新啟用外掛（保留設定，暫時關閉）
-  agy plugin disable firebase
-  agy plugin enable firebase
-
-  # 刪除（解除安裝）外掛
-  agy plugin uninstall firebase
-  ```
+> [!TIP]
+> 也可以直接用自然語言請 AI 幫你刪除，例如：「請幫我刪除這個專案的 `explain-code` skill」，刪除後記得輸入 `/skills reload`。
 
 ---
 
-## 8. 好 Skill 的四個原則
+## 7. 好 Skill 的四個原則
 
-1. **一個 Skill 只做一件事**：「寫週報」和「部署網站」請分開。
-2. **主檔保持精簡**：詳細資料放進 `references/`，AI 需要時才會讀。
-3. **寫出驗證方式**：告訴 AI 怎麼確認做對了，例如「執行 `npm test` 並確認全部通過」。
-4. **不寫 AI 已經會的事**：只寫你的流程裡特別的地方，「要寫乾淨的程式碼」這種話不用寫。
+1. **一個 Skill 只做一件事**：「程式碼解說」和「自動部署」請分開。
+2. **主檔保持精簡**：長篇參考資料放進 `references/`，AI 需要時才會去讀。
+3. **寫出輸出格式或驗證方式**：告訴 AI 怎麼算做對（例如「先不要公布答案」、「執行 `npm test` 確認全部通過」）。
+4. **不寫 AI 已經會的廢話**：只寫你的專屬流程與規則，「要寫乾淨的程式碼」這種話不用寫。
 
 ---
 
-## 9. 常見問題
+## 8. 常見問題
 
 | 狀況 | 檢查方向 |
 | :--- | :--- |
-| 輸入 `/` 加名稱卻找不到 | 輸入 `/skills reload`，或確認路徑是 `.agents/skills/<名稱>/SKILL.md` |
-| 資料夾打錯 | 確認是 `.agents`（有 s），檔名是全大寫的 `SKILL.md` |
-| Skill 載入失敗 | 確認檔案第一行就是 `---`，且 `description` 有填寫 |
-| AI 沒有自動使用 | 把 `description` 寫得更具體，或直接用 `/` 加名稱呼叫 |
-| AI 沒照步驟做 | 把步驟拆得更短、更明確，並加上範例 |
+| 輸入 `/` 加名稱卻找不到 | 輸入 `/skills reload`，或確認路徑是 `.agents/skills/<名稱>/SKILL.md`（區域）或 `~/.gemini/config/skills/<名稱>/SKILL.md`（全域） |
+| 還是找不到 | 確認資料夾是 `.agents`（有 s），檔名是全大寫 `SKILL.md` |
+| Skill 載入失敗 | 確認 `SKILL.md` 第一行就是 `---`，且 `name` 與 `description` 都有填寫 |
+| AI 沒有自動觸發 | 把 `description` 寫得更具體，或直接用 `/<skill-名稱>` 呼叫 |
+| 區域和全域同時有同名 Skill | 區域（專案）會優先覆蓋全域；想用全域版請改名或刪除區域版 |
 
 ---
 
-## 10. 動手練習
+## 9. 課堂動手練習（10 分鐘完成）
 
-做一個屬於你自己的 Skill：
-
-1. 想一件你常請 AI 做的事，例如「把筆記整理成重點」或「解釋程式碼給初學者聽」。
-2. 用一句話請 AI 建立這個 Skill。
-3. 輸入 `/skills reload`，再輸入 `/skills` 確認有出現。
-4. 分別用「自動觸發」和「斜線呼叫」各試一次。
-5. 依照結果，用中文請 AI 修改 Skill，直到你滿意為止。
+1. **建立一個區域 Skill**：用第 4 節的「範例 1」請 AI 建立 `explain-code`，輸入 `/skills reload` 後，找一段專案裡的程式碼試用 `/explain-code`。
+2. **建立一個全域 Skill**：用第 4 節的「範例 2」手動建立 `~/.gemini/config/skills/study-quiz/SKILL.md`，重載後用 `/study-quiz` 考自己 3 題。
+3. **體驗刪除流程**：試著將剛建立的 `explain-code` 刪除（`rm -rf .agents/skills/explain-code`），再輸入 `/skills reload` 和 `/skills` 確認它已消失。
+4. **探索外部 Skill**：輸入 `/plugin` 逛逛官方外掛市集，看看有哪些現成的工具包可以用。
 
 ---
 
