@@ -167,17 +167,47 @@ agy -p "/commit-message 我修正了登入錯誤"
 
 ## 7. 管理與分享 Skill
 
-| 想做的事 | 做法 |
+| 想做的事 | 小範例／做法 |
 | :--- | :--- |
-| 查看已載入的 Skill | `/skills` |
-| 新增或修改後重新載入 | `/skills reload`，或開新對話 |
-| 分享給同學 | 把 `.agents/skills/` commit 進 Git，同學 pull 後就能用 |
-| 刪除 Skill | 刪掉該 Skill 的資料夾，再執行 `/skills reload` |
-| 從這次對話整理出 Skill | `/learn 把剛才的部署流程存成 skill` |
-| 安裝別人的外掛 | `agy plugin list` 查看已安裝的，`agy plugin install <目標>` 安裝 |
+| **查看**已載入的 Skill | 在對話框輸入 `/skills` |
+| **新增** Skill | 建立 `.agents/skills/my-skill/SKILL.md`（或用 `/learn` 整理），再輸入 `/skills reload` |
+| **停用** Skill | 暫時將該資料夾移出 `skills/`（或將 `SKILL.md` 改名為 `SKILL.md.bak`），再輸入 `/skills reload` |
+| **刪除** Skill | 刪除資料夾（`rm -rf .agents/skills/my-skill`），再輸入 `/skills reload` |
+| **分享**給同學 | 把 `.agents/skills/` commit 進 Git，同學 pull 後就能用 |
 
 > [!CAUTION]
 > Skill 可以包含腳本，AI 會照著裡面的指示做事。安裝別人的 Skill 之前，請先看過內容，確認來源可信。
+
+### 什麼是 Plugin（外掛）？
+
+如果說 **Skill** 是一份單獨的工作手冊，那 **Plugin（外掛）** 就是一個**把多種自訂功能打包在一起的擴充套件包**（就像手機 App 或 VS Code 擴充功能）。
+
+一個 Plugin 可以同時包含：
+- **Skills**：工作手冊與斜線指令（例如 `/firebase`）
+- **MCP 伺服器**：連接外部服務的工具
+- **Subagents**：專屬子代理角色
+- **Rules & Hooks**：預設規則與自動化腳本
+
+**啟用時整包一起生效，停用時整包一起關閉。** 例如官方的 `chrome-devtools`、`firebase` 外掛，就是把該領域需要的 Skill、MCP 與工具打包在一起，安裝後就能直接使用。
+
+**怎麼新增、停用與刪除 Plugin？**
+
+- **在 `agy` 對話框**：輸入 **`/plugin`**（別名 `/plugins`），即可開啟互動式外掛市集與管理面板，瀏覽、安裝、停用或解除安裝外掛。
+- **在終端機**（以 `firebase` 外掛為例）：
+  ```bash
+  # 新增（安裝）外掛
+  agy plugin install firebase
+
+  # 查看已安裝的外掛
+  agy plugin list
+
+  # 停用 / 重新啟用外掛（保留設定，暫時關閉）
+  agy plugin disable firebase
+  agy plugin enable firebase
+
+  # 刪除（解除安裝）外掛
+  agy plugin uninstall firebase
+  ```
 
 ---
 

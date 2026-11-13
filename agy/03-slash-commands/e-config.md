@@ -65,7 +65,7 @@
 | `/skills` | 瀏覽目前已載入的 Skill（或重新載入） | 輸入 `/skills` 查看，或 `/skills reload` 重新載入。詳見 [05 Skill 配置](../05-skills.md) |
 | `/agents` | 查看自訂代理與背景子代理 | 輸入 `/agents` 開啟管理畫面。詳見 [07 Subagent 子代理](../07-subagents.md) |
 | `/mcp` | 查看外部工具（MCP 伺服器）連線狀態 | 輸入 `/mcp` 開啟管理畫面。詳見 [04 環境配置](../04-config.md) |
-| `/plugin` | 查看或管理已安裝的外掛 | 輸入 `/plugin list` 列出外掛。別名：`/plugins` |
+| `/plugin` | 查看或管理已安裝的外掛（詳見 [05 Skill 配置](../05-skills.md#什麼是-plugin外掛)） | 輸入 `/plugin` 開啟管理面板，或 `/plugin list` 列出外掛。別名：`/plugins` |
 
 ---
 

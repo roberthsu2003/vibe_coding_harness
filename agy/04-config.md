@@ -167,14 +167,22 @@ MCP（Model Context Protocol）讓 AI 能使用外部工具，例如資料庫、
 | `command`、`args`、`env` | 本機工具 | 要執行的程式、參數、環境變數 |
 | `url` | 遠端服務 | 伺服器的網址 |
 
-也可以用指令新增和查看：
+也可以用指令**新增、查看、停用與刪除** MCP 伺服器（對話框內則可輸入 `/mcp` 管理）：
 
 ```bash
-# 新增遠端伺服器
+# 新增：加入本機或遠端 MCP 伺服器
+agy mcp add fs npx -y @modelcontextprotocol/server-filesystem .
 agy mcp add --type http remote-service https://mcp.example.com/mcp
 
-# 查看目前的伺服器
+# 查看：列出目前的伺服器與狀態
 agy mcp list
+
+# 停用 / 重新啟用：暫時關閉，保留設定
+agy mcp disable remote-service
+agy mcp enable remote-service
+
+# 刪除：從設定中永久移除
+agy mcp remove remote-service
 ```
 
 > [!CAUTION]

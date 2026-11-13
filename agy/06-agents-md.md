@@ -128,9 +128,9 @@ globs: ["tests/**/*.py"]
 | `PostToolUse` | AI **執行工具後**觸發（適合自動跑檢查或格式化） |
 | `Stop` | 這一輪執行結束時觸發 |
 
-### 小範例
+### 小範例：新增、停用與刪除 Hook
 
-在 `.agents/hooks.json` 設定：每次 AI 執行完 `run_command` 後，自動跑一次 `./scripts/lint.sh` 檢查：
+1. **新增 Hook**：在 `.agents/hooks.json` 加入規則（例如每次 AI 執行完 `run_command` 後，自動跑 `./scripts/lint.sh` 檢查）：
 
 ```json
 {
@@ -151,8 +151,21 @@ globs: ["tests/**/*.py"]
 }
 ```
 
+2. **停用 Hook**：不想刪除設定、只想暫時關閉時，加上 `"enabled": false`（改回 `true` 或刪掉這行即可重新啟用）：
+
+```json
+{
+  "my-linter-hook": {
+    "enabled": false,
+    "PostToolUse": [ ... ]
+  }
+}
+```
+
+3. **刪除 Hook**：從 `.agents/hooks.json` 移除 `"my-linter-hook"` 這個區塊；如果只有這一個 Hook，也可以直接刪除 `.agents/hooks.json` 檔案。
+
 > [!TIP]
-> 在 `agy` 對話框輸入 **`/hooks`**，可以查看目前環境中所有已載入並啟用的 Hook。
+> 在 `agy` 對話框輸入 **`/hooks`**，可以查看目前環境中所有已載入與啟用的 Hook。
 
 ---
 
