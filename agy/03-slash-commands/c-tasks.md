@@ -112,7 +112,7 @@
 
 - **`/swarm`（平行代理團隊）**：適合把任務拆給多個代理同時寫不同檔案：
   ```text
-  /swarm 請同時建立 day1.md、day2.md、day3.md 三份旅遊行程，並由審查代理確認三天的預算加總不超過一萬元
+  /swarm 規劃「台北出發三天兩夜宜蘭輕旅行」，請三位代理分別建立 travel/day1.md、travel/day2.md、travel/day3.md（內容含早中晚行程與預估花費），最後由審查代理核對路線順暢且三天總預算不超過台幣 10,000 元
   ```
   執行時可輸入 `/swarm board` 查看即時留言板（支援 Google AI Pro / Ultra 方案，詳見 [07 Subagent 與 Swarm](../07-subagents.md#5-swarm平行代理協作團隊)）。
 - **`/teamwork`（長期專案團隊）**：適合大型專案重構（僅限付費方案）：
