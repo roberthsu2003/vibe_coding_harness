@@ -87,6 +87,15 @@
 
 - **結果**：派出一個瀏覽器子代理開啟 Chrome 閱讀網頁，再把結果整理回你的 Markdown 筆記。
 
+> [!NOTE]
+> **如果 `/browser` 無法連線到 Chrome（macOS），請確認以下項目：**
+> 1. Google Chrome 是否正在執行中，且使用預設設定檔路徑（`~/Library/Application Support/Google/Chrome`）。
+> 2. 是否已在 Chrome 網址列開啟 `chrome://inspect/#remote-debugging` 並啟用 Remote Debugging，或先完全關閉 Chrome 後改以指令啟動遠端偵錯：
+>    ```bash
+>    open -a "Google Chrome" --args --remote-debugging-port=9222
+>    ```
+> 3. 確認該路徑下已產生 `DevToolsActivePort` 檔案。
+
 ---
 
 ### `/boost`：多代理深度思考
