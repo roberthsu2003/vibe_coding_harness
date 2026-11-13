@@ -104,7 +104,17 @@ OpenCode 會自動讀取其他工具的 Skill 資料夾，所以你在其他工�
 
 適合放在課堂專案的 `.opencode/skills/`，組員 pull 下來就能一起用。
 
-在 OpenCode 對話框直接輸入：
+#### 步驟 1：先請 AI 生一段測試用的程式碼
+
+如果目前資料夾是空的，先在 OpenCode 對話框請 AI 建立一個小程式來當練習素材：
+
+```text
+請幫我建立一個簡單的 Python 猜數字小遊戲 guess.py，功能包含 1 到 100 隨機取數、最多猜 5 次、每次提示太大或太小。
+```
+
+#### 步驟 2：請 AI 建立 Skill
+
+接著在 OpenCode 對話框輸入：
 
 ```text
 請幫我在這個專案建立一個 OpenCode skill，名稱叫 explain-code，
@@ -115,10 +125,14 @@ OpenCode 會自動讀取其他工具的 Skill 資料夾，所以你在其他工�
 4. 提醒一個初學者常踩的坑
 ```
 
-AI 會自動建立 `.opencode/skills/explain-code/SKILL.md`。接著輸入 `/reload`（若選單已有可略過），然後在輸入框打 `@explain`，從選單選右邊標示 **skill** 的項目：
+AI 會自動建立 `.opencode/skills/explain-code/SKILL.md`。
+
+#### 步驟 3：重新載入並用 `guess.py` 測試
+
+先輸入 `/reload`（若選單已有可略過），然後在輸入框打 `@explain`，從選單選右邊標示 **skill** 的項目：
 
 ```text
-@explain-code 請解說這個專案裡的主要程式檔案
+@explain-code 請解說 guess.py
 ```
 
 送出後畫面會顯示 `skill  explain-code`，代表 AI 已經讀了這份手冊。
@@ -163,14 +177,16 @@ D. ...
 ```
 ````
 
-#### 步驟 2：重新載入並測試
+#### 步驟 2：重新載入並用 `guess.py` 測試
+
+> 如果還沒建立 `guess.py`，可以先請 AI 建一個：「`請幫我建立一個簡單的 Python 猜數字小遊戲 guess.py`」。
 
 在 OpenCode 輸入 `/reload`，再用兩種方式試試看：
 
 | 測試方式 | 輸入範例 | 預期結果 |
 | :--- | :--- | :--- |
-| **用 `@` 指定** | `@study-quiz 根據 README.md 出題考我` | 畫面顯示 `skill  study-quiz`，並出 3 題選擇題等你作答 |
-| **自然語言觸發** | `幫我針對這份程式出幾題測驗複習一下` | AI 判斷符合 `description`，自動載入 `study-quiz` 出題 |
+| **用 `@` 指定** | `@study-quiz 根據 guess.py 出題考我` | 畫面顯示 `skill  study-quiz`，並出 3 題選擇題等你作答 |
+| **自然語言觸發** | `幫我針對 guess.py 出幾題測驗複習一下` | AI 判斷符合 `description`，自動載入 `study-quiz` 出題 |
 
 > [!NOTE]
 > OpenCode 的 Skill 不是斜線指令，`/study-quiz` 不會觸發它（要用 `@study-quiz` 或自然語言）。

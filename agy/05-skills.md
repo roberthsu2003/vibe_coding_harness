@@ -135,7 +135,17 @@ agy plugin uninstall modern-web-guidance-plugin
 
 適合放在課堂專案的 `.agents/skills/`，組員 pull 下來就能一起用。
 
-在 `agy` 對話框直接輸入：
+#### 步驟 1：先請 AI 生一段測試用的程式碼
+
+如果目前資料夾是空的，先在 `agy` 對話框請 AI 建立一個小程式來當練習素材：
+
+```text
+請幫我建立一個簡單的 Python 猜數字小遊戲 guess.py，功能包含 1 到 100 隨機取數、最多猜 5 次、每次提示太大或太小。
+```
+
+#### 步驟 2：請 AI 建立 Skill
+
+接著在 `agy` 對話框輸入：
 
 ```text
 請幫我在這個專案建立一個 skill，名稱叫 explain-code，
@@ -152,10 +162,10 @@ AI 會自動建立 `.agents/skills/explain-code/SKILL.md`。接著重新載入�
 /skills reload
 ```
 
-測試看看：
+#### 步驟 3：拿剛建立的 `guess.py` 來測試
 
 ```text
-/explain-code 請解說這個專案裡的主要程式檔案
+/explain-code 請解說 guess.py
 ```
 
 ---
@@ -198,7 +208,9 @@ D. ...
 ```
 ````
 
-#### 步驟 2：重新載入並測試
+#### 步驟 2：重新載入並用 `guess.py` 測試
+
+> 如果還沒建立 `guess.py`，可以先請 AI 建一個：「`請幫我建立一個簡單的 Python 猜數字小遊戲 guess.py`」。
 
 ```text
 /skills reload
@@ -208,8 +220,8 @@ D. ...
 
 | 測試方式 | 輸入範例 | 預期結果 |
 | :--- | :--- | :--- |
-| **手動斜線呼叫** | `/study-quiz 根據 README.md 出題考我` | 出現 3 題選擇題，等你作答 |
-| **自然語言觸發** | `幫我針對這份程式出幾題測驗複習一下` | AI 自動載入 `study-quiz` 並出題 |
+| **手動斜線呼叫** | `/study-quiz 根據 guess.py 出題考我` | 出現 3 題選擇題，等你作答 |
+| **自然語言觸發** | `幫我針對 guess.py 出幾題測驗複習一下` | AI 自動載入 `study-quiz` 並出題 |
 
 ---
 
