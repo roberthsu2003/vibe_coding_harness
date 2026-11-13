@@ -78,6 +78,7 @@
 | `agentMode` | 啟動時的執行模式 | 空白（預設模式） | `plan`、`accept-edits`、`auto` |
 | `model` | 預設模型 | 空白 | 建議用 `/model` 選擇 |
 | `colorScheme` | 配色 | `terminal` | 建議用 `/config` 預覽後選擇 |
+| `editor` | 按 `Ctrl+G` 開啟的外部編輯器 | `"auto"`（讀 `$EDITOR`，否則 `vim`） | `"nano"`、`"vim"`、`"code --wait"` |
 | `notifications` | 需要你處理時發出通知 | `false` | `true` |
 | `verbosity` | 畫面顯示的詳細程度 | `medium` | 建議用 `/config` 選擇 |
 | `showTips` | 顯示使用小提示 | `true` | `false` |
