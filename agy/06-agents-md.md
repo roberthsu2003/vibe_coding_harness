@@ -91,9 +91,72 @@ trigger: always_on
 | `model_decision` | AI 判斷跟任務有關時才讀（需加寫 `description`） | 只有改資料庫時才需要的規範 |
 | `glob` | 碰到符合條件的檔案時才讀（需加寫 `globs`，如 `globs: ["tests/**/*.py"]`） | 只針對測試檔或前端檔的規則 |
 
+**小範例**（`.agents/rules/testing.md`，只在處理 `tests/` 裡的 Python 檔時載入）：
+
+```markdown
+---
+trigger: glob
+globs: ["tests/**/*.py"]
 ---
 
-## 5. 確認 AI 有讀到規則
+- 測試函式名稱一律使用 `test_<功能>_<預期結果>`。
+- 不要在測試中連線到真實外部 API，請使用 mock。
+```
+
+---
+
+## 5. 進階：用 Hook 強制執行自動化腳本（`hooks.json`）
+
+`AGENTS.md` 和 `rules/*.md` 是寫給 AI 看的「文字規範」，AI 偶爾還是可能忘記；如果你想確保**某些動作在特定時機點一定會自動執行**，就要用 **Hook（事件掛鉤）**。
+
+| 機制 | 本質 | 誰來執行 | 適合做什麼 |
+| :--- | :--- | :--- | :--- |
+| **Rules（`AGENTS.md` / `rules/*.md`）** | 文字規範 | AI 閱讀後遵守 | 溝通語言、開發習慣、架構原則 |
+| **Hook（`hooks.json`）** | 自動化腳本 | `agy` 系統在固定時機點自動觸發 | 改完檔自動排版、執行指令前先做安全檢查 |
+
+### 放在哪裡？
+
+- **這個專案**：專案根目錄的 `.agents/hooks.json`
+- **所有專案（全域）**：`~/.gemini/config/hooks.json`
+
+### 常見觸發時機
+
+| 事件名稱 | 觸發時機 |
+| :--- | :--- |
+| `SessionStart` | 新對話開始時執行一次 |
+| `PreToolUse` | AI **執行工具前**觸發（可搭配 `matcher` 指定工具，如 `run_command`） |
+| `PostToolUse` | AI **執行工具後**觸發（適合自動跑檢查或格式化） |
+| `Stop` | 這一輪執行結束時觸發 |
+
+### 小範例
+
+在 `.agents/hooks.json` 設定：每次 AI 執行完 `run_command` 後，自動跑一次 `./scripts/lint.sh` 檢查：
+
+```json
+{
+  "my-linter-hook": {
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "./scripts/lint.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+> [!TIP]
+> 在 `agy` 對話框輸入 **`/hooks`**，可以查看目前環境中所有已載入並啟用的 Hook。
+
+---
+
+## 6. 確認 AI 有讀到規則
 
 建立好 `AGENTS.md` 後，在對話框問一句話就能確認：
 

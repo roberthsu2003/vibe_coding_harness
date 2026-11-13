@@ -8,6 +8,9 @@
 
 ![Herdr 的三層結構](assets/herdr-layers.svg)
 
+> [!NOTE]
+> **Herdr Desktop vs Herdr CLI**：Herdr 除了本教材介紹的終端機版 **Herdr CLI（TUI）** 之外，也推出了原生桌面版 **Herdr Desktop（Herdr App）**。兩者差異與安裝方式請見 [Herdr Desktop 與 CLI 差異比較](desktop.md)。
+
 ---
 
 ## 學習路線
@@ -34,6 +37,7 @@
 | 文件 | 用途 |
 | :--- | :--- |
 | [CLI 指令與疑難排解](cli.md) | 用指令操作窗格與 AI、常用維護指令、常見問題 |
+| [Herdr Desktop 與 CLI 差異](desktop.md) | 原生桌面版 Herdr Desktop 介紹、與 Herdr CLI 的差異及 `hc` 指令 |
 | [在 Herdr 中使用 OpenCode](opencode-integration.md) | OpenCode 整合的安裝與限制 |
 | [版本與更新紀錄](updates.md) | 如何更新 Herdr、官方文件來源 |
 | [官方文件](https://herdr.dev/docs/) | Herdr 官方網站 |

@@ -76,7 +76,7 @@
 | 指令 | 用途 | 小範例 |
 | :--- | :--- | :--- |
 | `/feedback` | 開啟意見回饋面板 | `/feedback` |
-| `/hooks` | 瀏覽目前啟用的 Hook | `/hooks` |
+| `/hooks` | 瀏覽目前啟用的 Hook（詳見 [06 專案規範與規則](../06-agents-md.md#5-進階用-hook-強制執行自動化腳本hooksjson)） | `/hooks` |
 | `/keybindings` | 修改快捷鍵 | `/keybindings` |
 | `/logout` | 登出並移除登入憑證 | `/logout` |
 | `/remote-control` | 開關遠端控制 | `/remote-control on` |

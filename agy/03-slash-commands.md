@@ -50,7 +50,7 @@
 
 ### 🟢 [A 區：查狀態 (Status) →](03-slash-commands/a-status.md)
 - **解決問題**：現在狀況如何？額度與空間還夠嗎？
-- **包含指令**：`/help`、`/context`、`/usage`、`/credits`、`/changelog`
+- **包含指令**：`/help`、`/context`、`/usage`、`/credits`、`/changelog`、`/mcp`
 - **動手練習**：建立 `hello.md` 並觀察對話空間與額度變化
 
 ### 🔵 [B 區：管對話 (Session) →](03-slash-commands/b-session.md)

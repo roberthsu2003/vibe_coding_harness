@@ -8,6 +8,9 @@
 
 ## 1. 安裝
 
+> [!NOTE]
+> 以下安裝的是終端機版的 **Herdr CLI（TUI）**，供本教材第 01～07 站與實作練習使用。如果你想使用的是圖形化桌面版的 **Herdr Desktop（Herdr App）**，請參考 [Herdr Desktop 與 CLI 差異比較](desktop.md)。
+
 依作業系統選一種方式：
 
 | 作業系統 | 安裝指令 |
