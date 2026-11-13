@@ -69,6 +69,21 @@ agy plugin enable modern-web-guidance-plugin
 agy plugin uninstall modern-web-guidance-plugin
 ```
 
+#### 動手實作：試用 `modern-web-guidance-plugin`
+
+這個外掛能讓 AI 在寫網頁（HTML / CSS / JS）前，先查詢最新的現代網頁標準，避免寫出過時的寫法。安裝完成後照著以下步驟試用：
+
+1. **確認 Skill 已載入**：開啟 `agy`，在對話框輸入 `/skills`，應該會看到 `modern-web-guidance`。
+2. **實際下指令測試**（在對話框輸入）：
+   ```text
+   請用現代網頁標準幫我做一個確認刪除的彈跳視窗（demo.html），點背景空白處就能關閉，並支援深色模式。
+   ```
+3. **觀察外掛運作**：
+   - AI 會自動觸發 `modern-web-guidance` Skill，先執行 `npx -y modern-web-guidance@latest search ...` 與 `retrieve ...` 查詢最新規範。
+   - 產出使用原生 `<dialog>` 與現代 CSS 寫法的 `demo.html`。
+   - 回覆最後還會附上一個 **`### Modern Web Guidance`** 小節，列出它參考了哪些規範項目。
+4. **課後清理（選用）**：測試完可刪除 `demo.html`；如果想練習移除外掛，執行 `agy plugin uninstall modern-web-guidance-plugin` 即可。
+
 ### 方式 B：從 GitHub 或同學分享取得單一 Skill
 
 如果網路上或同學分享了一個 Skill 資料夾（裡面有 `SKILL.md`），只要把整個資料夾放進對應目錄即可：
