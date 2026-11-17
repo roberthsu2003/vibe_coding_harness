@@ -98,7 +98,7 @@ agy --mode plan
 
 | 按鍵 | 功能 |
 | :--- | :--- |
-| `Alt+S` | 開啟全螢幕 [Swarm 即時看板](07-subagents.md#5-swarm平行代理協作團隊)（同 `/swarm board`） |
+| `Alt+S` | 開啟全螢幕 [Swarm 即時看板](07-subagents.md#7-swarm平行代理協作團隊)（同 `/swarm board`） |
 | `Alt+X` | 關閉已完成的 Swarm 底部狀態列 |
 | `Alt+J` | 快速切換焦點到下一個正在等待確認的子代理 |
 | `Ctrl+K` | 快速批准狀態列提示中待確認的子代理操作 |

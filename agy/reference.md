@@ -37,10 +37,12 @@
 | `~/.gemini/config/AGENTS.md` | 全域個人規則（所有專案都生效） |
 | `~/.gemini/config/rules/*.md` | 全域個人規則（拆成多個檔案） |
 | `~/.gemini/config/skills/<名稱>/SKILL.md` | 全域個人 Skill |
+| `~/.gemini/config/agents/<名稱>/agent.md` | 全域個人自訂代理（Custom Agent / Subagent） |
 | `~/.gemini/config/mcp_config.json` | MCP 伺服器設定檔 |
 | `AGENTS.md`（或 `GEMINI.md`） | 專案規則（放在專案根目錄或子資料夾） |
 | `.agents/rules/*.md` | 專案規則（拆成多個檔案） |
 | `.agents/skills/<名稱>/SKILL.md` | 專案專屬 Skill |
+| `.agents/agents/<名稱>/agent.md` | 專案專屬自訂代理（Custom Agent / Subagent） |
 
 ---
 
