@@ -34,6 +34,24 @@
 
 ---
 
+## 完整診斷小範例：確認環境，再測一則唯讀問題
+
+**準備**：完成第 01 站登入，在一般終端機進入該章練習資料夾。逐行執行（不要貼在 AI 輸入框）：
+
+```bash
+opencode --version
+opencode auth list
+opencode models
+opencode session list
+opencode mcp list
+opencode debug agents
+opencode debug paths
+```
+
+**驗收**：版本有顯示、模型清單至少有自己可用的模型；代理、MCP 或外掛清單為空也正常，沒有設定就不會出現。接著執行 `opencode run "請只讀 README.md，回報測試指令，不修改檔案"`，應回答 `python3 -m unittest discover -s tests -v`。失敗時對照下方表格修正，再用**同一條唯讀問題**重試，確認問題真的排除。
+
+更新練習：先記下版本，執行 `opencode upgrade`，依提示更新後重新啟動，再查版本；回報「已最新版」也算通過。管理 MCP、外掛、子代理的新增與移除，分別使用第 04、05、07 站的具名練習項目，不把 `<名稱>`、`<供應商>` 原樣貼到終端機。
+
 ## 2. 疑難排解
 
 | 狀況 | 解法 |
@@ -53,7 +71,7 @@
 | 打指令卻出現 `no such file or directory` | 你正在 `/terminal` 開的終端機裡，要先切回輸入框 |
 | `Tab` 切換不了 Build / Plan | OpenCode 2 改成 `Shift+Tab` |
 | 自訂指令沒出現 | 檔案要放在 `.opencode/commands/`，副檔名是 `.md` |
-| Skill 沒出現 | 見 [05 Skill 沒有作用？](05-skills.md#8-skill-沒有作用) |
+| Skill 沒出現 | 見 [05 Skill 沒有作用？](05-skills.md#7-skill-沒有作用) |
 | 設定好像沒有生效 | 輸入 `/reload`；再用 `opencode debug config` 查看讀到哪些檔案 |
 | 環境變數沒有生效 | 背景服務讀不到後來才設的變數，執行 `opencode service restart`（見 [04](04-config.md#4-環境變數)） |
 | 升級後還是舊版 | 關掉所有 OpenCode 視窗後重新啟動；用 `opencode --version` 確認 |

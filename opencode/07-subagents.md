@@ -6,6 +6,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/07
+cd ~/terminal-ai-labs/opencode/07
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `07-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 主代理與子代理
 
 ![主代理與子代理](assets/opencode-agents.svg)
@@ -85,9 +99,29 @@ description: 執行單元測試、分析失敗原因，並補上缺少的測試
 mode: subagent
 ---
 
-你是測試工程師。請依照專案 AGENTS.md 的規範，用 uv run pytest 執行測試，
+你是測試工程師。請依照專案 AGENTS.md 的規範，用 uv run pytest tests/ 執行測試，
 分析失敗的原因，並補上邊界情況的測試，直到全部通過。
 ```
+
+### 完整實作：探索、審查、測試與移除
+
+**準備**：本章素材已含 `src/auth.py`、`calc.py`、`tests/` 與初始 commit；一般終端機先建立 `mkdir -p .opencode/agents`。
+
+1. 依第 2 節分別用中文點名與 `@explore` 查詢登入程式。**驗收**：都找到 `src/auth.py` 的 `login`，不是只回覆「我來找找」。
+2. 將範例一完整存成 `.opencode/agents/reviewer.md`，輸入 `/reload`，打 `@rev`，確認選單右邊標示 agent。範例模型若無法使用，刪除 `model` 欄位以沿用目前可用模型。
+3. 先在 Build 送出 `請在 calc.py 的 divide 上方加上一句註解「除法練習」，不改邏輯。`，製造可供審查的差異。
+4. 送出 `@reviewer 請審查目前 git diff 與 calc.py，檢查除以零的邊界問題，只回報不修改。`。**驗收**：報告指出零除數風險，`git diff -- calc.py` 仍只有剛才那句註解。
+5. 將範例二存成 `.opencode/agents/tester.md`。先依[練習準備](../practice/README.md)安裝 uv，再於本章終端機執行 `uv sync`。輸入 `/reload`，送出：
+
+```text
+@tester 請只在 tests/test_auth.py 補上帳號與密碼為空字串時應登入失敗的測試，不改 src/，執行 uv run pytest tests/，全部通過後回報測試數。
+```
+
+**驗收**：終端機執行 `uv run pytest tests/` 應至少 5 題通過，`git diff -- src/` 無輸出；若不想安裝 uv，把 tester.md 的指令改為 `python3 -m unittest discover -s tests -v` 後重載，使用同一題亦可驗證。
+
+**停用與恢復**：在終端機執行 `mv .opencode/agents/reviewer.md .opencode/agents/reviewer.md.bak`，`/reload` 後確認 `@reviewer` 不再出現；改回原檔名、重載後應恢復。
+
+**收尾**：移除本次新建的 reviewer.md、tester.md，重載後確認兩個代理都不在選單（其他原有代理保留）。若任務仍在跑，先按 `Esc` 中斷目前任務並檢查子代理狀態，再移除設定檔。
 
 ### 設定欄位
 

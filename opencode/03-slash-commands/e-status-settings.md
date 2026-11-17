@@ -6,6 +6,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/03-e
+cd ~/terminal-ai-labs/opencode/03-e
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-e-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 查狀態與除錯
 
 ### `/help`：看怎麼找指令
@@ -99,6 +113,26 @@
 - **結果**：離開 OpenCode 回到終端機。剛才的對話都會自動保留，下次啟動後用 `/sessions` 就能接著做。別名：`/quit`、`/q`，也可以按 `Ctrl+C`。
 
 ---
+
+## 每個指令的完整實測流程
+
+先送出 `請讀 README.md，回覆一句用途，不修改。`，確保已有對話；各面板看完按 `Esc` 返回。
+
+| 指令 | 操作與可交付的結果 |
+| :--- | :--- |
+| `/help` | 依提示按 Ctrl+P，搜尋 diff，找到功能後取消；記錄找到的名稱 |
+| `/status` | 記錄已連接供應商與 MCP 數量；沒有 MCP 也可以是 0 |
+| `/stats` | 在發出一則訊息前後各看一次，記下統計；背景統計可能延遲，不要求即時增加固定數值 |
+| `/debug` | 記下版本、系統與模型名稱，確認與自己環境相符 |
+| `/themes` | 記下原主題，選另一個、關閉面板，確認配色改變，再換回原值 |
+| `/settings` | 記下側邊欄或工具顯示原值，切換、關閉再重開確認保存，最後還原 |
+| `/reload` | 先在 Build 送出「請建立 .opencode/commands/reload-demo.md，frontmatter description 為重載測試，正文為：只回覆『重載成功』」；重載後 /reload-demo 應出現並正確回答。移除檔案再重載，確認消失 |
+| `/plugins` | 記下目前外掛名稱或「無」，不必為本題安裝外掛 |
+| `/highlights` | 開啟後記下一項更新重點，返回即可 |
+| `/update` | 先記錄 /debug 的版本，任務結束後檢查更新；有更新且決定安裝時，依提示安裝、重啟，再 /debug 確認新版。已最新版也算驗收通過 |
+| `/exit` | 離開後執行 opencode -c，應接回本節，再 /sessions 確認紀錄仍在 |
+
+**交付**：自行建立 `settings-record.md`，寫下版本、模型、選過的主題、統計觀察與 reload-demo 的結果。不附帳號憑證。
 
 ## ✅ 動手練習：換個喜歡的主題配色並查看學習統計
 

@@ -39,12 +39,23 @@ agy --version
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/01
+cd ~/terminal-ai-labs/agy/01
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `01-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
 ## 3. 第一次啟動與登入
 
 進入專案資料夾後啟動：
 
 ```bash
-cd ~/my-project
+cd ~/terminal-ai-labs/agy/01
 agy
 ```
 
@@ -95,8 +106,10 @@ Google 在 **2026-11-12** 發布 Orchestrator，讓較大的模型負責規劃�
 在對話框輸入 `/model`，選擇帳號可用的 Orchestrator 項目，按 `Enter` 後就能照平常方式交代任務：
 
 ```text
-請檢查這個專案的報名表單，加入必填欄位驗證，補上測試並執行，最後整理修改結果。
+請修改 calc.py 的 divide(a, b)：當 b 為 0 時拋出 ValueError("除數不可為零")，其餘行為不變。在 tests/test_calc.py 補上除數為零的測試，執行 python3 -m unittest discover -s tests -v，最後整理修改結果。
 ```
+
+**驗收**：另開終端機進入 `~/terminal-ai-labs/agy/01`，執行 `python3 -m unittest discover -s tests -v`，應至少 5 個測試通過。執行 `git diff -- calc.py tests/test_calc.py`，應看到錯誤處理與新測試；只切換模型而沒有送出上述任務，不會產生改動。
 
 | 選單名稱 | 規劃與檢查 | 修改與測試 | 可用方案 |
 | :--- | :--- | :--- | :--- |
@@ -133,6 +146,20 @@ agy update
 ```
 
 ---
+
+## 完整小練習：登入後確認模型能讀檔
+
+1. 在本章練習資料夾啟動 `agy` 並完成登入。
+2. 輸入 `/model`，選帳號有額度的模型，按 `Enter`。
+3. 在對話框送出：
+
+```text
+請閱讀 README.md 與 main.py，用三點繁體中文說明專案用途、執行方式與測試指令，先不要修改檔案。
+```
+
+**驗收**：回答應包含 `python3 main.py` 與 `python3 -m unittest discover -s tests -v`。在另一個終端機執行 `git status --short` 應無輸出（若做過 Orchestrator 修改題，則應只列出該題的變更）。離開後再用本章列出的 `agy --model ...` 啟動，送出同一問題，確認選到的模型與回答都正常。
+
+更新練習：離開後執行 `agy --version`，記下版本，再執行 `agy update` 與 `agy --version`。**驗收**：顯示更新成功或已是最新版；版本號可以相同。
 
 ## ✅ 自我檢查
 

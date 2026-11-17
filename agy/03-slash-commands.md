@@ -8,6 +8,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/03
+cd ~/terminal-ai-labs/agy/03
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 怎麼使用斜線指令？
 
 斜線指令（Slash Command）是 `agy` 對話框裡的快捷功能，以 `/` 開頭。
@@ -35,7 +49,7 @@
 | :--- | :--- | :--- | :---: |
 | [`/help`](03-slash-commands/a-status.md#help查看所有指令) | 查看所有指令 | 忘記指令時 | [A 區](03-slash-commands/a-status.md) |
 | [`/plan`](03-slash-commands/c-tasks.md#plan先規劃再動手) | 先規劃，再動手 | 想先看大綱再讓 AI 建立或修改檔案時 | [C 區](03-slash-commands/c-tasks.md) |
-| [`/diff`](03-slash-commands/d-output.md#diff看-ai-改了什麼) | 看 AI 改了什麼 | AI 修改完 `.md` 檔案後 | [D 區](03-slash-commands/d-output.md) |
+| [`/diff`](03-slash-commands/d-output.md#diff看-ai-改了什麼免-git-add可按每一輪對話查看) | 看 AI 改了什麼 | AI 修改完 `.md` 檔案後 | [D 區](03-slash-commands/d-output.md) |
 | [`/compact`](03-slash-commands/b-session.md#compact壓縮對話) | 壓縮對話 | 對話太長、回應變慢時 | [B 區](03-slash-commands/b-session.md) |
 | [`/clear`](03-slash-commands/b-session.md#clear開始新對話) | 開始新對話 | 換一個新主題時 | [B 區](03-slash-commands/b-session.md) |
 | [`/rewind`](03-slash-commands/b-session.md#rewind回到之前的對話時光機) | 回到之前的對話 | AI 寫錯方向、想退回重來時 | [B 區](03-slash-commands/b-session.md) |

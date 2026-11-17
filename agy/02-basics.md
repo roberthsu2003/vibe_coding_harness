@@ -6,12 +6,26 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/02
+cd ~/terminal-ai-labs/agy/02
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `02-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 啟動與離開
 
 在專案資料夾內啟動：
 
 ```bash
-cd ~/my-project
+cd ~/terminal-ai-labs/agy/02
 agy
 ```
 
@@ -105,6 +119,30 @@ agy --mode plan
 | `Ctrl+K` | 快速批准狀態列提示中待確認的子代理操作 |
 
 ---
+
+## 完整小範例：讀檔、規劃、修改與驗收
+
+本章素材已包含 `src/server.py`、`README.md`，可直接依序送出：
+
+| 步驟 | 在 agy 輸入框操作 | 預期結果 |
+| :--- | :--- | :--- |
+| 1 | `請閱讀 README.md，用三點說明這個專案，不要修改。` | 能說出程式與測試指令 |
+| 2 | `請解釋 @src/server.py 的 handle_request 會回傳什麼。`（從 `@` 選單選檔案） | 回答「登入成功」並說明呼叫路徑 |
+| 3 | `!git status --short` | 尚未修改時無輸出 |
+| 4 | 按 `Shift+Tab` 切到 `plan`，輸入 `請規劃把 main.py 的輸出改為「計算結果：4.0」。` | 先提出計畫；尚未核准前 `main.py` 不變 |
+| 5 | 審閱計畫並依提示核准 | AI 修改 `main.py` |
+| 6 | `/diff` | 看到輸出文字的改動，按 `Esc` 返回 |
+
+**驗收（一般終端機）**：
+
+```bash
+python3 main.py
+python3 -m unittest discover -s tests -v
+```
+
+應印出 `計算結果：4.0`，4 個測試通過。最後切回 `default`，輸入 `/exit`；再在終端機輸入 `agy -c`，應接回剛才對話。用 `agy -i "請讀 README.md 並摘要，不要修改"` 啟動則會先回答再留在對話框。
+
+快捷鍵也能實測：在 AI 修改的工具紀錄按 `Ctrl+O` 展開再收合；輸入框先打兩行文字（用 `Ctrl+J` 換行），確認尚未送出後按 `Esc` 清掉。長指令的 `Ctrl+B` 完整練習見 [03-D](03-slash-commands/d-output.md)。
 
 ## ✅ 動手練習
 

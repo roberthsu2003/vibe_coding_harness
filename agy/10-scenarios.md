@@ -6,6 +6,26 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/10
+cd ~/terminal-ai-labs/agy/10
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `10-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
+## 本章素材與操作順序
+
+練習資料夾已附 `todo.md`、`travel.md`、`notes.md`、`reading-notes.md`、`calc.py` 與 `tests/`，因此可以直接做每個情境。各題可獨立練：要避免上一題影響下一題，就用新的 `10-b`、`10-c` 等路徑重新建立素材。
+
+**每題都要實際觸發情境**：例如復原題先要求修改，再執行復原；不是只看操作說明或等待 AI 自己出錯。下方補齊各情境的實作與驗收。
+
 ## 情境 A：AI 正在工作，才想到漏講了條件
 
 假設你剛請 AI：`幫我建立 python_notes.md，整理 Python 串列的 5 個常用方法`，它正在動手寫時：
@@ -49,7 +69,7 @@
 1. 輸入 **`/fork`**（或 `/branch`）複製一份目前的對話。
 2. 在複製出來的新對話裡輸入：
    ```text
-   如果全程不開車、改搭火車和公車，請幫我把 travel.md 的交通與時間重新規劃一版。
+   如果全程不開車、改搭火車和公車，請另存 travel-transit.md，重新規劃交通與時間，保留 travel.md 原文。
    ```
 3. 如果覺得還是原本自駕版比較好，輸入 **`/resume`** 就能切換回原本的對話繼續。
 
@@ -76,7 +96,7 @@
 
 1. 輸入 **`/plan`** 加上需求（或按 `Shift+Tab` 切到 `plan` 模式）：
    ```text
-   /plan 請幫我把這份 200 行的 notes.md 拆成 basics.md、commands.md、faq.md 三個檔案，並在 README.md 加上索引連結
+   /plan 請幫我把目前的 notes.md 拆成 basics.md、commands.md、faq.md 三個檔案，並在 README.md 加上索引連結
    ```
 2. AI 只會讀檔案，然後產出一份計畫書給你審閱（輸入 **`/artifact`** 或按 `Ctrl+R` 查看）。
 3. 覺得哪裡不妥，按 `Esc` 回對話框直接用中文請它調整計畫：
@@ -89,20 +109,49 @@
 
 ## 情境 F：想讓 AI 自己修到測試全部通過為止
 
-**小範例**：專案的 `tests/` 裡有好幾個測試壞掉了，想讓 AI 自己重複「改程式 → 跑測試 → 看錯誤 → 再修正」直到全部通過：
+本章已附 `broken/` 故障練習，初始 commit 也已備份。先重現失敗、再用 `/goal` 修復並獨立驗收，完整指令見下方「F 的可重現失敗素材」。
+---
+
+## 各情境的完整實作與驗收
+
+| 情境 | 準備、實際操作 | 驗收 |
+| :--- | :--- | :--- |
+| A 補充需求 | 送出上面的 python_notes 任務，執行中補上小測驗要求；若已做完，就當下一輪要求它追加。再用 `/btw` 提問。想練中斷時，另請它整理 20 個方法，工作中按 `Ctrl+C` 再補充格式 | 打開 `python_notes.md`，有 5 個方法及 3 題解答；題外回答有出現，主任務仍能完成 |
+| B 復原 | 先 `cat todo.md` 記下兩條備註；送出 `請把 todo.md 的所有備註刪掉，只保留項目名稱。`，完成後再依 B 的 `/rewind` 步驟操作 | 實際 `cat todo.md` 檢查「帶耳機」「截圖交作業」是否回來；介面若只退對話而未還原檔案，明確請 AI 從初始 commit 還原這一份練習檔再重做，不要只看 git status |
+| C 分岔 | 原對話先 `/rename 自駕版`，只討論原有 travel；`/fork` 後要求另存 `travel-transit.md`，保留原檔，再 `/resume` 回自駕版 | 兩份檔案都存在，原版仍是自駕；切回舊對話不會自動還原檔案 |
+| D 壓縮 | 送出 `本次筆記格式固定：三點摘要，檔名小寫。請記住並回覆收到。`，再 `/context`、`/compact`，接著要求它重述格式 | 能說出三點摘要與小寫檔名；短對話壓縮後用量不一定下降。`/clear` 後用 `/resume` 找回剛才對話 |
+| E 計畫 | 使用現成 `notes.md`；先看計畫，要求 FAQ 併入 basics，再核准 | 核准前檔案不變；核准後有 basics.md、commands.md，README 連結指向存在檔案，FAQ 留在 basics |
+| F 修測試 | 使用下方的 broken 修復題 | 由 2 題失敗變成全部 3 題通過，測試檔未改 |
+
+### F 的可重現失敗素材
+
+在一般終端機執行：
 
 ```bash
-# 1. 先備份目前進度，避免改壞無法還原
-git add . && git commit -m "chore: 執行 goal 前先備份"
+cd broken
+python3 -m unittest -v
+cd ..
 ```
 
-接著在 `agy` 輸入：
+**修改前應看到**：3 個測試中 2 個失敗。回到 agy 輸入框送出：
 
 ```text
-/goal 修好 tests/ 裡所有失敗的測試，直到 uv run pytest 全部通過
+/goal 只修正 broken/calc.py 的 add，不改 broken/test_calc.py；在 broken/ 執行 python3 -m unittest -v，直到三個測試全部通過。最後回報錯誤原因與改動。
 ```
 
----
+完成後在一般終端機重跑同樣測試，應 3 題 `OK`；執行 `git diff -- broken/test_calc.py` 應無輸出。
+
+### 自己寫一段可驗收的任務
+
+使用已附的登入素材，送出：
+
+```text
+目標：補齊課堂登入函式的測試。
+範圍：只修改 tests/test_auth.py，不改 src/。
+驗收：新增帳號為空、密碼為空兩個案例，兩者都應回傳 False；執行 python3 -m unittest discover -s tests -v，全部通過後回報測試數。
+```
+
+**驗收**：測試至少 6 題全部通過，`git diff -- src/` 無改動。
 
 ## 把需求說清楚：目標、範圍、驗收
 
@@ -110,20 +159,20 @@ git add . && git commit -m "chore: 執行 goal 前先備份"
 
 | 要素 | 問自己一句話 | 範例 |
 | :--- | :--- | :--- |
-| **目標（Goal）** | 要做什麼？ | 為購物車加上折扣碼驗證功能 |
-| **範圍（Scope）** | 改哪裡？哪裡不能動？ | 只改 `src/cart/`，不要動到 `src/payment/` |
-| **驗收（Verification）** | 怎樣算做完？ | 補上單元測試，並執行 `uv run pytest` 全部通過 |
+| **目標（Goal）** | 要做什麼？ | 補齊登入函式的測試 |
+| **範圍（Scope）** | 改哪裡？哪裡不能動？ | 只改 `tests/test_auth.py`，不要動 `src/` |
+| **驗收（Verification）** | 怎樣算做完？ | 執行 `python3 -m unittest discover -s tests -v` 全部通過 |
 
 **合起來就是一段清楚好懂的指示：**
 
 ```text
-請幫購物車模組加上折扣碼（Coupon Code）驗證功能。
+請幫課堂登入函式補上空輸入的測試。
 範圍：
-- 只修改 src/cart/ 底下的檔案
-- 不要修改 src/payment/，確保原本的結帳流程不受影響
+- 只修改 tests/test_auth.py
+- 不修改 src/ 的程式碼
 驗收：
-- 在 tests/test_cart.py 補上有效碼、過期碼、無效碼三種測試
-- 執行 uv run pytest tests/test_cart.py 確認全部通過
+- 新增空帳號、空密碼兩種測試，都應回傳 False
+- 執行 python3 -m unittest discover -s tests -v，確認全部通過
 ```
 
 > [!TIP]

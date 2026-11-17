@@ -6,24 +6,47 @@
 
 ---
 
-## 1. `opencode run`：一行指令完成一件事
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
 
 ```bash
-# 問一個問題，結果直接印在終端機
-opencode run "請用繁體中文檢查 README.md 的連結是否正確"
-
-# 附上檔案
-opencode run "優化這段程式的效能並加上型別標註" -f main.py
-
-# 指定模型
-opencode run "解釋這個專案的架構" -m opencode/nemotron-3.5-lightning-free
-
-# 接著上一次的對話
-opencode run "為剛才修改的函式補上單元測試" -c
-
-# 輸出 JSON，給其他程式使用
-opencode run "列出專案裡所有的 TODO" --format json
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/09
+cd ~/terminal-ai-labs/opencode/09
+opencode
 ```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `09-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
+## 1. `opencode run`：一行指令完成一件事
+
+素材已附 `main.py`、`calc.py`、`tests/` 與 README。確認已依第 01 站登入後，在一般終端機依序執行：
+
+```bash
+# 1. 唯讀提問
+opencode run "請讀 README.md，回報用途與測試指令，不要修改"
+
+# 2. 附檔案，產生明確的改動
+opencode run "只為 main.py 加上型別或中文註解，保持執行結果 4.0 不變" -f main.py
+
+# 3. 立即接續上一個任務，不要穿插別的 run
+opencode run "請把剛才改了什麼與驗證方式寫成 run-summary.md，不再改 Python 檔案" -c
+
+# 4. 指定模型；若 ID 已下架，換成 /models 中選到的可用非中國大陸模型
+opencode run "請讀 README.md，只回報測試指令" -m opencode/nemotron-3.5-lightning-free
+
+# 5. 只規劃，不動檔案
+opencode run "請規劃在 README.md 新增安裝說明，先不要修改" --agent plan
+
+# 6. 輸出 JSON 事件
+opencode run "請只讀 main.py，列出 TODO 註解，不修改" --format json
+```
+
+**驗收**：第 2 步後 `python3 main.py` 仍印出 `4.0`，`git diff -- main.py` 可見註解；第 3 步產生 `run-summary.md` 且說明上一輪改動；第 5 步後 `git diff -- README.md` 無輸出。第 6 步為 JSON 輸出，可能包含多筆事件，不要假設一定只有一個 JSON 物件。
+
+若第 08 站設了 `ask`，請依實際提示授權；無法互動授權時回互動式 OpenCode 送出同一任務，不能把權限失敗當成任務成功。
 
 | 參數 | 用途 |
 | :--- | :--- |
@@ -60,6 +83,16 @@ herdr integration install opencode
 > 詳細說明見 [在 Herdr 中使用 OpenCode](../herdr/opencode-integration.md)；讓主管 AI 指揮多個 OpenCode 見 [Herdr 動手練習](../herdr/practice/README.md)。
 
 ---
+
+## 完整小練習：Herdr 左邊修改、右邊驗收
+
+先依 [Herdr 安裝教學](../herdr/01-install.md)完成安裝。兩個窗格都先 `cd ~/terminal-ai-labs/opencode/09`。
+
+1. 左邊啟動 `opencode`，送出 `請為 calc.py 的 divide 加上中文 docstring 與型別標註，不改運算結果，完成後執行 python3 -m unittest discover -s tests -v。`。
+2. 右邊執行 `python3 -m unittest discover -s tests -v`，再執行 `git diff -- calc.py`。
+3. **驗收**：4 個測試通過，diff 顯示 docstring 與型別。左側的 AI 工作紀錄與右側實際程式結果對得上。
+
+`--session` 選做：先 `opencode session list`，複製本節對話 ID，再執行 `opencode run "請用一句話回顧這個任務，不改檔案" --session 貼上實際ID`，回答應能回顧前文。`--standalone` 可用 `opencode run "只回覆 OK" --standalone` 驗證。`--auto` 為進階參數，本節無需開啟。Glow 選做題先確認 `glow --version`，再使用前面的管線，應看見排版後文字。
 
 ## ✅ 自我檢查
 

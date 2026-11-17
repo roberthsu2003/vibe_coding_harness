@@ -6,6 +6,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/08
+cd ~/terminal-ai-labs/opencode/08
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `08-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 為什麼要設權限？
 
 > [!WARNING]
@@ -47,6 +61,7 @@ AI 問你的時候有三個選擇：
   "permissions": [
     // 修改檔案前先問我
     { "action": "edit", "resource": "*", "effect": "ask" },
+    { "action": "edit", "resource": "*protected.txt", "effect": "deny" },
 
     // 執行指令：預設先問
     { "action": "shell", "resource": "*", "effect": "ask" },
@@ -64,6 +79,22 @@ AI 問你的時候有三個選擇：
 > 規則的順序很重要：**最後一條符合的規則生效**。所以要把通用的 `"*"` 放在最前面，特別的規則放在後面。
 
 > `git status *` 也包含沒有參數的 `git status`。
+
+### 完整小範例：三種權限各測一次
+
+1. 在本章練習專案，用編輯器將上面的 JSONC 存成 `opencode.jsonc`（若已有 `opencode.json`，則合併到那份檔案，避免同時維護兩份）。
+2. 輸入 `/reload`，必要時離開再啟動；使用 Build，且不要加 `--auto`。
+3. 一次送出一列：
+
+| 在 OpenCode 輸入框送出 | 預期結果與檢查 |
+| :--- | :--- |
+| `請實際執行 git status --short。` | 因 allow 規則直接執行 |
+| `請在 reading-notes.md 最後加上「今天完成權限練習」。` | 出現 edit 詢問，選 `once`；用 `cat reading-notes.md` 確認新增文字 |
+| `請用檔案修改工具把 protected.txt 改成「已修改」；若被拒絕就停止，不要換用 shell。` | 因 deny 規則被拒絕；`cat protected.txt` 應保持原文 |
+
+只選 `once`，方便重做時再次看到詢問。若已有持續授權，改用新的 `08-retry` 練習專案測試。
+
+**收尾**：只刪除本次新增的權限規則，再 `/reload`；若本次才建立設定檔，可將檔案改名為 `opencode.jsonc.bak` 後重載，保留作業紀錄。
 
 ## 4. 常用的動作
 
@@ -90,9 +121,13 @@ permissions:
     resource: "*"
     effect: deny
 ---
+
+請審查指定檔案，只回報問題與行號，不要修改檔案。
 ```
 
 代理的規則會接在全域規則**後面**，所以優先權比較高。
+
+**實作驗證代理權限**：將上面的完整 Markdown 存成 `.opencode/agents/readonly-lab.md`，先執行 `mkdir -p .opencode/agents` 建立資料夾。輸入 `/reload`，送出 `@readonly-lab 請檢查 calc.py 除以零時會怎樣，只回報，不要修改。`。**驗收**：子代理回報邊界問題，`git diff -- calc.py` 無輸出。練完將檔案移出 `agents/`，重載後 `@readonly-lab` 不再出現。
 
 ## 6. 確認設定有生效
 

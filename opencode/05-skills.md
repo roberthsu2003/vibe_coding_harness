@@ -8,6 +8,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/05
+cd ~/terminal-ai-labs/opencode/05
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `05-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. Skill 是什麼？
 
 **Skill 就像交給 AI 的一份工作手冊。** 你把某件事的做法寫下來，之後 AI 遇到這件事就會翻開手冊照做，你不用每次重新交代。
@@ -53,6 +67,8 @@ OpenCode 會自動讀取其他工具的 Skill 資料夾，所以你在其他工�
 | **通用格式（如 `agy`）** | `.agents/skills/<名稱>/` | `~/.agents/skills/<名稱>/` |
 | **Claude Code** | `.claude/skills/<名稱>/` | `~/.claude/skills/<名稱>/` |
 
+**共用 Skill 的完整小範例**：先完成第 4 節 explain-code，執行 `mkdir -p .agents/skills`，將整個 `.opencode/skills/explain-code` 複製到 `.agents/skills/explain-code`。把原 `.opencode/skills/explain-code` 資料夾移到 `skill-backup/explain-code` 暫存，避免同名來源遮蔽測試。`/reload` 後送出 `@explain-code 請解說 guess.py`，應仍能載入並輸出四個小節。練完刪掉共用副本，再把原資料夾移回並重載。全域的 agy Skill 目錄是 `~/.gemini/config/skills`；若要共用需手動複製到表列來源，不能假設會自動讀取該目錄。
+
 ### 方式 B：從 GitHub 或同學分享取得單一 Skill
 
 如果網路上或同學分享了一個 Skill 資料夾（裡面有 `SKILL.md`），只要把整個資料夾放進對應目錄即可：
@@ -66,10 +82,10 @@ OpenCode 會自動讀取其他工具的 Skill 資料夾，所以你在其他工�
 
 1. **下載並放到專案（區域）目錄**：
    ```bash
-   git clone --depth 1 https://github.com/anthropics/skills.git /tmp/ext-skills
+   task_skill_source=$(mktemp -d)
+   git clone --depth 1 https://github.com/anthropics/skills.git "$task_skill_source"
    mkdir -p .opencode/skills
-   cp -r /tmp/ext-skills/skills/pptx .opencode/skills/pptx
-   rm -rf /tmp/ext-skills
+   cp -R "$task_skill_source/skills/pptx" .opencode/skills/pptx
    ```
    > 想改成**全域**（所有專案都能用），把 `.opencode/skills/pptx` 換成 `~/.config/opencode/skills/pptx` 即可。
 
@@ -84,6 +100,16 @@ OpenCode 會自動讀取其他工具的 Skill 資料夾，所以你在其他工�
    第 4 頁：新手必學的三個好習慣（說清楚需求、分小步測試、自己看過程式碼）
    第 5 頁（總結）：今天就能開始的第一步與 Q&A
    ```
+
+**製作前補齊依賴**：這個外部 Skill 可能依賴 Node.js、Python 套件與簡報渲染工具。先在對話框送出：
+
+   ```text
+   請先讀取 .opencode/skills/pptx/SKILL.md 與其提到的依賴說明，列出本機缺少的工具，並依手冊提供安裝指令。請先完成環境確認，再做五頁簡報；不能只回傳大綱或 Markdown 冒充 PPTX。
+   ```
+
+   依清單完成安裝後再送出五頁任務。**驗收**：在檔案總管找到實際的 intro.pptx，用 PowerPoint、Keynote 或 LibreOffice 開啟，確認恰有 5 頁且對應指定主題，文字沒有溢出、圖片沒有遺失。若沒有可開啟 PPTX 的軟體，先安裝其中一種，不能只用檔案存在判定通過。讓 AI 依 Skill 的渲染／檢查步驟確認成品，若依賴無法安裝則明確記錄哪一步未完成。
+
+   上面的暫存來源可保留作比對；練完用檔案總管移除本次 mktemp 產生的來源資料夾即可。重做時先確認專案沒有同名 pptx Skill，避免複製成巢狀資料夾。
 
 4. **不想用了怎麼刪**：
    ```bash
@@ -145,6 +171,8 @@ AI 會自動建立 `.opencode/skills/explain-code/SKILL.md`。
 
 #### 步驟 1：在全域目錄建立資料夾與 `SKILL.md`
 
+**建立前先確認**：若 `~/.config/opencode/skills/study-quiz/SKILL.md` 已存在，改用 `study-quiz-lab` 作為資料夾、name 與呼叫名稱，全程不覆蓋原檔。
+
 ```bash
 mkdir -p ~/.config/opencode/skills/study-quiz
 ```
@@ -192,6 +220,45 @@ D. ...
 > OpenCode 的 Skill 不是斜線指令，`/study-quiz` 不會觸發它（要用 `@study-quiz` 或自然語言）。
 
 ---
+
+### 自訂 Skill 的實際驗收：不只看它說「已載入」
+
+1. 完成 explain-code 建立後，打開 `.opencode/skills/explain-code/SKILL.md`，確認第一行為 `---`，有 `name: explain-code`、明確 description，以及四個輸出要求。若 AI 存錯位置，先移到正確資料夾再 `/reload`。
+2. 送出 `@explain-code 請解說 guess.py`。**驗收**：輸出有一句總結、生活比喻、逐段說明與一個常見坑；對照 guess.py，確實包含 1～100、最多 5 次、太大太小提示。
+3. 要測試遊戲本身，請 AI 把猜測函式加上可測試的參數，或在一般終端機直接執行 `python3 guess.py` 並輸入 50、25、75 等數字。**驗收**：每次猜測都有提示，最多五次後結束；若非數字造成錯誤，記下此邊界問題再請 AI 改善。
+4. study-quiz 建好後送出 `@study-quiz 根據 guess.py 出題考我`。**驗收**：恰有三題、各四個選項，先不公布答案。接著送出自己的答案（例如 `1A 2C 3B`，依實際題目作答），確認逐題批改與解釋。
+5. 測試全域範圍：另建空資料夾並建立一份含「串列用中括號、字典用大括號」的 `notes.md`，在該資料夾啟動 opencode，使用 study-quiz 對 notes.md 出題；應能使用全域 Skill。局部的 explain-code 不應從原專案自動帶過去。
+
+### 全域測試的建立指令
+
+另開一般終端機執行：
+
+```bash
+mkdir -p ~/terminal-ai-labs/opencode/05-global-check
+cd ~/terminal-ai-labs/opencode/05-global-check
+printf '# 複習筆記\n\n串列用中括號，字典用大括號。\n' > notes.md
+opencode
+```
+
+在新對話送出 `@study-quiz 根據 notes.md 出三題測驗`，確認全域 Skill 可用。沒有讀過原專案的 guess.py 也能正常出題，這才是跨資料夾測試。答完後輸入 `/exit`，回到本章原資料夾繼續停用與清理。
+
+上面的輸出格式只示範第一題排版；實際題目必須依檔案內容重新設計三題，不能直接複製範本固定題。
+
+### 停用、恢復、刪除的完整操作
+
+在本章資料夾的一般終端機依序執行：
+
+```bash
+mv .opencode/skills/explain-code/SKILL.md .opencode/skills/explain-code/SKILL.md.bak
+```
+
+回到 opencode 輸入 `/reload`，再 `/skills`，確認 explain-code 不在可用清單；接著把檔名改回並重新載入：
+
+```bash
+mv .opencode/skills/explain-code/SKILL.md.bak .opencode/skills/explain-code/SKILL.md
+```
+
+**驗收**：explain-code 重新出現且可呼叫。練完在對話框送出 `請只刪除本次練習建立的 .opencode/skills/explain-code 與全域的 ~/.config/opencode/skills/study-quiz，保留其他 Skill。`，依提示處理權限，再 `/reload`、`/skills` 確認這兩個名稱消失。建立全域 Skill 前就先確認同名路徑不存在；若原本已有，不要覆蓋或刪除它，請改用 study-quiz-lab 並同步更改 name 與呼叫名稱。
 
 ## 5. 看懂 `SKILL.md` 與資料夾結構
 
@@ -262,6 +329,12 @@ Skill 資料夾裡還可以放參考資料或腳本，AI 只有在 `SKILL.md` �
 ```
 
 ---
+
+### Skill 權限的實際驗收
+
+先保留 study-quiz，不要急著執行前面的刪除步驟。合併上面的 permissions 後 `/reload`，送出 `@study-quiz 根據 guess.py 出題`，應可直接載入。要測 deny，先把 study-quiz 的 effect 暫時改為 deny（放在規則陣列最後），重載後開新對話，再用相同提示詞：應拒絕載入 Skill，不能把 AI 憑自己的能力出題當成 Skill 已成功。將該規則還原 allow 後再測一次，最後還原本次權限變更。
+
+`internal-*` 是命名規則示意；沒有建立同名 Skill 就不用假裝測過它。要完整測試，可複製 study-quiz 到 `.opencode/skills/internal-quiz/`，將 frontmatter name 改為 internal-quiz，重載後用 `@internal-quiz` 呼叫，應被拒絕。練完只移除本題複本與新增規則。
 
 ## 7. Skill 沒有作用？
 

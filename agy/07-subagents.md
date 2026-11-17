@@ -10,6 +10,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/07
+cd ~/terminal-ai-labs/agy/07
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `07-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 什麼是 Subagent（子代理）？
 
 在專案變大或任務變複雜時，如果讓同一個 AI（主代理）包辦所有事，對話視窗很快就會被大量的搜尋紀錄和檔案內容塞滿，讓 AI 開始忘東忘西、回應變慢。
@@ -202,6 +216,27 @@ EOF
 
 ---
 
+### 兩個自訂代理的驗收與重載
+
+- **code-reviewer**：用 `cat calc.py` 記下原內容，完成審查後再執行 `git diff -- calc.py`。**應看到**報告指出除以零風險、三個指定小節，且沒有修改差異。若回覆只說啟動成功，請再點名要求它完成檢查並回傳報告。
+- **note-editor**：讀取 `draft-note.md`，報告應至少指出「成式／真得／方變」三處錯字。另建一個空資料夾、在其中啟動 agy，輸入 `/agents` 應仍找到 `note-editor`，但找不到專案限定的 `code-reviewer`，這才驗證了全域與區域的差別。
+- **載入**：若建立後選單沒有更新，先離開並在本章資料夾重新啟動 agy，再輸入 `/agents`。全域練習前請確認同名檔案原本不存在，避免覆蓋自己的代理。
+
+### 其餘內建子代理也實際試一次
+
+| 角色 | 準備與輸入 | 驗收與收尾 |
+| :--- | :--- | :--- |
+| research | 本章已附 README 與 notes/；輸入 `請派 research 子代理列出 notes/ 的 Markdown 檔名、標題與行數，只讀不改。` | 清單至少含 ch1、ch2、ch3、faq；對照一般終端機 `wc -l notes/*.md` |
+| self | 輸入 `請派 self 子代理建立 self-summary.md，讀取 README.md 後寫出三點摘要。` | `cat self-summary.md` 有三點摘要，且在 `/agents` 有對應紀錄 |
+| browser | 先完成 [03-C 瀏覽器練習](03-slash-commands/c-tasks.md#browser讓-ai-操作瀏覽器查資料) | 看到瀏覽器工具紀錄與本機頁面結果，結束後停止伺服器 |
+| image-generator | 輸入 `請使用 image-generator 產生一張沒有文字的藍色機器人插圖，存成 robot.png，最後回報實際路徑。` | 用檔案總管打開回報的圖片；需帳號支援圖片功能與額度。無權限時記錄限制，不能以文字描述當成圖片成果 |
+
+### 停用、恢復與停止的實測
+
+在一般終端機把 `.agents/agents/code-reviewer/agent.md` 改名成 `agent.md.bak`，重新啟動，確認 `code-reviewer` 不在清單；再改回並重啟，確認重新出現。
+
+要觀察停止操作，送出 `請派 research 子代理逐一閱讀目前全部 Python 和 Markdown 檔，整理每個檔案的用途與行數。`，立刻進入 `/agents`。若仍為 `running`，選中後按 `K`，確認狀態變為已停止；若已做完，直接查看完成紀錄即可，不必為了練習強行重啟更多工作。最後依第 6 節只清除本次建立的代理；重啟後確認這兩個名稱消失，其他既有代理仍在。
+
 ## 5. 看懂 `agent.md` 設定欄位（YAML Frontmatter）
 
 自訂代理檔案最上方兩條 `---` 之間的設定欄位如下：
@@ -291,7 +326,7 @@ agy agent
 請幫我刪除這個專案的 code-reviewer 自訂代理（.agents/agents/code-reviewer），以及全域的 note-editor 自訂代理（~/.gemini/config/agents/note-editor），並順便刪掉測試用的 calc.py 與 draft-note.md。
 ```
 
-刪完後再輸入 **`/agents`**，就會看到 `Available Agents` 只剩下預設的 `Default` 代理，乾乾淨淨！
+刪完後重新啟動，再輸入 **`/agents`**，確認本次建立的 `code-reviewer` 與 `note-editor` 已消失；原本安裝的其他代理應保留。
 
 ---
 
@@ -358,14 +393,24 @@ agy agent
 
 ---
 
-### 更多程式碼開發 `/swarm` 實用範例
+### 更多程式碼開發 `/swarm` 實用範例（都有現成素材）
 
-| 情境 | 可以這樣寫 |
-| :--- | :--- |
-| **多個檔案一起加功能** | `/swarm 為 src/routes/users.ts、orders.ts、products.ts 三個 API 加上輸入驗證，每個檔案配一位 worker 並補上測試，最後由 verifier 執行 npm test。` |
-| **不同模型交叉檢查** | `/swarm 為 pkg/httpclient 加上重試機制，請讓 verifier 用跟 worker 不同的模型檢查有沒有 race condition，並執行 go test -race ./...。` |
-| **平行找 Bug 原因** | `/swarm 找出為什麼程式啟動要 4 秒。派三位唯讀 worker 分別檢查模組匯入、設定檔載入和外掛探索，在留言板比對證據後列出修改建議。` |
-| **一次修好散落在各處的測試** | `/swarm 執行 pytest 找出所有失敗的測試，依資料夾分組，每組派一位 worker 修好（不可刪掉 assertion），最後由 verifier 重跑全部測試。` |
+以下每題請用新的練習資料夾（例如 `07-code1`、`07-code2`），依本章開頭的 `prepare.py` 指令建立後再啟動 agy。這樣不用先有 TypeScript 或 Go 專案，也能完整實作。
+
+| 題目與準備 | 在輸入框送出 | 一般終端機驗收 |
+| :--- | :--- | :--- |
+| 多檔加測試：使用素材中的 calc 與 auth | `/swarm 請兩位 worker 分別在 tests/test_calc.py 加入負數除法邊界測試、在 tests/test_auth.py 加入空帳號與空密碼的測試，不修改程式，由 verifier 執行 python3 -m unittest discover -s tests -v。` | 測試數增加且全部 OK；`git diff` 只包含兩份測試檔 |
+| 不同模型檢查：先用 /model 確認可用模型 | `/swarm 為 calc.py 的 divide 加上除數為零時拋出 ValueError("除數不可為零") 的行為，補測試；若帳號有另一可用模型，讓 verifier 用不同模型檢查並執行 python3 -m unittest discover -s tests -v，無其他模型則明確回報並沿用。` | 新增零除數測試且全部 OK；看板列出的模型與結果一致 |
+| 平行調查：使用現有 src/ | `/swarm 請兩位唯讀 worker 分別調查 src/server.py 的呼叫流程、src/auth.py 的登入判斷，verifier 對照原始碼，最後主代理建立 call-report.md，不改任何 Python 檔案。` | 報告能連起 handle_request → welcome → login；Python 檔案無差異 |
+| 修失敗測試：終端機先 cd broken，執行 python3 -m unittest -v，應 3 題中 2 題失敗 | `/swarm 只修正 broken/calc.py 的 add 實作，不修改測試；由 worker 分析與修復，verifier 在 broken/ 執行 python3 -m unittest -v，三個測試全部通過才完成。` | `(cd broken && python3 -m unittest -v)` 顯示 3 題 OK，`git diff -- broken/test_calc.py` 無輸出 |
+
+每題完成後輸入 `/swarm board` 查看審查結果，按 `Esc` 返回；請協調者結束已完成成員，再按 `Alt+X` 收起狀態列。兩天旅遊範例也要實際開啟兩份檔案核對早中晚、花費與總預算；金額只作虛構練習估算。
+
+### `/boost` 與 `/teamwork` 也有完整練習
+
+- **Boost**：在本章素材送出 `/boost 請深入檢查 calc.py 的 divide 在整數、負數、除以零時的行為，只讀不改；建立 divide-review.md，包含三種輸入、實際結果、風險與建議。`。**驗收**：報告至少列出 `(12, 3)`、`(-6, 2)`、`(1, 0)`，最後一項指出目前會拋 `ZeroDivisionError`；`git diff -- calc.py` 無改動。
+- **Teamwork（付費功能）**：先閱讀 [03-C 的完整訪談與分階段範例](03-slash-commands/c-tasks.md)，使用已附 `notes/` 作素材。**驗收**：依該節逐項核對章節、索引與審查結果，完成後停止團隊。
+
 
 ---
 

@@ -8,6 +8,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/04
+cd ~/terminal-ai-labs/agy/04
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `04-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 先記住兩個層級
 
 | 層級 | 生效範圍 | 適合放什麼 | 例子 |
@@ -146,17 +160,17 @@ MCP（Model Context Protocol）讓 AI 能使用外部工具，例如資料庫、
 ~/.gemini/config/mcp_config.json
 ```
 
-內容範例：
+完整小範例：連接本機檔案工具。先確認 `node --version` 與 `npx --version` 有輸出（需要 Node.js；首次下載套件需要網路）。
+
+1. 在本章練習資料夾執行 `pwd`，複製完整路徑。
+2. 建立 `.agents/`，用編輯器新增**專案設定** `.agents/mcp_config.json`，將下方最後一個參數換成剛才 `pwd` 的完整路徑。不要把 `~` 當完整路徑傳給 MCP 程式。
 
 ```json
 {
   "mcpServers": {
-    "sqlite-helper": {
-      "command": "sqlite-mcp-server",
-      "args": ["/path/to/database.db"]
-    },
-    "remote-service": {
-      "url": "https://mcp.example.com/mcp"
+    "lab-files": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/請換成本章練習專案的完整路徑"]
     }
   }
 }
@@ -167,22 +181,32 @@ MCP（Model Context Protocol）讓 AI 能使用外部工具，例如資料庫、
 | `command`、`args`、`env` | 本機工具 | 要執行的程式、參數、環境變數 |
 | `url` | 遠端服務 | 伺服器的網址 |
 
-也可以用指令**新增、查看、停用與刪除** MCP 伺服器（對話框內則可輸入 `/mcp` 管理）：
+3. 重新啟動 `agy`，輸入 `/mcp`，確認 `lab-files` 已連線且有列出檔案工具。
+4. 回到對話框送出：
+
+```text
+請使用 lab-files MCP 的工具讀取 README.md，回報其中的測試指令。請指出使用的 MCP 工具名稱，不要改用終端機或一般讀檔工具。
+```
+
+**驗收**：工具紀錄應顯示 `lab-files` 的讀檔呼叫，回答包含 `python3 -m unittest discover -s tests -v`。若只有普通讀檔紀錄，請要求它重做這一步。若 MCP 未連線，先檢查 Node、網路與完整路徑。
+
+**收尾**：在 `/mcp` 停用 `lab-files`，確認工具不再可用；重新啟用並再讀一次。練完刪除本節新建的 `.agents/mcp_config.json` 中 `lab-files` 項目，重啟後 `/mcp` 不應再列出它。專案 MCP 路徑依 [官方設定說明](https://antigravity.google/docs/settings)；檔案工具見 [官方 Filesystem Server](https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem)。
+
+也可練習全域 CLI 管理（與上面的專案範例**擇一**）：在本章資料夾執行 `pwd`，把完整路徑放進下方指令的最後一個參數。
 
 ```bash
-# 新增：加入本機或遠端 MCP 伺服器
-agy mcp add fs npx -y @modelcontextprotocol/server-filesystem .
-agy mcp add --type http remote-service https://mcp.example.com/mcp
+# 新增：最後一個參數請貼上 pwd 顯示的完整路徑
+agy mcp add lab-files npx -y @modelcontextprotocol/server-filesystem /請換成本章練習專案的完整路徑
 
 # 查看：列出目前的伺服器與狀態
 agy mcp list
 
 # 停用 / 重新啟用：暫時關閉，保留設定
-agy mcp disable remote-service
-agy mcp enable remote-service
+agy mcp disable lab-files
+agy mcp enable lab-files
 
 # 刪除：從設定中永久移除
-agy mcp remove remote-service
+agy mcp remove lab-files
 ```
 
 > [!CAUTION]
@@ -201,6 +225,53 @@ agy mcp remove remote-service
 | 終端機找不到 `agy` | 確認 `~/.local/bin` 在 PATH 裡，或執行 `agy install` 並重開終端機 |
 
 ---
+
+## 完整小練習：設定、重新啟動、驗證與還原
+
+### A. 三種設定方式都實際試一次
+
+1. 在 `/config` 記下 `Notifications` 原值，切換一次並關閉選單；重新開 `/config`，確認值保留，再改回原值。
+2. 送出 `請只把 agy 的 notifications 設成 true，保留所有其他設定。`，允許寫入後，重新開 `/config` 確認已開啟。
+3. 要試手動編輯，先離開 agy，在一般終端機備份（`-i` 遇到同名備份會先詢問）：
+
+```bash
+cp -i ~/.gemini/antigravity-cli/settings.json ~/.gemini/antigravity-cli/settings.json.class-backup
+nano ~/.gemini/antigravity-cli/settings.json
+```
+
+只把既有 `notifications` 改成 `false`，不要覆蓋整份設定。nano 用 `Ctrl+O`、`Enter` 儲存，再 `Ctrl+X` 離開。執行：
+
+```bash
+python3 -m json.tool ~/.gemini/antigravity-cli/settings.json
+agy
+```
+
+**驗收**：JSON 檢查沒有錯誤，`/config` 顯示通知關閉。練完用編輯器把本節變更的欄位改回備份值；其他設定保留。
+
+### B. 只在這次啟動生效
+
+離開後執行 `agy --mode plan`，送出 `請規劃為 README.md 新增一節操作說明，先不要實作。`。**驗收**：顯示 plan 模式，`git diff -- README.md` 無輸出。結束對話，再正常執行 `agy`，確認回到原本預設模式。要試 `--settings`，用上面的通知參數啟動，確認 `/config` 的有效值，結束後正常啟動應仍使用保存的值。
+
+### C. 驗證全域規則
+
+先備份既有 `~/.gemini/config/AGENTS.md`（若不存在就記下「原本沒有」），再使用第 4 節的提示詞**追加**繁體中文規則。離開後重新啟動，在對話框輸入：
+
+```text
+請閱讀 README.md，用三點說明專案用途。
+```
+
+**驗收**：回答使用繁體中文。另建一個空資料夾、在裡面啟動 agy，送出 `Explain what a coding agent is in one sentence.`，觀察是否仍用繁體中文。練完刪除本次追加的那一條規則（原檔若只因本次練習而建立，可移除該檔）。
+
+### D. 選做：使用自己的 Gemini API 金鑰
+
+先確認金鑰已有可用額度。離開 agy 後，在 Bash 終端機輸入（輸入內容不會顯示）：
+
+```bash
+read -s -p "Gemini API Key: " GEMINI_API_KEY
+export GEMINI_API_KEY
+```
+
+備份 `settings.json`，只把 `modelProvider` 設成 `"gemini"`，再啟動 agy，選該供應商可用模型，送出 `請只回覆「連線成功」。`。**驗收**：無認證錯誤並收到回答。練完離開、還原 `modelProvider` 原值，再在終端機執行 `unset GEMINI_API_KEY`。macOS 預設 zsh 請先輸入 `bash` 再執行上述 `read`，完成後用 `exit` 回原 shell。
 
 ## 7. ✅ 自我檢查與環境健康檢查
 

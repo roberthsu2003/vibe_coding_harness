@@ -8,6 +8,24 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/03-f
+cd ~/terminal-ai-labs/opencode/03-f
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-f-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
+## 本節的素材與存檔位置
+
+已附 reading-notes.md，第一個 `/summary` 範例可以直接用。手動存檔前，在一般終端機執行 `mkdir -p .opencode/commands`；用編輯器新增指定檔名，貼入完整 Markdown 內容並儲存。回 OpenCode 輸入 `/reload` 後，一個指令一次送出。
+
 ## 1. 方法一：一句話請 AI 幫你建立（最推薦！）
 
 你連自己開檔案都不用，直接在對話框告訴 AI：
@@ -81,6 +99,34 @@ $ARGUMENTS
 > `` !`指令` `` 會**直接執行，不會先問你**。請只寫你自己看得懂的安全指令（如 `date`、`git status`），不要把來路不明的指令貼進去。
 
 ---
+
+### 實際驗收 `/summary`、`/hello` 與 `/diary`
+
+1. `/summary @reading-notes.md`：在 `@` 選單選檔案，回覆應有三個重點、一句行動建議；來源檔不變。
+2. `/hello 小明`：回覆應包含小明與一句鼓勵。改輸入 `/hello 小華` 再做一次，確認名字跟著變，而非固定寫死。
+3. 完整儲存上面的 `diary.md` 後 `/reload`，送出 `/diary 今天學會用終端機與 AI 一起整理筆記`。
+4. 在一般終端機執行 `date "+%Y-%m-%d"` 與 `cat diary.md`。**驗收**：日記日期與系統日期一致，包含今日亮點與明日期待；再送出一次 `/diary 晚上複習了自訂指令`，應附加第二筆而保留第一筆。
+
+### `$1`、`$2` 也有完整範例
+
+新增 `.opencode/commands/card.md`，貼上：
+
+```markdown
+---
+description: 用姓名與祝福內容產生一張文字卡片
+---
+請用繁體中文輸出三行：
+第一行：收件人：$1
+第二行：祝福：$2
+第三行：祝你今天學習順利！
+不要修改檔案。
+```
+
+`/reload` 後送出 `/card 小明 生日快樂 天天開心`。**驗收**：第一行收件人為小明，第二行包含完整「生日快樂 天天開心」，不是只取兩個字。
+
+**停用與移除**：將 `.opencode/commands/card.md` 改名為 `card.md.bak` 後重載，確認 `/card` 消失；改回、重載應恢復。練完移除本次建立的 summary、hello、diary、card 四份指令檔，再重載確認不再出現；成果 diary.md 可保留交作業。
+
+**全域選做**：把 hello.md 複製到 `~/.config/opencode/commands/hello-lab.md`（先確認沒有同名檔案），在另一個空資料夾啟動 OpenCode 並 `/reload`。`/hello-lab 小明` 應能使用；練完只移除這份新建的 hello-lab.md，再重載確認消失。
 
 ## 4. 開頭 `---` 的選填設定欄位
 

@@ -6,6 +6,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/03-b
+cd ~/terminal-ai-labs/opencode/03-b
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-b-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 指令介紹
 
 ### `/init`：產生專案規則（`AGENTS.md`）
@@ -50,6 +64,19 @@
 - **進階用法**：後面也可以指定要檢查的分支或 commit（例如 `/review main`）。
 
 ---
+
+## 完整小範例：確實產生可檢查的差異
+
+本章素材已含 reading-notes.md 與初始 commit，無需先建立自己的筆記專案。
+
+1. 執行前面的 `/init`，打開 `AGENTS.md` 確認寫入了摘要要求。
+2. 送出 `請在 reading-notes.md 開頭新增三點摘要，原來的三句話完整保留。`，等 AI 完成。
+3. `/diff` 中選 reading-notes.md，應看見摘要新增的綠色行；若看到原句被刪，按 Esc 返回，要求 AI 恢復原句再檢查。
+4. 輸入 `/review`，請它核對原句保留、摘要數量、Markdown 格式。沒有問題時，回覆「未發現問題」也可以，不要求一定挑錯。
+
+**驗收（一般終端機）**：`git diff -- reading-notes.md` 顯示新增摘要，`cat reading-notes.md` 仍包含「先列出三項重要任務」「一次專心做一件事」「睡前回顧完成進度」。本題尚未 commit，因此 `/review` 有明確可審查的改動。
+
+**分支比較選做**：一般終端機執行 `git switch -c review-practice`，執行 `git add AGENTS.md reading-notes.md`，再執行 `git -c user.name=Classroom -c user.email=classroom@example.invalid -c commit.gpgsign=false commit -m "docs: practice note review"`，回 OpenCode 執行 `/review main`。**驗收**：比較內容含本次摘要與規則。完成後留在此練習分支即可。
 
 ## ✅ 動手練習：建立筆記規則並檢查 Markdown 修改差異
 

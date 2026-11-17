@@ -8,6 +8,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/03-e
+cd ~/terminal-ai-labs/agy/03-e
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-e-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 最常操作的環境指令
 
 ### `/model`：切換 AI 模型
@@ -67,7 +81,7 @@
 | `/skills` | 瀏覽目前已載入的 Skill（或重新載入） | 輸入 `/skills` 查看，或 `/skills reload` 重新載入。詳見 [05 Skill 配置](../05-skills.md) |
 | `/agents` | 查看自訂代理與背景子代理 | 輸入 `/agents` 開啟管理畫面。詳見 [07 Subagent 子代理](../07-subagents.md) |
 | `/mcp` | 查看外部工具（MCP 伺服器）連線狀態 | 輸入 `/mcp` 開啟管理畫面。詳見 [04 環境配置](../04-config.md) |
-| `/plugin` | 查看或管理已安裝的外掛（詳見 [05 Skill 配置](../05-skills.md#什麼是-plugin外掛)） | 輸入 `/plugin` 開啟管理面板，或 `/plugin list` 列出外掛。別名：`/plugins` |
+| `/plugin` | 查看或管理已安裝的外掛（詳見 [05 Skill 配置](../05-skills.md#方式-a透過官方社群市集安裝-plugin推薦)） | 輸入 `/plugin` 開啟管理面板，或 `/plugin list` 列出外掛。別名：`/plugins` |
 
 ---
 
@@ -78,7 +92,7 @@
 | 指令 | 用途 | 小範例 |
 | :--- | :--- | :--- |
 | `/feedback` | 開啟意見回饋面板 | `/feedback` |
-| `/hooks` | 瀏覽目前啟用的 Hook（詳見 [06 專案規範與規則](../06-agents-md.md#5-進階用-hook-強制執行自動化腳本hooksjson)） | `/hooks` |
+| `/hooks` | 瀏覽目前啟用的 Hook（詳見 [06 專案規範與規則](../06-agents-md.md#6-進階用-hook-強制執行自動化腳本hooksjson)） | `/hooks` |
 | `/keybindings` | 修改快捷鍵 | `/keybindings` |
 | `/logout` | 登出並移除登入憑證 | `/logout` |
 | `/remote-control` | 開關遠端控制 | `/remote-control on` |
@@ -87,6 +101,33 @@
 | `/voice` | 語音對話或語音輸入 | `/voice dictate` |
 
 ---
+
+## 完整小範例：模型與管理功能逐一操作
+
+先送出 `請讀 draft.md，回報一句摘要，不修改。`，確保有一段對話。
+
+| 功能 | 準備與操作 | 驗收與收尾 |
+| :--- | :--- | :--- |
+| `/model` | 記下原模型，選另一個有額度的模型，再送出 `請用一句話摘要 draft.md，不修改。` | 模型名稱改變且有回答；再選回原模型。若只有一個可用模型，記下限制 |
+| 單句換模型 | 確認有 Argon 模型才用上面的 `/model ...` 範例，否則換成選單列出的模型 ID | 檢查該輪模型與文字修改結果，不把無權限錯誤當成功 |
+| `/effort` | 先用 `/model` 選單一、支援思考強度的模型，記下原強度，再 `/effort high` | 狀態列或提示顯示 high；送出 `請比較 draft.md 的兩種標題寫法` 看回答，再改回原強度 |
+| `/config` | 記下配色或通知原值，切換一次、關閉再重開 | 新值保留；練完還原原值 |
+| `/permissions`、`/skills`、`/agents`、`/mcp`、`/plugin` | 各開一次面板，記下一項已載入內容或「目前沒有」；看完按 Esc | 要新增實際內容，分別依第 04～08 站完整流程操作 |
+| `/add-dir` | 在一般終端機 `mkdir -p ~/terminal-ai-labs/extra-notes`，`printf '外部筆記：週六複習。\n' > ~/terminal-ai-labs/extra-notes/extra.md`；再在 agy 輸入 `/add-dir ~/terminal-ai-labs/extra-notes`，閱讀信任提示後加入 | 送出 `請讀剛加入資料夾的 extra.md，回報內容`，應包含「週六複習」；結束本次對話後檢查工作區清單，移除不再需要的附加目錄 |
+
+### 少用指令也能實測
+
+| 指令 | 完整操作與驗收 |
+| :--- | :--- |
+| `/feedback` | 開啟回饋面板，閱讀可填欄位後取消返回即可；本練習不需送出回饋 |
+| `/hooks` | 先完成 [06 Hook 實作](../06-agents-md.md#6-進階用-hook-強制執行自動化腳本hooksjson)，再查看 my-check-hook，停用後執行 python3 main.py 確認不再觸發 |
+| `/keybindings` | 先在 `/config` 設好外部編輯器，開啟快捷鍵檔，找到一項現有快捷鍵並記錄，退出不存檔；不用臆造不明的 action 名稱 |
+| `/logout` | 確認對話已完成後登出，再從終端機執行 agy，依登入步驟重新登入；能再次送出「你好」取得回答即完成 |
+| `/remote-control` | `/remote-control on`，依畫面指示在自己的瀏覽器登入，確認能看到這段對話；回終端機 `/remote-control off`，確認連線關閉。網址留在自己裝置使用 |
+| `/statusline` | 送出 `/statusline 請在狀態列顯示目前模型與工作目錄`，檢查是否顯示；先記錄原設定，練完請它還原原設定 |
+| `/title` | 先記原值，`/title off` 後送出一則短訊息，觀察視窗標題不隨任務更新；再 `/title on` 恢復（若原本關閉就設回 off） |
+| `/voice` | 有麥克風時 `/voice dictate`，依提示允許麥克風，說「請用三點整理今天的學習」；確認轉錄內容，取消或送出，最後退出語音模式。無麥克風則記下環境限制 |
+| `/exit` | 離開回一般終端機，執行 `agy -c` 應能接續本節對話 |
 
 ## ✅ 動手練習：切換思考強度與體驗設定選單
 

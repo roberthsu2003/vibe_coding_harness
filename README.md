@@ -16,6 +16,10 @@
 
 ![學習路線：先讓一個 AI 動手做，再用 Branch 放心地改程式，最後用 Worktree 和 Herdr 讓多個 AI 同時開發](assets/roadmap.svg)
 
+## 先準備實作素材
+
+[課堂練習準備](practice/README.md)提供 agy 與 OpenCode 各章可重建的練習專案，內含程式、筆記、測試與初始 Git commit。每章都附建立指令、操作步驟和驗收方式，沒有自己的專案也能開始。
+
 ## 教材總覽
 
 | 階段 | 教材 | 你會學到 | 內容 |

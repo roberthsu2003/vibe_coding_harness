@@ -6,14 +6,28 @@
 
 ---
 
-## 1. 啟動與離開
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
 
 ```bash
-cd ~/my-project
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/02
+cd ~/terminal-ai-labs/opencode/02
 opencode
 ```
 
-也可以直接帶路徑：`opencode ~/my-project`。想接著上次的對話：`opencode -c`。
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `02-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
+## 1. 啟動與離開
+
+```bash
+cd ~/terminal-ai-labs/opencode/02
+opencode
+```
+
+也可以直接帶路徑：`opencode ~/terminal-ai-labs/opencode/02`。想接著上次的對話：`opencode -c`。
 
 離開時輸入 `/exit`，或按 `Ctrl+C`。
 
@@ -76,6 +90,25 @@ opencode
 > 所有斜線指令和小範例，下一站會一個一個介紹。
 
 ---
+
+## 完整小範例：Build、Plan 與復原
+
+素材已包含 `src/app.py`，請在輸入框一次送出一列：
+
+| 步驟 | 操作 | 預期結果 |
+| :--- | :--- | :--- |
+| 1 | `請閱讀 README.md，用三點說明用途，不要修改。` | 能說出程式與測試指令 |
+| 2 | `請說明 @src/app.py 的 welcome 如何判斷成功或失敗。`（從 `@` 選單選檔案） | 找到 `src/auth.py` 的登入判斷 |
+| 3 | `!git status --short` | 尚未修改時沒有輸出；按 `Esc` 離開 shell 模式 |
+| 4 | `Shift+Tab` 切到 Plan，送出 `請規劃把 main.py 的輸出改為「計算結果：4.0」。` | 提出計畫，檔案尚未修改 |
+| 5 | 切回 Build，送出 `請照剛才的計畫執行。` | `main.py` 被修改 |
+| 6 | `/diff` | 看見輸出文字的改動，按 `Esc` 返回 |
+| 7 | `/undo` | 最新一輪修改被撤銷；不要送新訊息 |
+| 8 | 清空回填的提示詞，再輸入 `/redo` | 修改恢復 |
+
+**驗收（一般終端機）**：執行 `python3 main.py` 應印出 `計算結果：4.0`；執行 `python3 -m unittest discover -s tests -v` 應 4 個測試通過。輸入 `/exit` 後再於終端機執行 `opencode -c`，應接回這段對話。
+
+快捷鍵實測：按 `Ctrl+P` 打開面板，再按 `Esc` 返回；按 `Ctrl+X` 後放開再按 `B`，側邊欄應切換顯示，再做一次還原。
 
 ## ✅ 動手練習
 

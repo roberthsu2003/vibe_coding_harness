@@ -6,6 +6,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/06
+cd ~/terminal-ai-labs/agy/06
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `06-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 為什麼需要 `AGENTS.md`？
 
 `agy` 進入一個專案時，會自動讀取根目錄的 `AGENTS.md`，把它當成這個專案的規矩。如果沒有這份檔案，AI 常會：
@@ -84,7 +98,7 @@
 - 新增套件：`uv add <套件名稱>`
 - 新增開發用套件：`uv add --dev <套件名稱>`
 - 執行程式：`uv run python main.py`
-- 執行測試：`uv run pytest`
+- 執行測試：`uv run pytest tests/`
 
 ## 3. 程式碼品質與測試
 - 新增功能時，請在 `tests/` 補上對應的單元測試。
@@ -190,7 +204,18 @@ globs: ["docs/**/*.md"]
 {
   "my-check-hook": {
     "enabled": false,
-    "PostToolUse": [ ... ]
+    "PostToolUse": [
+      {
+        "matcher": "run_command",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '🔍 Hook 觸發：終端機指令執行完成，請確認結果是否正常！'",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
   }
 }
 ```
@@ -198,6 +223,16 @@ globs: ["docs/**/*.md"]
 3. **刪除 Hook**：從 `.agents/hooks.json` 移除 `"my-check-hook"` 這個區塊；如果只有這一個 Hook，也可以直接刪除 `.agents/hooks.json` 檔案（或請 AI 幫你刪掉）。
 
 ---
+
+### 實際驗收規則與 Hook
+
+- **第 2 節規則題**：在本章資料夾建立 `AGENTS.md` 後，離開再啟動 agy，送出折扣任務。接著輸入 `請用 Python 內建 unittest 撰寫 test_discount.py，確認原價 100、打八折的結果是 80，並執行 python3 -m unittest test_discount -v。`。**驗收**：檔案有型別標註與中文 docstring、測試顯示 `OK`、回覆有指定結尾。回覆格式若不符，檢查規則是否正確存檔與載入，再重開對話測試。
+- **第 3 節自動產生題**：先把第 2 節的 `AGENTS.md` 改名為 `AGENTS.manual.md`，再送出掃描提示詞。**驗收**：新產生的規則應記錄 README 內的 unittest 指令。沒有安裝 uv 時，不應臆造專案一定依賴 uv。
+- **第 4 節 uv 範本題**：先依[練習準備](../practice/README.md)安裝 uv，在本章終端機執行 `uv sync`，再套用範本。送出 `請依專案規則執行測試與 Ruff 檢查；若有格式問題，修好後再重跑。`。**驗收**：`uv run pytest tests/` 與 `uv run ruff check .` 通過。`broken/` 是另一道故意出錯的題，請在本次 pytest 指令排除它。
+- **glob 規則題**：先執行 `mkdir -p .agents/rules docs`，依第 5 節內容存成 `docs-style.md`，重新啟動後送出建立簡介的提示詞。**驗收**：`cat docs/intro.md` 可看到「## 學習目標」與至少一個 GitHub Alert。
+- **Hook 題**：執行 `mkdir -p .agents`，將完整 JSON 存成 `.agents/hooks.json`，重新啟動 agy，在 `/hooks` 確認已載入，再送出 `請實際執行 python3 main.py，回報輸出。`。**驗收**：程式輸出與 Hook 提醒都出現。將範例換成停用版本、重新啟動並再做一次，應不再出現 Hook 提醒；刪除 `my-check-hook` 後再次啟動，`/hooks` 不再列出它。
+
+練完移除本節新增的 `.agents/rules/docs-style.md` 與 Hook，保留成果檔供檢查。若要重做，使用新的 `06-retry` 練習路徑。
 
 ## 7. 確認 AI 有讀到規則
 
@@ -207,7 +242,7 @@ globs: ["docs/**/*.md"]
 請說明這個專案的套件安裝方式與測試指令是什麼。先不要修改任何檔案。
 ```
 
-AI 回答「使用 `uv add` 安裝、用 `uv run pytest` 跑測試」，就代表規則已經生效了！
+AI 回答「使用 `uv add` 安裝、用 `uv run pytest tests/` 跑測試」，就代表規則已經生效了！
 
 ---
 

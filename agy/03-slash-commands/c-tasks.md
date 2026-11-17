@@ -6,6 +6,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/03-c
+cd ~/terminal-ai-labs/agy/03-c
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-c-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 新手最常用的 3 個派任務指令（可直接體驗）
 
 ### `/plan`：先規劃，再動手
@@ -40,13 +54,19 @@
 
 ---
 
+### 訪談題的完整回答與驗收
+
+前面的 `/grill-me` 可依 AI 的問題逐次回答：主題「Python 入門」、人數「4 人」、頻率「每週六 14:00～15:00」、地點「學校圖書館」、目標「四週讀完串列與字典」。回答完送出 `請依剛才的答案完成 book-club.md，包含四週進度表。`。
+
+**驗收**：用 `cat book-club.md` 對照人數、時段、四週進度是否一致。組合指令的 health-log 題則回答「每週運動三次、只記錄不提供醫療建議、欄位包含日期／運動分鐘／三餐備註」，審閱計畫後核准，確認 `health-log.md` 包含七天可填寫的表格。
+
 ### `/learn`：把你的習慣存成專屬 Skill（含體驗與刪除）
 
 如果你每次都要重複叮囑 AI 同一件事，可以用 `/learn` 讓 AI 幫你把這條習慣**寫成一個 Skill（技能檔）**。存好之後就算開新對話，AI 也會自動遵守；練習完也可以直接請 AI 幫你把這個 Skill 刪掉：
 
 ```text
 # 步驟 1：用 /learn 建立一個新 Skill（依提示確認儲存）
-/learn 請幫我建立一個 Skill：以後每次建立任何 .md 筆記檔時，最上方都要自動加上「建立日期」與「重點摘要」區塊
+/learn 請在本專案建立名為 lesson-note-format 的 Skill：每次建立 .md 筆記檔時，最上方都要加上「建立日期」與「重點摘要」區塊。儲存在 .agents/skills/lesson-note-format/SKILL.md，description 寫清楚建立筆記時使用。
 
 # 步驟 2：重新載入 Skill，讓新建立的 Skill 立刻生效
 /skills reload
@@ -57,7 +77,7 @@
 
 # 步驟 4：查看並刪除剛剛建立的 Skill，最後再 reload 一次恢復乾淨環境
 /skills
-請幫我刪除剛剛用 /learn 建立的筆記格式 Skill
+請只刪除本次建立的 .agents/skills/lesson-note-format/SKILL.md，保留其他 Skill
 /skills reload
 ```
 
@@ -112,11 +132,34 @@
 
 ### `/browser`：讓 AI 操作瀏覽器查資料
 
-```text
-/browser 打開 https://antigravity.google/docs，幫我把首頁介紹的重點整理成 agy-notes.md
+**準備（一般終端機）**：在本節練習資料夾建立 `browser-demo.html`，內容如下：
+
+```html
+<!doctype html>
+<html lang="zh-Hant">
+<meta charset="utf-8">
+<title>瀏覽器練習</title>
+<h1>課堂瀏覽器測試</h1>
+<button onclick="document.getElementById('result').textContent='操作成功'">按我測試</button>
+<p id="result">尚未操作</p>
+</html>
 ```
 
-- **結果**：派出一個瀏覽器子代理開啟 Chrome 閱讀網頁，再把結果整理回你的 Markdown 筆記。
+在同一個終端機啟動伺服器（保持開著）：
+
+```bash
+python3 -m http.server 8765 --bind 127.0.0.1
+```
+
+先在 Chrome 手動打開 `http://127.0.0.1:8765/browser-demo.html`，確認看到按鈕。若 8765 已被占用，換成 8766，後續網址也一起改。另開終端機進入本節資料夾、啟動 agy 後送出：
+
+```text
+/browser 請打開 http://127.0.0.1:8765/browser-demo.html，讀取標題，點擊「按我測試」，確認畫面從「尚未操作」變成「操作成功」，將觀察結果回報主代理。
+```
+
+接著送出 `請把剛才瀏覽器的觀察結果存成 browser-result.md，包含網址、點擊前後文字及是否通過。`。
+
+**驗收**：Chrome 中實際顯示「操作成功」、工具紀錄有瀏覽器操作、`browser-result.md` 記錄相同結果。只有閱讀 HTML 原始碼不算完成。結束後在伺服器終端機按 `Ctrl+C`；重新整理網址應無法再載入此服務。
 
 > [!NOTE]
 > **如果 `/browser` 無法連線到 Chrome（macOS），請確認以下項目：**
@@ -155,6 +198,27 @@
   ```
 
 ---
+
+## 進階任務的驗收與收尾
+
+| 任務 | 實際驗收 | 收尾 |
+| :--- | :--- | :--- |
+| `/goal` 整理 notes | 打開 ch1、ch2、ch3，確認各有目錄與三點摘要，notes/README.md 的連結能開啟；原文仍在 | 回報缺漏時請 AI 補齊再檢查 |
+| `/schedule 1m` | 確認 todo.md 有兩項未完成；保持 agy 開啟一分鐘，提醒應只列出未完成兩項 | `/tasks` 確認一次性任務已結束；若還在待命或改成週期任務，選中取消／停止並確認消失 |
+| `/boost` 比較筆記法 | `cat note-methods.md` 應包含三種方法比較、學習門檻、適用科目、兩週建議表；作為練習建議，不保證學習成效 | 工作結束後查看子代理狀態，確認無殘留工作 |
+| `/swarm` 宜蘭文件 | 三份 day 檔都有早中晚與預估花費；另要求 verifier 回報加總，不能超過 10,000；交通與金額為虛構估算 | `/swarm board` 看審查結果，請協調者結束已完成成員，`Alt+X` 收起狀態列 |
+
+### `/teamwork` 完整小專案（需付費方案）
+
+**素材**：已附 notes/ch1.md、ch2.md、ch3.md，分別談時間管理、專注力與睡眠。先送出：
+
+```text
+/teamwork 請將 notes/ch1.md、notes/ch2.md、notes/ch3.md 重整成三章學習手冊。保留來源檔，只在新的 handbook/ 產出 01-time.md、02-focus.md、03-sleep.md 與 README.md 索引。每章保留原文並加三點摘要、兩題自我檢查。先訪談確認範圍，再分「大綱、撰寫、驗收」三階段執行，最後核對所有索引連結。
+```
+
+訪談時回答：「讀者是大學生」、「繁體中文」、「每章約 200 字」、「保留原文」、「驗收條件依原提示詞」。審核大綱時確認三個檔名與來源對應正確，再依介面提示同意推進。
+
+**驗收**：查看團隊回報的實際專案目錄（若在專用目錄執行，先 `cd` 到該位置），打開四份成果；每章都有原文、三點摘要與兩題問題，README 的三個連結都能開啟，來源檔未被改動。完成後依介面確認團隊停止；要提早結束則 `Ctrl+C` 中斷並查看子代理／背景任務狀態。帳號沒有此指令時記錄限制，可用一般對話做相同文件題，但不能當成已測過 Teamwork。
 
 ## ✅ 動手練習：體驗 AI 採訪你並規劃 Markdown 筆記
 

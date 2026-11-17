@@ -8,6 +8,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/03
+cd ~/terminal-ai-labs/opencode/03
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 怎麼使用斜線指令？
 
 斜線指令（Slash Command）是 OpenCode 輸入框裡的快捷功能，以 `/` 開頭。

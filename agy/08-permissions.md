@@ -6,6 +6,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/08
+cd ~/terminal-ai-labs/agy/08
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `08-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 為什麼要管權限？
 
 `agy` 能讀寫檔案、執行終端機指令，也能連接外部工具。在預設的 `default` 模式下，AI 做修改或跑指令前都會先問你；但當你常用的安全指令（例如 `git status`、`pytest`）每次都要按同意時會覺得麻煩，而危險的指令（例如 `sudo`、`rm -rf`）則希望永遠禁止。
@@ -44,13 +58,28 @@
   "enableTerminalSandbox": true,
   "permissions": {
     "allow": ["command(git status)", "command(git diff)", "read_url(google.com)"],
-    "deny": ["command(sudo)", "command(rm)", "write_file(.git/)"],
-    "ask": ["command(*)"]
+    "deny": ["command(sudo)", "command(rm)", "write_file(.git/)", "write_file(protected.txt)"]
   }
 }
 ```
 
 ---
+
+### 完整小範例：實際看到允許、詢問與禁止
+
+1. 本章已準備 `protected.txt`。先在 `/permissions` 記下原設定，備份 `~/.gemini/antigravity-cli/settings.json`，將上面的權限欄位合併進去，保留其他欄位；練習時使用 `default` 模式與 `request-review`。
+2. 確認沒有更廣的 `ask` 規則同時涵蓋 `git status`；若有，先記下並暫時移除，否則依優先順序仍會詢問。
+3. 離開再啟動 agy，依序送出下列提示詞；每一列結束再送下一列：
+
+| 操作 | 在對話框輸入 | 驗收 |
+| :--- | :--- | :--- |
+| 允許 | `請實際執行 git status --short。` | 指令執行且沒有本次的終端機授權詢問 |
+| 詢問 | `請實際執行 python3 main.py。` | 出現權限詢問，這次只同意一次，輸出 `4.0` |
+| 禁止 | `請使用檔案寫入工具，把 protected.txt 改成「已修改」；若權限拒絕就停止，不要改用其他工具。` | 收到拒絕，檔案仍是「這是權限練習用檔案，請保留。」 |
+
+若 AI 只解說、未呼叫工具，請提醒它實際執行；已有持續授權時，先到 `/permissions` 清掉本題相關授權再測。
+
+**收尾**：只將本題變更的權限欄位還原成備份值，重啟後確認 `/permissions` 已恢復。此題使用無害測試檔，不需要真的執行 `sudo` 或刪除檔案。
 
 ## 3. 看懂權限規則
 
@@ -113,6 +142,16 @@ agy --sandbox
 
 ---
 
+### 沙盒動手練習
+
+離開 agy，在本章資料夾執行 `agy --sandbox`，確認啟動資訊或 `/config` 顯示沙盒已啟用，再送出：
+
+```text
+請在工作區建立 sandbox-result.txt，寫入「沙盒練習完成」，並執行 python3 -c "from pathlib import Path; print(Path('sandbox-result.txt').read_text())"。
+```
+
+**驗收**：工具紀錄顯示指令在沙盒執行，輸出包含「沙盒練習完成」，工作區能看到檔案。這只驗證沙盒啟用與工作區操作，並不代表已測試所有隔離邊界。練完輸入 `/exit`；若設定過永久開啟，將該欄位還原。
+
 ## 5. 完全不詢問旗標（`--dangerously-skip-permissions`）
 
 如果你在跑已經測好、而且有用 Git 備份的自動化腳本，想讓 AI 從頭跑到尾都不跳出詢問視窗，可以在啟動時加上：
@@ -133,16 +172,24 @@ agy --dangerously-skip-permissions
 ```bash
 # 查看與開關 MCP 伺服器
 agy mcp list
-agy mcp disable <名稱>
-agy mcp enable <名稱>
+agy mcp disable lab-files
+agy mcp enable lab-files
 
 # 查看與開關外掛
 agy plugin list
-agy plugin disable <名稱>
-agy plugin enable <名稱>
+agy plugin disable modern-web-guidance-plugin
+agy plugin enable modern-web-guidance-plugin
 ```
 
 ---
+
+## 管理外部工具的完整操作
+
+MCP 請先完成 [04 的 lab-files 實作](04-config.md#5-連接外部工具mcp)，再執行 `agy mcp list`，確認清單中真的有 `lab-files` 後，才執行 `agy mcp disable lab-files`、`agy mcp list`、`agy mcp enable lab-files`、`agy mcp list`。**驗收**：狀態依序為停用與啟用；最後依第 04 站移除練習項目。
+
+外掛請先完成 [05 的安裝實作](05-skills.md)，對清單裡的 `modern-web-guidance-plugin` 執行 `disable`，進入 `/skills` 確認該外掛 Skill 不再可用；再 `enable`、重啟並確認恢復。已解除安裝的外掛需先安裝，不要把 `<名稱>` 原樣送出。
+
+`--dangerously-skip-permissions` 只作進階參數說明，本章實作使用前面的逐次授權流程；不用開這個旗標也能完成所有題目。
 
 ## ✅ 自我檢查
 

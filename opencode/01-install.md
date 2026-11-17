@@ -31,6 +31,17 @@ opencode --version
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/01
+cd ~/terminal-ai-labs/opencode/01
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `01-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
 ## 3. 連接模型供應商
 
 OpenCode 要連到 AI 模型才能工作。在專案資料夾啟動：
@@ -73,6 +84,20 @@ opencode run -m opencode/nemotron-3.5-lightning-free "你好"
 > 免費模型的名單會變動，也可能因為伺服器忙碌而無法使用。遇到問題就用 `/models` 換一個，或查看[疑難排解](reference.md#2-疑難排解)。
 
 ---
+
+## 完整小練習：連線、選模型、讀取素材
+
+1. 在本章練習資料夾啟動 `opencode`，執行 `/connect` 完成登入。
+2. 輸入 `/models`，搜尋 `free`，從目前可用的非中國大陸模型中選擇一個標示 `Free` 的模型；記下完整模型 ID。若沒有符合條件的免費模型，使用自己已有額度的供應商模型。
+3. 在對話框送出：
+
+```text
+請閱讀 README.md 與 main.py，用三點繁體中文說明用途、執行方式與測試指令。先不要修改任何檔案。
+```
+
+**驗收**：輸入框下方顯示剛選的模型；回答包含 `python3 main.py` 與 `python3 -m unittest discover -s tests -v`。另開終端機進入本章資料夾執行 `git status --short`，應無輸出。
+
+最後輸入 `/exit`，在一般終端機執行上面的 `opencode run ... "你好"`。若範例模型 ID 已下架，換成第 2 步記下的 ID；看到文字回答並回到 shell 提示符即完成。
 
 ## ✅ 自我檢查
 

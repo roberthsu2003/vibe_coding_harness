@@ -8,6 +8,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/opencode/03-a
+cd ~/terminal-ai-labs/opencode/03-a
+opencode
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `03-a-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. 指令介紹
 
 ### `/connect`：連接模型供應商
@@ -81,6 +95,27 @@
 - **結果**：列出外部工具（MCP 伺服器）與連線狀態。連線失敗的會標示 `Failed`，按 `Space` 可以重試。詳見 [04 環境配置](../04-config.md#5-mcp讓-ai-使用外部工具)。
 
 ---
+
+## 六個指令的實際驗收
+
+每次只送出一個指令，面板關閉後再操作下一個。
+
+| 指令 | 操作 | 驗收 |
+| :--- | :--- | :--- |
+| `/connect` | 選已使用的供應商，依第 01 站登入；已連線時只查看即可 | 供應商前有 ✓，送出「只回覆 OK」能得到回答 |
+| `/models` | 記下原模型，搜尋 free，選目前可用的非中國大陸免費模型，再送出「只回覆 OK」 | 輸入框顯示模型且回答成功；選單沒有合適免費模型時用已有額度的模型並記錄 |
+| `/variants` | 在支援的模型上記下原強度，改為另一級，回答一道短問題 | 畫面顯示新強度，完成後還原；模型不支援時記下提示，不用為本題購買方案 |
+| `/agents` | 選 plan，送出「請規劃在 README.md 加一句摘要，先不要修改」；再切 build 並要求執行 | Plan 階段檔案不變，Build 後 `git diff -- README.md` 有新增內容 |
+| `/skills` | 未設定時先看空清單，再用下方完整提示詞建立實際 Skill | 重載後看得到 lab-summary，且可用 @ 呼叫 |
+| `/mcps` | 未設定時空清單正常；要實際連線，依 [04 MCP 實作](../04-config.md#5-mcp讓-ai-使用外部工具)在本節資料夾建立 lab-files | 回本節執行 /mcps 可見已連線，讀檔紀錄有 MCP 工具；練完依該節移除 |
+
+**Skill 小範例**：在 Build 輸入：
+
+```text
+請建立 .opencode/skills/lab-summary/SKILL.md：frontmatter 的 name 為 lab-summary，description 為「當需要把筆記整理成三點摘要時使用」。正文規定讀取指定檔案、只輸出三點繁體中文摘要、不修改原檔。
+```
+
+輸入 `/reload`、`/skills` 後，送出 `@lab-summary 請摘要 reading-notes.md`（從選單選 skill）。**驗收**：紀錄顯示載入 lab-summary，回覆恰有三點。練完刪除本次的 lab-summary 資料夾，再 `/reload` 確認它消失。
 
 ## ✅ 動手練習：挑一個免費模型來寫第一份 Markdown 筆記
 

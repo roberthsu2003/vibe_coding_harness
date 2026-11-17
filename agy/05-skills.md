@@ -8,6 +8,20 @@
 
 ---
 
+## 開始前：建立本節練習資料夾
+
+先完成[課堂練習準備](../practice/README.md)的工具確認與教材下載，再在**一般終端機**逐行執行：
+
+```bash
+python3 ~/terminal-ai-course/practice/prepare.py ~/terminal-ai-labs/agy/05
+cd ~/terminal-ai-labs/agy/05
+agy
+```
+
+看到目的資料夾已存在時，直接 `cd` 進去接續；要重做則把路徑最後一段改成 `05-retry`。本節的程式、筆記與初始 Git commit 都已準備好。
+
+---
+
 ## 1. Skill 是什麼？
 
 **Skill 就像交給 AI 的一份工作手冊。** 你把某件事的做法寫下來，之後 AI 遇到這件事就會翻開手冊照做，你不用每次重新交代。
@@ -69,6 +83,8 @@ agy plugin enable modern-web-guidance-plugin
 agy plugin uninstall modern-web-guidance-plugin
 ```
 
+**外掛實作前先確認**：在一般終端機執行 `node --version` 與 `npx --version`，須已安裝 Node.js 且可連網。先安裝、查看清單，再做下方試用；暫停、重新啟用與解除安裝留到試用結束後，避免先解除安裝才找不到 Skill。
+
 #### 動手實作：試用 `modern-web-guidance-plugin`
 
 這個外掛能讓 AI 在寫網頁（HTML / CSS / JS）前，先查詢最新的現代網頁標準，避免寫出過時的寫法。安裝完成後照著以下步驟試用：
@@ -84,6 +100,8 @@ agy plugin uninstall modern-web-guidance-plugin
    - 回覆最後還會附上一個 **`### Modern Web Guidance`** 小節，列出它參考了哪些規範項目。
 4. **課後清理（選用）**：測試完可刪除 `demo.html`；如果想練習移除外掛，執行 `agy plugin uninstall modern-web-guidance-plugin` 即可。
 
+**網頁成果驗收**：在本章資料夾的一般終端機執行 `python3 -m http.server 8765 --bind 127.0.0.1`，瀏覽器開啟 `http://127.0.0.1:8765/demo.html`。實際點擊開啟彈窗、點背景關閉，再按 Esc 測試關閉，切換系統深色模式確認可讀。頁面若沒有開啟按鈕，先請 AI 補上再驗收。關閉彈窗只驗證介面，不會真的刪除檔案。完成後回伺服器終端機按 Ctrl+C，才練習停用與解除安裝外掛。
+
 ### 方式 B：從 GitHub 或同學分享取得單一 Skill
 
 如果網路上或同學分享了一個 Skill 資料夾（裡面有 `SKILL.md`），只要把整個資料夾放進對應目錄即可：
@@ -97,10 +115,10 @@ agy plugin uninstall modern-web-guidance-plugin
 
 1. **下載並放到專案（區域）目錄**：
    ```bash
-   git clone --depth 1 https://github.com/anthropics/skills.git /tmp/ext-skills
+   task_skill_source=$(mktemp -d)
+   git clone --depth 1 https://github.com/anthropics/skills.git "$task_skill_source"
    mkdir -p .agents/skills
-   cp -r /tmp/ext-skills/skills/pptx .agents/skills/pptx
-   rm -rf /tmp/ext-skills
+   cp -R "$task_skill_source/skills/pptx" .agents/skills/pptx
    ```
    > 想改成**全域**（所有專案都能用），把 `.agents/skills/pptx` 換成 `~/.gemini/config/skills/pptx` 即可。
 
@@ -115,6 +133,16 @@ agy plugin uninstall modern-web-guidance-plugin
    第 4 頁：新手必學的三個好習慣（說清楚需求、分小步測試、自己看過程式碼）
    第 5 頁（總結）：今天就能開始的第一步與 Q&A
    ```
+
+**製作前補齊依賴**：這個外部 Skill 可能依賴 Node.js、Python 套件與簡報渲染工具。先在對話框送出：
+
+   ```text
+   請先讀取 .agents/skills/pptx/SKILL.md 與其提到的依賴說明，列出本機缺少的工具，並依手冊提供安裝指令。請先完成環境確認，再做五頁簡報；不能只回傳大綱或 Markdown 冒充 PPTX。
+   ```
+
+   依清單完成安裝後再送出五頁任務。**驗收**：在檔案總管找到實際的 intro.pptx，用 PowerPoint、Keynote 或 LibreOffice 開啟，確認恰有 5 頁且對應指定主題，文字沒有溢出、圖片沒有遺失。若沒有可開啟 PPTX 的軟體，先安裝其中一種，不能只用檔案存在判定通過。讓 AI 依 Skill 的渲染／檢查步驟確認成品，若依賴無法安裝則明確記錄哪一步未完成。
+
+   上面的暫存來源可保留作比對；練完用檔案總管移除本次 mktemp 產生的來源資料夾即可。重做時先確認專案沒有同名 pptx Skill，避免複製成巢狀資料夾。
 
 4. **不想用了怎麼刪**：
    ```bash
@@ -176,6 +204,8 @@ AI 會自動建立 `.agents/skills/explain-code/SKILL.md`。接著重新載入�
 
 #### 步驟 1：在全域目錄建立資料夾與 `SKILL.md`
 
+**建立前先確認**：若 `~/.gemini/config/skills/study-quiz/SKILL.md` 已存在，改用 `study-quiz-lab` 作為資料夾、name 與呼叫名稱，全程不覆蓋原檔。
+
 ```bash
 mkdir -p ~/.gemini/config/skills/study-quiz
 ```
@@ -224,6 +254,45 @@ D. ...
 | **自然語言觸發** | `幫我針對 guess.py 出幾題測驗複習一下` | AI 自動載入 `study-quiz` 並出題 |
 
 ---
+
+### 自訂 Skill 的實際驗收：不只看它說「已載入」
+
+1. 完成 explain-code 建立後，打開 `.agents/skills/explain-code/SKILL.md`，確認第一行為 `---`，有 `name: explain-code`、明確 description，以及四個輸出要求。若 AI 存錯位置，先移到正確資料夾再 `/skills reload`。
+2. 送出 `/explain-code 請解說 guess.py`。**驗收**：輸出有一句總結、生活比喻、逐段說明與一個常見坑；對照 guess.py，確實包含 1～100、最多 5 次、太大太小提示。
+3. 要測試遊戲本身，請 AI 把猜測函式加上可測試的參數，或在一般終端機直接執行 `python3 guess.py` 並輸入 50、25、75 等數字。**驗收**：每次猜測都有提示，最多五次後結束；若非數字造成錯誤，記下此邊界問題再請 AI 改善。
+4. study-quiz 建好後送出 `/study-quiz 根據 guess.py 出題考我`。**驗收**：恰有三題、各四個選項，先不公布答案。接著送出自己的答案（例如 `1A 2C 3B`，依實際題目作答），確認逐題批改與解釋。
+5. 測試全域範圍：另建空資料夾並建立一份含「串列用中括號、字典用大括號」的 `notes.md`，在該資料夾啟動 agy，使用 study-quiz 對 notes.md 出題；應能使用全域 Skill。局部的 explain-code 不應從原專案自動帶過去。
+
+### 全域測試的建立指令
+
+另開一般終端機執行：
+
+```bash
+mkdir -p ~/terminal-ai-labs/agy/05-global-check
+cd ~/terminal-ai-labs/agy/05-global-check
+printf '# 複習筆記\n\n串列用中括號，字典用大括號。\n' > notes.md
+agy
+```
+
+在新對話送出 `/study-quiz 根據 notes.md 出三題測驗`，確認全域 Skill 可用。沒有讀過原專案的 guess.py 也能正常出題，這才是跨資料夾測試。答完後輸入 `/exit`，回到本章原資料夾繼續停用與清理。
+
+上面的輸出格式只示範第一題排版；實際題目必須依檔案內容重新設計三題，不能直接複製範本固定題。
+
+### 停用、恢復、刪除的完整操作
+
+在本章資料夾的一般終端機依序執行：
+
+```bash
+mv .agents/skills/explain-code/SKILL.md .agents/skills/explain-code/SKILL.md.bak
+```
+
+回到 agy 輸入 `/skills reload`，再 `/skills`，確認 explain-code 不在可用清單；接著把檔名改回並重新載入：
+
+```bash
+mv .agents/skills/explain-code/SKILL.md.bak .agents/skills/explain-code/SKILL.md
+```
+
+**驗收**：explain-code 重新出現且可呼叫。練完在對話框送出 `請只刪除本次練習建立的 .agents/skills/explain-code 與全域的 ~/.gemini/config/skills/study-quiz，保留其他 Skill。`，依提示處理權限，再 `/skills reload`、`/skills` 確認這兩個名稱消失。建立全域 Skill 前就先確認同名路徑不存在；若原本已有，不要覆蓋或刪除它，請改用 study-quiz-lab 並同步更改 name 與呼叫名稱。
 
 ## 5. 看懂 `SKILL.md` 結構
 
