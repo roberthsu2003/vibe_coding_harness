@@ -1,4 +1,4 @@
-# 03-B　B 區：管對話
+# 03-B　B 區：管對話 (Session)
 
 > ★ 入門　｜　[← A 區：查狀態](a-status.md)　｜　[回到 03 斜線指令總覽](../03-slash-commands.md)　｜　下一區：[C 區：派任務 →](c-tasks.md)
 

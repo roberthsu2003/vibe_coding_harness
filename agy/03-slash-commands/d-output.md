@@ -1,4 +1,4 @@
-# 03-D　D 區：看成果
+# 03-D　D 區：看成果 (Output)
 
 > ★ 入門　｜　[← C 區：派任務](c-tasks.md)　｜　[回到 03 斜線指令總覽](../03-slash-commands.md)　｜　下一區：[E 區：調環境 →](e-config.md)
 

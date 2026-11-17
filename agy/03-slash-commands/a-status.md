@@ -1,4 +1,4 @@
-# 03-A　A 區：查狀態
+# 03-A　A 區：查狀態 (Status)
 
 > ★ 入門　｜　[← 回到 03 斜線指令總覽](../03-slash-commands.md)　｜　下一區：[B 區：管對話 →](b-session.md)
 

@@ -1,4 +1,4 @@
-# 03-C　C 區：派任務
+# 03-C　C 區：派任務 (Tasks)
 
 > ★ 入門　｜　[← B 區：管對話](b-session.md)　｜　[回到 03 斜線指令總覽](../03-slash-commands.md)　｜　下一區：[D 區：看成果 →](d-output.md)
 
