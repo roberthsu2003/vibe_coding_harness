@@ -88,6 +88,32 @@ claude-sonnet-5-5-medium  Claude Sonnet 5.5 (Medium)
 
 名稱最後的 `low`、`medium`、`high` 是思考強度：越高想得越深，通常也越慢。
 
+### Orchestrator：自動搭配規劃與執行模型
+
+Google 在 **2026-11-12** 發布 Orchestrator，讓較大的模型負責規劃與檢查，再交給 Gemini 4 Hydrogen 修改檔案、建置與測試；遇到卡關時，會交回規劃模型調整計畫。適合需要「先理解專案，再修改並驗證」的功能開發或除錯。[官方發布公告](https://antigravity.google/blog/gemini-4-hydrogen-in-google-antigravity)
+
+在對話框輸入 `/model`，選擇帳號可用的 Orchestrator 項目，按 `Enter` 後就能照平常方式交代任務：
+
+```text
+請檢查這個專案的報名表單，加入必填欄位驗證，補上測試並執行，最後整理修改結果。
+```
+
+| 選單名稱 | 規劃與檢查 | 修改與測試 | 可用方案 |
+| :--- | :--- | :--- | :--- |
+| **Orchestrator (Carbon)** | Gemini 4 Carbon | Gemini 4 Hydrogen | Google AI Ultra |
+| **Orchestrator (Argon)** | Gemini 4 Argon | Gemini 4 Hydrogen | Google AI Ultra、付費 Google AI Pro，或符合資格的高階裝置試用方案 |
+
+也可以在啟動時指定（名稱含空格，請保留引號）：
+
+```bash
+agy --model "Orchestrator (Argon)"
+```
+
+> [!NOTE]
+> **Orchestrator 使用固定配置，不能用 `/effort` 或 `--effort` 調整思考強度。** 若想自行指定強度，請改選單一模型。找不到選項時，先執行 `agy update`，再用 `agy models` 確認帳號可用清單。
+
+方案與操作依 [官方模型文件](https://antigravity.google/docs/models#orchestrator) 整理，查核日期：**2026-11-17**。想把工作拆給多位代理平行處理，可接著看 [07 Subagent 子代理](07-subagents.md)。
+
 ### 啟動時指定模型
 
 ```bash

@@ -17,6 +17,7 @@
 ```
 
 - **結果**：開啟模型選單，用上下鍵即可切換預設模型（例如快一點的 Flash 模型，或擅長深度推理的模型）。
+- **選擇 Orchestrator**：可選 `Orchestrator (Carbon)` 或 `Orchestrator (Argon)`，讓規劃與執行模型自動交接；方案與操作見 [01 Orchestrator 教學](../01-install.md#orchestrator自動搭配規劃與執行模型)。
 - **只在這一句換模型**：也可以直接在指令後面指定模型與任務：
   ```text
   /model gemini-4-argon-high 幫我把 draft.md 的文字潤飾得更有說服力
@@ -33,6 +34,7 @@
 ```
 
 - **結果**：調整模型的思考深度（Thinking Effort）。等級由低到高為 `low`、`medium`、`high`、`xhigh`、`max`（實際可用等級依目前選用的模型而定）。想得越深，回答品質越細膩，但等待時間也會稍微變長。
+- **Orchestrator 例外**：它使用固定配置，`/effort` 不適用；想練習調整強度時，請先用 `/model` 選擇支援調整的單一模型。[官方說明](https://antigravity.google/docs/models#select-orchestrator)
 
 ---
 
@@ -93,7 +95,7 @@
 | 步驟 | 在對話框輸入 | 觀察重點 |
 | :---: | :--- | :--- |
 | **1** | `/model` | 打開模型選單，看看目前有哪些模型可以選擇（看完可按 `Esc` 關閉或選一個模型） |
-| **2** | `/effort high` | 把思考強度調高，觀察狀態列或系統提示的變化 |
+| **2** | `/effort high` | 先確認選用支援調整強度的單一模型，再調高強度並觀察狀態列或系統提示；Orchestrator 不適用 |
 | **3** | `請幫我建立 summary.md，用一個表格整理今天學到的 5 個最實用的斜線指令` | 讓高思考強度的 AI 幫你整理出一份漂亮的複習筆記 `summary.md` |
 | **4** | `/config` | 打開設定選單逛一逛有哪些個人化選項，按 `Esc` 返回 |
 | **5** | `/exit` | 結束今天的練習，順利回到終端機！ |

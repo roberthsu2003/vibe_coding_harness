@@ -17,6 +17,9 @@ agy -p "請用繁體中文說明 README.md 的重點，並列出三個改進建�
 # 指定模型與思考強度
 agy -p "檢查 src/auth.py 有沒有明顯的安全問題" --model gemini-4-argon-high --effort high
 
+# 使用 Orchestrator 自動搭配規劃與執行模型（不加 --effort）
+agy -p "為報名表單加入必填欄位驗證，補上測試並執行" --model "Orchestrator (Argon)"
+
 # 接著上一次的對話繼續問
 agy -p "根據剛才找到的問題，幫我寫出對應的測試案例" -c
 
@@ -32,7 +35,7 @@ agy -p "列出這個專案所有的 API 路徑" --output-format json
 | `--prompt-interactive` | `-i` | 啟動時先跑這句指令，跑完**留在對話畫面**繼續聊 |
 | `--continue` | `-c` | 接續最近一次的對話 |
 | `--model` | | 指定這次要用的模型（如 `gemini-4-argon-high`） |
-| `--effort` | | 指定思考強度（`low`、`medium`、`high`、`xhigh`、`max`） |
+| `--effort` | | 指定思考強度（`low`、`medium`、`high`、`xhigh`、`max`，依模型而定；Orchestrator 不適用） |
 | `--mode` | | 指定執行模式（`plan`、`accept-edits`、`auto`） |
 | `--output-format` | | 輸出格式：`text`（預設）、`json` 或 `stream-json` |
 | `--print-timeout` | | 設定最長等待時間（例如 `300s`） |
@@ -41,6 +44,8 @@ agy -p "列出這個專案所有的 API 路徑" --output-format json
 > ```bash
 > agy -p "說明這個專案的架構" | glow -p
 > ```
+
+Orchestrator 的方案與模型分工見 [01 模型選擇教學](01-install.md#orchestrator自動搭配規劃與執行模型)；非互動模式的用法可對照 [官方 Headless mode 文件](https://antigravity.google/docs/cli/headless/#select-a-model-effort-or-agent)。
 
 ---
 

@@ -165,6 +165,8 @@ agy --agent research
 
 ## 7. 怎麼選？Subagents、`/boost`、`/swarm` 與 `/teamwork`
 
+**先決定模型如何搭配，再決定任務怎麼分工。** [Orchestrator](01-install.md#orchestrator自動搭配規劃與執行模型) 在 `/model` 裡選擇，讓規劃與執行模型在同一項任務中自動交接；下表則幫你選擇子代理與團隊的工作方式。日常功能開發可先使用 Orchestrator；需要多位具名代理平行處理不同模組時，再考慮 `/swarm`。[官方 Orchestrator 說明](https://antigravity.google/docs/models#orchestrator)、[官方 Swarm 說明](https://antigravity.google/docs/subagents?tab=cli)
+
 | 比較項目 | Subagents（子代理） | `/boost` | `/swarm` | `/teamwork` |
 | :--- | :--- | :--- | :--- | :--- |
 | **什麼時候用** | 順手派一個小任務（如查資料、找檔案） | 很難的 Bug 或演算法，需要反覆深度思考 | 可以拆成好幾個獨立檔案或問題平行處理 | 全專案大改版、跨階段的長期工程 |
