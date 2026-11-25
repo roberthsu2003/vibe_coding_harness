@@ -106,7 +106,9 @@ Google 在 **2026-11-12** 發布 Orchestrator，讓較大的模型負責規劃�
 在對話框輸入 `/model`，選擇帳號可用的 Orchestrator 項目，按 `Enter` 後就能照平常方式交代任務：
 
 ```text
-請修改 calc.py 的 divide(a, b)：當 b 為 0 時拋出 ValueError("除數不可為零")，其餘行為不變。在 tests/test_calc.py 補上除數為零的測試，執行 python3 -m unittest discover -s tests -v，最後整理修改結果。
+請修改 calc.py 的 divide(a, b)：當 b 為 0 時拋出 ValueError("除數不可為零")，其餘行為不變。
+在 tests/test_calc.py 補上除數為零的測試，
+執行 python3 -m unittest discover -s tests -v，最後整理修改結果。
 ```
 
 **驗收**：另開終端機進入 `~/terminal-ai-labs/agy/01`，執行 `python3 -m unittest discover -s tests -v`，應至少 5 個測試通過。執行 `git diff -- calc.py tests/test_calc.py`，應看到錯誤處理與新測試；只切換模型而沒有送出上述任務，不會產生改動。
