@@ -69,7 +69,7 @@ agy
 
 ### 🔵 [B 區：管對話 (Session) →](03-slash-commands/b-session.md)
 - **解決問題**：對話太長、想順便提問或退回重來？
-- **包含指令**：`/btw`、`/rename`、`/compact`、`/rewind`、`/fork`、`/clear`、`/resume`
+- **包含指令**：`/btw`（**B**y **T**he **W**ay，順便問）、`/rename`、`/compact`、`/rewind`、`/fork`、`/clear`、`/resume`
 - **動手練習**：用 `travel.md` 旅遊筆記體驗對話時光機與壓縮
 
 ### 🟣 [C 區：派任務 (Tasks) →](03-slash-commands/c-tasks.md)
@@ -99,7 +99,7 @@ agy
 | **2** | `/plan 請幫我建立一個 todo.md，列出準備期末報告的 5 個步驟清單` | AI 先寫出計畫給你確認，同意後它就會建立 `todo.md` |
 | **3** | `請幫我在 todo.md 最下面加上一段「注意事項」` | 讓 AI 修改剛剛建立的 Markdown 檔案 |
 | **4** | `/diff` | 看清楚 AI 剛剛在 `todo.md` 新增了哪幾行（按 `Esc` 返回） |
-| **5** | `/btw Markdown 的粗體字要怎麼寫？` | 順便問個小問題，觀察主對話不會被打亂 |
+| **5** | `/btw Markdown 的粗體字要怎麼寫？` | `/btw` 是 **B**y **T**he **W**ay（順帶一提）的縮寫：順便問個小問題，主對話不會被打亂 |
 | **6** | `/context` → 接著輸入 `/compact` | 看看對話空間用量，並體驗把對話濃縮成摘要 |
 
 體驗完上面 6 步後，就可以從 **[🟢 A 區：查狀態 (Status)](03-slash-commands/a-status.md)** 開始依序逛進去了！
