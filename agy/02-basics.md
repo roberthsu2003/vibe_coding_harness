@@ -97,26 +97,26 @@ agy --mode plan
 
 ### 基本操作
 
-| 按鍵 | 功能 |
+| 按鍵（英文助記） | 功能 |
 | :--- | :--- |
-| `Shift+Tab` | 切換執行模式 |
-| `Ctrl+C` 或 `Esc` | 中斷 AI、關閉選單、清除輸入 |
-| `Ctrl+B` | 把正在執行的終端機長指令丟到背景繼續跑（之後可用 `/tasks` 查看與管理） |
-| `Tab` | 查看檔案變更和工具執行的細節 |
-| `Ctrl+O` | 展開或收合工具執行的內容 |
-| `Ctrl+R` | 開啟產出物審查畫面，查看計畫和變更 |
-| `Ctrl+G` | 用編輯器撰寫比較長的訊息 |
-| `Ctrl+L` | 清除終端機畫面 |
-| `Ctrl+D`（連按兩次） | 離開 agy |
+| `Shift+Tab` | 切換執行模式（Cycle Mode） |
+| `Ctrl+C` (`Cancel`) 或 `Esc` (`Escape`) | 中斷 AI、關閉選單、清除輸入 |
+| `Ctrl+B` (`Background`) | 把正在執行的終端機長指令丟到背景繼續跑（之後可用 `/tasks` 查看與管理） |
+| `Tab` | 查看檔案變更和工具執行的細節（View Details） |
+| `Ctrl+O` (`Open`) | 展開或收合工具執行的內容 |
+| `Ctrl+R` (`Review`) | 開啟產出物審查畫面（Review Artifact），查看計畫和變更 |
+| `Ctrl+G` (`Go to Editor`) | 用外部編輯器撰寫比較長的訊息 |
+| `Ctrl+L` (`cLear`) | 清除終端機畫面（Clear Screen） |
+| `Ctrl+D`（連按兩次，`Disconnect` / `Exit`） | 離開 agy |
 
 ### 進階：子代理與 Swarm 快捷鍵（[第 07 站](07-subagents.md)會用到）
 
-| 按鍵 | 功能 |
+| 按鍵（英文助記） | 功能 |
 | :--- | :--- |
-| `Alt+S` | 開啟全螢幕 [Swarm 即時看板](07-subagents.md#7-swarm平行代理協作團隊)（同 `/swarm board`） |
-| `Alt+X` | 關閉已完成的 Swarm 底部狀態列 |
-| `Alt+J` | 快速切換焦點到下一個正在等待確認的子代理 |
-| `Ctrl+K` | 快速批准狀態列提示中待確認的子代理操作 |
+| `Alt+S` (`Swarm`) | 開啟全螢幕 [Swarm 即時看板](07-subagents.md#7-swarm平行代理協作團隊)（同 `/swarm board`） |
+| `Alt+X` (`eXit` / `Close`) | 關閉已完成的 Swarm 底部狀態列 |
+| `Alt+J` (`Jump`) | 快速切換焦點到下一個正在等待確認的子代理 |
+| `Ctrl+K` (`oK` / `Approve`) | 快速批准狀態列提示中待確認的子代理操作 |
 
 ---
 
